@@ -1,14 +1,12 @@
 # Digosaur
 
-
-etst test
 Project for the advanced graphics and interaction course DH2413 at KTH
 
 ## GitHub Workflow Guidelines
 
 ### Branch Names
 
-First issue number then some description
+First issue number, then some description
 
 **Example:**
 79-Fix_my_broken_thing
@@ -29,16 +27,16 @@ Details: Adds a null check
 doc: add documentation and comments for LICx #x
 Details: The detailed comments and documentation explaining the function, its inputs, and outputs.
 
-**refactor: (for code restructuring without changing behavior):**
+**refactor: (for code restructuring without changing behaviour):**
 refactor: Rename variable to use lowercase #x
 
 **test: (for adding a test)**
 test: Add test for LIC14
 
-#### 2. In the end of message:
+#### 2. At the end of the message:
 
 If done: Resolves issue #45
-If part of solution: Relates to issue #45
+If part of the solution: Relates to issue #45
 
 ### Pull request:
 
@@ -51,7 +49,7 @@ Closes issue #45
 
 ### Merges
 
-When time to merge [Press green merge button]
+When the time to merge [Press green merge button]
 
 **Title: Merge pull request # from "branch"**
 Example: Merge pull request #69 from wys/issue/60
