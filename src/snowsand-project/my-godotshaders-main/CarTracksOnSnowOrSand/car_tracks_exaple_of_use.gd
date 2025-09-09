@@ -41,4 +41,3 @@ func _detect_from_cam_to_mouse() -> Dictionary:
 func _get_world_mouse_ray() -> Vector3:
 	var mouse_pos:Vector2 = get_viewport().get_mouse_position()
 	return cam.project_ray_normal(mouse_pos) * INTERACT_RADIUS
-
