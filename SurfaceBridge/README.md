@@ -12,9 +12,10 @@ This is a simple bridge application that captures touch events from a Samsung SU
 
 ### Prerequisites
 
-- Samsung SUR40 Surface table with Surface SDK installed
-- .NET 6.0 or later
+- Samsung SUR40 Surface table
+- .NET Framework 4.8 (comes with Windows 7/10/11)
 - Godot 4.x
+- Surface SDK files (included in this repo)
 
 ### Building the Bridge
 

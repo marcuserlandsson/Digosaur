@@ -82,7 +82,7 @@ light_energy = 7.297
 light_cull_mask = 4294967293
 omni_range = 7.838
 
-[node name="MouseTrack" type="Node3D" parent="."]
+[node name="SurfaceTrack" type="Node3D" parent="."]
 script = ExtResource("2_bwx1l")
 
 [node name="Floor" type="MeshInstance3D" parent="."]

@@ -11,7 +11,7 @@ const INTERACT_RADIUS: int = 15
 const UDP_PORT: int = 12345
 
 var query := PhysicsRayQueryParameters3D.new()
-var touch_position: Vector3
+var touch_position: Vector2
 var is_touching: bool = false
 var udp_server: UDPServer
 var udp_packet_peer: PacketPeerUDP
