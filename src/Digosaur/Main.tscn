@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dtkptpruv1ay6"]
 
-[ext_resource type="Script" uid="uid://b0pj4o5nptdjs" path="res://surface_track.gd" id="2_bwx1l"]
+[ext_resource type="Script" uid="uid://djxvto4n1y3ur" path="res://surface_track.gd" id="2_bwx1l"]
 [ext_resource type="Texture2D" uid="uid://1cujdx38cxxa" path="res://Images/snow_height.png" id="3_8neod"]
 [ext_resource type="Shader" uid="uid://lappm6o7lj1m" path="res://tracks.tres" id="3_tho10"]
 
