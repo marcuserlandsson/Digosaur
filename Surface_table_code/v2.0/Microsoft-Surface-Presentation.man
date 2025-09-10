@@ -1,0 +1,450 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<instrumentationManifest xmlns="http://schemas.microsoft.com/win/2004/08/events">
+  <instrumentation xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <events xmlns="http://schemas.microsoft.com/win/2004/08/events">
+      <provider xmlns:mtc="http://schemas.microsoft.com/surface/2007/09/manifesttocode"
+                mtc:providerNamespace="Microsoft.Surface.Presentation"
+                mtc:internal="true"
+                name="Microsoft-Surface-Presentation" guid="{4E73A680-AE16-44F4-A0DF-BE95D075B155}"
+                symbol="EventsPresentation"
+                resourceFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-Presentation.man.dll"
+                messageFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-Presentation.man.dll"
+                parameterFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-Presentation.man.dll" >
+        <channels>
+          <!-- This channel is used to publish events destined to the system administrator -->
+          <channel name="Microsoft-Surface-Presentation/Operational" chid="channelOperational"
+                   symbol="channelOperational" type="Operational" isolation="Application" enabled="true" value="16" />
+          <!-- This channel is used to publish events used in performance tracing -->
+          <channel name="Microsoft-Surface-Presentation/Debug" chid="channelDebug"
+                   symbol="channelDebug" type="Debug" isolation="Application" enabled="false" value="17" />
+          <!-- This channel is used to publish events used in debug tracing -->
+          <channel name="Microsoft-Surface-Presentation/Performance" chid="channelPerformance"
+                   symbol="channelPerformance" type="Analytic" isolation="Application" enabled="false" value="18" />
+          <!-- Add new channels above this line -->
+        </channels>
+        
+        <templates>
+          <template tid="templateNone">
+          </template>
+
+          <template tid="templateId">
+            <data name="id" inType="win:Int32" />
+            <UserData>
+              <integerData xmlns="nullNS">
+                <id>%1</id>
+            </integerData>
+            </UserData>
+          </template>
+
+          <template tid="templateException">
+            <data name="exception" inType="win:UnicodeString" />
+            <UserData>
+              <stringData xmlns="nullNS">
+                <exception>%1</exception>
+            </stringData>
+            </UserData>
+          </template>
+
+          <template tid="templatePerformanceCounterException">
+            <data name="name" inType="win:UnicodeString" />
+            <data name="exception" inType="win:UnicodeString" />
+            <UserData>
+              <stringData xmlns="nullNS">
+                <name>%1</name>
+                <exception>%2</exception>
+              </stringData>
+            </UserData>
+          </template>
+
+          <template tid="templateTouchEventDebug">
+            <data name="rootHashCode" inType="win:Int32" />
+            <data name="targetHashCode" inType="win:Int32" />
+            <data name="targetName" inType="win:UnicodeString" />
+            <data name="id" inType="win:Int32" />
+            <data name="deviceHashCode" inType="win:Int32" />
+            <data name="x" inType="win:Double" />
+            <data name="y" inType="win:Double" />
+            <UserData>
+              <data xmlns="nullNS">
+                <rootHashCode>%1</rootHashCode>
+                <targetHashCode>%2</targetHashCode>
+                <targetName>%3</targetName>
+                <id>%4</id>
+                <deviceHashCode>%5</deviceHashCode>
+                <x>%6</x>
+                <y>%7</y>
+              </data>
+            </UserData>
+          </template>
+
+          <template tid="templateManipulationStarting">
+            <data name="containerHashCode" inType="win:Int32" />
+            <data name="containerName" inType="win:UnicodeString" />
+            <UserData>
+              <data xmlns="nullNS">
+                <containerHashCode>%1</containerHashCode>
+                <containerName>%2</containerName>
+              </data>
+            </UserData>
+          </template>
+
+          <template tid="templateManipulationStarted">
+            <data name="containerHashCode" inType="win:Int32" />
+            <data name="containerName" inType="win:UnicodeString" />
+            <data name="mode" inType="win:Int32" />
+            <UserData>
+              <data xmlns="nullNS">
+                <containerHashCode>%1</containerHashCode>
+                <containerName>%2</containerName>
+                <mode>%3</mode>
+              </data>
+            </UserData>
+          </template>
+
+          <template tid="templateManipulationChange">
+            <data name="containerHashCode" inType="win:Int32" />
+            <data name="containerName" inType="win:UnicodeString" />
+            <data name="isInertia" inType="win:Int32" />
+            <data name="originX" inType="win:Double" />
+            <data name="originY" inType="win:Double" />
+            <data name="totalX" inType="win:Double" />
+            <data name="totalY" inType="win:Double" />
+            <data name="totalRotation" inType="win:Double" />
+            <data name="totalScaleX" inType="win:Double" />
+            <data name="totalScaleY" inType="win:Double" />
+            <data name="totalExpansionX" inType="win:Double" />
+            <data name="totalExpansionY" inType="win:Double" />
+            <UserData>
+              <data xmlns="nullNS">
+                <containerHashCode>%1</containerHashCode>
+                <containerName>%2</containerName>
+                <isInertia>%3</isInertia>
+                <originX>%4</originX>
+                <originY>%5</originY>
+                <totalX>%6</totalX>
+                <totalY>%7</totalY>
+                <totalRotation>%8</totalRotation>
+                <totalScaleX>%9</totalScaleX>
+                <totalScaleY>%10</totalScaleY>
+                <totalExpansionX>%11</totalExpansionX>
+                <totalExpansionY>%12</totalExpansionY>
+              </data>
+            </UserData>
+          </template>
+
+          <template tid="templateManipulationInertiaStarting">
+            <data name="containerHashCode" inType="win:Int32" />
+            <data name="containerName" inType="win:UnicodeString" />
+            <data name="linearVelocityX" inType="win:Double" />
+            <data name="linearVelocityY" inType="win:Double" />
+            <data name="rotationVelocity" inType="win:Double" />
+            <data name="expansionVelocityX" inType="win:Double" />
+            <data name="expansionVelocityY" inType="win:Double" />
+            <UserData>
+              <data xmlns="nullNS">
+                <containerHashCode>%1</containerHashCode>
+                <containerName>%2</containerName>
+                <linearVelocityX>%3</linearVelocityX>
+                <linearVelocityY>%4</linearVelocityY>
+                <rotationVelocity>%5</rotationVelocity>
+                <expansionVelocityX>%6</expansionVelocityX>
+                <expansionVelocityY>%7</expansionVelocityY>
+            </data>
+            </UserData>
+          </template>
+
+          <template tid="templateManipulationEnded">
+            <data name="containerHashCode" inType="win:Int32" />
+            <data name="containerName" inType="win:UnicodeString" />
+            <data name="canceled" inType="win:Int32" />
+            <UserData>
+              <data xmlns="nullNS">
+                <containerHashCode>%1</containerHashCode>
+                <containerName>%2</containerName>
+                <canceled>%3</canceled>
+              </data>
+            </UserData>
+          </template>
+
+          <template tid="templateCapture">
+            <data name="targetHashCode" inType="win:Int32" />
+            <data name="targetName" inType="win:UnicodeString" />
+            <data name="id" inType="win:Int32" />
+            <data name="deviceHashCode" inType="win:Int32" />
+            <UserData>
+              <data xmlns="nullNS">
+                <targetHashCode>%1</targetHashCode>
+                <targetName>%2</targetName>
+                <id>%3</id>
+                <deviceHashCode>%4</deviceHashCode>
+            </data>
+            </UserData>
+          </template>
+
+          <template tid="templateScrollViewerOffsetChanged">
+            <data name="hashCode" inType="win:Int32" />
+            <data name="name" inType="win:UnicodeString" />
+            <data name="offsetX" inType="win:Double" />
+            <data name="offsetY" inType="win:Double" />
+            <UserData>
+              <data xmlns="nullNS">
+                <hashCode>%1</hashCode>
+                <name>%2</name>
+                <offsetX>%3</offsetX>
+                <offsetY>%4</offsetY>
+            </data>
+            </UserData>
+          </template>
+
+          <template tid="templateRangeValueChanged">
+            <data name="hashCode" inType="win:Int32" />
+            <data name="name" inType="win:UnicodeString" />
+            <data name="value" inType="win:Double" />
+            <UserData>
+              <data xmlns="nullNS">
+                <hashCode>%1</hashCode>
+                <name>%2</name>
+                <value>%3</value>
+              </data>
+            </UserData>
+          </template>
+
+          <template tid="templateScatterControlManipulated">
+            <data name="hashCode" inType="win:Int32" />
+            <data name="name" inType="win:UnicodeString" />
+            <data name="action" inType="win:Int32" />
+            <data name="centerX" inType="win:Double" />
+            <data name="centerY" inType="win:Double" />
+            <data name="rotation" inType="win:Double" />
+            <data name="width" inType="win:Double" />
+            <data name="height" inType="win:Double" />
+            <UserData>
+              <data xmlns="nullNS">
+                <hashCode>%1</hashCode>
+                <name>%2</name>
+                <action>%3</action>
+                <centerX>%4</centerX>
+                <centerY>%5</centerY>
+                <rotation>%6</rotation>
+                <width>%7</width>
+                <height>%8</height>
+            </data>
+            </UserData>
+          </template>
+
+          <template tid="templateWindowSourceInitialized">
+            <data name="hashCode" inType="win:Int32" />
+            <data name="name" inType="win:UnicodeString" />
+            <data name="hwnd" inType="win:Int32" />
+            <UserData>
+              <data xmlns="nullNS">
+                <hashCode>%1</hashCode>
+                <name>%2</name>
+                <hwnd>%3</hwnd>
+              </data>
+            </UserData>
+          </template>
+
+          <template tid="templateWindowClosed">
+            <data name="hashCode" inType="win:Int32" />
+            <UserData>
+              <data xmlns="nullNS">
+                <hashCode>%1</hashCode>
+              </data>
+            </UserData>
+          </template>
+          <!-- Add new templates above this line -->
+        </templates>
+        
+        <opcodes>
+          <!-- Add new opcodes above this line -->
+        </opcodes>
+
+        <keywords>
+          <keyword name="KeywordOperational" mask="0x00000001" message="$(string.KeywordOperational)" symbol="KeywordOperational" />
+          <keyword name="KeywordDebug" mask="0x000000002" message="$(string.KeywordDebug)" symbol="KeywordDebug" />
+          <keyword name="KeywordPerformance" mask="0x00000004" message="$(string.KeywordPerformance)" symbol="KeywordPerformance" />
+          <!-- Add new keywords above this line (0x000000000001 to 0x800000000000) -->
+        </keywords>
+        
+        <tasks>
+          <task name="DebugTouchEvents" value="100" />
+          <task name="ManipulationEvents" value="101" />
+          <task name="Capture" value="102" />
+          <task name="ScrollViewer" value="110" />
+          <task name="Range" value="111" />
+          <task name="ScatterControl" value="112" />
+          <task name="Window" value="113" />
+          <task name="PerfTouchEvents" value="200" />
+        </tasks>
+        
+        <events>
+          <!-- ************************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Administration" channel -->
+          <!-- ************************************************** -->
+          <!-- ************************************************ -->
+          <!-- END EVENTS PUBLISHED TO "Administration" channel -->
+          <!-- ************************************************ -->
+
+          <!-- *********************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Operational" channel -->
+          <!-- *********************************************** -->
+          <event symbol="UnexpectedExceptionInTouchProvider" value="1000" level="win:Error" template="templateException"
+               message="$(string.UnexpectedExceptionInTouchProvider)" channel="channelOperational" version="0" />
+          <event symbol="CannotInstantiatePerformanceCounter" value="1001" level="win:Error" template="templatePerformanceCounterException"
+               message="$(string.CannotInstantiatePerformanceCounter)" channel="channelOperational" version="0" />
+          <event symbol="PerformanceCountersAreNotInstalled" value="1002" level="win:Error" template="templateNone"
+               message="$(string.PerformanceCountersAreNotInstalledError)" channel="channelOperational" version="0" />
+          <!-- ********************************************* -->
+          <!-- END EVENTS PUBLISHED TO "Operational" channel -->
+          <!-- ********************************************* -->
+
+          <!-- ***************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Debug" channel -->
+          <!-- ***************************************** -->
+          <event symbol="TouchDownDebug" value="1100" level="win:Informational"
+                 keywords="KeywordDebug" task="DebugTouchEvents" opcode="win:Info"
+                 template="templateTouchEventDebug" message="$(string.TouchDownDebug)" channel="channelDebug" version="0" />
+          <event symbol="TouchMoveDebug" value="1101" level="win:Informational"
+                 keywords="KeywordDebug" task="DebugTouchEvents" opcode="win:Info"
+                 template="templateTouchEventDebug" message="$(string.TouchMoveDebug)" channel="channelDebug" version="0" />
+          <event symbol="TouchUpDebug" value="1102" level="win:Informational"
+                 keywords="KeywordDebug" task="DebugTouchEvents" opcode="win:Info"
+                 template="templateTouchEventDebug" message="$(string.TouchUpDebug)" channel="channelDebug" version="0" />
+
+          <event symbol="ManipulationStarting" value="1110" level="win:Informational"
+                 keywords="KeywordDebug" task="ManipulationEvents" opcode="win:Info"
+                 template="templateManipulationStarting" message="$(string.ManipulationStarting)" channel="channelDebug" version="0" />
+          <event symbol="ManipulationStarted" value="1111" level="win:Informational"
+                 keywords="KeywordDebug" task="ManipulationEvents" opcode="win:Info"
+                 template="templateManipulationStarted" message="$(string.ManipulationStarted)" channel="channelDebug" version="0" />
+          <event symbol="ManipulationDelta" value="1112" level="win:Informational"
+                 keywords="KeywordDebug" task="ManipulationEvents" opcode="win:Info"
+                 template="templateManipulationChange" message="$(string.ManipulationDelta)" channel="channelDebug" version="0" />
+          <event symbol="ManipulationInertiaStarting" value="1113" level="win:Informational"
+                 keywords="KeywordDebug" task="ManipulationEvents" opcode="win:Info"
+                 template="templateManipulationInertiaStarting" message="$(string.ManipulationInertiaStarting)" channel="channelDebug" version="0" />
+          <event symbol="ManipulationCompleted" value="1114" level="win:Informational"
+                 keywords="KeywordDebug" task="ManipulationEvents" opcode="win:Info"
+                 template="templateManipulationChange" message="$(string.ManipulationCompleted)" channel="channelDebug" version="0" />
+          <event symbol="ManipulationEnded" value="1115" level="win:Informational"
+                 keywords="KeywordDebug" task="ManipulationEvents" opcode="win:Info"
+                 template="templateManipulationEnded" message="$(string.ManipulationEnded)" channel="channelDebug" version="0" />
+
+          <event symbol="GotCapture" value="1120" level="win:Informational"
+                 keywords="KeywordDebug" task="Capture" opcode="win:Info"
+                 template="templateCapture" message="$(string.GotCapture)" channel="channelDebug" version="0" />
+          <event symbol="LostCapture" value="1121" level="win:Informational"
+                 keywords="KeywordDebug" task="Capture" opcode="win:Info"
+                 template="templateCapture" message="$(string.LostCapture)" channel="channelDebug" version="0" />
+
+          <event symbol="WindowSourceInitialized" value="1200" level="win:Informational"
+                 keywords="KeywordDebug" task="Window" opcode="win:Info"
+                 template="templateWindowSourceInitialized" message="$(string.WindowSourceInitialized)" channel="channelDebug" version="0" />
+          <event symbol="WindowClosed" value="1201" level="win:Informational"
+                 keywords="KeywordDebug" task="Window" opcode="win:Info"
+                 template="templateWindowClosed" message="$(string.WindowClosed)" channel="channelDebug" version="0" />
+          <event symbol="ScrollViewerOffsetChanged" value="1202" level="win:Informational"
+                 keywords="KeywordDebug" task="ScrollViewer" opcode="win:Info"
+                 template="templateScrollViewerOffsetChanged" message="$(string.ScrollViewerOffsetChanged)" channel="channelDebug" version="0" />
+          <event symbol="RangeValueChanged" value="1203" level="win:Informational"
+                 keywords="KeywordDebug" task="Range" opcode="win:Info"
+                 template="templateRangeValueChanged" message="$(string.RangeValueChanged)" channel="channelDebug" version="0" />
+          <event symbol="ScatterControlManipulated" value="1204" level="win:Informational"
+                 keywords="KeywordDebug" task="ScatterControl" opcode="win:Info"
+                 template="templateScatterControlManipulated" message="$(string.ScatterControlManipulated)" channel="channelDebug" version="0" />
+          <!-- *************************************** -->
+          <!-- END EVENTS PUBLISHED TO "Debug" channel -->
+          <!-- *************************************** -->
+          
+          <!-- ******************************************************* -->
+          <!-- START EVENT MESSAGES PUBLISHED TO "Performance" channel -->
+          <!-- ******************************************************* -->
+          <event symbol="RaiseTouchDown" value="1300" level="win:Informational"
+                 keywords="KeywordPerformance" task="PerfTouchEvents" opcode="win:Info"
+                 template="templateId" message="$(string.RaiseTouchDown)" channel="channelPerformance" version="0" />
+          <event symbol="RaiseTouchMove" value="1301" level="win:Informational"
+                 keywords="KeywordPerformance" task="PerfTouchEvents" opcode="win:Info"
+                 template="templateId" message="$(string.RaiseTouchMove)" channel="channelPerformance" version="0" />
+          <event symbol="RaiseTouchUp" value="1302" level="win:Informational"
+                 keywords="KeywordPerformance" task="PerfTouchEvents" opcode="win:Info"
+                 template="templateId" message="$(string.RaiseTouchUp)" channel="channelPerformance" version="0" />
+          <!-- ***************************************************** -->
+          <!-- END EVENT MESSAGES PUBLISHED TO "Performance" channel -->
+          <!-- ***************************************************** -->
+
+        </events>
+      </provider>
+    </events>
+  </instrumentation>
+  <!-- String table for eventing/logging -->
+  <localization>
+    <!--- en-US resources -->
+    <resources culture="en-US">
+      <stringTable>
+        <!-- ******************** -->
+        <!-- START Event Messages -->
+        <!-- ******************** -->
+        <string id="UnexpectedExceptionInTouchProvider" value="Unexpected exception in TouchProvider, exception=%1."/>
+        <string id="CannotInstantiatePerformanceCounter" value="Cannot instantiate Microsoft Surface Presentation '%1', exception=%2."/>
+        <string id="PerformanceCountersAreNotInstalledError" value="Microsoft Surface Presentation counters are not installed."/>
+        
+        <string id="TouchDownDebug" value="TouchDown: rootHashCode=%1, targetHashCode=%2, targetName=%3, id=%4, deviceHashCode=%5, x=%6, y=%7." />
+        <string id="TouchMoveDebug" value="TouchMove: rootHashCode=%1, targetHashCode=%2, targetName=%3, id=%4, deviceHashCode=%5, x=%6, y=%7." />
+        <string id="TouchUpDebug" value="TouchUp: rootHashCode=%1, targetHashCode=%2, targetName=%3, id=%4, deviceHashCode=%5, x=%6, y=%7." />
+
+        <string id="ManipulationStarting" value="ManipulationStarting: containerHashCode=%1, containerName=%2." />
+        <string id="ManipulationStarted" value="ManipulationStarted: containerHashCode=%1, containerName=%2, mode=%3." />
+        <string id="ManipulationDelta" value="ManipulationDelta: containerHashCode=%1, containerName=%2, isInertia=%3, originX=%4, originY=%5, totalX=%6, totalY=%7, totalRotation=%8, totalScaleX=%9, totalScaleY=%10, totalExpansionX=%11, totalExpansionY=%12." />
+        <string id="ManipulationInertiaStarting" value="ManipulationInertiaStarting: containerHashCode=%1, containerName=%2, linearVelocityX=%3, linearVelocityY=%4, rotationVelocity=%5, expansionVelocityX=%6, expansionVelocityY=%7." />
+        <string id="ManipulationCompleted" value="ManipulationCompleted: containerHashCode=%1, containerName=%2, isInertia=%3, originX=%4, originY=%5, totalX=%6, totalY=%7, totalRotation=%8, totalScaleX=%9, totalScaleY=%10, totalExpansionX=%11, totalExpansionY=%12." />
+        <string id="ManipulationEnded" value="ManipulationEnded: containerHashCode=%1, containerName=%2, canceled=%3." />
+
+        <string id="GotCapture" value="GotCapture: targetHashCode=%1, targetName=%2, id=%3, deviceHashCode=%4." />
+        <string id="LostCapture" value="LostCapture: targetHashCode=%1, targetName=%2, id=%3, deviceHashCode=%4." />
+
+        <string id="ScrollViewerOffsetChanged" value="ScrollViewer: hashCode=%1, name=%2, offsetX=%3, offsetY=%4." />
+        <string id="RangeValueChanged" value="Range: hashCode=%1, name=%2, value=%3." />
+        <string id="ScatterControlManipulated" value="ScatterControl: hashCode=%1, name=%2, action=%3, centerX=%4, centerY=%5, rotation=%6, width=%7, height=%8." />
+        <string id="WindowSourceInitialized" value="Window intialized: hashCode=%1, name=%2, hwnd=%3." />
+        <string id="WindowClosed" value="Window closed: hashCode=%1." />
+
+        <string id="RaiseTouchDown" value="Raise TouchDown %1." />
+        <string id="RaiseTouchMove" value="Raise TouchMove %1." />
+        <string id="RaiseTouchUp" value="Raise TouchUp %1." />
+
+        <!-- Add new event messages above this line -->
+        <!-- ***************** -->
+        <!-- END Event Message -->
+        <!-- ***************** -->
+        <!-- ********************* -->
+        <!-- START Opcode Messages -->
+        <!-- ********************* -->
+        <!-- Add new opcode messages above this line -->
+        <!-- ******************* -->
+        <!-- END Opcode Messages -->
+        <!-- ******************* -->
+        <!-- ******************* -->
+        <!-- START Task Messages -->
+        <!-- ******************* -->
+        <!-- Add new task messages above this line -->
+        <!-- ***************** -->
+        <!-- END Task Messages -->
+        <!-- ***************** -->
+        <!-- ********************** -->
+        <!-- START Keyword Messages -->
+        <!-- ********************** -->
+        <string id="KeywordOperational" value="Operational" />
+        <string id="KeywordDebug" value="Debug" />
+        <string id="KeywordPerformance" value="Performance" />
+        <!-- Add new keyword messages above this line -->
+        <!-- ******************** -->
+        <!-- END Keyword Messages -->
+        <!-- ******************** -->
+      </stringTable>
+    </resources>
+    <!-- Add new cultures above this line -->
+  </localization>
+</instrumentationManifest>

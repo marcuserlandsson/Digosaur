@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<instrumentationManifest xmlns="http://schemas.microsoft.com/win/2004/08/events">
+  <instrumentation xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <events xmlns="http://schemas.microsoft.com/win/2004/08/events">
+      <provider 
+        xmlns:mtc="http://schemas.microsoft.com/surface/2007/09/manifesttocode"
+        mtc:providerNamespace="Microsoft.Surface.Modes"
+        name="Microsoft-Surface-ModeSwitcher" 
+        guid="{2D359E87-F573-4e56-8E6C-A1687D2636A9}" 
+        symbol="EventsModeSwitcher" 
+        resourceFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-ModeSwitcher.man.dll" 
+        messageFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-ModeSwitcher.man.dll" 
+        parameterFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-ModeSwitcher.man.dll">
+        <channels>
+          <!-- This channel is used to publish events destined to the system administrator -->
+          <channel name="Microsoft-Surface-ModeSwitcher/Operational" chid="channelOperational" symbol="channelOperational" type="Operational" isolation="Application" enabled="true" value="16" />
+          <!-- This channel is used to publish events used in tracing -->
+          <channel name="Microsoft-Surface-ModeSwitcher/Debug" chid="channelDebug" symbol="channelDebug" type="Debug" isolation="Application" enabled="false" value="17" />
+          <!-- Add new channels above this line -->
+        </channels>
+        <templates>
+          <template tid="templateUsername">
+            <data name="userName" inType="win:UnicodeString" />
+            <UserData>
+              <UsernameEvent xmlns="nullNS">
+                <userName>%1</userName>
+              </UsernameEvent>
+            </UserData>
+          </template>
+          <template tid="templateMessage">
+            <data name="message" inType="win:UnicodeString" />
+            <UserData>
+              <MessageEvent xmlns="nullNS">
+                <message>%1</message>
+              </MessageEvent>
+            </UserData>
+          </template>
+
+          <template tid="templateTwoStrings">
+            <data name="string1" inType="win:UnicodeString" />
+            <data name="string2" inType="win:UnicodeString" />
+            <UserData>
+              <twoStringsEvent xmlns="nullNS">
+                <string1>%1</string1>
+                <string2>%2</string2>
+              </twoStringsEvent>
+            </UserData>
+          </template>
+
+          <template tid="templateModeUsers">
+            <data name="userModeUser" inType="win:UnicodeString" />
+            <data name="adminModeUser" inType="win:UnicodeString" />
+            <UserData>
+              <ModeUsersEvent xmlns="nullNS">
+                <userModeUser>%1</userModeUser>
+                <adminModeUser>%2</adminModeUser>
+              </ModeUsersEvent>
+            </UserData>
+          </template>
+
+          <!-- Add new templates above this line -->
+        </templates>
+        <opcodes>
+          <!-- Add new opcodes above this line -->
+        </opcodes>
+        <keywords>
+          <!-- Add new keywords above this line (0x000000000001 to 0x800000000000) -->
+        </keywords>
+        <tasks>
+          <!-- Add new tasks above this line -->
+        </tasks>
+        <events>
+          <!-- ************************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Administration" channel -->
+          <!-- ************************************************** -->
+          <event symbol="ToUserFailure" value="1" level="win:Error" message="$(string.ToUserFailure)" channel="channelOperational" version="0" />
+          <event symbol="ToUserSuccess" value="2" template="templateUsername" level="win:Informational" message="$(string.ToUserSuccess)" channel="channelOperational" version="0" />
+          <event symbol="ToAdminFailure" value="3" level="win:Error" message="$(string.ToAdminFailure)" channel="channelOperational" version="0" />
+          <event symbol="ToAdminSuccess" value="4" template="templateUsername" level="win:Informational" message="$(string.ToAdminSuccess)" channel="channelOperational" version="0" />
+          <event symbol="PostLogOnFailure" value="5" template="templateMessage" level="win:Warning" message="$(string.PostLogOnFailure)" channel="channelOperational" version="0" />
+          <event symbol="MissingModeSetting" value="7" template="templateTwoStrings" level="win:Error" message="$(string.MissingModeSetting)" channel="channelOperational" version="0" />
+          <event symbol="ToUserDebugSuccess" value="8" template="templateUsername" level="win:Informational" message="$(string.ToUserDebugSuccess)" channel="channelOperational" version="0" />
+          <event symbol="FailedToEnterTransition" value="9" level="win:Error" template="templateMessage" message="$(string.FailedToEnterTransition)" channel="channelOperational" version="0" />
+          <event symbol="UserModeAccountDoesNotExist" value="10" level="win:Error" template="templateModeUsers" message="$(string.UserModeAccountDoesNotExist)" channel="channelOperational" version="0" />
+          <event symbol="UserModeAccountPasswordIsInvalid" value="11" level="win:Error" template="templateModeUsers" message="$(string.UserModeAccountPasswordIsInvalid)" channel="channelOperational" version="0" />
+          <event symbol="UserModeAccountIsAdministrator" value="12" level="win:Error" template="templateModeUsers" message="$(string.UserModeAccountIsAdministrator)" channel="channelOperational" version="0" />
+          <event symbol="UserModeAccountIsDisabled" value="13" level="win:Error" template="templateModeUsers" message="$(string.UserModeAccountIsDisabled)" channel="channelOperational" version="0" />
+          <event symbol="UserModeAccountIsLockedOut" value="14" level="win:Error" template="templateModeUsers" message="$(string.UserModeAccountIsLockedOut)" channel="channelOperational" version="0" />
+          <event symbol="UserModeAccountMustChangePassword" value="15" level="win:Error" template="templateModeUsers" message="$(string.UserModeAccountMustChangePassword)" channel="channelOperational" version="0" />
+
+          <!-- Add new System Events above this line -->
+          <!-- ************************************************ -->
+          <!-- END EVENTS PUBLISHED TO "Administration" channel -->
+          <!-- ************************************************ -->
+          <!-- ***************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Debug" channel -->
+          <!-- ***************************************** -->
+          <!-- Add new debug events/traces above this line -->
+          <!-- *************************************** -->
+          <!-- END EVENTS PUBLISHED TO "Debug" channel -->
+          <!-- *************************************** -->
+        </events>
+      </provider>
+    </events>
+  </instrumentation>
+  <!-- String table for eventing/logging -->
+  <localization>
+    <!--- en-US resources -->
+    <resources culture="en-US">
+      <stringTable>
+        <!-- ******************** -->
+        <!-- START Event Messages -->
+        <!-- ******************** -->
+        <!-- ************************************************** -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Administration" channel -->
+        <!-- ************************************************** -->
+        <string id="ToUserFailure" value="The Surface system failed to switch to Surface mode. For detailed error information, see the event log for the ModeManager component." />
+        <string id="ToUserSuccess" value="The Surface system successfully switched to Surface mode. The switch was initiated by the user %1." />
+        <string id="ToUserDebugSuccess" value="The Surface system successfully switched to Surface mode and has enabled troubleshooting and debugging. The mode switch was initiated by the user %1." />
+        <string id="ToAdminFailure" value="The Surface system failed to switch to Windows mode. For detailed error information, see the event log for the ModeManager component." />
+        <string id="ToAdminSuccess" value="The Surface system successfully switched to Windows mode because administrator user %1 logged on. Users cannot access the Surface unit at this time." />
+        <string id="PostLogOnFailure" value="The Surface system failed to disable forced auto-logon in the registry while switching to Surface mode. Switch to Surface mode will continue. To log on to the Surface unit, administrators must press and hold the 'Shift' key after clicking the 'Switch User' button to prevent the system from automatically logging back into a Surface mode session. Error returned: %1" />
+        <string id="MissingModeSetting" value="While switching modes, the Surface system could not determine the current mode due to an error reading the value '%1' under the registry key '%2.' The mode switch has occured anyway. Verify that this value is present, has the type DWORD, and that computer administrators have access to it." />
+        <string id="FailedToEnterTransition" value="Could not enter transition to switch modes. %nError message:%n%1" />
+        <string id="UserModeAccountDoesNotExist" value="Surface system failed to switch to Surface mode due to a failure to load user profile of the Surface mode account %1. This user account does not exist. The switch was initiated by the user %2. Use “SURFUSER assign” command to assign a valid account as the Surface mode account." />
+        <string id="UserModeAccountPasswordIsInvalid" value="Surface system failed to switch to Surface mode due to a failure to load user profile of the Surface mode account %1. The saved password does not match this user’s password. The switch was initiated by the user %2. Update Surface mode account password using “SURFUSER update” command, or create a new password using the “SURFUSER regen” command." />
+        <string id="UserModeAccountIsAdministrator" value="Surface system failed to switch to Surface mode due to a failure to load user profile of the Surface mode account %1. The account is a member of the local Administrators group. Check the account’s membership. The switch was initiated by the user %2." />
+        <string id="UserModeAccountIsDisabled" value="Surface system failed to switch to Surface mode due to an error while verifying Surface mode account %1. The account is disabled. The switch was initiated by the user %2." />
+        <string id="UserModeAccountIsLockedOut" value="Surface system failed to switch to Surface mode due to an error while verifying Surface mode account %1. The account is locked out. The switch was initiated by the user %2." />
+        <string id="UserModeAccountMustChangePassword" value="Surface system failed to switch to Surface mode due to an error while verifying Surface mode account %1. The account will be required to change password at next logon. The switch was initiated by the user %2." />
+
+        <!-- Add new "Administration" channel event messages above this line -->
+        <!-- ************************************************ -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Administration" channel -->
+        <!-- ************************************************ -->
+        <!-- ***************************************** -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Debug" channel -->
+        <!-- ***************************************** -->
+
+        <!-- Add new "Debug" channel event messages above this line -->
+        <!-- *************************************** -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Debug" channel -->
+        <!-- *************************************** -->
+        <!-- Add new event messages above this line -->
+        <!-- ***************** -->
+        <!-- END Event Message -->
+        <!-- ***************** -->
+        <!-- ********************* -->
+        <!-- START Opcode Messages -->
+        <!-- ********************* -->
+        <!-- Add new opcode messages above this line -->
+        <!-- ******************* -->
+        <!-- END Opcode Messages -->
+        <!-- ******************* -->
+        <!-- ******************* -->
+        <!-- START Task Messages -->
+        <!-- ******************* -->
+        <!-- Add new task messages above this line -->
+        <!-- ***************** -->
+        <!-- END Task Messages -->
+        <!-- ***************** -->
+        <!-- ********************** -->
+        <!-- START Keyword Messages -->
+        <!-- ********************** -->
+        <!-- Add new keyword messages above this line -->
+        <!-- ******************** -->
+        <!-- END Keyword Messages -->
+        <!-- ******************** -->
+      </stringTable>
+    </resources>
+    <!-- Add new cultures above this line -->
+  </localization>
+</instrumentationManifest>

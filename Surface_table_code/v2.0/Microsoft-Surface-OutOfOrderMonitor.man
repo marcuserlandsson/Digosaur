@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instrumentationManifest xmlns="http://schemas.microsoft.com/win/2004/08/events">
+  <instrumentation xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <events xmlns="http://schemas.microsoft.com/win/2004/08/events">
+      <provider 
+        xmlns:mtc="http://schemas.microsoft.com/surface/2007/09/manifesttocode"
+        mtc:providerNamespace="Microsoft.Surface.Monitoring"
+        name="Microsoft-Surface-OutOfOrderMonitor" 
+        guid="{341C7D63-D981-4ade-9D6D-7B9393DE24B5}" 
+        symbol="EventsOutOfOrderMonitor" 
+        resourceFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-OutOfOrderMonitor.man.dll" 
+        messageFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-OutOfOrderMonitor.man.dll" 
+        parameterFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-OutOfOrderMonitor.man.dll">
+        <channels>
+          <!-- This channel is used to publish events destined to the system administrator -->
+          <channel name="Microsoft-Surface-OutOfOrderMonitor/Operational" chid="channelOperational" symbol="channelOperational" type="Operational" isolation="Application" enabled="true" value="16" />
+          <!-- This channel is used to publish events used in tracing -->
+          <channel name="Microsoft-Surface-OutOfOrderMonitor/Debug" chid="channelDebug" symbol="channelDebug" type="Debug" isolation="Application" enabled="false" value="17" />
+          <!-- Add new channels above this line -->
+        </channels>
+        <templates>
+          <template tid="templateOneString">
+            <data name="string1" inType="win:UnicodeString" />
+            <UserData>
+              <oneStringEvent xmlns="nullNS">
+                <string1>%1</string1>
+              </oneStringEvent>
+            </UserData>
+          </template>
+
+          <template tid="templateTwoStrings">
+            <data name="string1" inType="win:UnicodeString" />
+            <data name="string2" inType="win:UnicodeString" />
+            <UserData>
+              <twoStringsEvent xmlns="nullNS">
+                <string1>%1</string1>
+                <string2>%1</string2>
+              </twoStringsEvent>
+            </UserData>
+          </template>
+
+          <template tid="templateThreeStrings">
+            <data name="string1" inType="win:UnicodeString" />
+            <data name="string2" inType="win:UnicodeString" />
+            <data name="string3" inType="win:UnicodeString" />
+            <UserData>
+              <twoStringsEvent xmlns="nullNS">
+                <string1>%1</string1>
+                <string2>%1</string2>
+                <string2>%1</string2>
+              </twoStringsEvent>
+            </UserData>
+          </template>
+
+          <template tid="templateOneInteger">
+            <data name="integer1" inType="win:Int32" />
+            <UserData>
+              <oneIntegerEvent xmlns="nullNS">
+                <integer1>%1</integer1>
+              </oneIntegerEvent >
+            </UserData>
+          </template>
+
+          <template tid="templateOutOfBounds">
+            <data name="defaultValue" inType="win:Int32" />
+            <data name="minimumValue" inType="win:Int32" />
+            <data name="maximumValue" inType="win:Int32" />
+            <data name="errorMessage" inType="win:UnicodeString" />
+            <UserData>
+              <outOfBoundsEvent xmlns="nullNS">
+                <defaultValue>%1</defaultValue>
+                <minimumValue>%1</minimumValue>
+                <maximumValue>%1</maximumValue>
+                <errorMessage>%1</errorMessage>
+              </outOfBoundsEvent>
+            </UserData>
+          </template>
+
+
+          <!-- Add new templates above this line -->
+        </templates>
+        <opcodes>
+          <!-- Add new opcodes above this line -->
+        </opcodes>
+        <keywords>
+          <keyword name="keywordException" mask="0x000000000001" message="$(string.keywordException)" symbol="keywordException" />
+          <keyword name="keywordConnection" mask="0x000000000002" message="$(string.keywordConnection)" symbol="keywordConnection" />
+          <keyword name="keywordProperty" mask="0x000000000004" message="$(string.keywordProperty)" symbol="keywordProperty" />
+          <keyword name="keywordEvent" mask="0x000000000008" message="$(string.keywordEvent)" symbol="keywordEvent" />
+          <keyword name="keywordMethod" mask="0x000000000010" message="$(string.keywordMethod)" symbol="keywordMethod" />
+          <!-- Add new keywords above this line (0x000000000001 to 0x800000000000) -->
+        </keywords>
+        <tasks>
+          <!-- Add new tasks above this line -->
+        </tasks>
+        <events>
+          <!-- ************************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Administration" channel -->
+          <!-- ************************************************** -->
+
+          <event symbol="EventFailureToSubscribeToExitedEvent" value="4" level="win:Error" keywords="keywordEvent"
+            template="templateOneString"
+            message="$(string.eventFailureToSubscribeToExitedEvent)" channel="channelOperational" version="0" />
+
+          <event symbol="EventFailureToRetrieveUserName" value="5" level="win:Error" keywords="keywordEvent"
+            template="templateOneString"
+            message="$(string.eventFailureToRetrieveUserName)" channel="channelOperational" version="0" />
+
+          <event symbol="EventFatalFailureDetected" value="6" level="win:Informational" keywords="keywordEvent"
+            template="templateOneInteger"
+            message="$(string.eventFatalFailureDetected)" channel="channelOperational" version="0" />
+
+          <event symbol="EventRestartQuotaExceeded" value="7" level="win:Warning" keywords="keywordEvent"
+            template="templateOneInteger"
+            message="$(string.eventRestartQuotaExceeded)" channel="channelOperational" version="0" />
+
+          <event symbol="EventRestartCanceled" value="8" level="win:Informational" keywords="keywordEvent"
+            message="$(string.eventRestartCanceled)" channel="channelOperational" version="0" />
+
+          <event symbol="EventAboutToRestart" value="9" level="win:Informational" keywords="keywordEvent"
+            template="templateOneInteger"
+            message="$(string.eventAboutToRestart)" channel="channelOperational" version="0" />
+
+          <event symbol="EventFailedToRestart" value="10" level="win:Error" keywords="keywordEvent"
+            template="templateOneString"
+            message="$(string.eventFailedToRestart)" channel="channelOperational" version="0" />
+
+          <event symbol="EventRestartDelayOutOfBounds" value="11" level="win:Warning" keywords="keywordEvent"
+            template="templateOutOfBounds"
+            message="$(string.eventRestartDelayOutOfBounds)" channel="channelOperational" version="0" />
+
+          <event symbol="EventRestartQuotaOutOfBounds" value="12" level="win:Warning" keywords="keywordEvent"
+            template="templateOutOfBounds"
+            message="$(string.eventRestartQuotaOutOfBounds)" channel="channelOperational" version="0" />
+
+          <!-- Add new System Events above this line -->
+          <!-- ************************************************ -->
+          <!-- END EVENTS PUBLISHED TO "Administration" channel -->
+          <!-- ************************************************ -->
+          <!-- ***************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Debug" channel -->
+          <!-- ***************************************** -->
+
+          <event symbol="EventFailureToRetrieveProcessList" value="5001" level="win:Error" keywords="keywordEvent"
+            template="templateOneString"
+            message="$(string.eventFailureToRetrieveProcessList)" channel="channelDebug" version="0" />
+
+          <event symbol="EventMonitoringThreadStarted" value="5003" level="win:Informational" keywords="keywordEvent"
+            message="$(string.eventMonitoringThreadStarted)" channel="channelDebug" version="0" />
+
+          <event symbol="EventMonitoringThreadStopped" value="5004" level="win:Informational" keywords="keywordEvent"
+            message="$(string.eventMonitoringThreadStopped)" channel="channelDebug" version="0" />
+
+          <event symbol="EventMonitoringServiceStarted" value="5005" level="win:Informational" keywords="keywordEvent"
+            message="$(string.eventMonitoringServiceStarted)" channel="channelDebug" version="0" />
+
+          <event symbol="EventMonitoringServiceStopped" value="5006" level="win:Informational" keywords="keywordEvent"
+            message="$(string.eventMonitoringServiceStopped)" channel="channelDebug" version="0" />
+
+          <event symbol="EventAttachedToOutOfOrder" value="5007" level="win:Informational" keywords="keywordEvent"
+            message="$(string.eventAttachedToOutOfOrder)" channel="channelDebug" version="0" />
+
+          <event symbol="EventOutOfOrderExited" value="5008" level="win:Informational" keywords="keywordEvent"
+            template="templateOneInteger"
+            message="$(string.eventOutOfOrderExited)" channel="channelDebug" version="0" />
+
+          <event symbol="EventFailedToRetrieveRestarts" value="5010" level="win:Error" keywords="keywordEvent"
+            template="templateOneString"
+            message="$(string.eventFailedToRetrieveRestarts)" channel="channelDebug" version="0" />
+
+          <event symbol="EventFailedToParseOrDeleteRestartTimestamp" value="5011" level="win:Error" keywords="keywordEvent"
+            template="templateOneString"
+            message="$(string.eventFailedToParseOrDeleteRestartTimestamp)" channel="channelDebug" version="0" />
+
+          <event symbol="EventFailedToAddRestartTimestamp" value="5012" level="win:Error" keywords="keywordEvent"
+            template="templateOneString"
+            message="$(string.eventFailedToAddRestartTimestamp)" channel="channelDebug" version="0" />
+
+          <event symbol="EventFailedToDetectUserOrAdminSession" value="5013" level="win:Error" keywords="keywordEvent"
+            template="templateOneString"
+            message="$(string.eventFailedToDetectUserOrAdminSession)" channel="channelDebug" version="0" />
+
+          <event symbol="EventFoundOutOfOrderTransitioningProcess" value="5014" level="win:Informational" keywords="keywordEvent"
+            message="$(string.eventFoundOutOfOrderTransitioningProcess)" channel="channelDebug" version="0" />
+
+          <event symbol="EventAttachedToOutOfOrderTransitioningProcess" value="5015" level="win:Informational" keywords="keywordEvent"
+            message="$(string.eventAttachedToOutOfOrderTransitioningProcess)" channel="channelDebug" version="0" />
+
+          <event symbol="EventOutOfOrderTransitioningProcessExited" value="5016" level="win:Informational" keywords="keywordEvent"
+            template="templateOneInteger"
+            message="$(string.eventOutOfOrderTransitioningProcessExited)" channel="channelDebug" version="0" />
+
+          <event symbol="EventFailedToStartRestartTimer" value="5017" level="win:Error" keywords="keywordEvent"
+            template="templateOneString"
+            message="$(string.eventFailedToStartRestartTimer)" channel="channelDebug" version="0" />
+
+          <event symbol="EventSuccessfullyInitiatedShutdown" value="5018" level="win:Informational" keywords="keywordEvent"
+            message="$(string.eventSuccessfullyInitiatedShutdown)" channel="channelDebug" version="0" />
+
+          <!--<event symbol="EventException" value="5000" level="win:Error" keywords="keywordException" template="templateException" message="$(string.eventMessageException)" channel="channelDebug" version="0" />-->
+          <!-- Add new debug events/traces above this line -->
+          <!-- *************************************** -->
+          <!-- END EVENTS PUBLISHED TO "Debug" channel -->
+          <!-- *************************************** -->
+        </events>
+      </provider>
+    </events>
+  </instrumentation>
+  <!-- String table for eventing/logging -->
+  <localization>
+    <!--- en-US resources -->
+    <resources culture="en-US">
+      <stringTable>
+        <!-- ******************** -->
+        <!-- START Event Messages -->
+        <!-- ******************** -->
+        <!-- ************************************************** -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Administration" channel -->
+        <!-- ************************************************** -->
+        <string id="eventFailureToSubscribeToExitedEvent" value="A failure occurred while monitoring the out-of-order process. The service was stopped, and the restart to recover from out-of-order state will not be performed. The rest of the Surface system will continue to operate normally. Verify that the Surface Out-of-Order Monitoring service is configured to log on as Local System. %nError message:%n%1" />
+        <string id="eventFailureToRetrieveUserName" value="A failure occurred while trying to retrieve the user name associated with a console session. The service was stopped, and the restart to recover from out-of-order state will not be performed. The rest of the Surface system will continue to operate normally. Verify that the Surface Out-of-Order Monitoring service is configured to log on as Local System. %nError message:%n%1" />
+        <string id="eventFatalFailureDetected" value="A Surface system fatal failure was detected. The system will be restarted in %1 minutes to recover from the out-of-order state." />
+        <string id="eventRestartQuotaExceeded" value="A Surface system fatal failure was detected. The system will not be restarted to recover from the out-of-order state because the restart quota (%1) has been exceeded." />
+        <string id="eventRestartCanceled" value="A system restart to recover from the out-of-order state was cancelled either because of an administrator logon or Surface mode session restart." />
+        <string id="eventAboutToRestart" value="The system will be restarted to recover from the out-of-order state. Restart count within the last 24 hours (including this restart): %1." />
+        <string id="eventFailedToRestart" value="A system restart to recover from the out-of-order state failed. %nError message:%n%1" />
+        <string id="eventRestartDelayOutOfBounds" value="The out-of-order recovery restart delay could not be retrieved from the registry. The default value of %1 minutes will be used instead. Check to make sure that the out-of-order recovery restart delay value exists in the registry, has the type DWORD, and is between %2 and %3. %nError message:%n%4" />
+        <string id="eventRestartQuotaOutOfBounds" value="The out-of-order recovery restart quota could not be retrieved from the registry. The default value of %1 restart attempts will be used instead. Check to make sure that the out-of-order recovery restart quota value exists in the registry, has the type DWORD, and is between %2 and %3. %nError message:%n%4" />
+        <!-- Add new "Administration" channel event messages above this line -->
+        <!-- ************************************************ -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Administration" channel -->
+        <!-- ************************************************ -->
+        <!-- ***************************************** -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Debug" channel -->
+        <!-- ***************************************** -->
+        <string id="eventMonitoringThreadStarted" value="A monitoring thread was started." />
+        <string id="eventMonitoringThreadStopped" value="A monitoring thread was stopped." />
+        <string id="eventMonitoringServiceStarted" value="The Out-of-Order monitoring service was started." />
+        <string id="eventMonitoringServiceStopped" value=" The Out-of-Order monitoring service has stopped." />
+        <string id="eventAttachedToOutOfOrder" value="The Out-of-order monitoring service successfully attached to the Out-of-Order process (running as a screen saver)." />
+        <string id="eventOutOfOrderExited" value="The out-of-order process (running as a screen saver) exited with code: %1" />
+        <string id="eventFailureToRetrieveProcessList" value="A failure occurred while trying to retrieve the process list. %nError message:%n%1" />
+        <string id="eventFailedToRetrieveRestarts" value="Failed to retrieve restart timestamps. %nError message:%n%1" />
+        <string id="eventFailedToParseOrDeleteRestartTimestamp" value="Failed to parse or delete the restart timestamps. %nError message:%n%1" />
+        <string id="eventFailedToAddRestartTimestamp" value="Failed to add a restart timestamp. %nError message:%n%1" />
+        <string id="eventFailedToDetectUserOrAdminSession" value="Failed when checking for an existing administrative or Surface mode session. %nError message:%n%1" />
+        <string id="eventFoundOutOfOrderTransitioningProcess" value="Detected an Out-of-Order process running in Surface mode session." />
+        <string id="eventAttachedToOutOfOrderTransitioningProcess" value="Attached to the Out-of-Order process running in Surface mode session" />
+        <string id="eventOutOfOrderTransitioningProcessExited" value="The Out-of-Order process running in Surface mode session has exited with exit code: %1." />
+        <string id="eventFailedToStartRestartTimer" value="Failed to start the restart timer. %nError message:%n%1" />
+        <string id="eventSuccessfullyInitiatedShutdown" value="The Surface system successfully initated a system restart." />
+
+        <!-- Add new "Debug" channel event messages above this line -->
+        <!-- *************************************** -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Debug" channel -->
+        <!-- *************************************** -->
+        <!-- Add new event messages above this line -->
+        <!-- ***************** -->
+        <!-- END Event Message -->
+        <!-- ***************** -->
+        <!-- ********************* -->
+        <!-- START Opcode Messages -->
+        <!-- ********************* -->
+        <!-- Add new opcode messages above this line -->
+        <!-- ******************* -->
+        <!-- END Opcode Messages -->
+        <!-- ******************* -->
+        <!-- ******************* -->
+        <!-- START Task Messages -->
+        <!-- ******************* -->
+        <!-- Add new task messages above this line -->
+        <!-- ***************** -->
+        <!-- END Task Messages -->
+        <!-- ***************** -->
+        <!-- ********************** -->
+        <!-- START Keyword Messages -->
+        <!-- ********************** -->
+        <string id="keywordConnection" value="Connection" />
+        <string id="keywordProperty" value="Property" />
+        <string id="keywordEvent" value="Event" />
+        <string id="keywordMethod" value="Method" />
+        <string id="keywordException" value="Exception" />
+        <!-- Add new keyword messages above this line -->
+        <!-- ******************** -->
+        <!-- END Keyword Messages -->
+        <!-- ******************** -->
+      </stringTable>
+    </resources>
+    <!-- Add new cultures above this line -->
+  </localization>
+</instrumentationManifest>

@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<instrumentationManifest xmlns="http://schemas.microsoft.com/win/2004/08/events">
+  <instrumentation xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <events xmlns="http://schemas.microsoft.com/win/2004/08/events">
+      <provider 
+        xmlns:mtc="http://schemas.microsoft.com/surface/2007/09/manifesttocode"
+        mtc:providerNamespace="Microsoft.Surface.Shell.OutOfOrder"
+        mtc:internal="true"
+        name="Microsoft-Surface-OutOfOrder" 
+        guid="{8EF083D2-FB65-4093-89CB-426F4364A5BC}" 
+        symbol="EventsOutOfOrder" 
+        resourceFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-OutOfOrder.man.dll" 
+        messageFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-OutOfOrder.man.dll" 
+        parameterFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-OutOfOrder.man.dll">
+        <channels>
+          <!-- This channel is used to publish events destined to the system administrator -->
+          <channel name="Microsoft-Surface-OutOfOrder/Operational" chid="channelOperational" symbol="channelOperational" type="Operational" isolation="Application" enabled="true" value="16" />
+          <!-- This channel is used to publish events used in tracing -->
+          <channel name="Microsoft-Surface-OutOfOrder/Debug" chid="channelDebug" symbol="channelDebug" type="Debug" isolation="Application" enabled="false" value="17" />
+          <!-- Add new channels above this line -->
+        </channels>
+        <templates>
+					<template tid="templateTwoStrings">
+            <data name="string1" inType="win:UnicodeString" />
+            <data name="string2" inType="win:UnicodeString" />
+            <UserData>
+              <TwoStringsEvent xmlns="nullNS">
+                <string1>%1</string1>
+                <string2>%2</string2>
+              </TwoStringsEvent>
+            </UserData>
+          </template>
+          <template tid="templateOneString">
+            <data name="string1" inType="win:UnicodeString" />
+            <UserData>
+              <OneStringEvent xmlns="nullNS">
+                <string1>%1</string1>
+              </OneStringEvent>
+            </UserData>
+          </template>
+          <template tid="templateOneInteger">
+            <data name="integer1" inType="win:Int32" />
+            <UserData>
+              <oneIntegerEvent xmlns="nullNS">
+                <integer1>%1</integer1>
+              </oneIntegerEvent >
+            </UserData>
+          </template>
+
+          <template tid="templateThreeStrings">
+            <data name="string1" inType="win:UnicodeString" />
+            <data name="string2" inType="win:UnicodeString" />
+            <data name="string3" inType="win:UnicodeString" />
+            <UserData>
+              <threeStringsEvent xmlns="nullNS">
+                <string1>%1</string1>
+                <string2>%2</string2>
+                <string3>%3</string3>
+              </threeStringsEvent>
+            </UserData>
+          </template>
+
+          <!-- Add new templates above this line -->
+        </templates>
+        <opcodes>
+          <!-- Add new opcodes above this line -->
+        </opcodes>
+        <keywords>
+          <!--<keyword name="keywordException" mask="0x000000000001" message="$(string.keywordException)" symbol="keywordException" />-->
+          <!-- Add new keywords above this line (0x000000000001 to 0x800000000000) -->
+        </keywords>
+        <tasks>
+          <!-- Add new tasks above this line -->
+        </tasks>
+        <events>
+          <!-- ************************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Administration" channel -->
+          <!-- ************************************************** -->
+          <event symbol="EventConfigFileValidationFailed" value="2" level="win:Warning" message="$(string.eventMessageConfigFileValidationFailed)" channel="channelOperational" template="templateTwoStrings" version="0" />
+          <event symbol="EventImageLoadFailed" value="3" level="win:Warning" message="$(string.eventMessageImageLoadFailed)" channel="channelOperational" template="templateOneString" version="0" />
+          <event symbol="EventAllImageLoadsFailed" value="4" level="win:Warning" message="$(string.eventMessageAllImageLoadsFailed)" channel="channelOperational" template="templateOneString" version="0" />
+          <event symbol="EventConfigFileAccessDenied" value="6" level="win:Warning" message="$(string.eventConfigFileAccessDenied)" channel="channelOperational" template="templateOneString" version="0" />
+          <event symbol="EventUnhandledException" value="7" level="win:Error" message="$(string.eventUnhandledException)" channel="channelOperational" template="templateOneString" version="0" />
+          <event symbol="EventRegularScreenUsingDefault" value="13" level="win:Informational" message="$(string.eventRegularScreenUsingDefault)" channel="channelOperational" version="0" />
+          <event symbol="EventRegularScreenUsingCustomFile" value="14" level="win:Informational" message="$(string.eventRegularScreenUsingCustomFile)" channel="channelOperational" template="templateOneString" version="0" />
+          <event symbol="EventErrorScreenUsingDefault" value="15" level="win:Informational" message="$(string.eventErrorScreenUsingDefault)" channel="channelOperational" version="0" />
+          <event symbol="EventErrorScreenUsingCustomFile" value="16" level="win:Informational" message="$(string.eventErrorScreenUsingCustomFile)" channel="channelOperational" template="templateOneString" version="0" />
+          <event symbol="EventRegularScreenUsingCustomLocFile" value="17" level="win:Informational" message="$(string.eventRegularScreenUsingCustomLocFile)" channel="channelOperational" template="templateOneString" version="0" />
+          <event symbol="EventErrorScreenUsingCustomLocFile" value="18" level="win:Informational" message="$(string.eventErrorScreenUsingCustomLocFile)" channel="channelOperational" template="templateOneString" version="0" />
+
+          <!-- Add new System Events above this line -->
+          <!-- ************************************************ -->
+          <!-- END EVENTS PUBLISHED TO "Administration" channel -->
+          <!-- ************************************************ -->
+          <!-- ***************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Debug" channel -->
+          <!-- ***************************************** -->
+          <event symbol="EventLoadingConfigFile" value="5000" level="win:Informational" message="$(string.eventMessageLoadingConfigFile)" channel="channelDebug" template="templateOneString" version="0" />
+
+          <!-- Add new debug events/traces above this line -->
+          <!-- *************************************** -->
+          <!-- END EVENTS PUBLISHED TO "Debug" channel -->
+          <!-- *************************************** -->
+        </events>
+      </provider>
+    </events>
+  </instrumentation>
+  <!-- String table for eventing/logging -->
+  <localization>
+    <!--- en-US resources -->
+    <resources culture="en-US">
+      <stringTable>
+        <!-- ******************** -->
+        <!-- START Event Messages -->
+        <!-- ******************** -->
+        <!-- ************************************************** -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Administration" channel -->
+        <!-- ************************************************** -->
+        <string id="eventMessageConfigFileValidationFailed" value="Config file %1 is invalid. Out-of-order will be using the default configuration instead. %nError message:%n%2" />
+        <string id="eventMessageImageLoadFailed" value="Out-of-order failed to load image from the file %1. The image will be omitted from the slideshow." />
+        <string id="eventMessageAllImageLoadsFailed" value="All custom images failed to load. Out-of-order will display the default image instead." />
+        <string id="eventConfigFileAccessDenied" value="Access to the config file %1 was denied. Out-of-order will be using the default configuration instead." />
+        <string id="eventUnhandledException" value="An unhandled exception was caught. Exiting %1." />
+        <string id="eventRegularScreenUsingDefault" value="The out-of-order screen will be shown using the default configuration." />
+        <string id="eventRegularScreenUsingCustomFile" value="The out-of-order screen will be shown using the custom configuration from file %1." />
+        <string id="eventErrorScreenUsingDefault" value="The error screen will be shown using the default configuration." />
+        <string id="eventErrorScreenUsingCustomFile" value="The error screen will be shown using the custom configuration from file %1." />
+        <string id="eventRegularScreenUsingCustomLocFile" value="The out-of-order screen will be shown using the custom configuration language override from file %1." />
+        <string id="eventErrorScreenUsingCustomLocFile" value="The error screen will be shown using the custom configuration language override from file %1." />
+
+        <!-- Add new "Administration" channel event messages above this line -->
+        <!-- ************************************************ -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Administration" channel -->
+        <!-- ************************************************ -->
+        <!-- ***************************************** -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Debug" channel -->
+        <!-- ***************************************** -->
+        <string id="eventMessageLoadingConfigFile" value="Loading configuration from %1." />
+
+        <!-- Add new "Debug" channel event messages above this line -->
+        <!-- *************************************** -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Debug" channel -->
+        <!-- *************************************** -->
+        <!-- Add new event messages above this line -->
+        <!-- ***************** -->
+        <!-- END Event Message -->
+        <!-- ***************** -->
+        <!-- ********************* -->
+        <!-- START Opcode Messages -->
+        <!-- ********************* -->
+        <!-- Add new opcode messages above this line -->
+        <!-- ******************* -->
+        <!-- END Opcode Messages -->
+        <!-- ******************* -->
+        <!-- ******************* -->
+        <!-- START Task Messages -->
+        <!-- ******************* -->
+        <!-- Add new task messages above this line -->
+        <!-- ***************** -->
+        <!-- END Task Messages -->
+        <!-- ***************** -->
+        <!-- ********************** -->
+        <!-- START Keyword Messages -->
+        <!-- ********************** -->
+        <!--<string id="keywordException" value="Exception" />-->
+        <!-- Add new keyword messages above this line -->
+        <!-- ******************** -->
+        <!-- END Keyword Messages -->
+        <!-- ******************** -->
+      </stringTable>
+    </resources>
+    <!-- Add new cultures above this line -->
+  </localization>
+</instrumentationManifest>

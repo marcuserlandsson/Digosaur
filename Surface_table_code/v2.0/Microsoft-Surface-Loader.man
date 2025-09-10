@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<instrumentationManifest xmlns="http://schemas.microsoft.com/win/2004/08/events">
+  <instrumentation xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <events xmlns="http://schemas.microsoft.com/win/2004/08/events">
+      <provider 
+        xmlns:mtc="http://schemas.microsoft.com/surface/2007/09/manifesttocode"
+        mtc:providerNamespace="Microsoft.Surface.Monitoring"
+        mtc:internal="true"
+        name="Microsoft-Surface-Loader"
+        guid="{7C16D218-3240-4b7c-8118-93AAB65246E4}" 
+        symbol="EventsLoader"
+        resourceFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-Loader.man.dll" 
+        messageFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-Loader.man.dll" 
+        parameterFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-Loader.man.dll">
+        <channels>
+          <!-- This channel is used to publish events destined to the system administrator -->
+          <channel name="Microsoft-Surface-Loader/Operational" chid="channelOperational" symbol="channelOperational" type="Operational" isolation="Application" enabled="true" value="16" />
+          <!-- This channel is used to publish events used in tracing -->
+          <channel name="Microsoft-Surface-Loader/Debug" chid="channelDebug" symbol="channelDebug" type="Debug" isolation="Application" enabled="false" value="17" />
+          <!-- Add new channels above this line -->
+        </channels>
+        <templates>
+          <template tid="templateStringStringInt">
+            <data name="string1" inType="win:UnicodeString" />
+            <data name="string2" inType="win:UnicodeString" />
+            <data name="int1" inType="win:Int32" />
+            <UserData>
+              <StringStringIntEvent xmlns="nullNS">
+                <string1>%1</string1>
+                <string2>%2</string2>
+                <int1>%3</int1>
+              </StringStringIntEvent>
+            </UserData>
+          </template>
+          <template tid="templateStringInt">
+            <data name="string1" inType="win:UnicodeString" />
+            <data name="int1" inType="win:Int32" />
+            <UserData>
+              <StringIntEvent xmlns="nullNS">
+                <string1>%1</string1>
+                <int1>%2</int1>
+              </StringIntEvent>
+            </UserData>
+          </template>
+          <template tid="templateExecutablePid">
+            <data name="executable" inType="win:UnicodeString" />
+            <data name="processId" inType="win:Int32" />
+            <UserData>
+              <ExecutablePidStringEvent xmlns="nullNS">
+                <executable>%1</executable>
+                <processId>%2</processId>
+              </ExecutablePidStringEvent>
+            </UserData>
+          </template>
+          <template tid="templateExecutablePidString">
+            <data name="executable" inType="win:UnicodeString" />
+            <data name="processId" inType="win:Int32" />
+            <data name="string1" inType="win:UnicodeString" />
+            <UserData>
+              <ExecutablePidStringEvent xmlns="nullNS">
+                <executable>%1</executable>
+                <processId>%2</processId>
+                <string1>%3</string1>
+              </ExecutablePidStringEvent>
+            </UserData>
+          </template>
+          <template tid="templateExecutablePidInt">
+            <data name="executable" inType="win:UnicodeString" />
+            <data name="processId" inType="win:Int32" />
+            <data name="int1" inType="win:Int32" />
+            <UserData>
+              <ExecutablePidStringEvent xmlns="nullNS">
+                <executable>%1</executable>
+                <processId>%2</processId>
+                <int1>%3</int1>
+              </ExecutablePidStringEvent>
+            </UserData>
+          </template>
+          <template tid="templateTwoStrings">
+            <data name="string1" inType="win:UnicodeString" />
+            <data name="string2" inType="win:UnicodeString" />
+            <UserData>
+              <TwoStringsEvent xmlns="nullNS">
+                <string1>%1</string1>
+                <string2>%2</string2>
+              </TwoStringsEvent>
+            </UserData>
+          </template>
+          <template tid="templateOneString">
+            <data name="string1" inType="win:UnicodeString" />
+            <UserData>
+              <OneStringEvent xmlns="nullNS">
+                <string1>%1</string1>
+              </OneStringEvent>
+            </UserData>
+          </template>
+          <template tid="templateOneInteger">
+            <data name="integer1" inType="win:Int32" />
+            <UserData>
+              <oneIntegerEvent xmlns="nullNS">
+                <integer1>%1</integer1>
+              </oneIntegerEvent >
+            </UserData>
+          </template>
+          <template tid="templateProcessStarted">
+            <data name="processName" inType="win:UnicodeString" />
+            <data name="arguments" inType="win:UnicodeString" />
+            <data name="processId" inType="win:Int32" />
+            <UserData>
+              <processStartedEvent xmlns="nullNS">
+                <processName>%1</processName>
+                <arguments>%2</arguments>
+                <processId>%3</processId>
+              </processStartedEvent>
+            </UserData>
+          </template>
+          <!-- Add new templates above this line -->
+        </templates>
+        <opcodes>
+          <!-- Add new opcodes above this line -->
+        </opcodes>
+        <keywords>
+          <!--<keyword name="keywordException" mask="0x000000000001" message="$(string.keywordException)" symbol="keywordException" />-->
+          <!-- Add new keywords above this line (0x000000000001 to 0x800000000000) -->
+        </keywords>
+        <tasks>
+          <!-- Add new tasks above this line -->
+        </tasks>
+        <events>
+          <!-- ************************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Administration" channel -->
+          <!-- ************************************************** -->
+          <event symbol="EventFailLaunch" value="1" level="win:Error" message="$(string.eventMessageFailLaunch)" channel="channelOperational" template="templateTwoStrings" version="0" />
+          <event symbol="EventProcessExitedNormally" value="2" level="win:Informational" template="templateExecutablePid" message="$(string.eventMessageProcessExitedNormally)" channel="channelOperational" version="0" />
+          <event symbol="EventProcessCrashed" value="3" level="win:Warning" template="templateExecutablePidString" message="$(string.eventMessageProcessCrashed)" channel="channelOperational" version="0" />
+          <event symbol="EventCriticalProcessHung" value="4" level="win:Warning" template="templateExecutablePid" message="$(string.eventMessageCriticalProcessHung)" channel="channelOperational" version="0" />
+          <event symbol="EventRestartQuotaExceeded" value="5" level="win:Error" template="templateTwoStrings" message="$(string.eventMessageRestartQuotaExceeded)" channel="channelOperational" version="0" />
+          <event symbol="EventMonitoredAppExitSignal" value="6" level="win:Error" message="$(string.eventMessageMonitoredAppExitSignal)" channel="channelOperational" version="0" />
+          <event symbol="EventExternalDebuggerAttached" value="7" level="win:Warning" template="templateExecutablePid" message="$(string.eventMessageExternalDebuggerAttached)" channel="channelOperational" version="0" />
+          <event symbol="EventGeneratingHangDump" value="8" level="win:Warning" template="templateExecutablePidString" message="$(string.eventMessageGeneratingHangDump)" channel="channelOperational" version="0" />
+          <event symbol="EventOutOfOrderDueToDebugDumpTimeout" value="9" level="win:Warning" template="templateExecutablePidInt" message="$(string.eventMessageOutOfOrderDueToDebugDumpTimeout)" channel="channelOperational" version="0" />
+          <event symbol="EventRestartingProcess" value="10" level="win:Warning" template="templateTwoStrings" message="$(string.eventMessageRestartingProcess)" channel="channelOperational" version="0" />
+          <event symbol="EventEnteringFailureMode" value="14" level="win:Error" message="$(string.eventMessageEnteringFailureMode)" channel="channelOperational" version="0" />
+          <event symbol="EventLoaderStarted" value="15" level="win:Informational" template="templateOneString" message="$(string.eventMessageLoaderStarted)" channel="channelOperational" version="0" />
+          <event symbol="EventFailServiceLaunch" value="17" level="win:Error" message="$(string.eventMessageFailServiceLaunch)" channel="channelOperational" template="templateTwoStrings" version="0" />
+          <event symbol="EventOutOfOrderDueToProcessKillTimeout" value="18" level="win:Error" message="$(string.eventMessageOutOfOrderDueToProcessKillTimeout)" channel="channelOperational" template="templateExecutablePidInt" version="0" />
+          <event symbol="EventExitSurfaceMode" value="19" level="win:Informational" message="$(string.eventMessageExitSurfaceMode)" channel="channelOperational" version="0" />
+          <!-- Add new System Events above this line -->
+          <!-- ************************************************ -->
+          <!-- END EVENTS PUBLISHED TO "Administration" channel -->
+          <!-- ************************************************ -->
+          <!-- ***************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Debug" channel -->
+          <!-- ***************************************** -->
+          <event symbol="EventMutexCreationFailed" value="5002" level="win:Error" template="templateOneString" message="$(string.eventMessageMutexCreationFailed)" channel="channelDebug" version="0" />
+          <event symbol="EventNotFirstInstance" value="5003" level="win:Warning" message="$(string.eventMessageNotFirstInstance)" channel="channelDebug" version="0" />
+          <event symbol="EventCouldNotReadStartupProcessFile" value="5004" level="win:Error" template="templateOneString" message="$(string.eventMessageCouldNotReadStartupProcessFile)" channel="channelDebug" version="0" />
+          <event symbol="EventNoStartupProcesses" value="5005" level="win:Warning" message="$(string.eventMessageNoStartupProcesses)" channel="channelDebug" version="0" />
+          <event symbol="EventDesktopIsOffline" value="5006" level="win:Error" template="templateOneString" message="$(string.eventMessageDesktopIsOffline)" channel="channelDebug" version="0" />
+          <event symbol="EventUnexpectedProcessType" value="5008" level="win:Warning" template="templateTwoStrings" message="$(string.eventMessageUnexpectedProcessType)" channel="channelDebug" version="0" />
+          <event symbol="EventProcessStarted" value="5009" level="win:Informational" template="templateProcessStarted" message="$(string.eventMessageProcessStarted)" channel="channelDebug" version="0" />
+          <event symbol="EventProcessRegisteredWithCriticalProcessMonitor" value="5010" level="win:Informational" template="templateTwoStrings" message="$(string.eventMessageProcessRegisteredWithCriticalProcessMonitor)" channel="channelDebug" version="0" />
+          <event symbol="EventProcessWaitForExit" value="5011" level="win:Informational" template="templateTwoStrings" message="$(string.eventMessageProcessWaitForExit)" channel="channelDebug" version="0" />
+          <event symbol="EventProcessWaitForExitFinished" value="5012" level="win:Informational" template="templateTwoStrings" message="$(string.eventMessageProcessWaitForExitFinished)" channel="channelDebug" version="0" />
+          <event symbol="EventProcessRestarted" value="5013" level="win:Informational" template="templateProcessStarted" message="$(string.eventMessageProcessRestarted)" channel="channelDebug" version="0" />
+          <event symbol="EventProcessCrashedOnDisconnectedSession" value="5017" level="win:Warning" template="templateTwoStrings" message="$(string.eventMessageProcessCrashedOnDisconnectedSession)" channel="channelDebug" version="0" />
+          <event symbol="EventProcessHungOnDisconnectedSession" value="5018" level="win:Warning" template="templateOneString" message="$(string.eventMessageProcessHungOnDisconnectedSession)" channel="channelDebug" version="0" />
+          <event symbol="EventSessionDisconnectFailed" value="5019" level="win:Warning" template="templateOneString" message="$(string.eventMessageSessionDisconnectFailed)" channel="channelDebug" version="0" />
+          <event symbol="EventSessionLogoffFailed" value="5020" level="win:Warning" template="templateOneString" message="$(string.eventMessageSessionLogoffFailed)" channel="channelDebug" version="0" />
+          <!-- Add new debug events/traces above this line -->
+          <!-- *************************************** -->
+          <!-- END EVENTS PUBLISHED TO "Debug" channel -->
+          <!-- *************************************** -->
+        </events>
+      </provider>
+    </events>
+  </instrumentation>
+  <!-- String table for eventing/logging -->
+  <localization>
+    <!--- en-US resources -->
+    <resources culture="en-US">
+      <stringTable>
+        <!-- ******************** -->
+        <!-- START Event Messages -->
+        <!-- ******************** -->
+        <!-- ************************************************** -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Administration" channel -->
+        <!-- ************************************************** -->
+        <string id="eventMessageFailLaunch" value="A critical Surface platform process %1 could not be launched. Uninstall and then reinstall the Surface platform. %nError message:%n%2" />
+        <string id="eventMessageProcessExitedNormally" value="Process %1 (process ID %2) terminated with exit code 0. No further action was taken." />
+        <string id="eventMessageProcessCrashed" value="Process %1 (process ID %2) terminated with exit code 0x%3." />
+        <string id="eventMessageCriticalProcessHung" value="Critical process %1 (process ID %2) stopped responding." />
+        <string id="eventMessageRestartQuotaExceeded" value="The critical process restart quota has been exceeded; the system is transitioning to the out-of-order state. The restart quota is %1 restarts within %2 seconds." />
+        <string id="eventMessageMonitoredAppExitSignal" value="One of the monitored processes exited signalling fatal failure; the system is transitioning to the out-of-order state." />
+        <string id="eventMessageExternalDebuggerAttached" value="Critical process %1 (process ID %2) failed, and Windows attached a debugger to the process. The critical process will not be restarted until it exits." />
+        <string id="eventMessageGeneratingHangDump" value="Critical process %1 (process ID %2) stopped responding. Because the &quot;hang dump&quot; functionality is enabled, debug dump generation was started by launching following command: &quot;%3&quot;. The critical process will not be terminated and restarted until it exits." />
+        <string id="eventMessageOutOfOrderDueToDebugDumpTimeout" value="A debug dump of the critical process %1 (process ID %2) was not completed on time; the Surface system is transitioning to the out-of-order state. Debug dump time-out: %3 seconds." />
+        <string id="eventMessageRestartingProcess" value="Surface Loader is trying to restart the process '%1' with arguments '%2'." />
+        <string id="eventMessageEnteringFailureMode" value="The Surface system is transitioning to out-of-order state." />
+        <string id="eventMessageLoaderStarted" value="The Surface Loader was started. Surface Loader is using the configuration file %1." />
+        <string id="eventMessageFailServiceLaunch" value="Surface service process %1 could not be launched. %nError message:%n%2" />
+        <string id="eventMessageOutOfOrderDueToProcessKillTimeout" value="Critical process %1 (process ID %2) stopped responding and could not be terminated in time; the Surface system is transitioning to the out-of-order state. Process termination time-out: %3 seconds." />
+        <string id="eventMessageExitSurfaceMode" value="One of the monitored processes exited signalling an admin request to exit Surface mode; the system is transitioning to the out-of-order state." />
+        <!-- Add new "Administration" channel event messages above this line -->
+        <!-- ************************************************ -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Administration" channel -->
+        <!-- ************************************************ -->
+        <!-- ***************************************** -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Debug" channel -->
+        <!-- ***************************************** -->
+        <string id="eventMessageMutexCreationFailed" value="Surface Loader could not create system mutex for single instancing. %nError message:%n%1" />
+        <string id="eventMessageNotFirstInstance" value="There is already another instance of the Surface Loader running in the same Windows session. Surface Loader is exiting." />
+        <string id="eventMessageCouldNotReadStartupProcessFile" value="A failure occurred while reading the file that contains the list of critical processes. %nError message:%n%1" />
+        <string id="eventMessageNoStartupProcesses" value="There is no startup process marked as a UI process." />
+        <string id="eventMessageDesktopIsOffline" value="The Windows desktop never became visible. %nError message:%n%1" />
+        <string id="eventMessageUnexpectedProcessType" value="The Surface Loader ignored startup process %1 with an unexpected type, %2." />
+        <string id="eventMessageProcessStarted" value="The Surface Loader started an instance of %1 with the process ID %3. %nArguments:%n%2" />
+        <string id="eventMessageProcessRegisteredWithCriticalProcessMonitor" value="The Surface Loader registered %1 (process ID %2) with the CPM." />
+        <string id="eventMessageProcessWaitForExit" value="Waiting for %1 with process ID %2 to exit." />
+        <string id="eventMessageProcessWaitForExitFinished" value="The process %1 with process ID %2 has exited. Wait completed." />
+        <string id="eventMessageProcessRestarted" value="Started a new instance of %1 with process ID %3. %nArguments:%n%2" />
+        <string id="eventMessageProcessCrashedOnDisconnectedSession" value="The process %1 terminated with exit code 0x%2 after the Surface user session was disconnected." />
+        <string id="eventMessageProcessHungOnDisconnectedSession" value="The process %1 stopped responding after the Surface mode session was disconnected." />
+        <string id="eventMessageSessionDisconnectFailed" value="Disconnecting the Surface user session while transitioning to Out-of-Order failed.%nAdditional information: %1" />
+        <string id="eventMessageSessionLogoffFailed" value="Logging off the Surface user session while transitioning to Out-of-Order failed.%nAdditional information: %1" />
+        <!-- Add new "Debug" channel event messages above this line -->
+        <!-- *************************************** -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Debug" channel -->
+        <!-- *************************************** -->
+        <!-- Add new event messages above this line -->
+        <!-- ***************** -->
+        <!-- END Event Message -->
+        <!-- ***************** -->
+        <!-- ********************* -->
+        <!-- START Opcode Messages -->
+        <!-- ********************* -->
+        <!-- Add new opcode messages above this line -->
+        <!-- ******************* -->
+        <!-- END Opcode Messages -->
+        <!-- ******************* -->
+        <!-- ******************* -->
+        <!-- START Task Messages -->
+        <!-- ******************* -->
+        <!-- Add new task messages above this line -->
+        <!-- ***************** -->
+        <!-- END Task Messages -->
+        <!-- ***************** -->
+        <!-- ********************** -->
+        <!-- START Keyword Messages -->
+        <!-- ********************** -->
+        <!--<string id="keywordException" value="Exception" />-->
+        <!-- Add new keyword messages above this line -->
+        <!-- ******************** -->
+        <!-- END Keyword Messages -->
+        <!-- ******************** -->
+      </stringTable>
+    </resources>
+    <!-- Add new cultures above this line -->
+  </localization>
+</instrumentationManifest>

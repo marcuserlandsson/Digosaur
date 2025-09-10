@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\lilja\Downloads\Microsoft.Surface.Core.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5B222E0F-D1FD-4CEF-9228-1083238CEDDB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Microsoft.Surface.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <ApplicationVersion>2.0.0.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>Microsoft.Surface</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constants.cs" />
+    <Compile Include="ReflectionUtilities.cs" />
+    <Compile Include="DoubleUtil.cs" />
+    <Compile Include="PerformanceCounters.cs" />
+    <Compile Include="NativeMethods.cs" />
+    <Compile Include="SettingsProvider`2.cs" />
+    <Compile Include="SettingsProvider`1.cs" />
+    <Compile Include="UserPreferenceChangedProvider`1.cs" />
+    <Compile Include="CorePerformanceCounters.cs" />
+    <Compile Include="Core\DeviceCapabilities.cs" />
+    <Compile Include="Core\EventsCore.cs" />
+    <Compile Include="Core\PlatformConfigurationPropertiesProxy.cs" />
+    <Compile Include="Core\HidDeviceCapabilities.cs" />
+    <Compile Include="Core\ReadOnlyTouchPointCollection.cs" />
+    <Compile Include="Core\Tilt.cs" />
+    <Compile Include="Core\Rectangle.cs" />
+    <Compile Include="Core\EventThreadChoice.cs" />
+    <Compile Include="Core\FrameReceivedEventArgs.cs" />
+    <Compile Include="Core\ImageMetrics.cs" />
+    <Compile Include="Core\ImageType.cs" />
+    <Compile Include="Core\ImageTypeValidation.cs" />
+    <Compile Include="Core\PointF.cs" />
+    <Compile Include="Core\SizeF.cs" />
+    <Compile Include="Core\TagData.cs" />
+    <Compile Include="Core\TiltChangedEventArgs.cs" />
+    <Compile Include="Core\TouchBounds.cs" />
+    <Compile Include="Core\TouchEventArgs.cs" />
+    <Compile Include="Core\TouchPoint.cs" />
+    <Compile Include="Core\TouchPointCollection.cs" />
+    <Compile Include="Core\TouchTarget.cs" />
+    <Compile Include="Core\TouchTypes.cs" />
+    <Compile Include="Core\Validations.cs" />
+    <Compile Include="Core\VectorF.cs" />
+    <Compile Include="Core\ReadOnlyDictionary`2.cs" />
+    <Compile Include="Core\Context.cs" />
+    <Compile Include="Core\ContextMap.cs" />
+    <Compile Include="Core\SurfaceCoreExceptions.cs" />
+    <Compile Include="Core\InteractiveSurface.cs" />
+    <Compile Include="Core\InteractiveSurfaceDevice.cs" />
+    <Compile Include="Core\RawInput\IArrayFactory`1.cs" />
+    <Compile Include="Core\RawInput\ArrayFactory`1.cs" />
+    <Compile Include="Core\RawInput\RawInputProvider.cs" />
+    <Compile Include="Core\RawInput\SystemGestureProperties.cs" />
+    <Compile Include="Core\RawInput\HidSystemGestureProperties.cs" />
+    <Compile Include="Core\RawInput\SystemGestureType.cs" />
+    <Compile Include="Core\RawInput\TouchProperties.cs" />
+    <Compile Include="Core\RawInput\SystemStateProperties.cs" />
+    <Compile Include="Core\RawInput\FrameProperties.cs" />
+    <Compile Include="Core\RawInput\RawImage.cs" />
+    <Compile Include="Core\RawInput\RawInputEvent.cs" />
+    <Compile Include="Core\RawInput\SurfaceEventId.cs" />
+    <Compile Include="Core\RawInput\HidInput\ContactRecord.cs" />
+    <Compile Include="Core\RawInput\HidInput\HidInputProvider.cs" />
+    <Compile Include="Core\RawInput\HidInput\ISmoothingStrategy`1.cs" />
+    <Compile Include="Core\RawInput\HidInput\MostFrequentValueSmoothingStrategy`1.cs" />
+    <Compile Include="Core\RawInput\HidInput\ThresholdSmoothingStrategy.cs" />
+    <Compile Include="Core\RawInput\HidInput\RunningAverageWithThresholdSmoothingStrategy.cs" />
+    <Compile Include="Core\RawInput\HidInput\OrientationRunningAverageWithThresholdSmoothingStr.cs" />
+    <Compile Include="Core\RawInput\HidInput\RawImageDevice.cs" />
+    <Compile Include="Core\RawInput\HidInput\SmoothingConfiguration.cs" />
+    <Compile Include="Core\RawInput\HidInput\UnsmoothedSmoothingStrategy`1.cs" />
+    <Compile Include="Core\Properties\Resources.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Core\Properties\Resources.resx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
