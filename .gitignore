@@ -1,0 +1,36 @@
+# .NET build artifacts
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.dll
+*.exe
+*.pdb
+
+# Visual Studio
+.vs/
+*.sln.docstates
+*.userprefs
+
+# Godot
+.godot/
+*.tmp
+*.import
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*~
+*.swp
+*.swo
