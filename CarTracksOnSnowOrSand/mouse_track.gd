@@ -1,5 +1,5 @@
 # Simplified mouse track script
-# Just makes particles follow the mouse position directly
+# Creates tracks only when mouse button is pressed and held
 extends Node3D
 class_name MouseTrack
 
@@ -10,17 +10,29 @@ class_name MouseTrack
 const INTERACT_RADIUS: int = 15
 var query := PhysicsRayQueryParameters3D.new()
 var mouse_position: Vector3
+var is_mouse_pressed: bool = false
 
 func _ready():
 	query.set_collide_with_areas(true)
+	# Start with particles disabled
+	particles.emitting = false
+
+func _input(event):
+	# Check for mouse button press/release
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			is_mouse_pressed = event.pressed
+			particles.emitting = is_mouse_pressed
 
 func _physics_process(delta: float):
-	# Get mouse position in world space
-	var result: Dictionary = _detect_from_cam_to_mouse()
-	if result:
-		mouse_position = result.position
-		# Move particles to mouse position
-		particles.global_position = mouse_position
+	# Only update position when mouse is pressed
+	if is_mouse_pressed:
+		# Get mouse position in world space
+		var result: Dictionary = _detect_from_cam_to_mouse()
+		if result:
+			mouse_position = result.position
+			# Move particles to mouse position
+			particles.global_position = mouse_position
 
 func _detect_from_cam_to_mouse() -> Dictionary:
 	query.from = cam.global_position
