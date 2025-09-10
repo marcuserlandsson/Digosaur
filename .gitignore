@@ -1,11 +1,9 @@
-# .NET build artifacts
-bin/
-obj/
+# .NET build artifacts (but keep Surface SDK files)
+src/SurfaceBridge/bin/
+src/SurfaceBridge/obj/
 *.user
 *.suo
 *.cache
-*.dll
-*.exe
 *.pdb
 
 # Visual Studio
@@ -14,9 +12,8 @@ obj/
 *.userprefs
 
 # Godot
-.godot/
+src/Digosaur/.godot/
 *.tmp
-*.import
 
 # OS generated files
 .DS_Store
