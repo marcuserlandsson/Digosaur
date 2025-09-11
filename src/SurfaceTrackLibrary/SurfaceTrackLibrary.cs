@@ -110,13 +110,27 @@ namespace SurfaceTrackLibrary
         {
             try
             {
-                if (e.ImageFrame.ImageType == ImageType.Normalized)
+                if (normalizedImage == null)
                 {
-                    normalizedImage = e.ImageFrame.GetImageData();
-                    normalizedMetrics = e.ImageFrame.ImageMetrics;
-
-                    ProcessImageData();
+                    // get rawimage data for a specific area
+                    e.TryGetRawImage(
+                        ImageType.Normalized,
+                        0, 0,
+                        1920, 1080,
+                        out normalizedImage,
+                        out normalizedMetrics);
                 }
+                else
+                {
+                    // get the updated rawimage data for the specified area
+                    e.UpdateRawImage(
+                        ImageType.Normalized,
+                        normalizedImage,
+                        0, 0,
+                        1920, 1080);
+                }
+
+                ProcessImageData();
             }
             catch (Exception ex)
             {
@@ -152,10 +166,10 @@ namespace SurfaceTrackLibrary
                                     Math.Abs((int)y - (int)tmpBlobs[i].minY) < 20)
                                 {
                                     tmpBlobs[i].pixelCount++;
-                                    tmpBlobs[i].minX = Math.Min(tmpBlobs[i].minX, x);
-                                    tmpBlobs[i].minY = Math.Min(tmpBlobs[i].minY, y);
-                                    tmpBlobs[i].maxX = Math.Max(tmpBlobs[i].maxX, x);
-                                    tmpBlobs[i].maxY = Math.Max(tmpBlobs[i].maxY, y);
+                                    tmpBlobs[i].minX = (uint)Math.Min((int)tmpBlobs[i].minX, (int)x);
+                                    tmpBlobs[i].minY = (uint)Math.Min((int)tmpBlobs[i].minY, (int)y);
+                                    tmpBlobs[i].maxX = (uint)Math.Max((int)tmpBlobs[i].maxX, (int)x);
+                                    tmpBlobs[i].maxY = (uint)Math.Max((int)tmpBlobs[i].maxY, (int)y);
                                     addedToExisting = true;
                                     break;
                                 }
