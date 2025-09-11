@@ -46,7 +46,7 @@ namespace SurfaceTrackLibrary
         private static Mutex mutex = new Mutex();
         private static bool isInitialized = false;
 
-        [DllExport]
+        [RGiesecke.DllExport.DllExport]
         public static bool Initialize(IntPtr hwnd)
         {
             try
@@ -73,7 +73,7 @@ namespace SurfaceTrackLibrary
             }
         }
 
-        [DllExport]
+        [RGiesecke.DllExport.DllExport]
         public static void Shutdown()
         {
             if (touchTarget != null)
@@ -84,7 +84,7 @@ namespace SurfaceTrackLibrary
             isInitialized = false;
         }
 
-        [DllExport]
+        [RGiesecke.DllExport.DllExport]
         public static uint GetTouchCount()
         {
             if (!isInitialized) return 0;
@@ -95,7 +95,7 @@ namespace SurfaceTrackLibrary
             return count;
         }
 
-        [DllExport]
+        [RGiesecke.DllExport.DllExport]
         public static float GetTouchX(uint index)
         {
             if (!isInitialized || index >= validBlobCount) return 0.0f;
@@ -106,7 +106,7 @@ namespace SurfaceTrackLibrary
             return x;
         }
 
-        [DllExport]
+        [RGiesecke.DllExport.DllExport]
         public static float GetTouchY(uint index)
         {
             if (!isInitialized || index >= validBlobCount) return 0.0f;
@@ -117,7 +117,7 @@ namespace SurfaceTrackLibrary
             return y;
         }
 
-        [DllExport]
+        [RGiesecke.DllExport.DllExport]
         public static float GetTouchSizeX(uint index)
         {
             if (!isInitialized || index >= validBlobCount) return 0.0f;
@@ -128,7 +128,7 @@ namespace SurfaceTrackLibrary
             return sizeX;
         }
 
-        [DllExport]
+        [RGiesecke.DllExport.DllExport]
         public static float GetTouchSizeY(uint index)
         {
             if (!isInitialized || index >= validBlobCount) return 0.0f;
@@ -139,7 +139,7 @@ namespace SurfaceTrackLibrary
             return sizeY;
         }
 
-        [DllExport]
+        [RGiesecke.DllExport.DllExport]
         public static bool IsTouchActive(uint index)
         {
             if (!isInitialized || index >= validBlobCount) return false;
