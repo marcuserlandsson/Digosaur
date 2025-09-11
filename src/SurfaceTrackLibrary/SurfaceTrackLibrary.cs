@@ -4,7 +4,7 @@ using Microsoft.Surface.Core;
 
 namespace SurfaceTrackLibrary
 {
-    public struct Blob
+    public struct TouchBlob
     {
         public uint pixelCount;
         public uint minX;
@@ -12,203 +12,170 @@ namespace SurfaceTrackLibrary
         public uint maxX;
         public uint maxY;
 
-        /// <summary>
-        /// New blob from inital pixel x and y
-        /// </summary>
-        public Blob(uint x, uint y)
+        public TouchBlob(uint x, uint y)
         {
             pixelCount = 0;
             minX = x;
-            maxX = x;
-
             minY = y;
+            maxX = x;
             maxY = y;
         }
     }
 
-    public class CheeseEater
+    public class SurfaceTrack
     {
-        private const uint sensorWidth = 960;
-        private const uint sensorHeight = 540;
-        private const uint sensorCount = sensorWidth * sensorHeight;
-        private const byte brightnessThreshhold = 180;
-        private const byte pixelCountThreshhold = 100;
-        private const byte NULL_BLOB = 0xff;
-
         private static TouchTarget touchTarget;
-
         private static ImageMetrics normalizedMetrics;
-        volatile private static byte[] normalizedImage;
-
-        volatile private static byte[] blobMembership = new byte[960 * 540];  // Holds the index of the blob the sensor is part of
-        volatile private static byte[] mergeTable = new byte[256];
-        volatile private static Blob[] tmpBlobs = new Blob[255];
-
-        volatile private static Blob[] validBlobs = new Blob[255];
-        volatile private static uint validBlobCount = 0;
-
+        private static byte[] normalizedImage;
+        private static TouchBlob[] validBlobs = new TouchBlob[255];
+        private static uint validBlobCount = 0;
         private static Mutex mutex = new Mutex();
+        private static bool isInitialized = false;
 
-        [DllExport]
-        public static void init(IntPtr hwnd)
+        public static bool Initialize(IntPtr hwnd)
         {
-            // Create a target for surface input.
-            touchTarget = new TouchTarget(hwnd, EventThreadChoice.OnBackgroundThread);
-            touchTarget.EnableInput();
+            try
+            {
+                if (isInitialized)
+                    return true;
 
-            // Enable the normalized raw-image.
-            touchTarget.EnableImage(ImageType.Normalized);
+                touchTarget = new TouchTarget(hwnd, EventThreadChoice.OnBackgroundThread);
+                touchTarget.EnableInput();
+                touchTarget.EnableImage(ImageType.Normalized);
+                touchTarget.FrameReceived += OnTouchTargetFrameReceived;
 
-            // Hook up a callback to get notified when there is a new frame available
-            touchTarget.FrameReceived += OnTouchTargetFrameReceived;
+                isInitialized = true;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("SurfaceTrackLibrary initialization failed: " + ex.Message);
+                return false;
+            }
         }
 
-        [DllExport]
-        public static uint accuireAccess()
+        public static uint GetBlobCount()
         {
             mutex.WaitOne();
-            return validBlobCount;
-        }
-
-        [DllExport]
-        public static void releaseAccess()
-        {
+            uint count = validBlobCount;
             mutex.ReleaseMutex();
+            return count;
         }
 
-        [DllExport]
-        public static float getX(uint i)
+        public static float GetBlobX(uint index)
         {
-            return (float)((validBlobs[i].maxX + validBlobs[i].minX) / 2) / ((float)sensorWidth);
+            if (index >= validBlobCount)
+                return 0.0f;
+
+            mutex.WaitOne();
+            float x = (float)validBlobs[index].minX / normalizedMetrics.Width;
+            mutex.ReleaseMutex();
+            return x;
         }
 
-        [DllExport]
-        public static float getY(uint i)
+        public static float GetBlobY(uint index)
         {
-            return (float)((validBlobs[i].maxY + validBlobs[i].minY) / 2) / ((float)sensorHeight);
+            if (index >= validBlobCount)
+                return 0.0f;
+
+            mutex.WaitOne();
+            float y = (float)validBlobs[index].minY / normalizedMetrics.Height;
+            mutex.ReleaseMutex();
+            return y;
         }
 
-        [DllExport]
-        public static float getSizeX(uint i)
+        public static float GetBlobSizeX(uint index)
         {
-            return (float)(validBlobs[i].maxX - validBlobs[i].minX) / ((float)sensorWidth);
+            if (index >= validBlobCount)
+                return 0.0f;
+
+            mutex.WaitOne();
+            float sizeX = (float)(validBlobs[index].maxX - validBlobs[index].minX) / normalizedMetrics.Width;
+            mutex.ReleaseMutex();
+            return sizeX;
         }
 
-        [DllExport]
-        public static float getSizeY(uint i)
+        public static float GetBlobSizeY(uint index)
         {
-            return (float)(validBlobs[i].maxY - validBlobs[i].minY) / ((float)sensorHeight);
-        }
+            if (index >= validBlobCount)
+                return 0.0f;
 
-        private static uint SensorIdx(uint x, uint y)
-        {
-            return x + y * sensorWidth;
+            mutex.WaitOne();
+            float sizeY = (float)(validBlobs[index].maxY - validBlobs[index].minY) / normalizedMetrics.Height;
+            mutex.ReleaseMutex();
+            return sizeY;
         }
 
         private static void OnTouchTargetFrameReceived(object sender, FrameReceivedEventArgs e)
         {
-            if (normalizedImage == null)
+            try
             {
-                // get rawimage data for a specific area
-                e.TryGetRawImage(
-                    ImageType.Normalized,
-                    0, 0,
-                    1920, 1080,
-                    out normalizedImage,
-                    out normalizedMetrics);
-            }
-            else
-            {
-                // get the updated rawimage data for the specified area
-                e.UpdateRawImage(
-                    ImageType.Normalized,
-                    normalizedImage,
-                    0, 0,
-                    1920, 1080);
-            }
+                if (e.ImageFrame.ImageType == ImageType.Normalized)
+                {
+                    normalizedImage = e.ImageFrame.GetImageData();
+                    normalizedMetrics = e.ImageFrame.ImageMetrics;
 
+                    ProcessImageData();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error processing frame: " + ex.Message);
+            }
+        }
+
+        private static void ProcessImageData()
+        {
             uint tmpBlobCount = 0;
-            for (uint y = 1; y < sensorHeight; y++)
+            TouchBlob[] tmpBlobs = new TouchBlob[255];
+
+            // Simple blob detection - find bright pixels
+            for (uint y = 0; y < normalizedMetrics.Height; y++)
             {
-                for (uint x = 1; x < sensorWidth; x++)
+                for (uint x = 0; x < normalizedMetrics.Width; x++)
                 {
-                    uint i = SensorIdx(x, y);
-                    blobMembership[i] = NULL_BLOB;
-                    if (normalizedImage[i] < brightnessThreshhold)
-                        continue;
-                    byte downBlobId = blobMembership[SensorIdx(x, y - 1)];
-                    byte backBlobId = blobMembership[SensorIdx(x - 1, y)];
-                    // if either is not NULL_BLOB make the sensor a member of one
-                    if (downBlobId != NULL_BLOB || downBlobId != NULL_BLOB)
+                    uint pixelIndex = (y * normalizedMetrics.Width + x) * 4;
+                    if (pixelIndex + 2 < normalizedImage.Length)
                     {
-                        byte blobId = Math.Min(downBlobId, backBlobId);
-                        blobMembership[SensorIdx(x, y)] = blobId;
-                        // update blob
-                        tmpBlobs[blobId].maxX = Math.Max(x, tmpBlobs[blobId].maxX);
-                        tmpBlobs[blobId].minX = Math.Min(x, tmpBlobs[blobId].minX);
-                        tmpBlobs[blobId].maxY = Math.Max(y, tmpBlobs[blobId].maxY);
-                        tmpBlobs[blobId].minY = Math.Min(y, tmpBlobs[blobId].minY);
-                        tmpBlobs[blobId].pixelCount += 1;
-                        // if neither is NULL_BLOB, map higher index to lower index
-                        if (downBlobId != backBlobId && downBlobId != NULL_BLOB && backBlobId != NULL_BLOB)
+                        byte r = normalizedImage[pixelIndex + 2];
+                        byte g = normalizedImage[pixelIndex + 1];
+                        byte b = normalizedImage[pixelIndex];
+
+                        // Simple threshold - if pixel is bright enough, consider it a touch
+                        if (r > 200 && g > 200 && b > 200)
                         {
-                            while (blobId != mergeTable[blobId])
+                            // Add to existing blob or create new one
+                            bool addedToExisting = false;
+                            for (uint i = 0; i < tmpBlobCount; i++)
                             {
-                                blobId = mergeTable[blobId];
+                                if (Math.Abs((int)x - (int)tmpBlobs[i].minX) < 20 && 
+                                    Math.Abs((int)y - (int)tmpBlobs[i].minY) < 20)
+                                {
+                                    tmpBlobs[i].pixelCount++;
+                                    tmpBlobs[i].minX = Math.Min(tmpBlobs[i].minX, x);
+                                    tmpBlobs[i].minY = Math.Min(tmpBlobs[i].minY, y);
+                                    tmpBlobs[i].maxX = Math.Max(tmpBlobs[i].maxX, x);
+                                    tmpBlobs[i].maxY = Math.Max(tmpBlobs[i].maxY, y);
+                                    addedToExisting = true;
+                                    break;
+                                }
                             }
-                            mergeTable[Math.Max(downBlobId, backBlobId)] = blobId;
-                        }
-                    }
-                    else
-                    {
-                        // start new blob
-                        if (tmpBlobCount == 255)
-                            continue;
-                        blobMembership[SensorIdx(x, y)] = (byte)tmpBlobCount;
-                        tmpBlobs[tmpBlobCount] = new Blob(x, y);
-                        mergeTable[tmpBlobCount] = (byte)tmpBlobCount;
-                        tmpBlobCount += 1;
-                    }
-                }
-            }
-            
-            // iter backwards if things fuck up
-            for (uint revBlobId = 0; revBlobId < tmpBlobCount; revBlobId++)
-            {
-                byte blobId = (byte)(tmpBlobCount - revBlobId - 1);
-                byte mergeTo = mergeTable[blobId];
-                if (blobId == mergeTo) continue;
-                for (uint x = tmpBlobs[blobId].minX; x <= tmpBlobs[blobId].maxX; x++)
-                {
-                    for (uint y = tmpBlobs[blobId].minY; y <= tmpBlobs[blobId].maxY; y++)
-                    {
-                        if (blobMembership[SensorIdx(x, y)] == blobId)
-                        {
-                            blobMembership[SensorIdx(x, y)] = mergeTo;
+
+                            if (!addedToExisting && tmpBlobCount < 255)
+                            {
+                                tmpBlobs[tmpBlobCount] = new TouchBlob(x, y);
+                                tmpBlobs[tmpBlobCount].pixelCount = 1;
+                                tmpBlobCount++;
+                            }
                         }
                     }
                 }
-                tmpBlobs[mergeTo].maxX = Math.Max(tmpBlobs[mergeTo].maxX, tmpBlobs[blobId].maxX);
-                tmpBlobs[mergeTo].maxY = Math.Max(tmpBlobs[mergeTo].maxY, tmpBlobs[blobId].maxY);
-                tmpBlobs[mergeTo].minX = Math.Min(tmpBlobs[mergeTo].minX, tmpBlobs[blobId].minX);
-                tmpBlobs[mergeTo].minY = Math.Min(tmpBlobs[mergeTo].minY, tmpBlobs[blobId].minY);
-                tmpBlobs[mergeTo].pixelCount += tmpBlobs[blobId].pixelCount;
-                tmpBlobs[blobId].pixelCount = 0;
             }
 
+            // Update global blob data
             mutex.WaitOne();
-            validBlobCount = 0;
-            for (int bi = 0; bi < tmpBlobCount; bi++)
-            {
-                if (tmpBlobs[bi].pixelCount == 0) continue;
-                
-                if (tmpBlobs[bi].pixelCount >= pixelCountThreshhold)
-                {
-                    validBlobs[validBlobCount] = tmpBlobs[bi];
-                    validBlobCount += 1;
-                }
-            }
-
+            validBlobCount = tmpBlobCount;
+            Array.Copy(tmpBlobs, validBlobs, tmpBlobCount);
             mutex.ReleaseMutex();
         }
     }
