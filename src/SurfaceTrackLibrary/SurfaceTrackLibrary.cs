@@ -68,7 +68,7 @@ namespace SurfaceTrackLibrary
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"SurfaceTrackLibrary initialization failed: {ex.Message}");
+                Console.WriteLine("SurfaceTrackLibrary initialization failed: " + ex.Message);
                 return false;
             }
         }
@@ -185,7 +185,7 @@ namespace SurfaceTrackLibrary
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error processing frame: {ex.Message}");
+                Console.WriteLine("Error processing frame: " + ex.Message);
             }
         }
 
