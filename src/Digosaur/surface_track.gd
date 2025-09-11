@@ -1,5 +1,5 @@
 # Surface table track script
-# Creates tracks from Surface table touch input via UDP bridge
+# Creates tracks from Surface table touch input via native DLL
 extends Node3D
 class_name SurfaceTrack
 
@@ -8,78 +8,60 @@ class_name SurfaceTrack
 @onready var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 
 const INTERACT_RADIUS: int = 15
-const UDP_PORT: int = 12345
 
 var query := PhysicsRayQueryParameters3D.new()
-var touch_position: Vector2
+var surface_track_node: SurfaceTrackNode
 var is_touching: bool = false
-var udp_server: UDPServer
-var udp_packet_peer: PacketPeerUDP
+var current_touch_position: Vector2
 
 func _ready():
 	query.set_collide_with_areas(true)
 	# Start with particles disabled
 	particles.emitting = false
 	
-	# Setup UDP server to receive touch data from Surface bridge
-	udp_server = UDPServer.new()
-	udp_server.listen(UDP_PORT, "127.0.0.1")
-	print("Surface track system ready. Listening for touch data on port ", UDP_PORT)
-
-func _exit_tree():
-	if udp_server:
-		udp_server.stop()
+	# Create and setup the Surface track node
+	surface_track_node = SurfaceTrackNode.new()
+	add_child(surface_track_node)
+	
+	# Connect to touch signals
+	surface_track_node.touch_detected.connect(_on_touch_detected)
+	surface_track_node.touch_moved.connect(_on_touch_moved)
+	surface_track_node.touch_ended.connect(_on_touch_ended)
+	
+	print("Surface track system ready. Using native DLL for touch detection.")
 
 func _physics_process(delta: float):
-	# Check for incoming UDP packets
-	if udp_server.is_connection_available():
-		udp_packet_peer = udp_server.take_connection()
-	
-	if udp_packet_peer and udp_packet_peer.get_available_packet_count() > 0:
-		var packet = udp_packet_peer.get_packet()
-		var message = packet.get_string_from_utf8()
-		_handle_touch_message(message)
-	
 	# Only update position when touching
 	if is_touching:
 		# Convert screen coordinates to world space
-		var result: Dictionary = _screen_to_world_space(touch_position)
+		var result: Dictionary = _screen_to_world_space(current_touch_position)
 		if result:
 			# Move particles to touch position
 			particles.global_position = result.position
 
-func _handle_touch_message(message: String):
-	var parts = message.split(":")
-	if parts.size() >= 4:
-		var event_type = parts[0]
-		var x = float(parts[1])
-		var y = float(parts[2])
-		var id = int(parts[3])
-		
-		print("Touch event: ", event_type, " at (", x, ", ", y, ") ID: ", id)
-		
-		match event_type:
-			"DOWN":
-				is_touching = true
-				particles.emitting = true
-				touch_position = Vector2(x, y)
-			"MOVE":
-				if is_touching:
-					touch_position = Vector2(x, y)
-			"UP":
-				is_touching = false
-				particles.emitting = false
+func _on_touch_detected(touch_index: int, position: Vector2, size: Vector2):
+	print("Touch detected: ", touch_index, " at (", position.x, ", ", position.y, ") size: ", size)
+	is_touching = true
+	particles.emitting = true
+	current_touch_position = position
+
+func _on_touch_moved(touch_index: int, position: Vector2, size: Vector2):
+	if is_touching:
+		current_touch_position = position
+
+func _on_touch_ended(touch_index: int):
+	print("Touch ended: ", touch_index)
+	is_touching = false
+	particles.emitting = false
 
 func _screen_to_world_space(screen_pos: Vector2) -> Dictionary:
 	# Convert screen coordinates to world space using raycasting
-	# This is similar to the mouse raycasting but uses the touch position
 	query.from = cam.global_position
 	query.to = query.from + _get_world_ray_from_screen(screen_pos)
 	return space_state.intersect_ray(query)
 
 func _get_world_ray_from_screen(screen_pos: Vector2) -> Vector3:
 	# Convert screen position to world ray
-	# We need to project the screen position to a world ray
 	var viewport_size = get_viewport().size
 	var normalized_pos = Vector2(screen_pos.x / viewport_size.x, screen_pos.y / viewport_size.y)
 	return cam.project_ray_normal(normalized_pos) * INTERACT_RADIUS
