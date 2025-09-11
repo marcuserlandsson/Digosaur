@@ -1,153 +1,103 @@
-using System;
+﻿using System;
 using System.Threading;
 using Microsoft.Surface.Core;
 
 namespace SurfaceTrackLibrary
 {
-    public struct TouchBlob
+    public struct Blob
     {
         public uint pixelCount;
         public uint minX;
         public uint minY;
         public uint maxX;
         public uint maxY;
-        public bool isActive;
 
-        public TouchBlob(uint x, uint y)
+        /// <summary>
+        /// New blob from inital pixel x and y
+        /// </summary>
+        public Blob(uint x, uint y)
         {
             pixelCount = 0;
             minX = x;
             maxX = x;
+
             minY = y;
             maxY = y;
-            isActive = false;
         }
     }
 
-    public class SurfaceTrackLibrary
+    public class CheeseEater
     {
         private const uint sensorWidth = 960;
         private const uint sensorHeight = 540;
         private const uint sensorCount = sensorWidth * sensorHeight;
-        private const byte brightnessThreshold = 180;
-        private const byte pixelCountThreshold = 100;
+        private const byte brightnessThreshhold = 180;
+        private const byte pixelCountThreshhold = 100;
         private const byte NULL_BLOB = 0xff;
 
         private static TouchTarget touchTarget;
-        private static ImageMetrics normalizedMetrics;
-        private static byte[] normalizedImage;
 
-        private static byte[] blobMembership = new byte[960 * 540];
-        private static byte[] mergeTable = new byte[256];
-        private static TouchBlob[] tmpBlobs = new TouchBlob[255];
-        private static TouchBlob[] validBlobs = new TouchBlob[255];
-        private static uint validBlobCount = 0;
+        private static ImageMetrics normalizedMetrics;
+        volatile private static byte[] normalizedImage;
+
+        volatile private static byte[] blobMembership = new byte[960 * 540];  // Holds the index of the blob the sensor is part of
+        volatile private static byte[] mergeTable = new byte[256];
+        volatile private static Blob[] tmpBlobs = new Blob[255];
+
+        volatile private static Blob[] validBlobs = new Blob[255];
+        volatile private static uint validBlobCount = 0;
 
         private static Mutex mutex = new Mutex();
-        private static bool isInitialized = false;
 
-        [RGiesecke.DllExport.DllExport]
-        public static bool Initialize(IntPtr hwnd)
+        [DllExport]
+        public static void init(IntPtr hwnd)
         {
-            try
-            {
-                if (isInitialized) return true;
+            // Create a target for surface input.
+            touchTarget = new TouchTarget(hwnd, EventThreadChoice.OnBackgroundThread);
+            touchTarget.EnableInput();
 
-                // Create a target for surface input
-                touchTarget = new TouchTarget(hwnd, EventThreadChoice.OnBackgroundThread);
-                touchTarget.EnableInput();
+            // Enable the normalized raw-image.
+            touchTarget.EnableImage(ImageType.Normalized);
 
-                // Enable the normalized raw-image
-                touchTarget.EnableImage(ImageType.Normalized);
-
-                // Hook up callback for new frames
-                touchTarget.FrameReceived += OnTouchTargetFrameReceived;
-
-                isInitialized = true;
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("SurfaceTrackLibrary initialization failed: " + ex.Message);
-                return false;
-            }
+            // Hook up a callback to get notified when there is a new frame available
+            touchTarget.FrameReceived += OnTouchTargetFrameReceived;
         }
 
-        [RGiesecke.DllExport.DllExport]
-        public static void Shutdown()
+        [DllExport]
+        public static uint accuireAccess()
         {
-            if (touchTarget != null)
-            {
-                touchTarget.Dispose();
-                touchTarget = null;
-            }
-            isInitialized = false;
-        }
-
-        [RGiesecke.DllExport.DllExport]
-        public static uint GetTouchCount()
-        {
-            if (!isInitialized) return 0;
-            
             mutex.WaitOne();
-            uint count = validBlobCount;
-            mutex.ReleaseMutex();
-            return count;
+            return validBlobCount;
         }
 
-        [RGiesecke.DllExport.DllExport]
-        public static float GetTouchX(uint index)
+        [DllExport]
+        public static void releaseAccess()
         {
-            if (!isInitialized || index >= validBlobCount) return 0.0f;
-            
-            mutex.WaitOne();
-            float x = (float)((validBlobs[index].maxX + validBlobs[index].minX) / 2) / (float)sensorWidth;
             mutex.ReleaseMutex();
-            return x;
         }
 
-        [RGiesecke.DllExport.DllExport]
-        public static float GetTouchY(uint index)
+        [DllExport]
+        public static float getX(uint i)
         {
-            if (!isInitialized || index >= validBlobCount) return 0.0f;
-            
-            mutex.WaitOne();
-            float y = (float)((validBlobs[index].maxY + validBlobs[index].minY) / 2) / (float)sensorHeight;
-            mutex.ReleaseMutex();
-            return y;
+            return (float)((validBlobs[i].maxX + validBlobs[i].minX) / 2) / ((float)sensorWidth);
         }
 
-        [RGiesecke.DllExport.DllExport]
-        public static float GetTouchSizeX(uint index)
+        [DllExport]
+        public static float getY(uint i)
         {
-            if (!isInitialized || index >= validBlobCount) return 0.0f;
-            
-            mutex.WaitOne();
-            float sizeX = (float)(validBlobs[index].maxX - validBlobs[index].minX) / (float)sensorWidth;
-            mutex.ReleaseMutex();
-            return sizeX;
+            return (float)((validBlobs[i].maxY + validBlobs[i].minY) / 2) / ((float)sensorHeight);
         }
 
-        [RGiesecke.DllExport.DllExport]
-        public static float GetTouchSizeY(uint index)
+        [DllExport]
+        public static float getSizeX(uint i)
         {
-            if (!isInitialized || index >= validBlobCount) return 0.0f;
-            
-            mutex.WaitOne();
-            float sizeY = (float)(validBlobs[index].maxY - validBlobs[index].minY) / (float)sensorHeight;
-            mutex.ReleaseMutex();
-            return sizeY;
+            return (float)(validBlobs[i].maxX - validBlobs[i].minX) / ((float)sensorWidth);
         }
 
-        [RGiesecke.DllExport.DllExport]
-        public static bool IsTouchActive(uint index)
+        [DllExport]
+        public static float getSizeY(uint i)
         {
-            if (!isInitialized || index >= validBlobCount) return false;
-            
-            mutex.WaitOne();
-            bool active = validBlobs[index].isActive;
-            mutex.ReleaseMutex();
-            return active;
+            return (float)(validBlobs[i].maxY - validBlobs[i].minY) / ((float)sensorHeight);
         }
 
         private static uint SensorIdx(uint x, uint y)
@@ -157,76 +107,49 @@ namespace SurfaceTrackLibrary
 
         private static void OnTouchTargetFrameReceived(object sender, FrameReceivedEventArgs e)
         {
-            if (!isInitialized) return;
-
-            try
+            if (normalizedImage == null)
             {
-                if (normalizedImage == null)
-                {
-                    // Get raw image data for the first time
-                    e.TryGetRawImage(
-                        ImageType.Normalized,
-                        0, 0,
-                        1920, 1080,
-                        out normalizedImage,
-                        out normalizedMetrics);
-                }
-                else
-                {
-                    // Update the raw image data
-                    e.UpdateRawImage(
-                        ImageType.Normalized,
-                        normalizedImage,
-                        0, 0,
-                        1920, 1080);
-                }
-
-                ProcessImageData();
+                // get rawimage data for a specific area
+                e.TryGetRawImage(
+                    ImageType.Normalized,
+                    0, 0,
+                    1920, 1080,
+                    out normalizedImage,
+                    out normalizedMetrics);
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine("Error processing frame: " + ex.Message);
+                // get the updated rawimage data for the specified area
+                e.UpdateRawImage(
+                    ImageType.Normalized,
+                    normalizedImage,
+                    0, 0,
+                    1920, 1080);
             }
-        }
 
-        private static void ProcessImageData()
-        {
             uint tmpBlobCount = 0;
-            
-            // Reset blob membership
-            for (uint i = 0; i < sensorCount; i++)
-            {
-                blobMembership[i] = NULL_BLOB;
-            }
-
-            // Process each pixel to find blobs
             for (uint y = 1; y < sensorHeight; y++)
             {
                 for (uint x = 1; x < sensorWidth; x++)
                 {
                     uint i = SensorIdx(x, y);
-                    
-                    // Skip if pixel is too bright (not a touch)
-                    if (normalizedImage[i] >= brightnessThreshold)
+                    blobMembership[i] = NULL_BLOB;
+                    if (normalizedImage[i] < brightnessThreshhold)
                         continue;
-
                     byte downBlobId = blobMembership[SensorIdx(x, y - 1)];
                     byte backBlobId = blobMembership[SensorIdx(x - 1, y)];
-
-                    // If either neighbor is part of a blob, join that blob
-                    if (downBlobId != NULL_BLOB || backBlobId != NULL_BLOB)
+                    // if either is not NULL_BLOB make the sensor a member of one
+                    if (downBlobId != NULL_BLOB || downBlobId != NULL_BLOB)
                     {
                         byte blobId = Math.Min(downBlobId, backBlobId);
-                        blobMembership[i] = blobId;
-                        
-                        // Update blob bounds
+                        blobMembership[SensorIdx(x, y)] = blobId;
+                        // update blob
                         tmpBlobs[blobId].maxX = Math.Max(x, tmpBlobs[blobId].maxX);
                         tmpBlobs[blobId].minX = Math.Min(x, tmpBlobs[blobId].minX);
                         tmpBlobs[blobId].maxY = Math.Max(y, tmpBlobs[blobId].maxY);
                         tmpBlobs[blobId].minY = Math.Min(y, tmpBlobs[blobId].minY);
                         tmpBlobs[blobId].pixelCount += 1;
-
-                        // Merge blobs if needed
+                        // if neither is NULL_BLOB, map higher index to lower index
                         if (downBlobId != backBlobId && downBlobId != NULL_BLOB && backBlobId != NULL_BLOB)
                         {
                             while (blobId != mergeTable[blobId])
@@ -238,26 +161,23 @@ namespace SurfaceTrackLibrary
                     }
                     else
                     {
-                        // Start new blob
-                        if (tmpBlobCount < 255)
-                        {
-                            blobMembership[i] = (byte)tmpBlobCount;
-                            tmpBlobs[tmpBlobCount] = new TouchBlob(x, y);
-                            mergeTable[tmpBlobCount] = (byte)tmpBlobCount;
-                            tmpBlobCount++;
-                        }
+                        // start new blob
+                        if (tmpBlobCount == 255)
+                            continue;
+                        blobMembership[SensorIdx(x, y)] = (byte)tmpBlobCount;
+                        tmpBlobs[tmpBlobCount] = new Blob(x, y);
+                        mergeTable[tmpBlobCount] = (byte)tmpBlobCount;
+                        tmpBlobCount += 1;
                     }
                 }
             }
-
-            // Merge overlapping blobs
+            
+            // iter backwards if things fuck up
             for (uint revBlobId = 0; revBlobId < tmpBlobCount; revBlobId++)
             {
                 byte blobId = (byte)(tmpBlobCount - revBlobId - 1);
                 byte mergeTo = mergeTable[blobId];
                 if (blobId == mergeTo) continue;
-
-                // Update blob membership
                 for (uint x = tmpBlobs[blobId].minX; x <= tmpBlobs[blobId].maxX; x++)
                 {
                     for (uint y = tmpBlobs[blobId].minY; y <= tmpBlobs[blobId].maxY; y++)
@@ -268,8 +188,6 @@ namespace SurfaceTrackLibrary
                         }
                     }
                 }
-
-                // Merge blob data
                 tmpBlobs[mergeTo].maxX = Math.Max(tmpBlobs[mergeTo].maxX, tmpBlobs[blobId].maxX);
                 tmpBlobs[mergeTo].maxY = Math.Max(tmpBlobs[mergeTo].maxY, tmpBlobs[blobId].maxY);
                 tmpBlobs[mergeTo].minX = Math.Min(tmpBlobs[mergeTo].minX, tmpBlobs[blobId].minX);
@@ -278,20 +196,19 @@ namespace SurfaceTrackLibrary
                 tmpBlobs[blobId].pixelCount = 0;
             }
 
-            // Update valid blobs
             mutex.WaitOne();
             validBlobCount = 0;
             for (int bi = 0; bi < tmpBlobCount; bi++)
             {
                 if (tmpBlobs[bi].pixelCount == 0) continue;
                 
-                if (tmpBlobs[bi].pixelCount >= pixelCountThreshold)
+                if (tmpBlobs[bi].pixelCount >= pixelCountThreshhold)
                 {
                     validBlobs[validBlobCount] = tmpBlobs[bi];
-                    validBlobs[validBlobCount].isActive = true;
-                    validBlobCount++;
+                    validBlobCount += 1;
                 }
             }
+
             mutex.ReleaseMutex();
         }
     }
