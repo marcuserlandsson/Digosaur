@@ -44,15 +44,15 @@ func load_dll():
 	
 	# Get function addresses
 	init_func = OS.get_dynamic_library_symbol_handle(dll_handle, "Initialize")
-	shutdown_func = OS.get_dynamic_library_symbol_handle(dll_handle, "Shutdown")
-	get_touch_count_func = OS.get_dynamic_library_symbol_handle(dll_handle, "GetTouchCount")
-	get_touch_x_func = OS.get_dynamic_library_symbol_handle(dll_handle, "GetTouchX")
-	get_touch_y_func = OS.get_dynamic_library_symbol_handle(dll_handle, "GetTouchY")
-	get_touch_size_x_func = OS.get_dynamic_library_symbol_handle(dll_handle, "GetTouchSizeX")
-	get_touch_size_y_func = OS.get_dynamic_library_symbol_handle(dll_handle, "GetTouchSizeY")
-	is_touch_active_func = OS.get_dynamic_library_symbol_handle(dll_handle, "IsTouchActive")
+	shutdown_func = -1  # We don't have Shutdown function
+	get_touch_count_func = OS.get_dynamic_library_symbol_handle(dll_handle, "GetBlobCount")
+	get_touch_x_func = OS.get_dynamic_library_symbol_handle(dll_handle, "GetBlobX")
+	get_touch_y_func = OS.get_dynamic_library_symbol_handle(dll_handle, "GetBlobY")
+	get_touch_size_x_func = OS.get_dynamic_library_symbol_handle(dll_handle, "GetBlobSizeX")
+	get_touch_size_y_func = OS.get_dynamic_library_symbol_handle(dll_handle, "GetBlobSizeY")
+	is_touch_active_func = -1  # We don't have IsTouchActive function
 	
-	if init_func == -1 or shutdown_func == -1 or get_touch_count_func == -1:
+	if init_func == -1 or get_touch_count_func == -1:
 		push_error("Failed to get DLL function addresses")
 		unload_dll()
 		return false
@@ -104,9 +104,9 @@ func get_touch_count() -> int:
 	if get_touch_count_func == -1:
 		return 0
 	
-	# This would call the DLL function in a real implementation
-	# For now, return 0 as placeholder
-	return 0
+	# Call the DLL function GetBlobCount
+	var result = OS.call_dynamic_library_function(dll_handle, "GetBlobCount", [], OS.DYNAMIC_LIBRARY_TYPE_INT)
+	return result if result != null else 0
 
 func handle_touch_count_change(new_count: int):
 	var old_count = touch_count
@@ -145,22 +145,23 @@ func get_touch_position(index: int) -> Vector2:
 	if get_touch_x_func == -1 or get_touch_y_func == -1:
 		return Vector2.ZERO
 	
-	# This would call the DLL functions in a real implementation
-	# For now, return zero as placeholder
-	return Vector2.ZERO
+	# Call the DLL functions GetBlobX and GetBlobY
+	var x = OS.call_dynamic_library_function(dll_handle, "GetBlobX", [index], OS.DYNAMIC_LIBRARY_TYPE_FLOAT)
+	var y = OS.call_dynamic_library_function(dll_handle, "GetBlobY", [index], OS.DYNAMIC_LIBRARY_TYPE_FLOAT)
+	
+	return Vector2(x if x != null else 0.0, y if y != null else 0.0)
 
 func get_touch_size(index: int) -> Vector2:
 	if get_touch_size_x_func == -1 or get_touch_size_y_func == -1:
 		return Vector2.ZERO
 	
-	# This would call the DLL functions in a real implementation
-	# For now, return zero as placeholder
-	return Vector2.ZERO
+	# Call the DLL functions GetBlobSizeX and GetBlobSizeY
+	var size_x = OS.call_dynamic_library_function(dll_handle, "GetBlobSizeX", [index], OS.DYNAMIC_LIBRARY_TYPE_FLOAT)
+	var size_y = OS.call_dynamic_library_function(dll_handle, "GetBlobSizeY", [index], OS.DYNAMIC_LIBRARY_TYPE_FLOAT)
+	
+	return Vector2(size_x if size_x != null else 0.0, size_y if size_y != null else 0.0)
 
 func is_touch_active(index: int) -> bool:
-	if is_touch_active_func == -1:
-		return false
-	
-	# This would call the DLL function in a real implementation
-	# For now, return false as placeholder
-	return false
+	# We don't have IsTouchActive in our DLL, so assume all touches are active
+	# if they exist (index < touch_count)
+	return index < touch_count
