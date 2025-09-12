@@ -50,15 +50,42 @@ namespace SurfaceUDPBridge
             }
         }
 
+        private static byte[] normalizedImage = null;
+        private static ImageMetrics normalizedMetrics = null;
+        private static int sensorWidth = 1920;
+        private static int sensorHeight = 1080;
+
         private static void OnTouchTargetFrameReceived(object sender, FrameReceivedEventArgs e)
         {
             try
             {
                 // Get raw image data for blob detection
-                if (e.TryGetRawImage(ImageType.Normalized))
+                if (normalizedImage == null)
                 {
-                    var imageData = e.GetRawImageData(ImageType.Normalized);
-                    var blobs = ProcessImageData(imageData, e.GetRawImageWidth(ImageType.Normalized), e.GetRawImageHeight(ImageType.Normalized));
+                    // Get raw image data for a specific area
+                    e.TryGetRawImage(
+                        ImageType.Normalized,
+                        0, 0,
+                        sensorWidth, sensorHeight,
+                        out normalizedImage,
+                        out normalizedMetrics);
+                }
+                else
+                {
+                    // Get the updated raw image data for the specified area
+                    e.UpdateRawImage(
+                        ImageType.Normalized,
+                        normalizedImage,
+                        0, 0,
+                        sensorWidth, sensorHeight);
+                }
+
+                if (normalizedImage != null)
+                {
+                    Console.WriteLine("Processing image: " + sensorWidth + "x" + sensorHeight + ", data length: " + normalizedImage.Length);
+                    var blobs = ProcessImageData(normalizedImage, sensorWidth, sensorHeight);
+                    
+                    Console.WriteLine("Found " + blobs.Length + " blobs");
                     
                     // Send touch data via UDP
                     foreach (var blob in blobs)
@@ -76,6 +103,21 @@ namespace SurfaceUDPBridge
         private static TouchBlob[] ProcessImageData(byte[] imageData, int width, int height)
         {
             var blobs = new System.Collections.Generic.List<TouchBlob>();
+            
+            // Check if image data is valid
+            if (imageData == null || imageData.Length == 0)
+            {
+                Console.WriteLine("No image data available");
+                return blobs.ToArray();
+            }
+            
+            // Check if dimensions are valid
+            if (width <= 0 || height <= 0 || imageData.Length < width * height)
+            {
+                Console.WriteLine("Invalid image dimensions: " + width + "x" + height + ", data length: " + imageData.Length);
+                return blobs.ToArray();
+            }
+            
             var visited = new bool[width * height];
             
             // Simple blob detection - find bright pixels
@@ -84,6 +126,7 @@ namespace SurfaceUDPBridge
                 for (int x = 0; x < width; x++)
                 {
                     int pixelIndex = y * width + x;
+                    if (pixelIndex >= imageData.Length || pixelIndex >= visited.Length) continue;
                     if (visited[pixelIndex]) continue;
                     
                     if (imageData[pixelIndex] > 200) // Bright pixel threshold
@@ -114,11 +157,16 @@ namespace SurfaceUDPBridge
                 int x = point.X;
                 int y = point.Y;
                 
+                // Bounds checking
                 if (x < 0 || x >= width || y < 0 || y >= height) continue;
-                if (visited[y * width + x]) continue;
-                if (imageData[y * width + x] <= 200) continue;
                 
-                visited[y * width + x] = true;
+                int pixelIndex = y * width + x;
+                if (pixelIndex >= imageData.Length || pixelIndex >= visited.Length) continue;
+                
+                if (visited[pixelIndex]) continue;
+                if (imageData[pixelIndex] <= 200) continue;
+                
+                visited[pixelIndex] = true;
                 blob.AddPixel(x, y);
                 
                 // Add neighbors

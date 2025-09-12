@@ -1,6 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://dtkptpruv1ay6"]
 
-[ext_resource type="Script" path="res://test_surface_track.gd" id="2_bwx1l"]
+[ext_resource type="Script" path="res://udp_touch_listener.gd" id="2_bwx1l"]
+[ext_resource type="Script" path="res://udp_track_creator.gd" id="3_track_creator"]
 [ext_resource type="Texture2D" uid="uid://1cujdx38cxxa" path="res://Images/snow_height.png" id="3_8neod"]
 [ext_resource type="Shader" uid="uid://lappm6o7lj1m" path="res://tracks.tres" id="3_tho10"]
 
@@ -82,8 +83,11 @@ light_energy = 7.297
 light_cull_mask = 4294967293
 omni_range = 7.838
 
-[node name="SurfaceTrack" type="Node3D" parent="."]
+[node name="UDPListener" type="Node" parent="."]
 script = ExtResource("2_bwx1l")
+
+[node name="UDPTrackCreator" type="Node3D" parent="."]
+script = ExtResource("3_track_creator")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_8muh3")
