@@ -32,7 +32,6 @@ namespace SurfaceTrackLibrary
         private static Mutex mutex = new Mutex();
         private static bool isInitialized = false;
 
-        [System.Runtime.InteropServices.DllExport]
         public static bool Initialize(IntPtr hwnd)
         {
             try
@@ -55,7 +54,6 @@ namespace SurfaceTrackLibrary
             }
         }
 
-        [System.Runtime.InteropServices.DllExport]
         public static uint GetBlobCount()
         {
             mutex.WaitOne();
@@ -64,7 +62,6 @@ namespace SurfaceTrackLibrary
             return count;
         }
 
-        [System.Runtime.InteropServices.DllExport]
         public static float GetBlobX(uint index)
         {
             if (index >= validBlobCount)
@@ -76,7 +73,6 @@ namespace SurfaceTrackLibrary
             return x;
         }
 
-        [System.Runtime.InteropServices.DllExport]
         public static float GetBlobY(uint index)
         {
             if (index >= validBlobCount)
@@ -88,7 +84,6 @@ namespace SurfaceTrackLibrary
             return y;
         }
 
-        [System.Runtime.InteropServices.DllExport]
         public static float GetBlobSizeX(uint index)
         {
             if (index >= validBlobCount)
@@ -100,7 +95,6 @@ namespace SurfaceTrackLibrary
             return sizeX;
         }
 
-        [System.Runtime.InteropServices.DllExport]
         public static float GetBlobSizeY(uint index)
         {
             if (index >= validBlobCount)
