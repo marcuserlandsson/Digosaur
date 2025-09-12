@@ -116,4 +116,4 @@ color = Color(0, 0, 0, 1)
 color_ramp = SubResource("Gradient_5n4dt")
 
 [node name="dogbone3" parent="." instance=ExtResource("4_cm0pq")]
-transform = Transform3D(0.055, 0, 0, 0, 0.055, 0, 0, 0, 0.055, -3.70781, 0.0328238, 2.94616)
+transform = Transform3D(0.00765452, 0.0544647, 0, -0.0544647, 0.00765452, 0, 0, 0, 0.055, -3.70781, 0.0982743, 2.92052)
