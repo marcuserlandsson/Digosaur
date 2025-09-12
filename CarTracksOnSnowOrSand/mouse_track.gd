@@ -35,10 +35,13 @@ func _physics_process(delta: float):
 			particles.global_position = mouse_position
 
 func _detect_from_cam_to_mouse() -> Dictionary:
+	var cam = get_viewport().get_camera_3d()
+	if cam == null:
+		return {}
 	query.from = cam.global_position
-	query.to = query.from + _get_world_mouse_ray()
+	query.to = query.from + _get_world_mouse_ray(cam)
 	return space_state.intersect_ray(query)
 
-func _get_world_mouse_ray() -> Vector3:
+func _get_world_mouse_ray(cam: Camera3D) -> Vector3:
 	var mouse_pos: Vector2 = get_viewport().get_mouse_position()
 	return cam.project_ray_normal(mouse_pos) * INTERACT_RADIUS
