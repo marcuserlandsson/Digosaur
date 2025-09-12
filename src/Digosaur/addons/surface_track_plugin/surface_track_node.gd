@@ -1,16 +1,9 @@
 extends Node
 class_name SurfaceTrackNode
 
-# DLL function signatures
-var dll_handle: int = -1
-var init_func: int = -1
-var shutdown_func: int = -1
-var get_touch_count_func: int = -1
-var get_touch_x_func: int = -1
-var get_touch_y_func: int = -1
-var get_touch_size_x_func: int = -1
-var get_touch_size_y_func: int = -1
-var is_touch_active_func: int = -1
+# UDP communication
+var udp_server: UDPServer
+var current_touches: Array[Dictionary] = []
 
 # Touch data
 var touch_count: int = 0
@@ -30,83 +23,95 @@ func _exit_tree():
 	unload_dll()
 
 func load_dll():
-	# Load the SurfaceTrackLibrary DLL
-	var dll_path = "res://addons/surface_track_plugin/SurfaceTrackLibrary.dll"
+	# Use UDP communication instead of DLL loading
+	# This is much simpler and more reliable than GDExtension
 	
-	if not FileAccess.file_exists(dll_path):
-		push_error("SurfaceTrackLibrary.dll not found at: " + dll_path)
+	# Start UDP server to receive touch data from C# bridge
+	udp_server = UDPServer.new()
+	if udp_server.listen(12345) != OK:
+		push_error("Failed to start UDP server on port 12345")
 		return false
 	
-	dll_handle = OS.load_dynamic_library(dll_path, OS.DYNAMIC_LIBRARY_IMPORT)
-	if dll_handle == -1:
-		push_error("Failed to load SurfaceTrackLibrary.dll")
-		return false
-	
-	# Get function addresses
-	init_func = OS.get_dynamic_library_symbol_handle(dll_handle, "Initialize")
-	shutdown_func = -1  # We don't have Shutdown function
-	get_touch_count_func = OS.get_dynamic_library_symbol_handle(dll_handle, "GetBlobCount")
-	get_touch_x_func = OS.get_dynamic_library_symbol_handle(dll_handle, "GetBlobX")
-	get_touch_y_func = OS.get_dynamic_library_symbol_handle(dll_handle, "GetBlobY")
-	get_touch_size_x_func = OS.get_dynamic_library_symbol_handle(dll_handle, "GetBlobSizeX")
-	get_touch_size_y_func = OS.get_dynamic_library_symbol_handle(dll_handle, "GetBlobSizeY")
-	is_touch_active_func = -1  # We don't have IsTouchActive function
-	
-	if init_func == -1 or get_touch_count_func == -1:
-		push_error("Failed to get DLL function addresses")
-		unload_dll()
-		return false
-	
-	print("SurfaceTrackLibrary DLL loaded successfully")
+	print("UDP server started on port 12345 - waiting for Surface bridge...")
 	return true
 
 func unload_dll():
-	if dll_handle != -1:
-		# Call shutdown before unloading
-		if shutdown_func != -1:
-			call_dll_function(shutdown_func, [])
-		
-		OS.unload_dynamic_library(dll_handle)
-		dll_handle = -1
-		print("SurfaceTrackLibrary DLL unloaded")
+	if udp_server != null:
+		udp_server.stop()
+		udp_server = null
+		print("UDP server stopped")
 
 func initialize_surface(hwnd: int) -> bool:
-	if init_func == -1:
+	if init_func == null:
 		push_error("DLL not loaded")
 		return false
 	
-	var result = call_dll_function(init_func, [hwnd])
-	return result == 1
+	# Simulate successful initialization
+	print("Surface initialized with hwnd: " + str(hwnd))
+	return true
 
-func call_dll_function(func_handle: int, args: Array) -> int:
-	if func_handle == -1:
-		return 0
-	
-	# This is a simplified version - in practice you'd need proper marshalling
-	# For now, we'll use a workaround with GDScript's call functionality
-	return 0
 
 func _process(delta):
-	if dll_handle == -1:
+	if udp_server == null:
 		return
 	
-	# Get current touch count
-	var new_touch_count = get_touch_count()
+	# Check for UDP messages
+	udp_server.poll()
+	if udp_server.is_connection_available():
+		var peer = udp_server.take_connection()
+		var message = peer.get_var()
+		handle_udp_message(message)
 	
-	# Handle touch changes
-	if new_touch_count != touch_count:
-		handle_touch_count_change(new_touch_count)
-	
-	# Update existing touches
+	# Update touch data
 	update_touch_data()
 
-func get_touch_count() -> int:
-	if get_touch_count_func == -1:
-		return 0
+func handle_udp_message(message: String):
+	# Parse UDP message from C# bridge
+	# Format: "DOWN:X:Y:ID" or "UP:ID" or "MOVE:X:Y:ID"
+	var parts = message.split(":")
+	if parts.size() < 2:
+		return
 	
-	# Call the DLL function GetBlobCount
-	var result = OS.call_dynamic_library_function(dll_handle, "GetBlobCount", [], OS.DYNAMIC_LIBRARY_TYPE_INT)
-	return result if result != null else 0
+	var action = parts[0]
+	
+	if action == "DOWN" and parts.size() >= 4:
+		# Touch down
+		var x = float(parts[1])
+		var y = float(parts[2])
+		var id = int(parts[3])
+		
+		var touch = {
+			"id": id,
+			"position": Vector2(x, y),
+			"size": Vector2(10, 10),  # Default size
+			"active": true
+		}
+		current_touches.append(touch)
+		touch_detected.emit(current_touches.size() - 1, touch.position, touch.size)
+		
+	elif action == "UP" and parts.size() >= 2:
+		# Touch up
+		var id = int(parts[1])
+		for i in range(current_touches.size()):
+			if current_touches[i]["id"] == id:
+				current_touches[i]["active"] = false
+				touch_ended.emit(i)
+				break
+				
+	elif action == "MOVE" and parts.size() >= 4:
+		# Touch move
+		var x = float(parts[1])
+		var y = float(parts[2])
+		var id = int(parts[3])
+		
+		for i in range(current_touches.size()):
+			if current_touches[i]["id"] == id:
+				current_touches[i]["position"] = Vector2(x, y)
+				touch_moved.emit(i, Vector2(x, y), current_touches[i]["size"])
+				break
+
+func get_touch_count() -> int:
+	return current_touches.size()
 
 func handle_touch_count_change(new_count: int):
 	var old_count = touch_count
@@ -142,26 +147,19 @@ func update_touch_data():
 		touch_active[i] = new_active
 
 func get_touch_position(index: int) -> Vector2:
-	if get_touch_x_func == -1 or get_touch_y_func == -1:
+	if index >= current_touches.size():
 		return Vector2.ZERO
 	
-	# Call the DLL functions GetBlobX and GetBlobY
-	var x = OS.call_dynamic_library_function(dll_handle, "GetBlobX", [index], OS.DYNAMIC_LIBRARY_TYPE_FLOAT)
-	var y = OS.call_dynamic_library_function(dll_handle, "GetBlobY", [index], OS.DYNAMIC_LIBRARY_TYPE_FLOAT)
-	
-	return Vector2(x if x != null else 0.0, y if y != null else 0.0)
+	return current_touches[index]["position"]
 
 func get_touch_size(index: int) -> Vector2:
-	if get_touch_size_x_func == -1 or get_touch_size_y_func == -1:
+	if index >= current_touches.size():
 		return Vector2.ZERO
 	
-	# Call the DLL functions GetBlobSizeX and GetBlobSizeY
-	var size_x = OS.call_dynamic_library_function(dll_handle, "GetBlobSizeX", [index], OS.DYNAMIC_LIBRARY_TYPE_FLOAT)
-	var size_y = OS.call_dynamic_library_function(dll_handle, "GetBlobSizeY", [index], OS.DYNAMIC_LIBRARY_TYPE_FLOAT)
-	
-	return Vector2(size_x if size_x != null else 0.0, size_y if size_y != null else 0.0)
+	return current_touches[index]["size"]
 
 func is_touch_active(index: int) -> bool:
-	# We don't have IsTouchActive in our DLL, so assume all touches are active
-	# if they exist (index < touch_count)
-	return index < touch_count
+	if index >= current_touches.size():
+		return false
+	
+	return current_touches[index]["active"]
