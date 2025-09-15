@@ -1,2 +1,2 @@
-﻿37769
-/home/marcuserlandsson/Tools/Godot/Godot_v4.4.1-stable_mono_linux.x86_64
+﻿59414
+C:/Users/emilc/Documents/KTH/AGI/Godot_v4.4.1-stable_mono_win64/Godot_v4.4.1-stable_mono_win64/Godot_v4.4.1-stable_mono_win64.exe

@@ -1,9 +1,11 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1757424637
-icon.svg::CompressedTexture2D/CompressedTexture2D::4323380189673864131::1757423572::1757423962::1::::<><><>0<>0<>903a621573894b5c3b33f1c95e74d345<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-Main.tscn::PackedScene::8514439357767927727::1757424613::0::1::::<><><>0<>0<><>::uid://b0pj4o5nptdjs::::res://mouse_track.gd<>uid://1cujdx38cxxa::::res://Images/snow_height.png<>uid://lappm6o7lj1m::::res://tracks.tres
-mouse_track.gd::GDScript::4172706464195438072::1757424181::0::1::::MouseTrack<>Node3D<><>0<>0<><>::
-tracks.tres::Shader::773015500666867580::1757424616::0::1::::<><><>0<>0<><>::
-::res://Images/::1757423962
-snow_albedo.png::CompressedTexture2D/CompressedTexture2D::8073262939501494826::1757423572::1757423962::1::::<><><>0<>0<>3c64f00f9a1acc8d5444dade82c73b6c<>res://.godot/imported/snow_albedo.png-974f5a78129911f465f22a7edea46fee.s3tc.ctex::
-snow_height.png::CompressedTexture2D/CompressedTexture2D::1830269296514383818::1757423572::1757423962::1::::<><><>0<>0<>77fc58ba2d7e51537e6cdb9834d2da4d<>res://.godot/imported/snow_height.png-ff65ee253cb6b87b553882e9e3031205.s3tc.ctex::
+::res://::1757666482
+icon.svg::CompressedTexture2D/CompressedTexture2D::4323380189673864131::1757494404::1757598881::1::::<><><>0<>0<>903a621573894b5c3b33f1c95e74d345<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+Main.tscn::PackedScene/PackedScene::8514439357767927727::1757665912::0::1::::<><><>0<>0<><>::uid://b0pj4o5nptdjs::::res://mouse_track.gd<>uid://1cujdx38cxxa::::res://Images/snow_height.png<>uid://lappm6o7lj1m::::res://tracks.tres
+mouse_track.gd::GDScript/GDScript::4172706464195438072::1757494404::0::1::::MouseTrack<>Node3D<><>0<>0<><>::
+tracks.tres::Shader/Shader::773015500666867580::1757494404::0::1::::<><><>0<>0<><>::
+::res://3D models/::1757599028
+dogbone3.glb::PackedScene/PackedScene::7743112689133803845::1757599021::1757599028::1::::<><><>0<>0<>39b71bddd05c8f085ce3d97b9865c257<>res://.godot/imported/dogbone3.glb-b08c33be4f0f17b6078c3cb519b496ea.scn::
+::res://Images/::1757598882
+snow_albedo.png::CompressedTexture2D/CompressedTexture2D::8073262939501494826::1757494404::1757598882::1::::<><><>0<>0<>3c64f00f9a1acc8d5444dade82c73b6c<>res://.godot/imported/snow_albedo.png-974f5a78129911f465f22a7edea46fee.s3tc.ctex::
+snow_height.png::CompressedTexture2D/CompressedTexture2D::1830269296514383818::1757494404::1757598882::1::::<><><>0<>0<>77fc58ba2d7e51537e6cdb9834d2da4d<>res://.godot/imported/snow_height.png-ff65ee253cb6b87b553882e9e3031205.s3tc.ctex::

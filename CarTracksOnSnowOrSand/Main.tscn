@@ -1,14 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://dtkptpruv1ay6"]
+[gd_scene load_steps=17 format=3 uid="uid://dtkptpruv1ay6"]
 
 [ext_resource type="Script" uid="uid://b0pj4o5nptdjs" path="res://mouse_track.gd" id="2_bwx1l"]
 [ext_resource type="Texture2D" uid="uid://1cujdx38cxxa" path="res://Images/snow_height.png" id="3_8neod"]
 [ext_resource type="Shader" uid="uid://lappm6o7lj1m" path="res://tracks.tres" id="3_tho10"]
+[ext_resource type="PackedScene" uid="uid://dik261ry07cdh" path="res://3D models/dogbone3.glb" id="4_cm0pq"]
 
 [sub_resource type="Environment" id="Environment_i3pvo"]
 background_mode = 1
 background_color = Color(0, 0.298039, 0.298039, 1)
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Environment" id="Environment_cm0pq"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_xa88w"]
 viewport_path = NodePath("SubViewport")
@@ -76,8 +79,20 @@ transform = Transform3D(0.704016, 0.42987, -0.565308, 0, 0.796003, 0.605293, 0.7
 cull_mask = 1048573
 environment = SubResource("Environment_i3pvo")
 
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0.78, 2.005, 0)
+cull_mask = 1048573
+environment = SubResource("Environment_cm0pq")
+current = true
+
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86431, 4.69709, 3.92687)
+light_energy = 7.297
+light_cull_mask = 4294967293
+omni_range = 7.838
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.997, 0)
 light_energy = 7.297
 light_cull_mask = 4294967293
 omni_range = 7.838
@@ -97,6 +112,7 @@ shape = SubResource("BoxShape3D_0v47j")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6.66, 0)
+visible = false
 cull_mask = 1047554
 environment = SubResource("Environment_ms5u6")
 
@@ -113,3 +129,12 @@ direction = Vector3(0, 0, 0)
 gravity = Vector3(0, 0, 0)
 color = Color(0, 0, 0, 1)
 color_ramp = SubResource("Gradient_5n4dt")
+
+[node name="dogbone3" parent="." instance=ExtResource("4_cm0pq")]
+transform = Transform3D(0.00765452, 0.0544647, 0, -0.0544647, 0.00765452, 0, 0, 0, 0.055, 2.09973, 0.0986554, -0.106219)
+
+[node name="dogbone4" parent="." instance=ExtResource("4_cm0pq")]
+transform = Transform3D(0.00765452, 0.0544647, 0, -0.0544647, 0.00765452, 0, 0, 0, 0.055, 0.724235, 0.0986555, -2.25403)
+
+[node name="dogbone5" parent="." instance=ExtResource("4_cm0pq")]
+transform = Transform3D(0.00765452, 0.0544647, 0, -0.0544647, 0.00765452, 0, 0, 0, 0.055, 0.154106, 0.0572571, 1.30792)
