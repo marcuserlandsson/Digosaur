@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ss:ApplicationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				 xmlns:ss="http://schemas.microsoft.com/Surface/2007/ApplicationMetadata">
+	<Application>
+		<Title>Surface UDP Bridge</Title>
+    <Description>UDP bridge for Surface table touch input to Godot</Description>
+		<ExecutableFile>SurfaceUDPBridge.exe</ExecutableFile>
+		<Arguments></Arguments>
+		<IconImageFile>InstalledAppInfo\AppIcon.png</IconImageFile>
+	</Application>
+</ss:ApplicationInfo>

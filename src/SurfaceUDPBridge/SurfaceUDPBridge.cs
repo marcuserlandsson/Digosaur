@@ -3,6 +3,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using Microsoft.Surface.Core;
+using Microsoft.Surface;
+using System.Windows.Forms;
 
 namespace SurfaceUDPBridge
 {
@@ -18,6 +20,26 @@ namespace SurfaceUDPBridge
             
             try
             {
+                // Check if Surface environment is available
+                if (!SurfaceEnvironment.IsSurfaceEnvironmentAvailable)
+                {
+                    Console.WriteLine("WARNING: Surface environment is not available!");
+                    Console.WriteLine("Make sure Surface Shell is running and the table is properly configured.");
+                    Console.WriteLine("Continuing anyway...");
+                }
+                else
+                {
+                    Console.WriteLine("Surface environment is available!");
+                }
+                
+                // CRITICAL: Apply Surface globalization settings (from official app)
+                GlobalizationSettings.ApplyToCurrentThread();
+                Console.WriteLine("GlobalizationSettings applied");
+                
+                // Disable the WinForms unhandled exception dialog (from official app)
+                Application.SetUnhandledExceptionMode(UnhandledExceptionMode.ThrowException);
+                Console.WriteLine("Exception mode set");
+                
                 // Initialize UDP client
                 udpClient = new UdpClient();
                 
@@ -33,6 +55,16 @@ namespace SurfaceUDPBridge
                 // Initialize Surface SDK exactly like CheeseEater.cs
                 init(form.Handle);
                 
+                // CRITICAL: Subscribe to Surface window availability events (from official app)
+                ApplicationServices.WindowInteractive += OnWindowInteractive;
+                ApplicationServices.WindowNoninteractive += OnWindowNoninteractive;
+                ApplicationServices.WindowUnavailable += OnWindowUnavailable;
+                Console.WriteLine("Window availability events subscribed");
+                
+                // CRITICAL: Signal that application load is complete (from official app)
+                ApplicationServices.SignalApplicationLoadComplete();
+                Console.WriteLine("Application load complete signaled");
+                
                 isRunning = true;
                 Console.WriteLine("Surface UDP Bridge ready! Press any key to stop...");
                 
@@ -42,6 +74,19 @@ namespace SurfaceUDPBridge
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
+                Console.WriteLine("Stack trace: " + ex.StackTrace);
+                
+                // If it's a configuration exception, provide helpful info
+                if (ex is Microsoft.Surface.Configuration.ConfigurationException)
+                {
+                    Console.WriteLine("\n=== SURFACE CONFIGURATION ERROR ===");
+                    Console.WriteLine("The Surface SDK requires the Surface Shell to be running.");
+                    Console.WriteLine("Please ensure:");
+                    Console.WriteLine("1. Surface Shell is running (SurfaceShell.exe)");
+                    Console.WriteLine("2. The table is properly configured");
+                    Console.WriteLine("3. You have the correct Surface SDK installed");
+                    Console.WriteLine("4. The application is running on a Surface table");
+                }
             }
             finally
             {
@@ -314,6 +359,30 @@ namespace SurfaceUDPBridge
             catch (Exception ex)
             {
                 Console.WriteLine("Error sending UDP: " + ex.Message);
+            }
+        }
+
+        // Window availability event handlers (from official app)
+        private static void OnWindowInteractive(object sender, EventArgs e)
+        {
+            Console.WriteLine("Window became interactive - enabling image");
+            if (touchTarget != null)
+            {
+                touchTarget.EnableImage(ImageType.Normalized);
+            }
+        }
+
+        private static void OnWindowNoninteractive(object sender, EventArgs e)
+        {
+            Console.WriteLine("Window became non-interactive");
+        }
+
+        private static void OnWindowUnavailable(object sender, EventArgs e)
+        {
+            Console.WriteLine("Window became unavailable - disabling image");
+            if (touchTarget != null)
+            {
+                touchTarget.DisableImage(ImageType.Normalized);
             }
         }
 

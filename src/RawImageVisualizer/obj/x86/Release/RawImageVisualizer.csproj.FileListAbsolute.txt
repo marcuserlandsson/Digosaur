@@ -1,0 +1,7 @@
+C:\Users\admin.SURFACE\Desktop\RawImageVisualizer\RawImageVisualizer\bin\Release\InstalledAppInfo\appIcon.png
+C:\Users\admin.SURFACE\Desktop\RawImageVisualizer\RawImageVisualizer\bin\Release\RawImageVisualizer.exe.config
+C:\Users\admin.SURFACE\Desktop\RawImageVisualizer\RawImageVisualizer\bin\Release\RawImageVisualizer.exe
+C:\Users\admin.SURFACE\Desktop\RawImageVisualizer\RawImageVisualizer\bin\Release\RawImageVisualizer.pdb
+C:\Users\admin.SURFACE\Desktop\RawImageVisualizer\RawImageVisualizer\obj\x86\Release\RawImageVisualizer.g.resources
+C:\Users\admin.SURFACE\Desktop\RawImageVisualizer\RawImageVisualizer\obj\x86\Release\RawImageVisualizer.exe
+C:\Users\admin.SURFACE\Desktop\RawImageVisualizer\RawImageVisualizer\obj\x86\Release\RawImageVisualizer.pdb
