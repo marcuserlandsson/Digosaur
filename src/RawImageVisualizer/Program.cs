@@ -19,9 +19,17 @@ namespace RawImageVisualizer
         [STAThread]
         static void Main()
         {
-            sw = new StreamWriter("testyuttyu.txt");
-            sw.AutoFlush = true;
-            sw.WriteLine("hello world");
+            try
+            {
+                sw = new StreamWriter("PrintOutput.txt");
+                sw.AutoFlush = true;
+                sw.WriteLine("DEBUG: Program.Main() started successfully");
+            }
+            catch (Exception ex)
+            {
+                // If we can't even write to file, something is very wrong
+                System.IO.File.WriteAllText("error.txt", "Error in Main: " + ex.Message);
+            }
             // Disable the WinForms unhandled exception dialog.
             // SurfaceShell will notify the user.
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.ThrowException);

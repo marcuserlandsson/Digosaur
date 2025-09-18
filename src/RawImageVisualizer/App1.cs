@@ -21,6 +21,10 @@ namespace RawImageVisualizer
         private SpriteBatch foregroundBatch;
         private Texture2D touchSprite;
         private readonly Vector2 spriteOrigin = new Vector2(0f, 0f);
+        
+        // Simple text display
+        private SpriteFont font;
+        private string touchStatus = "No touch detected";
 
         // normalizedImageUpdated is accessed from differet threads. Mark it
         // volatile to make sure that every read gets the latest value.
@@ -56,11 +60,12 @@ namespace RawImageVisualizer
         /// </summary>
         public App1()
         {
+            RawImageVisualizer.Program.sw.WriteLine("DEBUG: App1 constructor called");
             graphics = new GraphicsDeviceManager(this);
             graphics.GraphicsProfile = GraphicsProfile.HiDef;
             SocketThreadManager.CreateServer("169.254.185.113", 666);
-            Console.WriteLine("HELLO");
-            
+            RawImageVisualizer.Program.sw.WriteLine("DEBUG: Server created");
+            RawImageVisualizer.Program.sw.WriteLine("HELLO");
         }
 
         /// <summary>
@@ -71,15 +76,18 @@ namespace RawImageVisualizer
         /// </summary>
         protected override void Initialize()
         {
+            RawImageVisualizer.Program.sw.WriteLine("DEBUG: Initialize() called");
             IsMouseVisible = true; // easier for debugging not to "lose" mouse
             SetWindowOnSurface();
+            RawImageVisualizer.Program.sw.WriteLine("DEBUG: Window set on surface");
             InitializeSurfaceInput();
+            RawImageVisualizer.Program.sw.WriteLine("DEBUG: Surface input initialized");
 
             // Subscribe to surface window availability events
             ApplicationServices.WindowInteractive += OnWindowInteractive;
             ApplicationServices.WindowNoninteractive += OnWindowNoninteractive;
             ApplicationServices.WindowUnavailable += OnWindowUnavailable;
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false; // Make window smaller so you can see console
             base.Initialize();
         }
 
@@ -152,9 +160,11 @@ namespace RawImageVisualizer
             // Create a target for surface input.
             touchTarget = new TouchTarget(Window.Handle, EventThreadChoice.OnBackgroundThread);
             touchTarget.EnableInput();
+            Console.WriteLine("DEBUG: TouchTarget created and input enabled");
 
             // Enable the normalized raw-image.
             touchTarget.EnableImage(ImageType.Normalized);
+            Console.WriteLine("DEBUG: Normalized image enabled");
 
             // Hook up a callback to get notified when there is a new frame available
             touchTarget.FrameReceived += OnTouchTargetFrameReceived;
@@ -183,6 +193,8 @@ namespace RawImageVisualizer
         Stopwatch frameTimer = new Stopwatch();
         private void OnTouchTargetFrameReceived(object sender, FrameReceivedEventArgs e)
         {
+            RawImageVisualizer.Program.sw.WriteLine("DEBUG: OnTouchTargetFrameReceived called!");
+            
             // Lock the syncObject object so normalizedImage isn't changed while the Update method is using it
             
             lock (syncObject)
@@ -214,6 +226,8 @@ namespace RawImageVisualizer
                         1920, 1080);// InteractiveSurface.PrimarySurfaceDevice.WorkingAreaWidth,
                         //InteractiveSurface.PrimarySurfaceDevice.WorkingAreaHeight);
                     
+                    // Simple touch detection
+                    DetectTouches();
                 }
                 frameTimer.Stop();
                 if (!compressing)//ensures we don't create a backlog of threads
@@ -241,6 +255,47 @@ namespace RawImageVisualizer
             
         }
 
+        private void DetectTouches()
+        {
+            if (normalizedImage == null) 
+            {
+                RawImageVisualizer.Program.sw.WriteLine("DEBUG: normalizedImage is null");
+                return;
+            }
+            
+            RawImageVisualizer.Program.sw.WriteLine("DEBUG: DetectTouches called, image length: " + normalizedImage.Length);
+            
+            int touchCount = 0;
+            const int TOUCH_THRESHOLD = 50;
+            
+            // Simple touch detection: count pixels above threshold
+            int maxValue = 0;
+            for (int i = 0; i < normalizedImage.Length; i++)
+            {
+                if (normalizedImage[i] > maxValue)
+                    maxValue = normalizedImage[i];
+                    
+                if (normalizedImage[i] > TOUCH_THRESHOLD)
+                {
+                    touchCount++;
+                }
+            }
+            
+            RawImageVisualizer.Program.sw.WriteLine($"DEBUG: Max pixel value: {maxValue}, Touch count: {touchCount}");
+            
+            // Update touch status and print to console
+            if (touchCount > 0)
+            {
+                touchStatus = $"Touch detected! Intensity: {touchCount} pixels";
+                RawImageVisualizer.Program.sw.WriteLine(touchStatus);
+                System.Diagnostics.Debug.WriteLine(touchStatus);
+                // MessageBox.Show(touchStatus); // Uncomment this to see popup messages
+            }
+            else
+            {
+                touchStatus = "No touch detected";
+            }
+        }
 
         void compressRawimage()
         {
@@ -316,18 +371,11 @@ namespace RawImageVisualizer
                 applicationLoadCompleteSignalled = true;
             }
 
-            // This controls the color of the image data.
-            graphics.GraphicsDevice.Clear(Color.White);
+            // Simple black background
+            graphics.GraphicsDevice.Clear(Color.Black);
 
-            foregroundBatch.Begin(SpriteSortMode.Immediate, textureBlendState);
-            // draw the sprite of RawImage
-            if (touchSprite != null)
-            {
-                // Adds the rawimage sprite to Spritebatch for drawing.
-                foregroundBatch.Draw(touchSprite, spriteOrigin, null, Color.White,
-                   0f, spriteOrigin, scale, SpriteEffects.FlipVertically, 0f);
-            }
-            foregroundBatch.End();
+            // Simple message - touch detection is printed to console
+            // The window just shows that the app is running
 
             base.Draw(gameTime);
         }
