@@ -8,38 +8,49 @@ Project for the advanced graphics and interaction course DH2413 at KTH
 src/
 ├── Digosaur/                    # Godot project for track visualization
 │   ├── Main.tscn               # Main scene file
-│   ├── surface_track.gd        # Surface table input handler
+│   ├── mouse_track.gd          # Mouse input handler for track creation
 │   ├── tracks.tres             # Shader for track rendering
 │   ├── Images/                 # Textures for the ground
-│   └── addons/                 # Godot plugins
-│       └── surface_track_plugin/
-│           ├── plugin.cfg      # Plugin configuration
-│           ├── surface_track_plugin.gd
-│           ├── surface_track_node.gd
-│           └── SurfaceTrackLibrary.dll  # Native DLL (built on Surface table)
-├── SurfaceTrackLibrary/        # C# DLL project
-│   ├── SurfaceTrackLibrary.cs  # Main library code
-│   └── SurfaceTrackLibrary.csproj
-└── Surface_table_code/         # Microsoft Surface SDK files
-    ├── Surface/                # SDK source code
-    └── v2.0/                  # SDK runtime files
+│   │   ├── snow_albedo.png     # Snow albedo texture
+│   │   └── snow_height.png     # Snow height map
+│   ├── 3D models/              # 3D model assets
+│   │   └── dogbone3.glb        # Dog bone 3D model
+│   ├── icon.svg                # Project icon
+│   └── project.godot           # Godot project configuration
+├── RawImageVisualizer/         # C# application for Surface table communication
+│   ├── App1.cs                 # Main application logic
+│   ├── Server.cs               # Network server implementation
+│   ├── ServerThread.cs         # Server threading logic
+│   ├── SocketThreadManager.cs  # Socket management
+│   ├── StaticNetworkUtilities.cs # Network utilities
+│   └── RawImageVisualizer.csproj # C# project file
+├── Surface_table_code/         # Microsoft Surface SDK files
+│   ├── Surface/                # SDK source code
+│   │   ├── Microsoft.Surface/  # Surface application services
+│   │   └── Microsoft.Surface.Core/ # Core Surface functionality
+│   └── v2.0/                   # SDK runtime files
+└── SurfaceTrackLibrary.dll     # Native DLL for Surface table integration
 ```
 
 ## Quick Start
 
-1. **Clone the repository** to your Surface table
-2. **Build the DLL**:
+1. **Clone the repository** to your development machine
+2. **Build the C# application** (for Surface table communication):
    ```bash
-   cd src/SurfaceTrackLibrary
-   msbuild SurfaceTrackLibrary.csproj
+   cd src/RawImageVisualizer
+   msbuild RawImageVisualizer.csproj
    ```
-3. **Copy DLL to Godot plugin**:
-   ```bash
-   copy bin\Debug\SurfaceTrackLibrary.dll ..\Digosaur\addons\surface_track_plugin\
-   ```
-4. **Start Godot**: Open `src/Digosaur/` in Godot
-5. **Enable the plugin**: Project → Plugins → Enable "Surface Track Plugin"
-6. **Touch the Surface table** to create tracks!
+3. **Start Godot**: Open `src/Digosaur/` in Godot 4.4
+4. **Run the project**: The project uses mouse input to create tracks on the ground
+5. **For Surface table integration**: Run the RawImageVisualizer application on the Surface table to enable touch input
+
+## Features
+
+- **Real-time track rendering** using custom shaders
+- **Mouse input support** for track creation
+- **Surface table integration** via RawImageVisualizer application
+- **3D visualization** with customizable ground textures
+- **Particle system** for track effects
 
 ## GitHub Workflow Guidelines
 
