@@ -7,6 +7,8 @@ using System.Net.Sockets;
 using System.Threading;
 using System.IO;
 using System.Diagnostics;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace RawImageVisualizer
 {
@@ -20,6 +22,31 @@ namespace RawImageVisualizer
         private bool applicationLoadCompleteSignalled;
         private SpriteBatch foregroundBatch;
         private string touchStatus = "No touch detected";
+        
+        // Touch coordinate storage for TCP communication
+        public static int touchX = -1;
+        public static int touchY = -1;
+        public static int touchIntensity = 0;
+        public static bool touchActive = false;
+        
+        // Multi-touch support
+        public static List<TouchPoint> touchPoints = new List<TouchPoint>();
+        
+        public class TouchPoint
+        {
+            public int X { get; set; }
+            public int Y { get; set; }
+            public int Intensity { get; set; }
+            public int Size { get; set; }
+            
+            public TouchPoint(int x, int y, int intensity, int size)
+            {
+                X = x;
+                Y = y;
+                Intensity = intensity;
+                Size = size;
+            }
+        }
 
         // normalizedImageUpdated is accessed from differet threads. Mark it
         // volatile to make sure that every read gets the latest value.
@@ -247,35 +274,173 @@ namespace RawImageVisualizer
             
             RawImageVisualizer.Program.sw.WriteLine("DEBUG: DetectTouches called, image length: " + normalizedImage.Length);
             
-            int touchCount = 0;
             const int TOUCH_THRESHOLD = 50;
+            const int MIN_TOUCH_SIZE = 20; // Minimum pixels for a valid touch (increased)
+            const int MAX_TOUCH_DISTANCE = 80; // Maximum distance between touches to merge
+            const int MAX_TOUCHES = 5; // Maximum number of touches to detect
             
-            // Simple touch detection: count pixels above threshold
-            int maxValue = 0;
-            for (int i = 0; i < normalizedImage.Length; i++)
+            int width = normalizedMetrics.Width;
+            int height = normalizedMetrics.Height;
+            
+            // Clear previous touch points
+            touchPoints.Clear();
+            
+            // Create a visited array to avoid processing the same blob twice
+            bool[,] visited = new bool[width, height];
+            
+            // Find all touch blobs
+            for (int y = 0; y < height; y++)
             {
-                if (normalizedImage[i] > maxValue)
-                    maxValue = normalizedImage[i];
-                    
-                if (normalizedImage[i] > TOUCH_THRESHOLD)
+                for (int x = 0; x < width; x++)
                 {
-                    touchCount++;
+                    if (!visited[x, y] && normalizedImage[y * width + x] > TOUCH_THRESHOLD)
+                    {
+                        // Found a new touch blob, flood fill to find its boundaries
+                        TouchPoint touch = FloodFillTouch(x, y, width, height, TOUCH_THRESHOLD, visited);
+                        if (touch != null && touch.Size >= MIN_TOUCH_SIZE)
+                        {
+                            touchPoints.Add(touch);
+                        }
+                    }
                 }
             }
             
-            RawImageVisualizer.Program.sw.WriteLine($"DEBUG: Max pixel value: {maxValue}, Touch count: {touchCount}");
+            // Merge nearby touches (for hands that create multiple blobs)
+            MergeNearbyTouches(MAX_TOUCH_DISTANCE);
             
-            // Update touch status and print to console
-            if (touchCount > 0)
+            // Limit to maximum number of touches
+            if (touchPoints.Count > MAX_TOUCHES)
             {
-                touchStatus = $"Touch detected! Intensity: {touchCount} pixels";
+                // Keep only the largest touches
+                touchPoints.Sort((a, b) => b.Size.CompareTo(a.Size));
+                touchPoints = touchPoints.Take(MAX_TOUCHES).ToList();
+            }
+            
+            // Update touch status
+            if (touchPoints.Count > 0)
+            {
+                // For backward compatibility, use the first touch as primary
+                TouchPoint primaryTouch = touchPoints[0];
+                touchX = primaryTouch.X;
+                touchY = primaryTouch.Y;
+                touchIntensity = primaryTouch.Intensity;
+                touchActive = true;
+                
+                touchStatus = $"Multi-touch detected! {touchPoints.Count} touches: ";
+                foreach (var touch in touchPoints)
+                {
+                    touchStatus += $"({touch.X},{touch.Y}) ";
+                }
+                
                 RawImageVisualizer.Program.sw.WriteLine(touchStatus);
                 System.Diagnostics.Debug.WriteLine(touchStatus);
-                // MessageBox.Show(touchStatus); // Uncomment this to see popup messages
             }
             else
             {
+                // No touch detected
+                touchX = -1;
+                touchY = -1;
+                touchIntensity = 0;
+                touchActive = false;
                 touchStatus = "No touch detected";
+            }
+        }
+        
+        private TouchPoint FloodFillTouch(int startX, int startY, int width, int height, int threshold, bool[,] visited)
+        {
+            // Flood fill algorithm to find connected touch pixels
+            List<int> pixelsX = new List<int>();
+            List<int> pixelsY = new List<int>();
+            List<int> intensities = new List<int>();
+            
+            Queue<int> queueX = new Queue<int>();
+            Queue<int> queueY = new Queue<int>();
+            
+            queueX.Enqueue(startX);
+            queueY.Enqueue(startY);
+            visited[startX, startY] = true;
+            
+            while (queueX.Count > 0)
+            {
+                int x = queueX.Dequeue();
+                int y = queueY.Dequeue();
+                
+                if (x >= 0 && x < width && y >= 0 && y < height)
+                {
+                    int intensity = normalizedImage[y * width + x];
+                    if (intensity > threshold)
+                    {
+                        pixelsX.Add(x);
+                        pixelsY.Add(y);
+                        intensities.Add(intensity);
+                        
+                        // Check 8-connected neighbors
+                        for (int dx = -1; dx <= 1; dx++)
+                        {
+                            for (int dy = -1; dy <= 1; dy++)
+                            {
+                                int nx = x + dx;
+                                int ny = y + dy;
+                                if (nx >= 0 && nx < width && ny >= 0 && ny < height && !visited[nx, ny])
+                                {
+                                    visited[nx, ny] = true;
+                                    queueX.Enqueue(nx);
+                                    queueY.Enqueue(ny);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            if (pixelsX.Count > 0)
+            {
+                // Calculate center of mass
+                long totalX = 0, totalY = 0, totalIntensity = 0;
+                for (int i = 0; i < pixelsX.Count; i++)
+                {
+                    totalX += pixelsX[i] * intensities[i];
+                    totalY += pixelsY[i] * intensities[i];
+                    totalIntensity += intensities[i];
+                }
+                
+                int centerX = (int)(totalX / totalIntensity);
+                int centerY = (int)(totalY / totalIntensity);
+                int avgIntensity = (int)(totalIntensity / pixelsX.Count);
+                
+                return new TouchPoint(centerX, centerY, avgIntensity, pixelsX.Count);
+            }
+            
+            return null;
+        }
+        
+        private void MergeNearbyTouches(int maxDistance)
+        {
+            // Merge touches that are too close together (likely from the same hand)
+            for (int i = touchPoints.Count - 1; i >= 0; i--)
+            {
+                for (int j = i - 1; j >= 0; j--)
+                {
+                    TouchPoint touch1 = touchPoints[i];
+                    TouchPoint touch2 = touchPoints[j];
+                    
+                    // Calculate distance between touches
+                    double distance = Math.Sqrt(Math.Pow(touch1.X - touch2.X, 2) + Math.Pow(touch1.Y - touch2.Y, 2));
+                    
+                    if (distance < maxDistance)
+                    {
+                        // Merge the two touches
+                        int totalSize = touch1.Size + touch2.Size;
+                        int mergedX = (touch1.X * touch1.Size + touch2.X * touch2.Size) / totalSize;
+                        int mergedY = (touch1.Y * touch1.Size + touch2.Y * touch2.Size) / totalSize;
+                        int mergedIntensity = (touch1.Intensity + touch2.Intensity) / 2;
+                        
+                        // Replace touch2 with merged touch, remove touch1
+                        touchPoints[j] = new TouchPoint(mergedX, mergedY, mergedIntensity, totalSize);
+                        touchPoints.RemoveAt(i);
+                        break; // Move to next touch
+                    }
+                }
             }
         }
 

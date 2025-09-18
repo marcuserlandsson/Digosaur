@@ -129,6 +129,10 @@ public class ServerThread
             case 3:
                 ////Debug.Log("3");
                 break;
+            case 4:
+                SendTouchData();
+                ////Debug.Log("4");
+                break;
             default:
                 //Debug.Log("Invalid Request: " + req);
                 return false;
@@ -138,7 +142,7 @@ public class ServerThread
 
     protected virtual bool ValidateRequest(int req)
     {
-        if ((req >= -1) && (req < 4))
+        if ((req >= -1) && (req < 5))
         {
             return true;
         }
@@ -192,6 +196,53 @@ public class ServerThread
         RawImageVisualizer.Program.sw.WriteLine("sent");
         
 
+    }
+
+    void SendTouchData()
+    {
+        // Get current touch data from App1
+        if (RawImageVisualizer.App1.normalizedImage != null)
+        {
+            // Simple touch data format: "touch:x:y:intensity" or "release"
+            string touchData = GetTouchCoordinates();
+            
+            // Convert string to bytes
+            byte[] data = System.Text.Encoding.UTF8.GetBytes(touchData);
+            
+            // Send data length first, then the data
+            stream.Write(BitConverter.GetBytes(data.Length), 0, 4);
+            stream.Write(data, 0, data.Length);
+            
+            RawImageVisualizer.Program.sw.WriteLine("Sent touch data: " + touchData);
+        }
+        else
+        {
+            // No touch data available
+            string noTouch = "none";
+            byte[] data = System.Text.Encoding.UTF8.GetBytes(noTouch);
+            stream.Write(BitConverter.GetBytes(data.Length), 0, 4);
+            stream.Write(data, 0, data.Length);
+        }
+    }
+
+    string GetTouchCoordinates()
+    {
+        // Get all touch coordinates from App1
+        if (RawImageVisualizer.App1.touchPoints.Count > 0)
+        {
+            string result = "multi_touch:";
+            for (int i = 0; i < RawImageVisualizer.App1.touchPoints.Count; i++)
+            {
+                var touch = RawImageVisualizer.App1.touchPoints[i];
+                if (i > 0) result += "|";
+                result += $"{touch.X}:{touch.Y}:{touch.Intensity}:{touch.Size}";
+            }
+            return result;
+        }
+        else
+        {
+            return "release";
+        }
     }
 
 }
