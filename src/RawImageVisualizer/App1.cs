@@ -19,11 +19,6 @@ namespace RawImageVisualizer
         private TouchTarget touchTarget;
         private bool applicationLoadCompleteSignalled;
         private SpriteBatch foregroundBatch;
-        private Texture2D touchSprite;
-        private readonly Vector2 spriteOrigin = new Vector2(0f, 0f);
-        
-        // Simple text display
-        private SpriteFont font;
         private string touchStatus = "No touch detected";
 
         // normalizedImageUpdated is accessed from differet threads. Mark it
@@ -39,21 +34,10 @@ namespace RawImageVisualizer
         private ImageMetrics normalizedMetrics;
 
 
-        // For Scaling the RawImage back to full screen.
-        private float scale;
 
         // Something to lock to deal with asynchronous frame updates
         private readonly object syncObject = new object();
 
-        // Blend state used when drawing the raw image data on the screen.  Results
-        // in a black background with image data shown in the color used to clear the display.
-        private readonly BlendState textureBlendState = new BlendState
-                                                            {
-                                                                AlphaDestinationBlend = Blend.One,
-                                                                AlphaSourceBlend = Blend.Zero,
-                                                                ColorDestinationBlend = Blend.SourceAlpha,
-                                                                ColorSourceBlend = Blend.Zero
-                                                            };
 
         /// <summary>
         /// Default constructor.
@@ -211,9 +195,7 @@ namespace RawImageVisualizer
                             out normalizedImage,
                             out normalizedMetrics))
                     {
-                        scale = (InteractiveSurface.PrimarySurfaceDevice == null)
-                                    ? 1.0f
-                                    : (float)InteractiveSurface.PrimarySurfaceDevice.WorkingAreaWidth / normalizedMetrics.Width;
+                        // Image data initialized successfully
                     }
                 }
                 else
@@ -327,32 +309,7 @@ namespace RawImageVisualizer
             // Lock the syncObject object so the normalized image and metrics aren't updated while this method is using them
             lock (syncObject)
             {
-                // Don't bother if the app isn't visible, or if the image hasn't been updates since the last update
-                if (normalizedImageUpdated && 
-                    (ApplicationServices.WindowAvailability != WindowAvailability.Unavailable))
-                {
-                    if (normalizedMetrics != null)
-                    {
-                        if (touchSprite == null)
-                        {
-                            // Creating a Sprite from the rawimage metrics data
-                            touchSprite = new Texture2D(graphics.GraphicsDevice,
-                                                          normalizedMetrics.Width,
-                                                          normalizedMetrics.Height,
-                                                          true,
-                                                          SurfaceFormat.Alpha8);
-                        }
-
-                        // Texture2D requires that the texture is not set on the device when updating it, so set it null               
-                        graphics.GraphicsDevice.Textures[0] = null;
-
-                        // Setting the Texture2D with normalized rawimage data.
-                        touchSprite.SetData<Byte>(normalizedImage,
-                                                  0,
-                                                  normalizedMetrics.Width * normalizedMetrics.Height);
-                    }
-                }
-                // reset the flag
+                // Reset the flag - no graphics rendering needed
                 normalizedImageUpdated = false;
             }
             base.Update(gameTime);
@@ -394,10 +351,6 @@ namespace RawImageVisualizer
                 SocketThreadManager.Alive = false;
                 Thread.Sleep(500);
                 // Release  managed resources.
-                if (touchSprite != null)
-                {
-                    touchSprite.Dispose();
-                }
                 if (foregroundBatch != null)
                 {
                     foregroundBatch.Dispose();
