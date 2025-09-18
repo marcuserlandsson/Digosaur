@@ -369,6 +369,11 @@ namespace RawImageVisualizer
                 // Dismiss the loading screen now that we are starting to draw
                 ApplicationServices.SignalApplicationLoadComplete();
                 applicationLoadCompleteSignalled = true;
+                
+                // Make window completely transparent and unobtrusive
+                System.Windows.Forms.Form form = (System.Windows.Forms.Form)System.Windows.Forms.Form.FromHandle(Window.Handle);
+                form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None; // Remove border completely
+                form.TopMost = false; // Don't keep it on top
             }
 
             // Simple black background
