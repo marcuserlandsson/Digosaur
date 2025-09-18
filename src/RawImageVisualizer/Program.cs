@@ -21,7 +21,7 @@ namespace RawImageVisualizer
         {
             try
             {
-                sw = new StreamWriter("PrintOutput.txt");
+                sw = new StreamWriter("printOutput.txt");
                 sw.AutoFlush = true;
                 sw.WriteLine("DEBUG: Program.Main() started successfully");
             }

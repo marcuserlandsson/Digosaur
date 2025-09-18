@@ -74,7 +74,7 @@ namespace RawImageVisualizer
             RawImageVisualizer.Program.sw.WriteLine("DEBUG: App1 constructor called");
             graphics = new GraphicsDeviceManager(this);
             graphics.GraphicsProfile = GraphicsProfile.HiDef;
-            SocketThreadManager.CreateServer("169.254.185.113", 666);
+            SocketThreadManager.CreateServer("127.0.0.1", 666);
             RawImageVisualizer.Program.sw.WriteLine("DEBUG: Server created");
             RawImageVisualizer.Program.sw.WriteLine("HELLO");
         }
