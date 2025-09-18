@@ -272,6 +272,29 @@ namespace RawImageVisualizer
                 return;
             }
             
+            // Quick check: if no pixels above threshold, skip expensive processing
+            bool hasTouchPixels = false;
+            for (int i = 0; i < normalizedImage.Length; i += 4) // Check every 4th pixel for speed
+            {
+                if (normalizedImage[i] > 50)
+                {
+                    hasTouchPixels = true;
+                    break;
+                }
+            }
+            
+            if (!hasTouchPixels)
+            {
+                // No touch detected, clear previous touches
+                touchPoints.Clear();
+                touchX = -1;
+                touchY = -1;
+                touchIntensity = 0;
+                touchActive = false;
+                touchStatus = "No touch detected";
+                return;
+            }
+            
             RawImageVisualizer.Program.sw.WriteLine("DEBUG: DetectTouches called, image length: " + normalizedImage.Length);
             
             const int TOUCH_THRESHOLD = 50;
@@ -288,10 +311,10 @@ namespace RawImageVisualizer
             // Create a visited array to avoid processing the same blob twice
             bool[,] visited = new bool[width, height];
             
-            // Find all touch blobs
-            for (int y = 0; y < height; y++)
+            // Find all touch blobs (optimized: skip every 2nd pixel for speed)
+            for (int y = 0; y < height; y += 2)
             {
-                for (int x = 0; x < width; x++)
+                for (int x = 0; x < width; x += 2)
                 {
                     if (!visited[x, y] && normalizedImage[y * width + x] > TOUCH_THRESHOLD)
                     {
@@ -348,10 +371,9 @@ namespace RawImageVisualizer
         
         private TouchPoint FloodFillTouch(int startX, int startY, int width, int height, int threshold, bool[,] visited)
         {
-            // Flood fill algorithm to find connected touch pixels
-            List<int> pixelsX = new List<int>();
-            List<int> pixelsY = new List<int>();
-            List<int> intensities = new List<int>();
+            // Optimized flood fill - only check 4-connected neighbors (faster than 8-connected)
+            long totalX = 0, totalY = 0, totalIntensity = 0;
+            int pixelCount = 0;
             
             Queue<int> queueX = new Queue<int>();
             Queue<int> queueY = new Queue<int>();
@@ -360,7 +382,7 @@ namespace RawImageVisualizer
             queueY.Enqueue(startY);
             visited[startX, startY] = true;
             
-            while (queueX.Count > 0)
+            while (queueX.Count > 0 && pixelCount < 1000) // Limit to prevent infinite loops
             {
                 int x = queueX.Dequeue();
                 int y = queueY.Dequeue();
@@ -370,45 +392,47 @@ namespace RawImageVisualizer
                     int intensity = normalizedImage[y * width + x];
                     if (intensity > threshold)
                     {
-                        pixelsX.Add(x);
-                        pixelsY.Add(y);
-                        intensities.Add(intensity);
+                        totalX += x * intensity;
+                        totalY += y * intensity;
+                        totalIntensity += intensity;
+                        pixelCount++;
                         
-                        // Check 8-connected neighbors
-                        for (int dx = -1; dx <= 1; dx++)
+                        // Check only 4-connected neighbors (faster than 8-connected)
+                        if (x + 1 < width && !visited[x + 1, y])
                         {
-                            for (int dy = -1; dy <= 1; dy++)
-                            {
-                                int nx = x + dx;
-                                int ny = y + dy;
-                                if (nx >= 0 && nx < width && ny >= 0 && ny < height && !visited[nx, ny])
-                                {
-                                    visited[nx, ny] = true;
-                                    queueX.Enqueue(nx);
-                                    queueY.Enqueue(ny);
-                                }
-                            }
+                            visited[x + 1, y] = true;
+                            queueX.Enqueue(x + 1);
+                            queueY.Enqueue(y);
+                        }
+                        if (x - 1 >= 0 && !visited[x - 1, y])
+                        {
+                            visited[x - 1, y] = true;
+                            queueX.Enqueue(x - 1);
+                            queueY.Enqueue(y);
+                        }
+                        if (y + 1 < height && !visited[x, y + 1])
+                        {
+                            visited[x, y + 1] = true;
+                            queueX.Enqueue(x);
+                            queueY.Enqueue(y + 1);
+                        }
+                        if (y - 1 >= 0 && !visited[x, y - 1])
+                        {
+                            visited[x, y - 1] = true;
+                            queueX.Enqueue(x);
+                            queueY.Enqueue(y - 1);
                         }
                     }
                 }
             }
             
-            if (pixelsX.Count > 0)
+            if (pixelCount > 0 && totalIntensity > 0)
             {
-                // Calculate center of mass
-                long totalX = 0, totalY = 0, totalIntensity = 0;
-                for (int i = 0; i < pixelsX.Count; i++)
-                {
-                    totalX += pixelsX[i] * intensities[i];
-                    totalY += pixelsY[i] * intensities[i];
-                    totalIntensity += intensities[i];
-                }
-                
                 int centerX = (int)(totalX / totalIntensity);
                 int centerY = (int)(totalY / totalIntensity);
-                int avgIntensity = (int)(totalIntensity / pixelsX.Count);
+                int avgIntensity = (int)(totalIntensity / pixelCount);
                 
-                return new TouchPoint(centerX, centerY, avgIntensity, pixelsX.Count);
+                return new TouchPoint(centerX, centerY, avgIntensity, pixelCount);
             }
             
             return null;
