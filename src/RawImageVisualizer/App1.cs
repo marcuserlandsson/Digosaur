@@ -352,7 +352,7 @@ namespace RawImageVisualizer
                 touchStatus = $"Multi-touch detected! {touchPoints.Count} touches: ";
                 foreach (var touch in touchPoints)
                 {
-                    touchStatus += $"({touch.X},{touch.Y}) ";
+                    touchStatus += $"({touch.X},{touch.Y},{touch.Size}) ";
                 }
                 
                 RawImageVisualizer.Program.sw.WriteLine(touchStatus);
@@ -398,29 +398,33 @@ namespace RawImageVisualizer
                         pixelCount++;
                         
                         // Check only 4-connected neighbors (faster than 8-connected)
-                        if (x + 1 < width && !visited[x + 1, y])
+                        if (x + 2 < width && !visited[x + 2, y])
                         {
                             visited[x + 1, y] = true;
-                            queueX.Enqueue(x + 1);
+                            visited[x + 2, y] = true;
+                            queueX.Enqueue(x + 2);
                             queueY.Enqueue(y);
                         }
-                        if (x - 1 >= 0 && !visited[x - 1, y])
+                        if (x - 2 >= 0 && !visited[x - 2, y])
                         {
                             visited[x - 1, y] = true;
-                            queueX.Enqueue(x - 1);
+                            visited[x - 2, y] = true;
+                            queueX.Enqueue(x - 2);
                             queueY.Enqueue(y);
                         }
-                        if (y + 1 < height && !visited[x, y + 1])
+                        if (y + 2 < height && !visited[x, y + 2])
                         {
                             visited[x, y + 1] = true;
+                            visited[x, y + 2] = true;
                             queueX.Enqueue(x);
-                            queueY.Enqueue(y + 1);
+                            queueY.Enqueue(y + 2);
                         }
-                        if (y - 1 >= 0 && !visited[x, y - 1])
+                        if (y - 2 >= 0 && !visited[x, y - 2])
                         {
                             visited[x, y - 1] = true;
+                            visited[x, y - 2] = true;
                             queueX.Enqueue(x);
-                            queueY.Enqueue(y - 1);
+                            queueY.Enqueue(y - 2);
                         }
                     }
                 }
