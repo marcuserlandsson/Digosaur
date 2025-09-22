@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=3 uid="uid://ko3ojv2ietf3"]
+
+[ext_resource type="Texture2D" uid="uid://dt331qt4j7bn6" path="res://textures/Wall/brick_wall_006_diff_4k.png" id="1_brh1u"]
+[ext_resource type="Texture2D" uid="uid://bpuuwwivbwak2" path="res://textures/Floor/rock_tile_floor_diff_4k.png" id="1_xx41a"]
+[ext_resource type="Texture2D" uid="uid://d01ec84t24jbx" path="res://textures/Wall/brick_wall_006_nor_gl_4k.png" id="2_n4p8j"]
+[ext_resource type="Texture2D" uid="uid://1piej4d6rs5l" path="res://textures/Floor/rock_tile_floor_nor_gl_4k.png" id="2_upo72"]
+[ext_resource type="Texture2D" uid="uid://dwtxo056hwww" path="res://textures/Floor/rock_tile_floor_rough_4k.png" id="3_ewrqf"]
+[ext_resource type="Texture2D" uid="uid://n101pawo3ffw" path="res://textures/Wall/brick_wall_006_rough_4k.png" id="3_jms4e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_77koe"]
+albedo_texture = ExtResource("1_brh1u")
+roughness_texture = ExtResource("3_jms4e")
+normal_enabled = true
+normal_texture = ExtResource("2_n4p8j")
+uv1_scale = Vector3(2.01, 2.01, 2.01)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brh1u"]
+albedo_texture = ExtResource("1_xx41a")
+roughness_texture = ExtResource("3_ewrqf")
+normal_enabled = true
+normal_texture = ExtResource("2_upo72")
+uv1_scale = Vector3(13, 13, 13)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7jw1t"]
+material = SubResource("StandardMaterial3D_brh1u")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_n4p8j"]
+
+[node name="Museum" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.82886, -0.559443, 0.00386416, 0.091618, -0.128919, 0.987414, -0.551904, 0.818781, 0.158111, 1.30606, 18.5273, -3.39016)
+shadow_enabled = true
+
+[node name="Back wall" type="CSGBox3D" parent="."]
+transform = Transform3D(32.89, 0, 0, 0, 40, 0, 0, 0, 0.5, 0, 1, -10)
+material = SubResource("StandardMaterial3D_77koe")
+
+[node name="Right wall" type="CSGBox3D" parent="."]
+transform = Transform3D(-2.74684, 0, 0.460252, 0, 40, 0, -6.47115, 0, -0.195366, 16.86, 1, -6.7)
+
+[node name="Left wall" type="CSGBox3D" parent="."]
+transform = Transform3D(2.74684, 0, 0.460252, 0, 40, 0, -6.47115, 0, 0.195366, -16.8628, 1, -6.70011)
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(26.75, 0, 0, 0, 26.75, 0, 0, 0, 26.75, 0, 0, 0)
+mesh = SubResource("PlaneMesh_7jw1t")
+
+[node name="Human test" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.765, 0, 0, 0, 1.765, 0, 0, 0, 1.765, 0, 1.76, -4.44396)
+mesh = SubResource("CapsuleMesh_n4p8j")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.376, 8.26362)
