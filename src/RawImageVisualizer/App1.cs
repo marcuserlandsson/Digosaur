@@ -352,7 +352,7 @@ namespace RawImageVisualizer
                 touchStatus = $"Multi-touch detected! {touchPoints.Count} touches: ";
                 foreach (var touch in touchPoints)
                 {
-                    touchStatus += $"({touch.X},{touch.Y},{touch.Size}) ";
+                    touchStatus += $"({touch.X},{touch.Y},{touch.Intensity},{touch.Size}) ";
                 }
                 
                 RawImageVisualizer.Program.sw.WriteLine(touchStatus);

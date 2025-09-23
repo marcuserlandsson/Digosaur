@@ -87,7 +87,7 @@ func parse_touch_data(touch_string: String):
 		
 		print("TCP Client: Detected ", touches.size(), " touch(es):")
 		for i in range(touches.size()):
-			var touch_parts = touches[i].split(":")
+			var touch_parts = touches[i].split(",")
 			if touch_parts.size() >= 4:
 				var x = int(touch_parts[0])
 				var y = int(touch_parts[1])
