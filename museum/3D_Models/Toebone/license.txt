@@ -1,0 +1,11 @@
+Model Information:
+* title:	Theropod Toe Bone
+* source:	https://sketchfab.com/3d-models/theropod-toe-bone-92855f7891cc43b280d8acf5e9df70c6
+* author:	Olof Moleman (https://sketchfab.com/lordtrilobite)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Theropod Toe Bone" (https://sketchfab.com/3d-models/theropod-toe-bone-92855f7891cc43b280d8acf5e9df70c6) by Olof Moleman (https://sketchfab.com/lordtrilobite) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
