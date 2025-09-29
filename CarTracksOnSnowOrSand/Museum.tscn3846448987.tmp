@@ -79,7 +79,7 @@ transform = Transform3D(26.75, 0, 0, 0, 26.75, 0, 0, 0, 26.75, -92.0443, 9.05291
 mesh = SubResource("PlaneMesh_7jw1t")
 
 [node name="Floor2" type="MeshInstance3D" parent="."]
-transform = Transform3D(15, 0, 0, 0, 30, 0, 0, 0, 15, 47.9334, 0, 0)
+transform = Transform3D(15, 0, 0, 0, 30, 0, 0, 0, 15, 0, 0, 0)
 mesh = SubResource("PlaneMesh_7jw1t")
 
 [node name="Human test" type="MeshInstance3D" parent="."]
@@ -90,58 +90,43 @@ mesh = SubResource("CapsuleMesh_n4p8j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.0443, 14.4289, 21.0271)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 1, 47.9334, 15, 15)
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 1, 0, 15, 15)
 mesh = SubResource("BoxMesh_2gi2n")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.31134e-06, 0, 1, 0, 30, 0, -30, 0, -4.37114e-08, 62.9334, 15, 0)
+transform = Transform3D(-1.31134e-06, 0, 1, 0, 30, 0, -30, 0, -4.37114e-08, 15, 15, 0)
 mesh = SubResource("BoxMesh_j7beh")
 
 [node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(-0.737278, 0.141616, -0.66058, 0, 0.977783, 0.209618, 0.67559, 0.154547, -0.720898, 28.3634, 17.945, -19.025)
+transform = Transform3D(-0.737278, 0.141616, -0.660581, 0, 0.977783, 0.209619, 0.67559, 0.154547, -0.720898, -19.57, 17.945, -19.025)
 current = true
 
 [node name="Pedestal" parent="." instance=ExtResource("10_qfqip")]
-transform = Transform3D(0.555, 0, 0, 0, 0.555, 0, 0, 0, 0.555, 59.3646, -0.137555, -8.44199)
+transform = Transform3D(0.555, 0, 0, 0, 0.555, 0, 0, 0, 0.555, 11.4312, -0.137555, -8.44199)
 
 [node name="Pedestal5" parent="." instance=ExtResource("10_qfqip")]
-transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, 47.6773, -0.137555, -0.816595)
-
-[node name="Pedestal7" parent="." instance=ExtResource("10_qfqip")]
-transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, 39.9125, -0.137555, -0.816595)
-
-[node name="Pedestal6" parent="." instance=ExtResource("10_qfqip")]
-transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, 47.6773, -0.137555, -8.35427)
+transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, -0.256098, -0.137555, -0.816595)
 
 [node name="Pedestal4" parent="." instance=ExtResource("10_qfqip")]
-transform = Transform3D(0.555, 0, 0, 0, 0.555, 0, 0, 0, 0.555, 40.1346, -0.137555, 11.3945)
+transform = Transform3D(0.555, 0, 0, 0, 0.555, 0, 0, 0, 0.555, -7.79877, -0.137555, 11.3945)
 
 [node name="Pedestal3" parent="." instance=ExtResource("10_qfqip")]
-transform = Transform3D(0.555, 0, 0, 0, 0.555, 0, 0, 0, 0.555, 50.4829, -0.137555, 10.8127)
+transform = Transform3D(0.555, 0, 0, 0, 0.555, 0, 0, 0, 0.555, 2.54949, -0.137555, 10.8127)
 
 [node name="Pedestal2" parent="." instance=ExtResource("10_qfqip")]
-transform = Transform3D(0.555, 0, 0, 0, 0.555, 0, 0, 0, 0.555, 59.3646, -0.137555, 2.09738)
+transform = Transform3D(0.555, 0, 0, 0, 0.555, 0, 0, 0, 0.555, 11.4312, -0.137555, 2.09738)
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("11_bjlqr")]
-transform = Transform3D(0.0755574, -0.00124695, -2.16368, 4.35179e-05, 2.165, -0.00124619, 2.16368, 0, 0.0755574, 50.287, 7.29788, 2.25362)
+transform = Transform3D(0.0755574, -0.00124695, -2.16368, 4.35179e-05, 2.165, -0.00124619, 2.16368, 0, 0.0755574, 2.35359, 7.29788, 2.25362)
 
 [node name="Sketchfab_Scene2" parent="." instance=ExtResource("12_jk1hh")]
-transform = Transform3D(1.6385, 0, -0.695501, 0, 1.78, 0, 0.695501, 0, 1.6385, 58.8941, 7.64635, -8.15762)
+transform = Transform3D(1.6385, 0, -0.695501, 0, 1.78, 0, 0.695501, 0, 1.6385, 10.9607, 7.64635, -8.15762)
 
 [node name="Sketchfab_Scene3" parent="." instance=ExtResource("13_jk1hh")]
-transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.12, 50.3601, 6.88225, 10.8909)
+transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.12, 2.42677, 6.88225, 10.8909)
 
 [node name="Sketchfab_Scene4" parent="." instance=ExtResource("14_b6b7p")]
-transform = Transform3D(-0.00305764, 0, 0.00395612, 0, 0.005, 0, -0.00395612, 0, -0.00305764, 40.056, 7.64412, 10.9185)
+transform = Transform3D(-0.00305764, 0, 0.00395612, 0, 0.005, 0, -0.00395612, 0, -0.00305764, -7.87735, 7.64412, 10.9185)
 
 [node name="dogbone3" parent="." instance=ExtResource("15_hmial")]
-transform = Transform3D(0.318039, 0, -0.385812, 0, 0.5, 0, 0.385812, 0, 0.318039, 49.2591, 8.56894, -1.89369)
-visible = false
-
-[node name="dogbone4" parent="." instance=ExtResource("15_hmial")]
-transform = Transform3D(0.318039, 0, -0.385812, 0, 0.5, 0, 0.385812, 0, 0.318039, 49.2591, 8.56894, -9.84075)
-visible = false
-
-[node name="dogbone5" parent="." instance=ExtResource("15_hmial")]
-transform = Transform3D(0.318039, 0, -0.385812, 0, 0.5, 0, 0.385812, 0, 0.318039, 41.3229, 8.56894, -2.2302)
-visible = false
+transform = Transform3D(0.318039, 0, -0.385812, 0, 0.5, 0, 0.385812, 0, 0.318039, 1.32569, 8.56894, -1.89369)

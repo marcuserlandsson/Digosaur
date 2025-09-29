@@ -1,15 +1,18 @@
 extends Node3D
 
 func _ready():
-	# Hide all bones first
 	$dogbone3.visible = false
+	$dogbone4.visible = false
+	$dogbone5.visible = false
 
+func _process(delta):
+	print("Bones array museum:", Global.bones)
 	for bone in Global.bones:
+		print("Museum shows:", bone)
 		if bone == "dogbone3":
-			show_bone_with_delay($dogbone3, 1.5)  # delay in seconds
-
-
-func show_bone_with_delay(bone_node: Node3D, delay: float) -> void:
-	await get_tree().create_timer(delay).timeout
-	bone_node.visible = true
-	print("Bone appeared:", bone_node.name)
+			$dogbone3.visible = true
+		if bone == "dogbone4":
+			$dogbone4.visible = true
+		if bone == "dogbone5":
+			$dogbone5.visible = true
+		

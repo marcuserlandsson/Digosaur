@@ -1,11 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://dtkptpruv1ay6"]
+[gd_scene load_steps=23 format=3 uid="uid://dtkptpruv1ay6"]
 
 [ext_resource type="Script" uid="uid://hchqm6lfkw6u" path="res://main.gd" id="1_3dxm6"]
 [ext_resource type="Script" uid="uid://b0pj4o5nptdjs" path="res://mouse_track.gd" id="2_bwx1l"]
 [ext_resource type="Texture2D" uid="uid://1cujdx38cxxa" path="res://Images/snow_height.png" id="3_8neod"]
 [ext_resource type="Shader" uid="uid://lappm6o7lj1m" path="res://tracks.tres" id="3_tho10"]
 [ext_resource type="PackedScene" uid="uid://dik261ry07cdh" path="res://3D models/dogbone3.glb" id="4_cm0pq"]
-[ext_resource type="Script" uid="uid://ovts606tekj5" path="res://bones.gd" id="4_fos0i"]
+[ext_resource type="Script" uid="uid://ovts606tekj5" path="res://bone_3.gd" id="4_fos0i"]
+[ext_resource type="Script" uid="uid://dhowrl1nqhkgk" path="res://bone_4.gd" id="7_lgr22"]
+[ext_resource type="Script" uid="uid://dylr16puj2c42" path="res://bone_5.gd" id="8_trn2v"]
 
 [sub_resource type="Environment" id="Environment_cm0pq"]
 
@@ -62,6 +64,12 @@ colors = PackedColorArray(0, 0, 0, 1, 0.946903, 0.946903, 0.946903, 0.0530974, 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_3dxm6"]
 size = Vector3(1.47498, 4.02435, 11.2852)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_trn2v"]
+size = Vector3(0.222659, 0.112793, 0.628845)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_03owx"]
+size = Vector3(0.22583, 0.0957031, 0.623901)
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_3dxm6")
 
@@ -77,16 +85,11 @@ text = "Notes
 3. Actual game camera must NOT have cullmask in layer2
 4. Every VisualInstance outside SubViewport must NOT be in layer2"
 
-[node name="Camera3D2" type="Camera3D" parent="Digging"]
+[node name="Camera3D" type="Camera3D" parent="Digging"]
 transform = Transform3D(-1.32059e-08, -0.302115, -1.32059e-08, 0, -1.32059e-08, 0.302115, -0.302115, 1.32059e-08, 5.77247e-16, 0.78, 3.07185, 0)
 cull_mask = 1048573
 environment = SubResource("Environment_cm0pq")
 current = true
-
-[node name="Camera3D3" type="Camera3D" parent="Digging"]
-transform = Transform3D(-0.228009, 0.0275848, -0.196276, 0, 0.299175, 0.0420463, 0.198205, 0.0317327, -0.22579, -3.59889, 3.25046, -6.78278)
-cull_mask = 1048573
-environment = SubResource("Environment_cm0pq")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Digging"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86431, 4.69709, 3.92687)
@@ -114,7 +117,7 @@ shape = SubResource("BoxShape3D_0v47j")
 
 [node name="SubViewport" type="SubViewport" parent="Digging"]
 
-[node name="Camera3D" type="Camera3D" parent="Digging/SubViewport"]
+[node name="Camera3D3" type="Camera3D" parent="Digging/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6.66, 0)
 visible = false
 cull_mask = 1047554
@@ -134,20 +137,38 @@ gravity = Vector3(0, 0, 0)
 color = Color(0, 0, 0, 1)
 color_ramp = SubResource("Gradient_5n4dt")
 
-[node name="Bones" type="Node3D" parent="Digging"]
+[node name="bone3" type="Node3D" parent="Digging"]
 transform = Transform3D(0.00765452, 0.0544647, 0, -0.0544647, 0.00765452, 0, 0, 0, 0.055, 2.09973, 0.0986554, -0.106219)
 script = ExtResource("4_fos0i")
 
-[node name="dogbone3" parent="Digging/Bones" instance=ExtResource("4_cm0pq")]
+[node name="dogbone3" parent="Digging/bone3" instance=ExtResource("4_cm0pq")]
 
-[node name="dogbone4" parent="Digging/Bones" instance=ExtResource("4_cm0pq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.48059, -24.7656, -39.0511)
+[node name="Area3D" type="Area3D" parent="Digging/bone3"]
 
-[node name="dogbone5" parent="Digging/Bones" instance=ExtResource("4_cm0pq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.17788, -35.1355, 25.7116)
-
-[node name="Area3D" type="Area3D" parent="Digging/Bones"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Digging/Bones/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Digging/bone3/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.153628, 0.055069, 4.41806)
 shape = SubResource("BoxShape3D_3dxm6")
+
+[node name="bone4" type="Node3D" parent="Digging"]
+script = ExtResource("7_lgr22")
+
+[node name="dogbone4" parent="Digging/bone4" instance=ExtResource("4_cm0pq")]
+transform = Transform3D(0.00765452, 0.0544647, 0, -0.0544647, 0.00765452, 0, 0, 0, 0.055, 0.724237, 0.0986559, -2.25403)
+
+[node name="Area3D" type="Area3D" parent="Digging/bone4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Digging/bone4/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.723775, 0.099341, -2.01703)
+shape = SubResource("BoxShape3D_trn2v")
+
+[node name="bone5" type="Node3D" parent="Digging"]
+script = ExtResource("8_trn2v")
+
+[node name="dogbone5" parent="Digging/bone5" instance=ExtResource("4_cm0pq")]
+transform = Transform3D(0.00765452, 0.0544647, 0, -0.0544647, 0.00765452, 0, 0, 0, 0.055, 0.154106, 0.057257, 1.30792)
+
+[node name="Area3D" type="Area3D" parent="Digging/bone5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Digging/bone5/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.154785, 0.0631968, 1.54257)
+shape = SubResource("BoxShape3D_03owx")
