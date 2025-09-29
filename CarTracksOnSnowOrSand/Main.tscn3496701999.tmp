@@ -1,11 +1,16 @@
 [gd_scene load_steps=19 format=3 uid="uid://dtkptpruv1ay6"]
 
-[ext_resource type="Script" uid="uid://hchqm6lfkw6u" path="res://main.gd" id="1_3dxm6"]
 [ext_resource type="Script" uid="uid://b0pj4o5nptdjs" path="res://mouse_track.gd" id="2_bwx1l"]
 [ext_resource type="Texture2D" uid="uid://1cujdx38cxxa" path="res://Images/snow_height.png" id="3_8neod"]
 [ext_resource type="Shader" uid="uid://lappm6o7lj1m" path="res://tracks.tres" id="3_tho10"]
 [ext_resource type="PackedScene" uid="uid://dik261ry07cdh" path="res://3D models/dogbone3.glb" id="4_cm0pq"]
 [ext_resource type="Script" uid="uid://ovts606tekj5" path="res://bones.gd" id="4_fos0i"]
+
+[sub_resource type="Environment" id="Environment_i3pvo"]
+background_mode = 1
+background_color = Color(0, 0.298039, 0.298039, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Environment" id="Environment_cm0pq"]
 
@@ -63,9 +68,9 @@ colors = PackedColorArray(0, 0, 0, 1, 0.946903, 0.946903, 0.946903, 0.0530974, 1
 size = Vector3(1.47498, 4.02435, 11.2852)
 
 [node name="Main" type="Node3D"]
-script = ExtResource("1_3dxm6")
 
 [node name="Digging" type="Node3D" parent="."]
+transform = Transform3D(3.31, 0, 0, 0, 3.31, 0, 0, 0, 3.31, -32.2617, 0, 0)
 
 [node name="NOTES" type="Label3D" parent="Digging"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.17429, 0)
@@ -77,6 +82,11 @@ text = "Notes
 3. Actual game camera must NOT have cullmask in layer2
 4. Every VisualInstance outside SubViewport must NOT be in layer2"
 
+[node name="Camera3D" type="Camera3D" parent="Digging"]
+transform = Transform3D(0.704016, 0.42987, -0.565308, 0, 0.796003, 0.605293, 0.710184, -0.426136, 0.560399, -4.14, 1.126, 4.01)
+cull_mask = 1048573
+environment = SubResource("Environment_i3pvo")
+
 [node name="Camera3D2" type="Camera3D" parent="Digging"]
 transform = Transform3D(-1.32059e-08, -0.302115, -1.32059e-08, 0, -1.32059e-08, 0.302115, -0.302115, 1.32059e-08, 5.77247e-16, 0.78, 3.07185, 0)
 cull_mask = 1048573
@@ -87,6 +97,7 @@ current = true
 transform = Transform3D(-0.228009, 0.0275848, -0.196276, 0, 0.299175, 0.0420463, 0.198205, 0.0317327, -0.22579, -3.59889, 3.25046, -6.78278)
 cull_mask = 1048573
 environment = SubResource("Environment_cm0pq")
+current = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Digging"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86431, 4.69709, 3.92687)
