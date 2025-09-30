@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 
 Global="*res://Global.gd"
 
+[display]
+
+window/subwindows/embed_subwindows=false
+
 [dotnet]
 
 project/assembly_name="CarTracksOnSnowOrSand"

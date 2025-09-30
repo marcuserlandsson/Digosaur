@@ -10,7 +10,7 @@ func _ready():
 	museum_window.title = "Museum"
 	museum_window.mode = Window.MODE_WINDOWED
 
-	var museum_screen_id := 1 
+	var museum_screen_id := 1
 	var museum_pos = DisplayServer.screen_get_position(museum_screen_id)
 	var museum_size = DisplayServer.screen_get_size(museum_screen_id)
 
@@ -18,7 +18,7 @@ func _ready():
 	#museum_window.size = museum_size
 	
 	museum_window.position = Vector2i(5, 300)
-	museum_window.size = Vector2i(300, 400)
+	museum_window.size = Vector2i(800, 1000)
 
 	# Add the museum scene
 	var museum_scene = load("res://Museum.tscn").instantiate()
