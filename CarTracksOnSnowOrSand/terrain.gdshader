@@ -6,6 +6,7 @@ changes done 3 oct 2025 by Kristin Eriksson
 How to apply:
 Add heightmap, change heightmap_scale & Slope_edge_noise_scale to same number (ex 1)
 Heightmap_height_scale is max height of mountains/hills
+Heightmap_normals_intensity makes more grainy(?)
 */
 
 shader_type spatial;
@@ -66,11 +67,6 @@ vec3 get_triplanarized_map(sampler2D sampler, vec4 projected_coords, vec3 normal
 	return texX * normal_weights.x + texY * normal_weights.y + texZ * normal_weights.z;
 }
 
-vec3 unpack_normalmap(vec4 rgba) {
-	vec3 n = rgba.xzy * 2.0 - vec3(1.0);
-	n.z *= -1.0;
-	return n;
-}
 
 
 void fragment() {
@@ -83,8 +79,14 @@ void fragment() {
 	vec3 triplanarized_flat_albedo = get_triplanarized_map(flat_albedo, projected_coords, normal_weights, flat_uv_scale * 0.01);
 	vec3 triplanarized_flat_normal = get_triplanarized_map(flat_normal, projected_coords, normal_weights, flat_uv_scale * 0.01);
 
-//	float steepness = dot(world_normal, vec3(0.0, 1.0, 0.0));
-//	float inv_steepness = (steepness * -1.0) + 1.0;
+	float steepness = dot(world_normal, vec3(0.0, 1.0, 0.0));
+	float inv_steepness = (steepness * -1.0) + 1.0;
+	vec4 c = texture(slope_edge_noise, UV);
+	c.r=1.0-c.r;
+	c.g=1.0-c.g;
+	c.b=1.0-c.b;
+	//COLOR.rgba=c;
+
 	float slope_edge_noise_remap = mix(1, texture(slope_edge_noise, UV/*world_position*/ * slope_edge_noise_scale).r, slope_edge_noise_intensity);
 	float slope = texture(splatmap, UV/*world_position*/).r * slope_edge_noise_remap;
 	
@@ -109,6 +111,7 @@ void fragment() {
 	NORMAL_MAP = mix(slope_normal_scaled, flat_normal_scaled, slope_mask_inverted);
 	NORMAL_MAP_DEPTH = mix(slope_normal_intensity, flat_normal_intensity, slope_mask_inverted);
 }
+// from godot
 float hash(vec2 p) {
   return fract(sin(dot(p * 17.17, vec2(14.91, 67.31))) * 4791.9511);
 }
