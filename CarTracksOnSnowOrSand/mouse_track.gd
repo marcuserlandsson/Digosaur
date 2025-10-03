@@ -1,13 +1,11 @@
 # Simplified mouse track script
 # Creates tracks only when mouse button is pressed and held
 extends Node3D
+
 class_name MouseTrack
 
 @onready var cam: Camera3D = $"../Camera3D"
-@onready var particles: CPUParticles3D = $"../SubViewport/RemoteParticles/TrackParticles"
-@onready var newparticles: GPUParticles3D = $"../SubViewport/RemoteParticles/NewTrackParticles"
-@onready var attractor: GPUParticlesAttractorVectorField3D = $"../SubViewport/RemoteParticles/Attractor"
-@onready var newattractor: GPUParticlesAttractorSphere3D = $"../SubViewport/RemoteParticles/newAttractor"
+@onready var particles: GPUParticles3D = $"../SubViewport/RemoteParticles/NewTrackParticles"
 @onready var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 
 const INTERACT_RADIUS: int = 15
@@ -16,11 +14,20 @@ var mouse_position: Vector3
 var is_mouse_pressed: bool = false
 
 func _ready():
+	
+	#added stuff from demo 2d_in_3d, might break stuff
+	# Clear the viewport.
+	#var viewport = $SubViewport2
+	#$SubViewport2.set_clear_mode(SubViewport.CLEAR_MODE_ONCE)
+	# Retrieve the texture and set it to the viewport quad.
+	#$SandHeight.material.set_shader_parameter("heightmap", viewport.get_texture())
+	# think added stuff ends here
+	
+	# things from original script with particles
 	query.set_collide_with_areas(true)
 	# Start with particles disabled
 	#particles.emitting = false
-	newparticles.emitting = false
-	newattractor.strength = 0.0
+	particles.emitting = false
 
 func _input(event):
 	# Check for mouse button press/release
@@ -28,8 +35,7 @@ func _input(event):
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			is_mouse_pressed = event.pressed
 			#particles.emitting = is_mouse_pressed
-			newparticles.emitting = is_mouse_pressed
-			newattractor.strength = -2.0
+			particles.emitting = is_mouse_pressed
 			
 func _physics_process(delta: float):
 	# Only update position when mouse is pressed
@@ -39,8 +45,8 @@ func _physics_process(delta: float):
 		if result:
 			mouse_position = result.position
 			# Move particles to mouse position
-			newattractor.global_position = mouse_position
-			newparticles.global_position = mouse_position
+			particles.global_position = mouse_position
+			
 
 func _detect_from_cam_to_mouse() -> Dictionary:
 	query.from = cam.global_position
