@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dtkptpruv1ay6"]
+[gd_scene load_steps=25 format=3 uid="uid://dtkptpruv1ay6"]
 
 [ext_resource type="Script" uid="uid://b0pj4o5nptdjs" path="res://mouse_track.gd" id="2_bwx1l"]
-[ext_resource type="Texture2D" uid="uid://1cujdx38cxxa" path="res://Images/snow_height.png" id="3_8neod"]
-[ext_resource type="Shader" uid="uid://lappm6o7lj1m" path="res://tracks.tres" id="3_tho10"]
+[ext_resource type="Shader" uid="uid://bu3hmfhtkggrt" path="res://terrain.gdshader" id="2_cm0pq"]
+[ext_resource type="Texture2D" uid="uid://dna0pxa4867pe" path="res://Images/snow_albedo.png" id="3_fos0i"]
+[ext_resource type="Texture2D" uid="uid://1cujdx38cxxa" path="res://Images/snow_height.png" id="3_r0du0"]
 
 [sub_resource type="Environment" id="Environment_i3pvo"]
 background_mode = 1
@@ -10,29 +11,17 @@ background_color = Color(0, 0.298039, 0.298039, 1)
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_xa88w"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ctokp"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("3_tho10")
-shader_parameter/viewport_texture = SubResource("ViewportTexture_xa88w")
-shader_parameter/floor_texture = ExtResource("3_8neod")
-shader_parameter/floor_heightmap = ExtResource("3_8neod")
-shader_parameter/trail_color = Color(0.480509, 0.337001, 0.0407959, 1)
-shader_parameter/ground_modulate = Color(1, 0.679158, 0.448577, 1)
-shader_parameter/ditch_height = 0.325
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r0du0"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8muh3"]
 resource_local_to_scene = true
-material = SubResource("ShaderMaterial_ctokp")
+material = SubResource("ShaderMaterial_r0du0")
 size = Vector2(10, 10)
 subdivide_width = 256
 subdivide_depth = 256
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0v47j"]
-size = Vector3(10.0605, 0.1, 10.0717)
+size = Vector3(10.0605, 0.001, 10.0717)
 
 [sub_resource type="Environment" id="Environment_ms5u6"]
 background_mode = 1
@@ -60,6 +49,76 @@ size = Vector2(0.29, 0.63)
 offsets = PackedFloat32Array(0, 0.982301, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.946903, 0.946903, 0.946903, 0.0530974, 1, 1, 1, 0)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r0du0"]
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="Gradient" id="Gradient_r0du0"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cm0pq"]
+gradient = SubResource("Gradient_r0du0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fos0i"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(2.724, 2.094, 1.092, 1)
+albedo_texture = SubResource("GradientTexture2D_cm0pq")
+
+[sub_resource type="SphereMesh" id="SphereMesh_3dxm6"]
+material = SubResource("StandardMaterial3D_fos0i")
+radius = 0.23
+height = 0.63
+
+[sub_resource type="Gradient" id="Gradient_fos0i"]
+offsets = PackedFloat32Array(0, 0.09, 0.20666666, 0.46666667, 0.69666666, 0.99666667)
+colors = PackedColorArray(0.7372549, 0.7372549, 0.7372549, 1, 0.59507, 0.78792715, 0.78792715, 1, 0.41075632, 0.85361344, 0.85361344, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1)
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_lgr22"]
+color_ramp = SubResource("Gradient_fos0i")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cm0pq"]
+invert = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uu6xs"]
+render_priority = 0
+shader = ExtResource("2_cm0pq")
+shader_parameter/heightmap = ExtResource("3_r0du0")
+shader_parameter/heightmap_normals_intensity = 0.0
+shader_parameter/heightmap_scale = 1.0
+shader_parameter/heightmap_height_scale = 1.0
+shader_parameter/slope_edge_1 = 0.0
+shader_parameter/slope_edge_2 = 0.0
+shader_parameter/slope_edge_3 = 0.0
+shader_parameter/slope_edge_noise = SubResource("NoiseTexture2D_cm0pq")
+shader_parameter/slope_edge_noise_scale = 1.0
+shader_parameter/slope_edge_noise_intensity = 0.50000002375
+shader_parameter/slope_color_remap_top = Color(1, 0.9254902, 0.61960787, 1)
+shader_parameter/slope_color_remap_bottom = Color(0.9644376, 0.90683234, 0.38109186, 1)
+shader_parameter/flat_color_remap_top = Color(0.81960785, 0.49411765, 0.23921569, 1)
+shader_parameter/flat_color_remap_bottom = Color(0, 0, 0, 1)
+shader_parameter/flat_albedo = ExtResource("3_fos0i")
+shader_parameter/flat_uv_scale = 1.0
+shader_parameter/flat_normal_scale = 0.0
+shader_parameter/slope_uv_scale = 1.0
+shader_parameter/slope_normal_scale = 0.0
+shader_parameter/flat_specular = 0.0
+shader_parameter/flat_roughness = 0.0
+shader_parameter/flat_metallic = 0.0
+shader_parameter/flat_normal_intensity = 0.0
+shader_parameter/slope_specular = 0.0
+shader_parameter/slope_roughness = 0.0
+shader_parameter/slope_metallic = 0.0
+shader_parameter/slope_normal_intensity = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_wkp8b"]
+lightmap_size_hint = Vector2i(52, 52)
+material = SubResource("ShaderMaterial_uu6xs")
+size = Vector2(10, 10)
+subdivide_width = 1000
+subdivide_depth = 1000
+orientation = 1
+
 [node name="Main" type="Node3D"]
 
 [node name="NOTES" type="Label3D" parent="."]
@@ -86,12 +145,20 @@ omni_range = 7.838
 script = ExtResource("2_bwx1l")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("PlaneMesh_8muh3")
 
 [node name="Area3D" type="Area3D" parent="Floor"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.049500003, 0)
+visible = false
 shape = SubResource("BoxShape3D_0v47j")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Floor/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.629, -1, -1.04)
+layers = 3
+size = Vector3(11.542725, 1.5356243, 11.723389)
 
 [node name="SubViewport" type="SubViewport" parent="."]
 
@@ -105,7 +172,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.830201)
 
 [node name="TrackParticles" type="CPUParticles3D" parent="SubViewport/RemoteParticles"]
 transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+visible = false
 layers = 2
+emitting = false
 amount = 100
 lifetime = 8.0
 mesh = SubResource("QuadMesh_arh4n")
@@ -113,3 +182,28 @@ direction = Vector3(0, 0, 0)
 gravity = Vector3(0, 0, 0)
 color = Color(0, 0, 0, 1)
 color_ramp = SubResource("Gradient_5n4dt")
+
+[node name="NewTrackParticles" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
+transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+layers = 2
+emitting = false
+amount = 100
+lifetime = 8.0
+collision_base_size = 0.1
+process_material = SubResource("ParticleProcessMaterial_r0du0")
+draw_pass_1 = SubResource("SphereMesh_3dxm6")
+
+[node name="Attractor" type="GPUParticlesAttractorVectorField3D" parent="SubViewport/RemoteParticles"]
+layers = 3
+strength = -2.0
+attenuation = 2.0
+size = Vector3(1, 1, 1)
+texture = SubResource("NoiseTexture3D_lgr22")
+
+[node name="newAttractor" type="GPUParticlesAttractorSphere3D" parent="SubViewport/RemoteParticles"]
+layers = 3
+strength = -2.0
+attenuation = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_wkp8b")
