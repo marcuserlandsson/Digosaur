@@ -17,3 +17,14 @@ C:\Users\admin\Desktop\RawImageVisualizer\obj\x86\Debug\RawImageVisualizer.g.res
 C:\Users\admin\Desktop\RawImageVisualizer\obj\x86\Debug\RawImageVisualizer.csproj.CoreCompileInputs.cache
 C:\Users\admin\Desktop\RawImageVisualizer\obj\x86\Debug\RawImageVisualizer.exe
 C:\Users\admin\Desktop\RawImageVisualizer\obj\x86\Debug\RawImageVisualizer.pdb
+C:\Users\admin\Desktop\Digosaur-10-blob-system\src\RawImageVisualizer\bin\Debug\InstalledAppInfo\appIcon.png
+C:\Users\admin\Desktop\Digosaur-10-blob-system\src\RawImageVisualizer\bin\Debug\RawImageVisualizer.exe.config
+C:\Users\admin\Desktop\Digosaur-10-blob-system\src\RawImageVisualizer\bin\Debug\RawImageVisualizer.exe
+C:\Users\admin\Desktop\Digosaur-10-blob-system\src\RawImageVisualizer\bin\Debug\RawImageVisualizer.pdb
+C:\Users\admin\Desktop\Digosaur-10-blob-system\src\RawImageVisualizer\bin\Debug\RawImageVisualizer.exe.CodeAnalysisLog.xml
+C:\Users\admin\Desktop\Digosaur-10-blob-system\src\RawImageVisualizer\bin\Debug\RawImageVisualizer.exe.lastcodeanalysissucceeded
+C:\Users\admin\Desktop\Digosaur-10-blob-system\src\RawImageVisualizer\obj\x86\Debug\RawImageVisualizer.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\Digosaur-10-blob-system\src\RawImageVisualizer\obj\x86\Debug\RawImageVisualizer.g.resources
+C:\Users\admin\Desktop\Digosaur-10-blob-system\src\RawImageVisualizer\obj\x86\Debug\RawImageVisualizer.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\Digosaur-10-blob-system\src\RawImageVisualizer\obj\x86\Debug\RawImageVisualizer.exe
+C:\Users\admin\Desktop\Digosaur-10-blob-system\src\RawImageVisualizer\obj\x86\Debug\RawImageVisualizer.pdb

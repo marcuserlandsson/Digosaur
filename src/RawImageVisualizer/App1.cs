@@ -312,9 +312,9 @@ namespace RawImageVisualizer
             bool[,] visited = new bool[width, height];
             
             // Find all touch blobs (optimized: skip every 2nd pixel for speed)
-            for (int y = 0; y < height; y += 2)
+            for (int y = 0; y < height; y += 4)
             {
-                for (int x = 0; x < width; x += 2)
+                for (int x = 0; x < width; x += 4)
                 {
                     if (!visited[x, y] && normalizedImage[y * width + x] > TOUCH_THRESHOLD)
                     {
@@ -352,7 +352,7 @@ namespace RawImageVisualizer
                 touchStatus = $"Multi-touch detected! {touchPoints.Count} touches: ";
                 foreach (var touch in touchPoints)
                 {
-                    touchStatus += $"({touch.X},{touch.Y},{touch.Intensity},{touch.Size}) ";
+                    touchStatus += $"({touch.X},{touch.Y},{touch.Size}) ";
                 }
                 
                 RawImageVisualizer.Program.sw.WriteLine(touchStatus);

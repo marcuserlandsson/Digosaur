@@ -63,7 +63,7 @@ public class Server
                         Interlocked.Decrement(ref SocketThreadManager.ActiveConnections);
 
                     }).Start();
-                    Thread.Sleep(100);
+                    Thread.Sleep(16);
                 }
 
             }
