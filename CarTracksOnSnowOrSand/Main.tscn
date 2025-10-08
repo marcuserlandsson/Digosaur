@@ -126,7 +126,6 @@ draw_pass_1 = SubResource("SphereMesh_3dxm6")
 
 [node name="SandHeight" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0002450943, 0.00659132, 0.008224487)
-visible = false
 mesh = SubResource("QuadMesh_wkp8b")
 
 [node name="GPUParticlesCollisionHeightField3D" type="GPUParticlesCollisionHeightField3D" parent="SandHeight"]
@@ -147,6 +146,7 @@ light_mask = 3
 visibility_layer = 7
 
 [node name="CanvasLayer" type="CanvasLayer" parent="SubViewport2"]
+visible = false
 follow_viewport_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="SubViewport2/CanvasLayer"]
