@@ -1,3 +1,6 @@
+CanvasLayer
+Sprite2D
+DirectionalLight3D
 SubViewport
 Node2D
 GPUParticlesCollisionHeightField3D

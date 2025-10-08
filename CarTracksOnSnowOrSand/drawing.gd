@@ -1,30 +1,33 @@
-extends Node2D
+extends Sprite2D
 
 @export var color_w = Color(255, 255, 255, 1)
 @export  var color_b = Color(0, 0, 0, 1)
 @export var elemnt_type = ""
-@export var texture: Texture2D:
-	set(value):
-		texture = value
-		queue_redraw()
+
 
 var radius = 100
-var image
+var img : Image
 
-func _draw():
-	if Input.is_action_pressed("click"):
-		radius = 100
-	if Input.is_action_just_released("click"):
-		radius = 0.0
+func _ready():
+	img = Image.create_empty(2000,2000, false, Image.FORMAT_RGBA8)
+	img.fill(color_w)
+	#tex = ImageTexture.create_from_image(img)
+	#texture = load("res://Images/snow_height_copy.png")
+	#image = texture.get_image()
+	
 
-	draw_circle(Vector2.ZERO, radius, color_w)
+func paint(position):
+	img.draw_circle(position, radius, color_b)
 
 
-func _process(delta):
-	global_position = get_global_mouse_position()
-	texture = load("res://Images/snow_height_copy.png")
-	image = texture.get_image()
-	# edit your image here
-	image._draw()
-	texture = ImageTexture.create_from_image(image)
+func _input(event):
+	print("here")
+	if event is InputEvent:
+		if event.pressed and event.is_echo() == false:
+			if event.button_index == MOUSE_BUTTON_LEFT:	
+				print("all in")
+				global_position = get_global_mouse_position()
+				# edit your image here
+				paint(global_position)
+				texture = ImageTexture.create_from_image(img)
 	

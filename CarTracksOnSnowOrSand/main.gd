@@ -7,5 +7,5 @@ func _ready():
 	var viewport = $SubViewport2
 	$SubViewport2.set_clear_mode(SubViewport.CLEAR_MODE_ONCE)
 	# Retrieve the texture and set it to the viewport quad.
-	$SandHeight.material.set_shader_parameter("heightmap", viewport.get_texture())
+	$SandHeight.mesh.material.set_shader_parameter("heightmap", viewport.get_texture())
 	# think
