@@ -1,0 +1,500 @@
+[gd_scene load_steps=59 format=3 uid="uid://dtkptpruv1ay6"]
+
+[ext_resource type="Script" uid="uid://epvgbo8kssyx" path="res://touch_track.gd" id="2_bwx1l"]
+[ext_resource type="Texture2D" uid="uid://1cujdx38cxxa" path="res://Images/snow_height.png" id="3_8neod"]
+[ext_resource type="Shader" uid="uid://lappm6o7lj1m" path="res://tracks.tres" id="3_tho10"]
+[ext_resource type="PackedScene" uid="uid://dik261ry07cdh" path="res://3D models/dogbone3.glb" id="4_cm0pq"]
+[ext_resource type="Script" uid="uid://deay6844ie42x" path="res://tcp_client.gd" id="5_tcp_client"]
+[ext_resource type="Script" uid="uid://xdkwkiy3j5j1" path="res://blob_tracking.gd" id="6_3dxm6"]
+
+[sub_resource type="Environment" id="Environment_i3pvo"]
+background_mode = 1
+background_color = Color(0, 0.298039, 0.298039, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Environment" id="Environment_cm0pq"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xa88w"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ctokp"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_tho10")
+shader_parameter/viewport_texture = SubResource("ViewportTexture_xa88w")
+shader_parameter/floor_texture = ExtResource("3_8neod")
+shader_parameter/floor_heightmap = ExtResource("3_8neod")
+shader_parameter/trail_color = Color(0.480509, 0.337001, 0.0407959, 1)
+shader_parameter/ground_modulate = Color(1, 0.679158, 0.448577, 1)
+shader_parameter/ditch_height = 0.325
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8muh3"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_ctokp")
+size = Vector2(10, 10)
+subdivide_width = 256
+subdivide_depth = 256
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0v47j"]
+size = Vector3(10.0605, 0.1, 10.0717)
+
+[sub_resource type="Environment" id="Environment_ms5u6"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_5n4dt"]
+offsets = PackedFloat32Array(0, 0.982301, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.946903, 0.946903, 0.946903, 0.0530974, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fos0i"]
+gradient = SubResource("Gradient_5n4dt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3dxm6"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_fos0i")
+
+[sub_resource type="Gradient" id="Gradient_suej4"]
+offsets = PackedFloat32Array(0, 0.476744)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xgya4"]
+gradient = SubResource("Gradient_suej4")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_64uqg"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_xgya4")
+
+[sub_resource type="QuadMesh" id="QuadMesh_arh4n"]
+material = SubResource("StandardMaterial3D_64uqg")
+size = Vector2(0.29, 0.63)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3dxm6"]
+gradient = SubResource("Gradient_5n4dt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lgr22"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_3dxm6")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_trn2v"]
+gradient = SubResource("Gradient_5n4dt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_03owx"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_trn2v")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wkp8b"]
+gradient = SubResource("Gradient_5n4dt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_20pc6"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_wkp8b")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5vvyt"]
+gradient = SubResource("Gradient_5n4dt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c6i3y"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_5vvyt")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c2ibq"]
+gradient = SubResource("Gradient_5n4dt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j4qnp"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_c2ibq")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fpfj3"]
+gradient = SubResource("Gradient_5n4dt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sc1dx"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_fpfj3")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kjvhd"]
+gradient = SubResource("Gradient_5n4dt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5tuhn"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_kjvhd")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2gh4u"]
+gradient = SubResource("Gradient_5n4dt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_devvj"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_2gh4u")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3b0ty"]
+gradient = SubResource("Gradient_5n4dt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bg4s2"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_3b0ty")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hhcpw"]
+gradient = SubResource("Gradient_5n4dt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mxvw5"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_hhcpw")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xrxkg"]
+gradient = SubResource("Gradient_5n4dt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sqvbp"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_xrxkg")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hri7i"]
+gradient = SubResource("Gradient_5n4dt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w3rk5"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_hri7i")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5mvff"]
+gradient = SubResource("Gradient_5n4dt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oye8v"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_5mvff")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_40n85"]
+gradient = SubResource("Gradient_5n4dt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gb15f"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_40n85")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sph85"]
+gradient = SubResource("Gradient_5n4dt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o7g6l"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_sph85")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vi5kq"]
+gradient = SubResource("Gradient_5n4dt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5mkgo"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_vi5kq")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3ccbu"]
+gradient = SubResource("Gradient_5n4dt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ny7u2"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_3ccbu")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x3yn0"]
+gradient = SubResource("Gradient_5n4dt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1w2xm"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_x3yn0")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gngx1"]
+gradient = SubResource("Gradient_5n4dt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jt61w"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_gngx1")
+
+[node name="Main" type="Node3D"]
+
+[node name="NOTES" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.17429, 0)
+text = "Notes
+0.  Anything being rendered inside the SubViewport camera is being sent to the shader on real time
+ 1. Camera inside SubViewport must only have cull mask in layer2
+2. Every VisualInstance inside SubViewport must be in layer2
+3. Actual game camera must NOT have cullmask in layer2
+4. Every VisualInstance outside SubViewport must NOT be in layer2"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.704016, 0.42987, -0.565308, 0, 0.796003, 0.605293, 0.710184, -0.426136, 0.560398, -4.14, 1.126, 4.01)
+cull_mask = 1048573
+environment = SubResource("Environment_i3pvo")
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0.78, 2.005, 0)
+cull_mask = 1048573
+environment = SubResource("Environment_cm0pq")
+current = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86431, 4.69709, 3.92687)
+light_energy = 7.297
+light_cull_mask = 4294967293
+omni_range = 7.838
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.997, 0)
+light_energy = 7.297
+light_cull_mask = 4294967293
+omni_range = 7.838
+
+[node name="TouchTrack" type="Node3D" parent="."]
+script = ExtResource("2_bwx1l")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_8muh3")
+
+[node name="Area3D" type="Area3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/Area3D"]
+shape = SubResource("BoxShape3D_0v47j")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6.66, 0)
+visible = false
+cull_mask = 1047554
+environment = SubResource("Environment_ms5u6")
+
+[node name="RemoteParticles" type="Node3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.830201)
+
+[node name="TrackParticles1" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
+transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+layers = 2
+amount = 100
+lifetime = 8.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_3dxm6")
+draw_pass_1 = SubResource("QuadMesh_arh4n")
+
+[node name="TrackParticles2" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
+transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+layers = 2
+amount = 100
+lifetime = 8.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_lgr22")
+draw_pass_1 = SubResource("QuadMesh_arh4n")
+
+[node name="TrackParticles3" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
+transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+layers = 2
+amount = 100
+lifetime = 8.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_03owx")
+draw_pass_1 = SubResource("QuadMesh_arh4n")
+
+[node name="TrackParticles4" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
+transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+layers = 2
+amount = 100
+lifetime = 8.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_20pc6")
+draw_pass_1 = SubResource("QuadMesh_arh4n")
+
+[node name="TrackParticles5" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
+transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+layers = 2
+amount = 100
+lifetime = 8.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_c6i3y")
+draw_pass_1 = SubResource("QuadMesh_arh4n")
+
+[node name="TrackParticles6" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
+transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+layers = 2
+amount = 100
+lifetime = 8.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_j4qnp")
+draw_pass_1 = SubResource("QuadMesh_arh4n")
+
+[node name="TrackParticles7" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
+transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+layers = 2
+amount = 100
+lifetime = 8.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_sc1dx")
+draw_pass_1 = SubResource("QuadMesh_arh4n")
+
+[node name="TrackParticles8" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
+transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+layers = 2
+amount = 100
+lifetime = 8.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_5tuhn")
+draw_pass_1 = SubResource("QuadMesh_arh4n")
+
+[node name="TrackParticles9" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
+transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+layers = 2
+amount = 100
+lifetime = 8.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_devvj")
+draw_pass_1 = SubResource("QuadMesh_arh4n")
+
+[node name="TrackParticles10" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
+transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+layers = 2
+amount = 100
+lifetime = 8.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_bg4s2")
+draw_pass_1 = SubResource("QuadMesh_arh4n")
+
+[node name="TrackParticles11" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
+transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+layers = 2
+amount = 100
+lifetime = 8.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_mxvw5")
+draw_pass_1 = SubResource("QuadMesh_arh4n")
+
+[node name="TrackParticles12" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
+transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+layers = 2
+amount = 100
+lifetime = 8.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_sqvbp")
+draw_pass_1 = SubResource("QuadMesh_arh4n")
+
+[node name="TrackParticles13" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
+transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+layers = 2
+amount = 100
+lifetime = 8.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_w3rk5")
+draw_pass_1 = SubResource("QuadMesh_arh4n")
+
+[node name="TrackParticles14" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
+transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+layers = 2
+amount = 100
+lifetime = 8.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_oye8v")
+draw_pass_1 = SubResource("QuadMesh_arh4n")
+
+[node name="TrackParticles15" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
+transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+layers = 2
+amount = 100
+lifetime = 8.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_gb15f")
+draw_pass_1 = SubResource("QuadMesh_arh4n")
+
+[node name="TrackParticles16" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
+transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+layers = 2
+amount = 100
+lifetime = 8.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_o7g6l")
+draw_pass_1 = SubResource("QuadMesh_arh4n")
+
+[node name="TrackParticles17" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
+transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+layers = 2
+amount = 100
+lifetime = 8.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_5mkgo")
+draw_pass_1 = SubResource("QuadMesh_arh4n")
+
+[node name="TrackParticles18" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
+transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+layers = 2
+amount = 100
+lifetime = 8.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_ny7u2")
+draw_pass_1 = SubResource("QuadMesh_arh4n")
+
+[node name="TrackParticles19" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
+transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+layers = 2
+amount = 100
+lifetime = 8.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_1w2xm")
+draw_pass_1 = SubResource("QuadMesh_arh4n")
+
+[node name="TrackParticles20" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
+transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
+layers = 2
+amount = 100
+lifetime = 8.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_jt61w")
+draw_pass_1 = SubResource("QuadMesh_arh4n")
+
+[node name="dogbone3" parent="." instance=ExtResource("4_cm0pq")]
+transform = Transform3D(0.00765452, 0.0544647, 0, -0.0544647, 0.00765452, 0, 0, 0, 0.055, 2.09973, 0.0986554, -0.106219)
+
+[node name="dogbone4" parent="." instance=ExtResource("4_cm0pq")]
+transform = Transform3D(0.00765452, 0.0544647, 0, -0.0544647, 0.00765452, 0, 0, 0, 0.055, 0.724235, 0.0986555, -2.25403)
+
+[node name="dogbone5" parent="." instance=ExtResource("4_cm0pq")]
+transform = Transform3D(0.00765452, 0.0544647, 0, -0.0544647, 0.00765452, 0, 0, 0, 0.055, 0.154106, 0.0572571, 1.30792)
+
+[node name="TCPClient" type="Node" parent="."]
+script = ExtResource("5_tcp_client")
+
+[node name="BlobTracking" type="Node" parent="."]
+script = ExtResource("6_3dxm6")
+
+[connection signal="touch_points" from="TCPClient" to="TouchTrack" method="_on_tcp_client_touch_points"]
+[connection signal="touch_points" from="TCPClient" to="BlobTracking" method="_on_tcp_client_touch_points"]

@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<instrumentationManifest xmlns="http://schemas.microsoft.com/win/2004/08/events">
+  <instrumentation xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <events xmlns="http://schemas.microsoft.com/win/2004/08/events">
+      <provider xmlns:mtc="http://schemas.microsoft.com/surface/2007/09/manifesttocode"
+                mtc:providerNamespace="Microsoft.Surface.Core"
+                mtc:internal="true"
+                name="Microsoft-Surface-Core" guid="{88931919-5519-47EB-8BD9-DF363E0DB6CB}"
+                symbol="EventsCore"
+                resourceFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-Core.man.dll"
+                messageFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-Core.man.dll"
+                parameterFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-Core.man.dll" >
+        <channels>
+          <!-- This channel is used to publish events destined to the system administrator -->
+          <channel name="Microsoft-Surface-Core/Operational" chid="channelOperational"
+                   symbol="channelOperational" type="Operational" isolation="Application" enabled="true" value="16" />
+          <!-- This channel is used to publish events used in performance tracing -->
+          <channel name="Microsoft-Surface-Core/Debug" chid="channelDebug"
+                   symbol="channelDebug" type="Debug" isolation="Application" enabled="false" value="17" />
+          <!-- This channel is used to publish events used in debug tracing -->
+          <channel name="Microsoft-Surface-Core/Performance" chid="channelPerformance"
+                   symbol="channelPerformance" type="Analytic" isolation="Application" enabled="false" value="18" />
+          <!-- Add new channels above this line -->
+        </channels>
+        
+        <templates>
+          <template tid="templateNone">
+          </template>
+
+          <template tid="templateId">
+            <data name="id" inType="win:Int32" />
+            <UserData>
+              <integerData xmlns="nullNS">
+                <id>%1</id>
+            </integerData>
+            </UserData>
+          </template>
+
+          <template tid="templateException">
+            <data name="exception" inType="win:UnicodeString" />
+            <UserData>
+              <stringData xmlns="nullNS">
+                <exception>%1</exception>
+            </stringData>
+            </UserData>
+          </template>
+
+          <template tid="templatePerformanceCounterException">
+            <data name="name" inType="win:UnicodeString" />
+            <data name="exception" inType="win:UnicodeString" />
+            <UserData>
+              <stringData xmlns="nullNS">
+                <name>%1</name>
+                <exception>%2</exception>
+              </stringData>
+            </UserData>
+          </template>
+
+          <template tid="templateHashCodeHwnd">
+            <data name="hashCode" inType="win:Int32" />
+            <data name="hwnd" inType="win:Int32" />
+            <UserData>
+              <integerData xmlns="nullNS">
+                <hashCode>%1</hashCode>
+                <hwnd>%2</hwnd>
+              </integerData>
+            </UserData>
+          </template>
+          
+          <template tid="templateTouchEventDebug">
+            <data name="hashCode" inType="win:Int32" />
+            <data name="id" inType="win:Int32" />
+            <data name="x" inType="win:Double" />
+            <data name="y" inType="win:Double" />
+            <UserData>
+              <data xmlns="nullNS">
+                <hashCode>%1</hashCode>
+                <id>%2</id>
+                <x>%3</x>
+                <y>%4</y>
+              </data>
+            </UserData>
+          </template>
+          
+          <!-- Add new templates above this line -->
+        </templates>
+        
+        <opcodes>
+          <!-- Add new opcodes above this line -->
+        </opcodes>
+
+        <keywords>
+          <keyword name="KeywordOperational" mask="0x00000001" message="$(string.KeywordOperational)" symbol="KeywordOperational" />
+          <keyword name="KeywordDebug" mask="0x000000002" message="$(string.KeywordDebug)" symbol="KeywordDebug" />
+          <keyword name="KeywordPerformance" mask="0x00000004" message="$(string.KeywordPerformance)" symbol="KeywordPerformance" />
+          <!-- Add new keywords above this line (0x000000000001 to 0x800000000000) -->
+        </keywords>
+        
+        <tasks>
+          <task name="DebugTouchEvents" value="100" />
+          <task name="TouchTarget" value="101" />
+          <task name="InputLoop" value="102" />
+          <task name="PerfTouchEvents" value="200" />
+          <task name="ReadInputFrame" value="201" />
+        </tasks>
+        
+        <events>
+          <!-- ************************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Administration" channel -->
+          <!-- ************************************************** -->
+          <!-- ************************************************ -->
+          <!-- END EVENTS PUBLISHED TO "Administration" channel -->
+          <!-- ************************************************ -->
+
+          <!-- *********************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Operational" channel -->
+          <!-- *********************************************** -->
+          <event symbol="CannotConnectToVisionSystem" value="1000" level="win:Error" template="templateException"
+               message="$(string.CannotConnectToVisionSystem)" channel="channelOperational" version="0" />
+          <event symbol="UnexpectedExceptionDuringEventDispatching" value="1001" level="win:Error" template="templateException"
+               message="$(string.UnexpectedExceptionDuringEventDispatching)" channel="channelOperational" version="0" />
+          <event symbol="CannotInstantiatePerformanceCounter" value="1002" level="win:Error" template="templatePerformanceCounterException"
+               message="$(string.CannotInstantiatePerformanceCounter)" channel="channelOperational" version="0" />
+          <event symbol="PerformanceCountersAreNotInstalled" value="1003" level="win:Error" template="templateNone"
+               message="$(string.PerformanceCountersAreNotInstalledError)" channel="channelOperational" version="0" />
+          <!-- ********************************************* -->
+          <!-- END EVENTS PUBLISHED TO "Operational" channel -->
+          <!-- ********************************************* -->
+
+          
+          <!-- ***************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Debug" channel -->
+          <!-- ***************************************** -->
+          <event symbol="TouchDownDebug" value="1100" level="win:Informational"
+                 keywords="KeywordDebug" task="DebugTouchEvents" opcode="win:Info"
+                 template="templateTouchEventDebug" message="$(string.TouchDownDebug)" channel="channelDebug" version="0" />
+          <event symbol="TouchMoveDebug" value="1101" level="win:Informational"
+                 keywords="KeywordDebug" task="DebugTouchEvents" opcode="win:Info"
+                 template="templateTouchEventDebug" message="$(string.TouchMoveDebug)" channel="channelDebug" version="0" />
+          <event symbol="TouchUpDebug" value="1102" level="win:Informational"
+                 keywords="KeywordDebug" task="DebugTouchEvents" opcode="win:Info"
+                 template="templateTouchEventDebug" message="$(string.TouchUpDebug)" channel="channelDebug" version="0" />
+
+          <event symbol="TouchTargetCreated" value="1110" level="win:Informational"
+                 keywords="KeywordDebug" task="TouchTarget" opcode="win:Start"
+                 template="templateHashCodeHwnd" message="$(string.TouchTargetCreated)" channel="channelDebug" version="0" />
+          <event symbol="TouchTargetDisposed" value="1111" level="win:Informational"
+                 keywords="KeywordDebug" task="TouchTarget" opcode="win:Stop"
+                 template="templateHashCodeHwnd" message="$(string.TouchTargetDisposed)" channel="channelDebug" version="0" />
+
+          <event symbol="InputLoopStart" value="1120" level="win:Informational"
+                 keywords="KeywordDebug" task="InputLoop" opcode="win:Start"
+                 template="templateNone" message="$(string.InputLoopStart)" channel="channelDebug" version="0" />
+          <event symbol="InputLoopFinish" value="1121" level="win:Informational"
+                 keywords="KeywordDebug" task="InputLoop" opcode="win:Stop"
+                 template="templateNone" message="$(string.InputLoopFinish)" channel="channelDebug" version="0" />
+
+          <!-- *************************************** -->
+          <!-- END EVENTS PUBLISHED TO "Debug" channel -->
+          <!-- *************************************** -->
+          
+          <!-- ******************************************************* -->
+          <!-- START EVENT MESSAGES PUBLISHED TO "Performance" channel -->
+          <!-- ******************************************************* -->
+          <event symbol="RaiseTouchDown" value="1300" level="win:Informational"
+                 keywords="KeywordPerformance" task="PerfTouchEvents" opcode="win:Info"
+                 template="templateId" message="$(string.RaiseTouchDown)" channel="channelPerformance" version="0" />
+          <event symbol="RaiseTouchMove" value="1301" level="win:Informational"
+                 keywords="KeywordPerformance" task="PerfTouchEvents" opcode="win:Info"
+                 template="templateId" message="$(string.RaiseTouchMove)" channel="channelPerformance" version="0" />
+          <event symbol="RaiseTouchUp" value="1302" level="win:Informational"
+                 keywords="KeywordPerformance" task="PerfTouchEvents" opcode="win:Info"
+                 template="templateId" message="$(string.RaiseTouchUp)" channel="channelPerformance" version="0" />
+
+          <event symbol="ReadTouchDown" value="1310" level="win:Informational"
+                 keywords="KeywordPerformance" task="PerfTouchEvents" opcode="win:Info"
+                 template="templateId" message="$(string.ReadTouchDown)" channel="channelPerformance" version="0" />
+          <event symbol="ReadTouchMove" value="1311" level="win:Informational"
+                 keywords="KeywordPerformance" task="PerfTouchEvents" opcode="win:Info"
+                 template="templateId" message="$(string.ReadTouchMove)" channel="channelPerformance" version="0" />
+          <event symbol="ReadTouchUp" value="1312" level="win:Informational"
+                 keywords="KeywordPerformance" task="PerfTouchEvents" opcode="win:Info"
+                 template="templateId" message="$(string.ReadTouchUp)" channel="channelPerformance" version="0" />
+
+          <event symbol="ReadInputFrameStart" value="1320" level="win:Informational"
+                 keywords="KeywordPerformance" task="ReadInputFrame" opcode="win:Start"
+                 template="templateNone" message="$(string.ReadInputFrameStart)" channel="channelPerformance" version="0" />
+          <event symbol="ReadInputFrameFinish" value="1321" level="win:Informational"
+                 keywords="KeywordPerformance" task="ReadInputFrame" opcode="win:Stop"
+                 template="templateNone" message="$(string.ReadInputFrameFinish)" channel="channelPerformance" version="0" />
+
+          <event symbol="TouchTargetInitializeStart" value="1330" level="win:Informational"
+                 keywords="KeywordPerformance" task="TouchTarget" opcode="win:Start"
+                 template="templateNone" message="$(string.TouchTargetInitializeStart)" channel="channelPerformance" version="0" />
+          <event symbol="TouchTargetInitializeFinish" value="1331" level="win:Informational"
+                 keywords="KeywordPerformance" task="TouchTarget" opcode="win:Stop"
+                 template="templateNone" message="$(string.TouchTargetInitializeFinish)" channel="channelPerformance" version="0" />
+
+
+
+          <!-- ***************************************************** -->
+          <!-- END EVENT MESSAGES PUBLISHED TO "Performance" channel -->
+          <!-- ***************************************************** -->
+
+        </events>
+      </provider>
+    </events>
+  </instrumentation>
+  <!-- String table for eventing/logging -->
+  <localization>
+    <!--- en-US resources -->
+    <resources culture="en-US">
+      <stringTable>
+        <!-- ******************** -->
+        <!-- START Event Messages -->
+        <!-- ******************** -->
+        <string id="CannotConnectToVisionSystem" value="Cannot connect to VisionSystem, exception=%1." />
+        <string id="UnexpectedExceptionDuringEventDispatching" value="Unexpected exception during event dispatching, exception=%1." />
+        <string id="CannotInstantiatePerformanceCounter" value="Cannot instantiate Microsoft Surface Core '%1', exception=%2."/>
+        <string id="PerformanceCountersAreNotInstalledError" value="Microsoft Surface Core counters are not installed."/>
+
+        <string id="TouchTargetCreated" value="TouchTarget created: hashCode=%1, hwnd=%2." />
+        <string id="TouchTargetDisposed" value="TouchTarget disposed: hashCode=%1, hwnd=%2." />
+        <string id="InputLoopStart" value="Input Loop started." />
+        <string id="InputLoopFinish" value="Input Loop finished." />
+        <string id="TouchDownDebug" value="TouchDown: hashCode=%1, id=%2, x=%3, y=%4." />
+        <string id="TouchMoveDebug" value="TouchMove: hashCode=%1, id=%2, x=%3, y=%4." />
+        <string id="TouchUpDebug" value="TouchUp: hashCode=%1, id=%2, x=%3, y=%4." />
+
+        <string id="TouchTargetInitializeStart" value="TouchTarget initialization started." />
+        <string id="TouchTargetInitializeFinish" value="TouchTarget initialization finished." />
+        <string id="ReadInputFrameStart" value="Read input frame started." />
+        <string id="ReadInputFrameFinish" value="Read input frame finished." />
+        <string id="ReadTouchDown" value="Read TouchDown %1." />
+        <string id="ReadTouchMove" value="Read TouchMove %1." />
+        <string id="ReadTouchUp" value="Read TouchUp %1." />
+        <string id="RaiseTouchDown" value="Raise TouchDown %1." />
+        <string id="RaiseTouchMove" value="Raise TouchMove %1." />
+        <string id="RaiseTouchUp" value="Raise TouchUp %1." />
+
+        <!-- Add new event messages above this line -->
+        <!-- ***************** -->
+        <!-- END Event Message -->
+        <!-- ***************** -->
+        <!-- ********************* -->
+        <!-- START Opcode Messages -->
+        <!-- ********************* -->
+        <!-- Add new opcode messages above this line -->
+        <!-- ******************* -->
+        <!-- END Opcode Messages -->
+        <!-- ******************* -->
+        <!-- ******************* -->
+        <!-- START Task Messages -->
+        <!-- ******************* -->
+        <!-- Add new task messages above this line -->
+        <!-- ***************** -->
+        <!-- END Task Messages -->
+        <!-- ***************** -->
+        <!-- ********************** -->
+        <!-- START Keyword Messages -->
+        <!-- ********************** -->
+        <string id="KeywordOperational" value="Operational" />
+        <string id="KeywordDebug" value="Debug" />
+        <string id="KeywordPerformance" value="Performance" />
+        <!-- Add new keyword messages above this line -->
+        <!-- ******************** -->
+        <!-- END Keyword Messages -->
+        <!-- ******************** -->
+      </stringTable>
+    </resources>
+    <!-- Add new cultures above this line -->
+  </localization>
+</instrumentationManifest>

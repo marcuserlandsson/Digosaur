@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<instrumentationManifest xmlns="http://schemas.microsoft.com/win/2004/08/events">
+	<instrumentation xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+                   xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events" 
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		<events xmlns="http://schemas.microsoft.com/win/2004/08/events" 
+            xmlns:surface="http://schemas.microsoft.com/surface/2007/09/manifesttocode">
+			<provider name="Microsoft-Surface-Attract" guid="{BFD7E020-19D2-4CAD-A1E1-1B416D916BC7}" symbol="EventsAttract" 
+                resourceFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-Attract.man.dll" 
+                messageFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-Attract.man.dll" 
+                parameterFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-Attract.man.dll">
+				<channels>
+					<!-- This channel is used to publish events destined to the system administrator -->
+					<channel name="Microsoft-Surface-Attract/Operational" chid="channelOperational" 
+                   symbol="channelOperational" type="Operational" isolation="Application" enabled="true" value="16" />
+					<!-- This channel is used to publish events used in tracing -->
+					<channel name="Microsoft-Surface-Attract/Debug" chid="channelDebug" 
+                   symbol="channelDebug" type="Debug" isolation="Application" enabled="false" value="17" />
+					<!-- This channel is used to publish events used in performance tracing -->
+					<channel name="Microsoft-Surface-Attract/Performance" chid="channelPerformance"
+                   symbol="channelPerformance" type="Analytic" isolation="Application" enabled="false" value="19" />
+					<!-- Add new channels above this line -->
+				</channels>
+				<templates>
+					<!--
+			<template tid="templateException">
+			<data name="message" inType="win:UnicodeString" />
+			<data name="stackTrace" inType="win:UnicodeString" />
+			<UserData>
+				<ExceptionEvent xmlns="nullNS">
+				<message>%1</message>
+				<stackTrace>%2</stackTrace>
+				</ExceptionEvent>
+			</UserData>
+			</template>
+			-->
+          <template tid="templateNone">
+          </template>
+
+          <template tid="templateOneString">
+						<data name="string1" inType="win:UnicodeString" />
+						<UserData>
+							<oneStringEvent xmlns="nullNS">
+                <string1>%1</string1>
+              </oneStringEvent>
+						</UserData>
+					</template>
+
+					<template tid="templateTwoStrings">
+						<data name="string1" inType="win:UnicodeString" />
+						<data name="string2" inType="win:UnicodeString" />
+						<UserData>
+							<twoStringsEvent xmlns="nullNS">
+								<string1>%1</string1>
+								<string2>%1</string2>
+							</twoStringsEvent>
+						</UserData>
+					</template>
+
+          <template tid="templateThreeStrings">
+            <data name="string1" inType="win:UnicodeString" />
+            <data name="string2" inType="win:UnicodeString" />
+            <data name="string3" inType="win:UnicodeString" />
+            <UserData>
+              <threeStringsEvent xmlns="nullNS">
+                <string1>%1</string1>
+                <string2>%1</string2>
+                <string3>%1</string3>
+              </threeStringsEvent>
+            </UserData>
+          </template>
+
+          <template tid="templateFourStrings">
+            <data name="string1" inType="win:UnicodeString" />
+            <data name="string2" inType="win:UnicodeString" />
+            <data name="string3" inType="win:UnicodeString" />
+            <data name="string4" inType="win:UnicodeString" />
+            <UserData>
+              <fourStringsEvent xmlns="nullNS">
+                <string1>%1</string1>
+                <string2>%1</string2>
+                <string3>%1</string3>
+                <string4>%1</string4>
+              </fourStringsEvent>
+            </UserData>
+          </template>
+
+          <template tid="templateFiveStrings">
+            <data name="string1" inType="win:UnicodeString" />
+            <data name="string2" inType="win:UnicodeString" />
+            <data name="string3" inType="win:UnicodeString" />
+            <data name="string4" inType="win:UnicodeString" />
+            <data name="string5" inType="win:UnicodeString" />
+            <UserData>
+              <fiveStringsEvent xmlns="nullNS">
+                <string1>%1</string1>
+                <string2>%1</string2>
+                <string3>%1</string3>
+                <string4>%1</string4>
+                <string5>%1</string5>
+              </fiveStringsEvent>
+            </UserData>
+          </template>
+
+          <template tid="templateOneInteger">
+            <data name="integer1" inType="win:Int32" />
+            <UserData>
+              <oneIntegerEvent xmlns="nullNS">
+                <integer1>%1</integer1>
+              </oneIntegerEvent >
+            </UserData>
+          </template>
+
+          <template tid="templateTwoInteger">
+            <data name="integer1" inType="win:Int32" />
+            <data name="integer2" inType="win:Int32" />
+            <UserData>
+              <twoIntegerEvent xmlns="nullNS">
+                <integer1>%1</integer1>
+                <integer2>%1</integer2>
+              </twoIntegerEvent >
+            </UserData>
+          </template>
+          <!-- Add new templates above this line -->
+				</templates>
+				<opcodes>
+					<!-- Add new opcodes above this line -->
+				</opcodes>
+				<keywords>
+          <!--<keyword name="keywordException" mask="0x000000000001" message="$(string.keywordException)" symbol="keywordException" />-->
+          <!-- Add new keywords above this line (0x000000000001 to 0x800000000000) -->
+        </keywords>
+        <tasks>
+          <task name="FrameRateCount" value="2000" />
+          <task name="ApplicationLaunch" value="2001" />
+          <task name="ApplicationClose" value="2002" />
+          <task name="ParticleCount" value="2003" />
+        </tasks>
+				<events>
+					<!-- ************************************************** -->
+					<!-- START EVENTS PUBLISHED TO "Administration" channel -->
+					<!-- ************************************************** -->
+          
+          <event symbol="CannotFindConfigXml" value="1" level="win:Error" template="templateTwoStrings" message="$(string.CannotFindConfigXml)" channel="channelOperational" version="0" />
+          <event symbol="CannotLoadConfigXml" value="2" level="win:Error" template="templateTwoStrings" message="$(string.CannotLoadConfigXml)" channel="channelOperational" version="0" />
+          <event symbol="UnknownTagInXml" value="6" level="win:Error" template="templateOneString" message="$(string.UnknownTagInXml)" channel="channelOperational" version="0" />
+
+          <event symbol="ApplicationLaunchStart" value="10" level="win:Informational" template="templateNone" message="$(string.ApplicationLaunchStart)" task="ApplicationLaunch" opcode="win:Start" channel="channelOperational" version="0" />
+          <event symbol="ApplicationLaunchEnd" value="11" level="win:Informational" template="templateNone" message="$(string.ApplicationLaunchEnd)" task="ApplicationLaunch" opcode="win:Stop" channel="channelOperational" version="0" />
+          <event symbol="ApplicationCloseStart" value="12" level="win:Informational" template="templateNone" message="$(string.ApplicationCloseStart)" task="ApplicationClose" opcode="win:Start" channel="channelOperational" version="0" />
+          <event symbol="ApplicationCloseEnd" value="13" level="win:Informational" template="templateNone" message="$(string.ApplicationCloseEnd)" task="ApplicationClose" opcode="win:Stop" channel="channelOperational" version="0" />
+
+          <event symbol="FailedLoadBackgroundImage" value="200" level="win:Error" template="templateOneString" message="$(string.FailedLoadBackgroundImage)" channel="channelOperational" version="0" />
+          <event symbol="NonsupportBackgroundImage" value="201" level="win:Error" template="templateOneString" message="$(string.NonsupportBackgroundImage)" channel="channelOperational" version="0" />
+          <event symbol="BackgroundOutOfSizeImage" value="202" level="win:Error" template="templateOneString" message="$(string.BackgroundOutOfSizeImage)" channel="channelOperational" version="0" />
+
+          <event symbol="MinRequirementsNotMet" value="2000" level="win:Informational" template="templateOneString" message="$(string.RequirementsNotMet)" opcode="win:Info" channel="channelOperational" version="0" />
+
+          <!--<event symbol="EventTest" value="1" level="win:Informational" message="$(string.eventMessageTest)" channel="channelOperational" version="0" />-->
+          <!-- Add new System Events above this line -->
+          <!-- ************************************************ -->
+          <!-- END EVENTS PUBLISHED TO "Administration" channel -->
+          <!-- ************************************************ -->
+          <!-- ***************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Debug" channel -->
+          <!-- ***************************************** -->
+          <event symbol="ParticleContentLoadFailed" value="5000" level="win:Error" template="templateOneString" message="$(string.ParticleContentLoadFailed)" channel="channelDebug" version="0" />
+          <event symbol="ParticleConfigurationLoadFailed" value="5001" level="win:Error" template="templateTwoStrings" message="$(string.ParticleConfigurationLoadFailed)" channel="channelDebug" version="0" />
+          <event symbol="ParticleConfigurationNotExist" value="5002" level="win:Error" template="templateOneString" message="$(string.ParticleConfigurationNotExist)" channel="channelDebug" version="0" />
+          <event symbol="SoundInitializationFailure" value="3000" level="win:Error" template="templateOneString" message="$(string.SoundInitializationFailure)" channel="channelDebug" version="0" />
+          <!-- Add new debug events/traces above this line -->
+          <!-- *************************************** -->
+          <!-- END EVENTS PUBLISHED TO "Debug" channel -->
+          <!-- *************************************** -->
+          <!-- ***************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Performance" channel -->
+          <!-- ***************************************** -->
+          <event symbol="CurrentFramesPerSecond"  value="1002" level="win:Informational" template="templateOneInteger" message="$(string.CurrentFramesPerSecond)" task="FrameRateCount" opcode="win:Info" channel="channelPerformance" version="0" />
+          <event symbol="MinimumFramesPerSecond"  value="1003" level="win:Informational" template="templateOneInteger" message="$(string.MinimumFramesPerSecond)" task="FrameRateCount" opcode="win:Info" channel="channelPerformance" version="0" />
+          <event symbol="AverageParticleCountInAttractState"  value="2102" level="win:Informational" template="templateOneInteger" message="$(string.AverageParticleCountInAttractState)" task="ParticleCount" opcode="win:Info" channel="channelPerformance" version="0" />
+          <event symbol="MaximumParticleCountInAttractState"  value="2103" level="win:Informational" template="templateOneInteger" message="$(string.MaximumParticleCountInAttractState)" task="ParticleCount" opcode="win:Info" channel="channelPerformance" version="0" />
+          <!-- Add new performance events/traces above this line -->
+          <!-- *************************************** -->
+          <!-- END EVENTS PUBLISHED TO "Performance" channel -->
+          <!-- *************************************** -->
+        </events>
+      </provider>
+    </events>
+  </instrumentation>
+  <!-- String table for eventing/logging -->
+  <localization>
+    <!--- en-US resources -->
+    <resources culture="en-US">
+      <stringTable>
+        <!-- ******************** -->
+        <!-- START Event Messages -->
+        <!-- ******************** -->
+        <!-- ************************************************** -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Administration" channel -->
+        <!-- ************************************************** -->
+
+        <string id="CannotFindConfigXml" value="The %1 file is missing. Make sure %1 is in the %2 folder." />
+        <string id="CannotLoadConfigXml" value="The %1 file did not load. Make sure %1 is in the %2 folder. If this file is accessible, it might be corrupted." />
+        <string id="UnknownTagInXml" value="An unknown XML tag exists in the %1 file. Water ignored this tag and will continue to run." />
+
+        <string id="ApplicationLaunchStart" value="The Attract application started opening." />
+        <string id="ApplicationLaunchEnd" value="The Attract application finished opening." />
+        <string id="ApplicationCloseStart" value="The Attract application started closing." />
+        <string id="ApplicationCloseEnd" value="The Attract application finished closing." />
+
+        <string id="FailedLoadBackgroundImage" value="The background image, %1, did not load. Make sure this file is in the correct folder. If the file is accessible, it might be corrupted, and you should replace the file." />
+        <string id="NonsupportBackgroundImage" value="The background image, %1, is not supported. Make sure the background image is one of these file types: JPEG (*.jpg), PNG (*.png), or BMP (*.bmp)." />
+        <string id="BackgroundOutOfSizeImage" value="The background image, %1, is the wrong size. Make sure that it is 1536 x 1152 pixels." />
+
+        <string id="RequirementsNotMet" value="Requirements Not Met: %1" />
+
+        <!-- Add new "Administration" channel event messages above this line -->
+        <!-- ************************************************ -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Administration" channel -->
+        <!-- ************************************************ -->
+        <!-- ***************************************** -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Debug" channel -->
+        <!-- ***************************************** -->
+        <string id="ParticleContentLoadFailed" value="Loading Particle content failed. %nError message:%n%1" />
+        <string id="ParticleConfigurationLoadFailed" value="Loading Particle configuration failed. %nError message:%n%1%n%2" />
+        <string id="ParticleConfigurationNotExist" value="Particle configuration file doesn't exist. %nFile name:%n%1" />
+        <string id="SoundInitializationFailure" value="Surface Attract audio failed to load. %nError message:%n%1"/>
+        <!-- Add new "Debug" channel event messages above this line -->
+        <!-- *************************************** -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Debug" channel -->
+        <!-- *************************************** -->
+        <!-- ***************************************** -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Performance" channel -->
+        <!-- ***************************************** -->
+        <string id="CurrentFramesPerSecond" value="Current FPS: %1" />
+        <string id="MinimumFramesPerSecond" value="Minimum FPS: %1" />
+        <string id="AverageParticleCountInAttractState" value="Average particle count in Attract state: %1" />
+        <string id="MaximumParticleCountInAttractState" value="Maximum particle count In Attract state: %1" />
+        <!-- Add new "Performance" channel event messages above this line -->
+        <!-- *************************************** -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Performance" channel -->
+        <!-- *************************************** -->
+        <!-- Add new event messages above this line -->
+        <!-- ***************** -->
+        <!-- END Event Message -->
+        <!-- ***************** -->
+        <!-- ********************* -->
+        <!-- START Opcode Messages -->
+        <!-- ********************* -->
+        <!-- Add new opcode messages above this line -->
+        <!-- ******************* -->
+        <!-- END Opcode Messages -->
+        <!-- ******************* -->
+        <!-- ******************* -->
+        <!-- START Task Messages -->
+        <!-- ******************* -->
+        <!-- Add new task messages above this line -->
+        <!-- ***************** -->
+        <!-- END Task Messages -->
+        <!-- ***************** -->
+				<!-- ********************** -->
+				<!-- START Keyword Messages -->
+				<!-- ********************** -->
+				<!-- Add new keyword messages above this line -->
+				<!-- ******************** -->
+				<!-- END Keyword Messages -->
+				<!-- ******************** -->
+			</stringTable>
+		</resources>
+		<!-- Add new cultures above this line -->
+	</localization>
+</instrumentationManifest>

@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<instrumentationManifest xmlns="http://schemas.microsoft.com/win/2004/08/events">
+  <instrumentation xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <events xmlns="http://schemas.microsoft.com/win/2004/08/events">
+      <provider 
+        xmlns:mtc="http://schemas.microsoft.com/surface/2007/09/manifesttocode"
+        mtc:providerNamespace="Microsoft.Surface.Modes"
+        name="Microsoft-Surface-ModeManager" 
+        guid="{8EC2CF6A-E844-4b74-BD06-82A25F5E54B2}" 
+        symbol="EventsModeManager" 
+        resourceFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-ModeManager.man.dll" 
+        messageFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-ModeManager.man.dll" 
+        parameterFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-ModeManager.man.dll">
+        <channels>
+          <!-- This channel is used to publish events destined to the system administrator -->
+          <channel name="Microsoft-Surface-ModeManager/Operational" chid="channelOperational" symbol="channelOperational" type="Operational" isolation="Application" enabled="true" value="16" />
+          <!-- This channel is used to publish events used in tracing -->
+          <channel name="Microsoft-Surface-ModeManager/Debug" chid="channelDebug" symbol="channelDebug" type="Debug" isolation="Application" enabled="false" value="17" />
+          <!-- Add new channels above this line -->
+        </channels>
+        <templates>
+          <template tid="templateMessageUsername">
+            <data name="userName" inType="win:UnicodeString" />
+            <data name="message" inType="win:UnicodeString" />
+            <UserData>
+              <ErrorCodeUsernameEvent xmlns="nullNS">
+                <userName>%1</userName>
+                <message>%2</message>
+              </ErrorCodeUsernameEvent>
+            </UserData>
+          </template>
+          <template tid="templateIdMessageUsername">
+            <data name="sessionId" inType="win:Int32" />
+            <data name="userName" inType="win:UnicodeString" />
+            <data name="message" inType="win:UnicodeString" />
+            <UserData>
+              <IdErrorCodeUsernameEvent xmlns="nullNS">
+                <sessionId>%1</sessionId>
+                <userName>%2</userName>
+                <message>%3</message>
+              </IdErrorCodeUsernameEvent>
+            </UserData>
+          </template>
+          <template tid="templateMessage">
+            <data name="message" inType="win:UnicodeString" />
+            <UserData>
+              <MessageEvent xmlns="nullNS">
+                <message>%1</message>
+              </MessageEvent>
+            </UserData>
+          </template>
+          <template tid="templateMode">
+            <data name="mode" inType="win:UnicodeString" />
+            <UserData>
+              <ModeEvent xmlns="nullNS">
+                <mode>%1</mode>
+              </ModeEvent>
+            </UserData>
+          </template>
+          <template tid="templateException">
+            <data name="mode" inType="win:UnicodeString" />
+            <UserData>
+              <ExceptionEvent xmlns="nullNS">
+                <exception>%1</exception>
+              </ExceptionEvent>
+            </UserData>
+          </template>
+          <template tid="templateOneString">
+            <data name="string1" inType="win:UnicodeString" />
+            <UserData>
+              <threeStringsEvent xmlns="nullNS">
+                <string1>%1</string1>
+              </threeStringsEvent>
+            </UserData>
+          </template>
+          <template tid="templateTwoStrings">
+            <data name="string1" inType="win:UnicodeString" />
+            <data name="string2" inType="win:UnicodeString" />
+            <UserData>
+              <threeStringsEvent xmlns="nullNS">
+                <string1>%1</string1>
+                <string2>%2</string2>
+              </threeStringsEvent>
+            </UserData>
+          </template>
+          <template tid="templateThreeStrings">
+            <data name="string1" inType="win:UnicodeString" />
+            <data name="string2" inType="win:UnicodeString" />
+            <data name="string3" inType="win:UnicodeString" />
+            <UserData>
+              <threeStringsEvent xmlns="nullNS">
+                <string1>%1</string1>
+                <string2>%2</string2>
+                <string3>%3</string3>
+              </threeStringsEvent>
+            </UserData>
+          </template>
+          <template tid="templateGetGranularityFailed">
+            <data name="settingName" inType="win:UnicodeString" />
+            <data name="categoryName" inType="win:UnicodeString" />
+            <data name="defaultValue" inType="win:Boolean" />
+            <data name="errorDetails" inType="win:UnicodeString" />
+          </template>
+          <!-- Add new templates above this line -->
+        </templates>
+        <opcodes>
+          <!-- Add new opcodes above this line -->
+        </opcodes>
+        <keywords>
+          <!-- Add new keywords above this line (0x000000000001 to 0x800000000000) -->
+        </keywords>
+        <tasks>
+          <!-- Add new tasks above this line -->
+        </tasks>
+        <events>
+          <!-- ************************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Administration" channel -->
+          <!-- ************************************************** -->
+          <event symbol="EventToAdminSettingsError" value="1" level="win:Error" template="templateMessageUsername" message="$(string.eventMessageToAdminSettingsError)" channel="channelOperational" version="0" />
+          <event symbol="ToUserUserRegistryException" value="7" level="win:Error" template="templateThreeStrings" message="$(string.ToUserUserRegistryException)" channel="channelOperational" version="0" />
+          <event symbol="ToUserGroupPolicyException" value="8" level="win:Error" template="templateThreeStrings" message="$(string.ToUserGroupPolicyException)" channel="channelOperational" version="0" />
+          <event symbol="ToUserLogOnUserException" value="9" level="win:Error" template="templateThreeStrings" message="$(string.ToUserLogOnUserException)" channel="channelOperational" version="0" />
+          <event symbol="ToUserLogOffUserException" value="10" level="win:Error" template="templateTwoStrings" message="$(string.ToUserLogOffUserException)" channel="channelOperational" version="0" />
+          <event symbol="ToUserDisconnectException" value="11" level="win:Error" template="templateTwoStrings" message="$(string.ToUserDisconnectException)" channel="channelOperational" version="0" />
+          <event symbol="ToUserLogOffAdminException" value="12" level="win:Error" template="templateIdMessageUsername" message="$(string.ToUserLogOffAdminException)" channel="channelOperational" version="0" />
+          <event symbol="ToUserMachineRegistryException" value="13" level="win:Error" template="templateThreeStrings" message="$(string.ToUserMachineRegistryException)" channel="channelOperational" version="0" />
+          <event symbol="GetGranularityFailed" value="14" level="win:Warning" template="templateGetGranularityFailed" message="$(string.GetGranularityFailed)" channel="channelOperational" version="0" />
+          <event symbol="NeedToSwitchToAdminFirst" value="15" level="win:Warning" message="$(string.NeedToSwitchToAdminFirst)" channel="channelOperational" version="0" />
+          <event symbol="AnotherAdminSession" value="16" level="win:Warning" template="templateTwoStrings" message="$(string.AnotherAdminSession)" channel="channelOperational" version="0" />
+          <event symbol="OtherInstanceRunning" value="17" level="win:Warning" template="templateMessage" message="$(string.OtherInstanceRunning)" channel="channelOperational" version="0" />
+          <event symbol="ToUserGroupPolicyTimeoutException" value="18" level="win:Error" template="templateMessage" message="$(string.ToUserGroupPolicyTimeoutException)" channel="channelOperational" version="0" />
+          <event symbol="UISuppShellSkip" value="21" level="win:Informational" message="$(string.UISuppShellSkip)" channel="channelOperational" version="0" />
+          <event symbol="UISuppShellSet" value="22" level="win:Informational" template="templateTwoStrings" message="$(string.UISuppShellSet)" channel="channelOperational" version="0" />
+          <!-- Add new System Events above this line -->
+          <!-- ************************************************ -->
+          <!-- END EVENTS PUBLISHED TO "Administration" channel -->
+          <!-- ************************************************ -->
+          <!-- ***************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Debug" channel -->
+          <!-- ***************************************** -->
+          <event symbol="UISuppAutoShutdownEnter" value="5001" level="win:Informational" template="templateMode" message="$(string.UISuppAutoShutdownEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppBeepEnter" value="5003" level="win:Informational" template="templateMode" message="$(string.UISuppBeepEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppErrorReportingEnter" value="5005" level="win:Informational" template="templateMode" message="$(string.UISuppErrorReportingEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppFastBugCheckEnter" value="5007" level="win:Informational" template="templateMode" message="$(string.UISuppFastBugCheckEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppFastRecoveryOptionsEnter" value="5009" level="win:Informational" template="templateMode" message="$(string.UISuppFastRecoveryOptionsEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppFirewallEnter" value="5011" level="win:Informational" template="templateMode" message="$(string.UISuppFirewallEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppScreensaverEnter" value="5013" level="win:Informational" template="templateMode" message="$(string.UISuppScreensaverEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppShellEnter" value="5015" level="win:Informational" template="templateMode" message="$(string.UISuppShellEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppSystemSoundsEnter" value="5017" level="win:Informational" template="templateMode" message="$(string.UISuppSystemSoundsEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppTaskManagerEnter" value="5019" level="win:Informational" template="templateMode" message="$(string.UISuppTaskManagerEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppUserAccountControlEnter" value="5021" level="win:Informational" template="templateMode" message="$(string.UISuppUserAccountControlEnter)" channel="channelDebug" version="0" />
+          <event symbol="FailedToEnterTransition" value="5023" level="win:Error" template="templateMessage" message="$(string.FailedToEnterTransition)" channel="channelDebug" version="0" />
+          <event symbol="TransitionInProgress" value="5024" level="win:Warning" message="$(string.TransitionInProgress)" channel="channelDebug" version="0" />
+          <event symbol="AttemptingRollback" value="5025" level="win:Warning" message="$(string.AttemptingRollback)" channel="channelDebug" version="0" />
+          <event symbol="UISuppSidebarEnter" value="5026" level="win:Informational" template="templateMode" message="$(string.UISuppSidebarEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppAutoShutdownSkip" value="5028" level="win:Informational" message="$(string.UISuppAutoShutdownSkip)" channel="channelDebug" version="0" />
+          <event symbol="UISuppBeepSkip" value="5029" level="win:Informational" message="$(string.UISuppBeepSkip)" channel="channelDebug" version="0" />
+          <event symbol="UISuppErrorReportingSkip" value="5030" level="win:Informational" message="$(string.UISuppErrorReportingSkip)" channel="channelDebug" version="0" />
+          <event symbol="UISuppFastBugCheckSkip" value="5031" level="win:Informational" message="$(string.UISuppFastBugCheckSkip)" channel="channelDebug" version="0" />
+          <event symbol="UISuppFastRecoveryOptionsSkip" value="5032" level="win:Informational" message="$(string.UISuppFastRecoveryOptionsSkip)" channel="channelDebug" version="0" />
+          <event symbol="UISuppFirewallSkip" value="5033" level="win:Informational" message="$(string.UISuppFirewallSkip)" channel="channelDebug" version="0" />
+          <event symbol="UISuppSystemSoundsSkip" value="5034" level="win:Informational" message="$(string.UISuppSystemSoundsSkip)" channel="channelDebug" version="0" />
+          <event symbol="UISuppTaskManagerSkip" value="5035" level="win:Informational" message="$(string.UISuppTaskManagerSkip)" channel="channelDebug" version="0" />
+          <event symbol="UISuppUserAccountControlSkip" value="5036" level="win:Informational" message="$(string.UISuppUserAccountControlSkip)" channel="channelDebug" version="0" />
+          <event symbol="UISuppAutoShutdownLeave2" value="5037" level="win:Informational" template="templateMode" message="$(string.UISuppAutoShutdownLeave2)" channel="channelDebug" version="0" />
+          <event symbol="UISuppBeepLeave2" value="5038" level="win:Informational" template="templateMode" message="$(string.UISuppBeepLeave2)" channel="channelDebug" version="0" />
+          <event symbol="UISuppErrorReportingLeave2" value="5039" level="win:Informational" template="templateMode" message="$(string.UISuppErrorReportingLeave2)" channel="channelDebug" version="0" />
+          <event symbol="UISuppFastBugCheckLeave2" value="5040" level="win:Informational" template="templateMode" message="$(string.UISuppFastBugCheckLeave2)" channel="channelDebug" version="0" />
+          <event symbol="UISuppFastRecoveryOptionsLeave2" value="5041" level="win:Informational" template="templateMode" message="$(string.UISuppFastRecoveryOptionsLeave2)" channel="channelDebug" version="0" />
+          <event symbol="UISuppFirewallLeave2" value="5042" level="win:Informational" template="templateMode" message="$(string.UISuppFirewallLeave2)" channel="channelDebug" version="0" />
+          <event symbol="UISuppScreensaverLeave2" value="5043" level="win:Informational" template="templateMode" message="$(string.UISuppScreensaverLeave2)" channel="channelDebug" version="0" />
+          <event symbol="UISuppShellLeave2" value="5044" level="win:Informational" template="templateMode" message="$(string.UISuppShellLeave2)" channel="channelDebug" version="0" />
+          <event symbol="UISuppSystemSoundsLeave2" value="5045" level="win:Informational" template="templateMode" message="$(string.UISuppSystemSoundsLeave2)" channel="channelDebug" version="0" />
+          <event symbol="UISuppTaskManagerLeave2" value="5046" level="win:Informational" template="templateMode" message="$(string.UISuppTaskManagerLeave2)" channel="channelDebug" version="0" />
+          <event symbol="UISuppUserAccountControlLeave2" value="5047" level="win:Informational" template="templateMode" message="$(string.UISuppUserAccountControlLeave2)" channel="channelDebug" version="0" />
+          <event symbol="UISuppSidebarLeave2" value="5048" level="win:Informational" template="templateMode" message="$(string.UISuppSidebarLeave2)" channel="channelDebug" version="0" />
+          <event symbol="UISuppChangePasswordEnter" value="5049" level="win:Informational" template="templateMode" message="$(string.UISuppChangePasswordEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppChangePasswordLeave" value="5050" level="win:Informational" template="templateMode" message="$(string.UISuppChangePasswordLeave)" channel="channelDebug" version="0" />
+          <event symbol="FailedToStartSurfaceOutOfOrder" value="5051" level="win:Error" template="templateException" message="$(string.FailedToStartSurfaceOutOfOrder)" channel="channelDebug" version="0" />
+          <event symbol="UISuppCrashDumpEnter" value="5052" level="win:Informational" template="templateMode" message="$(string.UISuppCrashDumpEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppCrashDumpSkip" value="5053" level="win:Informational" message="$(string.UISuppCrashDumpSkip)" channel="channelDebug" version="0" />
+          <event symbol="UISuppCrashDumpLeave" value="5054" level="win:Informational" template="templateMode" message="$(string.UISuppCrashDumpLeave)" channel="channelDebug" version="0" />
+          <event symbol="UISuppScreensaverSkip" value="5055" level="win:Informational" message="$(string.UISuppScreensaverSkip)" channel="channelDebug" version="0" />
+          <event symbol="UISuppChangePasswordSkip" value="5056" level="win:Informational" message="$(string.UISuppChangePasswordSkip)" channel="channelDebug" version="0" />
+          <event symbol="UISuppSidebarSkip" value="5057" level="win:Informational" message="$(string.UISuppSidebarSkip)" channel="channelDebug" version="0" />
+          <event symbol="UISuppProgramCompatibilityAssistantEnter" value="5059" level="win:Informational" template="templateMode" message="$(string.UISuppProgramCompatibilityAssistantEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppProgramCompatibilityAssistantLeave" value="5060" level="win:Informational" template="templateMode" message="$(string.UISuppProgramCompatibilityAssistantLeave)" channel="channelDebug" version="0" />
+          <event symbol="UISuppProgramCompatibilityAssistantSkip" value="5061" level="win:Informational" message="$(string.UISuppProgramCompatibilityAssistantSkip)" channel="channelDebug" version="0" />
+          <event symbol="UISuppWindowsDiagnosticsResolverEnter" value="5062" level="win:Informational" template="templateMode" message="$(string.UISuppWindowsDiagnosticsResolverEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppWindowsDiagnosticsResolverLeave" value="5063" level="win:Informational" template="templateMode" message="$(string.UISuppWindowsDiagnosticsResolverLeave)" channel="channelDebug" version="0" />
+          <event symbol="UISuppWindowsDiagnosticsResolverSkip" value="5064" level="win:Informational" message="$(string.UISuppWindowsDiagnosticsResolverSkip)" channel="channelDebug" version="0" />
+          <event symbol="UISuppErrorModeEnter" value="5065" level="win:Informational" template="templateMode" message="$(string.UISuppErrorModeEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppErrorModeLeave" value="5066" level="win:Informational" template="templateMode" message="$(string.UISuppErrorModeLeave)" channel="channelDebug" version="0" />
+          <event symbol="UISuppDesktopWallpaperEnter" value="5067" level="win:Informational" template="templateMode" message="$(string.UISuppDesktopWallpaperEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppDesktopWallpaperLeave" value="5068" level="win:Informational" template="templateMode" message="$(string.UISuppDesktopWallpaperLeave)" channel="channelDebug" version="0" />
+          <event symbol="UISuppDesktopWallpaperSkip" value="5069" level="win:Informational" message="$(string.UISuppDesktopWallpaperSkip)" channel="channelDebug" version="0" />
+          <event symbol="UISuppDesktopBackgroundColorEnter" value="5070" level="win:Informational" template="templateMode" message="$(string.UISuppDesktopBackgroundColorEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppDesktopBackgroundColorLeave" value="5071" level="win:Informational" template="templateMode" message="$(string.UISuppDesktopBackgroundColorLeave)" channel="channelDebug" version="0" />
+          <event symbol="UISuppDesktopBackgroundColorSkip" value="5072" level="win:Informational" message="$(string.UISuppDesktopBackgroundColorSkip)" channel="channelDebug" version="0" />
+          <event symbol="UISuppOutOfOrderEnter" value="5073" level="win:Informational" template="templateMode" message="$(string.UISuppOutOfOrderEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppOutOfOrderSkip" value="5074" level="win:Informational" message="$(string.UISuppOutOfOrderSkip)" channel="channelDebug" version="0" />
+          <event symbol="UISuppOutOfOrderLeave" value="5075" level="win:Informational" template="templateMode" message="$(string.UISuppOutOfOrderLeave)" channel="channelDebug" version="0" />
+          <event symbol="UISuppUICursorModeEnter" value="5076" level="win:Informational" template="templateMode" message="$(string.UISuppUICursorModeEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppUICursorModeSkip" value="5077" level="win:Informational" message="$(string.UISuppUICursorModeSkip)" channel="channelDebug" version="0" />
+          <event symbol="UISuppUICursorModeLeave" value="5078" level="win:Informational" template="templateMode" message="$(string.UISuppUICursorModeLeave)" channel="channelDebug" version="0" />
+          <event symbol="UISuppFlickModeEnter" value="5079" level="win:Informational" template="templateMode" message="$(string.UISuppFlickModeEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppFlickModeSkip" value="5080" level="win:Informational" message="$(string.UISuppFlickModeSkip)" channel="channelDebug" version="0" />
+          <event symbol="UISuppFlickModeLeave" value="5081" level="win:Informational" template="templateMode" message="$(string.UISuppFlickModeLeave)" channel="channelDebug" version="0" />
+          <event symbol="UISuppInputPanelEnter" value="5082" level="win:Informational" template="templateMode" message="$(string.UISuppInputPanelEnter)" channel="channelDebug" version="0" />
+          <event symbol="UISuppInputPanelSkip" value="5083" level="win:Informational" message="$(string.UISuppInputPanelSkip)" channel="channelDebug" version="0" />
+          <event symbol="UISuppInputPanelLeave" value="5084" level="win:Informational" template="templateMode" message="$(string.UISuppInputPanelLeave)" channel="channelDebug" version="0" />
+          <!-- Add new debug events/traces above this line -->
+          <!-- *************************************** -->
+          <!-- END EVENTS PUBLISHED TO "Debug" channel -->
+          <!-- *************************************** -->
+        </events>
+      </provider>
+    </events>
+  </instrumentation>
+  <!-- String table for eventing/logging -->
+  <localization>
+    <!--- en-US resources -->
+    <resources culture="en-US">
+      <stringTable>
+        <!-- ******************** -->
+        <!-- START Event Messages -->
+        <!-- ******************** -->
+        <!-- ************************************************** -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Administration" channel -->
+        <!-- ************************************************** -->
+        <string id="eventMessageToAdminSettingsError" value="An error occured while entering Windows mode - specifically, while accessing the registry. The administrative user %1 is logged on, but some operations might fail. Reboot the system and then try again. %nError message:%n%2" />
+        <string id="ToUserUserRegistryException" value="The Surface system failed to switch to Surface mode due to an error while accessing the registry to set per-user settings. The Administrative user %1 initiated the operation, which was stopped. Fix the problem and then try again. Setting name: %2. %nError message:%n%3" />
+        <string id="ToUserGroupPolicyException" value="The Surface system failed to switch to Surface mode due to an error while applying Group Policy settings. The Administrative user %1 initiated the operation, which was stopped. Fix the problem and then try again. Setting name: %2. %nError message:%n%3" />
+        <string id="ToUserLogOnUserException" value="The Surface system failed to switch to Surface mode due to an error while loading the user profile of the Surface mode account %1. The Administrative user %2 initiated the operation, which was stopped. Fix the problem and then try again. %nError message:%n%3" />
+        <string id="ToUserLogOffUserException" value="A failure has occurred in an attempt to log off a Surface mode session and transition to Surface mode. The transition was initiated by the user %1. %nError: %2. %nYou must restart the Surface unit to complete the transition to Surface mode." />
+        <string id="ToUserDisconnectException" value="A failure has occurred in an attempt to end Console session and transition to Surface mode. The transition was initiated by the user %1. %nError: %2. %nYou must restart the Surface unit to complete the transition to Surface mode." />
+        <string id="ToUserLogOffAdminException" value="A failure has occurred in an attempt to log off the administrative session, session ID %1, and transition to Surface mode. The transition was initiated by the user %2. %nError: %3. %nYou must restart the Surface unit to complete the transition to Surface mode." />
+        <string id="ToUserMachineRegistryException" value="The Surface system failed to switch to Surface mode due to an error while accessing the registry to set global settings. The Administrative user %1 initiated the operation, which was stopped. Fix the problem and then try again. Setting name: %2. %nError message:%n%3" />
+        <string id="GetGranularityFailed" value="The Surface system could not read setting %1 in category %2 due to an error while accessing the registry. Switch to Surface mode proceeded with a default value. Check the registry and reinstall the Surface platform, if necessary. The default value used: %3. %nError message:%n%4" />
+        <string id="NeedToSwitchToAdminFirst" value="The Surface system rejected an attempt to enable or disable troubleshooting and debugging in Surface mode because the system is already in Surface mode. Switch to Windows mode first and then try again." />
+        <string id="AnotherAdminSession" value="The Surface system failed to switch to Surface mode because there is another session belonging to administrative user %1. The switch was initiated by the user %2. Before attempting to switch to Surface mode, make sure that all other Administrative users are logged off." />
+        <string id="OtherInstanceRunning" value="The Surface system rejected an attempt to switch modes because the previous mode switching operation remains in progress. The switch was initiated by the user %1. Wait for the previous mode switching operation to complete and then try again." />
+        <string id="ToUserGroupPolicyTimeoutException" value="The Surface system failed to switch to Surface mode due to a timeout while applying Group Policy settings. The Administrative user %1 initiated the operation, which was stopped. Fix the problem and then try again." />
+        <string id="UISuppShellSkip" value="Skipping Shell (Windows Explorer) UI Suppression because it is disabled." />
+        <string id="UISuppShellSet" value="Setting non-administrator shell.%nOld value: &quot;%1&quot;%nNew value: &quot;%2&quot;" />
+
+        <!-- Add new "Administration" channel event messages above this line -->
+        <!-- ************************************************ -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Administration" channel -->
+        <!-- ************************************************ -->
+        <!-- ***************************************** -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Debug" channel -->
+        <!-- ***************************************** -->
+        <string id="UISuppAutoShutdownEnter" value="Entering UI Suppression for AutoShutdown to mode: %1." />
+        <string id="UISuppBeepEnter" value="Entering UI Suppression for Beep to mode: %1." />
+        <string id="UISuppErrorReportingEnter" value="Entering UI Suppression for ErrorReporting to mode: %1." />
+        <string id="UISuppFastBugCheckEnter" value="Entering UI Suppression for FastBugCheck to mode: %1." />
+        <string id="UISuppFastRecoveryOptionsEnter" value="Entering UI Suppression for FastRecoveryOptions to mode: %1." />
+        <string id="UISuppFirewallEnter" value="Entering UI Suppression for Firewall to mode: %1." />
+        <string id="UISuppScreensaverEnter" value="Entering UI Suppression for ScreenSaver to mode: %1." />
+        <string id="UISuppShellEnter" value="Entering UI Suppression for Shell (Windows Explorer) to mode: %1." />
+        <string id="UISuppSystemSoundsEnter" value="Entering UI Suppression for SystemSounds to mode: %1." />
+        <string id="UISuppTaskManagerEnter" value="Entering UI Suppression for TaskManager to mode: %1." />
+        <string id="UISuppUserAccountControlEnter" value="Entering UI Suppression for UserAccountControl to mode: %1." />
+        <string id="FailedToEnterTransition" value="Could not enter transition to switch modes. %nError message:%n%1" />
+        <string id="TransitionInProgress" value="Switching modes was stopped because a transition between modes is in progress." />
+        <string id="AttemptingRollback" value="Switching modes failed. Attempting to rollback the settings that have already been modified." />
+        <string id="UISuppSidebarEnter" value="Entering UI Suppression for Sidebar to mode: %1." />
+        <string id="UISuppAutoShutdownSkip" value="Skipping AutoShutdown UI Suppression because it is disabled." />
+        <string id="UISuppBeepSkip" value="Skipping Beep UI Suppression because it is disabled." />
+        <string id="UISuppErrorReportingSkip" value="Skipping ErrorReporting UI Suppression because it is disabled." />
+        <string id="UISuppFastBugCheckSkip" value="Skipping FastBugCheck UI Suppression because it is disabled." />
+        <string id="UISuppFastRecoveryOptionsSkip" value="Skipping FastRecoveryOptions UI Suppression because it is disabled." />
+        <string id="UISuppFirewallSkip" value="Skipping Firewall UI Suppression because it is disabled." />
+        <string id="UISuppSystemSoundsSkip" value="Skipping SystemSounds UI Suppression because it is disabled." />
+        <string id="UISuppTaskManagerSkip" value="Skipping TaskManager UI Suppression because it is disabled." />
+        <string id="UISuppUserAccountControlSkip" value="Skipping UserAccountControl UI Suppression because it is disabled." />
+        <string id="UISuppAutoShutdownLeave2" value="Successfully exiting UI Suppression for AutoShutdown to mode: %1." />
+        <string id="UISuppBeepLeave2" value="Successfully exiting UI Suppression for Beep to mode: %1." />
+        <string id="UISuppErrorReportingLeave2" value="Successfully exiting UI Suppression for ErrorReporting to mode: %1." />
+        <string id="UISuppFastBugCheckLeave2" value="Successfully exiting UI Suppression for FastBugCheck to mode: %1." />
+        <string id="UISuppFastRecoveryOptionsLeave2" value="Successfully exiting UI Suppression for FastRecoveryOptions to mode: %1." />
+        <string id="UISuppFirewallLeave2" value="Successfully exiting UI Suppression for Firewall to mode: %1." />
+        <string id="UISuppScreensaverLeave2" value="Successfully exiting UI Suppression for ScreenSaver to mode: %1." />
+        <string id="UISuppShellLeave2" value="Successfully exiting UI Suppression for Shell (Windows Explorer) to mode: %1." />
+        <string id="UISuppSystemSoundsLeave2" value="Successfully exiting UI Suppression for SystemSounds to mode: %1." />
+        <string id="UISuppTaskManagerLeave2" value="Successfully exiting UI Suppression for TaskManager to mode: %1." />
+        <string id="UISuppUserAccountControlLeave2" value="Successfully exiting UI Suppression for UserAccountControl to mode: %1." />
+        <string id="UISuppSidebarLeave2" value="Successfully exiting UI Suppression for Sidebar to mode: %1." />
+        <string id="UISuppChangePasswordEnter" value="Entering UI Suppression for ChangePassword to mode: %1." />
+        <string id="UISuppChangePasswordLeave" value="Successfully exiting UI Suppression for ChangePassword to mode: %1." />
+        <string id="FailedToStartSurfaceOutOfOrder" value="Failed to start SurfaceOutOfOrder.exe. %nError message:%n%1" />
+        <string id="UISuppCrashDumpEnter" value="Entering UI Suppression for CrashDump to mode: %1." />
+        <string id="UISuppCrashDumpLeave" value="Successfully exiting UI Suppression for CrashDump to mode: %1." />
+        <string id="UISuppCrashDumpSkip" value="Skipping CrashDump UI Suppression because it is disabled." />
+        <string id="UISuppScreensaverSkip" value="Skipping Screensaver UI Suppression because it is disabled." />
+        <string id="UISuppChangePasswordSkip" value="Skipping ChangePassword UI Suppression because it is disabled." />
+        <string id="UISuppSidebarSkip" value="Skipping Sidebar UI Suppression because it is disabled." />
+        <string id="UISuppProgramCompatibilityAssistantEnter" value="Entering UI Suppression for ProgramCompatibilityAssistant to mode: %1." />
+        <string id="UISuppProgramCompatibilityAssistantLeave" value="Successfully exiting UI Suppression for ProgramCompatibilityAssistant to mode: %1." />
+        <string id="UISuppProgramCompatibilityAssistantSkip" value="Skipping ProgramCompatibilityAssistant UI Suppression because it is disabled." />
+        <string id="UISuppWindowsDiagnosticsResolverEnter" value="Entering UI Suppression for WindowsDiagnosticsResolver to mode: %1." />
+        <string id="UISuppWindowsDiagnosticsResolverLeave" value="Successfully exiting UI Suppression for WindowsDiagnosticsResolver to mode: %1." />
+        <string id="UISuppWindowsDiagnosticsResolverSkip" value="Skipping WindowsDiagnosticsResolver UI Suppression as it is disabled." />
+        <string id="UISuppErrorModeEnter" value="Entering UI Suppression for ErrorMode to mode: %1." />
+        <string id="UISuppErrorModeLeave" value="Successfully exiting UI Suppression for ErrorMode to mode: %1." />
+        <string id="UISuppDesktopWallpaperEnter" value="Entering UI Suppression for WindowsDesktopBackground (Wallpaper) to mode: %1." />
+        <string id="UISuppDesktopWallpaperLeave" value="Successfully exiting UI Suppression for WindowsDesktopBackground (Wallpaper) to mode: %1." />
+        <string id="UISuppDesktopWallpaperSkip" value="Skipping WindowsDesktopBackground (Wallpaper) UI Suppression because it is disabled." />
+        <string id="UISuppDesktopBackgroundColorEnter" value="Entering UI Suppression for WindowsDesktopBackground (Color) to mode: %1." />
+        <string id="UISuppDesktopBackgroundColorLeave" value="Successfully exiting UI Suppression for WindowsDesktopBackground (Color) to mode: %1." />
+        <string id="UISuppDesktopBackgroundColorSkip" value="Skipping WindowsDesktopBackground (Color) UI Suppression because it is disabled." />
+        <string id="UISuppOutOfOrderEnter" value="Entering UI Suppression for OutOfOrder to mode: %1." />
+        <string id="UISuppOutOfOrderLeave" value="Successfully exiting UI Suppression for OutOfOrder to mode: %1." />
+        <string id="UISuppOutOfOrderSkip" value="Skipping OutOfOrder UI Suppression because it is disabled." />
+        <string id="UISuppUICursorModeEnter" value="Entering UI Suppression for UICursorMode to mode: %1." />
+        <string id="UISuppUICursorModeLeave" value="Successfully exiting UI Suppression for UICursorMode to mode: %1." />
+        <string id="UISuppUICursorModeSkip" value="Skipping UICursorMode UI Suppression because it is disabled." />
+        <string id="UISuppFlickModeEnter" value="Entering UI Suppression for FlickMode to mode: %1." />
+        <string id="UISuppFlickModeLeave" value="Successfully exiting UI Suppression for FlickMode to mode: %1." />
+        <string id="UISuppFlickModeSkip" value="Skipping FlickMode UI Suppression because it is disabled." />
+        <string id="UISuppInputPanelEnter" value="Entering UI Suppression for InputPanel to mode: %1." />
+        <string id="UISuppInputPanelLeave" value="Successfully exiting UI Suppression for InputPanel to mode: %1." />
+        <string id="UISuppInputPanelSkip" value="Skipping InputPanel UI Suppression because it is disabled." />
+        <!-- Add new "Debug" channel event messages above this line -->
+        <!-- *************************************** -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Debug" channel -->
+        <!-- *************************************** -->
+        <!-- Add new event messages above this line -->
+        <!-- ***************** -->
+        <!-- END Event Message -->
+        <!-- ***************** -->
+        <!-- ********************* -->
+        <!-- START Opcode Messages -->
+        <!-- ********************* -->
+        <!-- Add new opcode messages above this line -->
+        <!-- ******************* -->
+        <!-- END Opcode Messages -->
+        <!-- ******************* -->
+        <!-- ******************* -->
+        <!-- START Task Messages -->
+        <!-- ******************* -->
+        <!-- Add new task messages above this line -->
+        <!-- ***************** -->
+        <!-- END Task Messages -->
+        <!-- ***************** -->
+        <!-- ********************** -->
+        <!-- START Keyword Messages -->
+        <!-- ********************** -->
+        <!-- Add new keyword messages above this line -->
+        <!-- ******************** -->
+        <!-- END Keyword Messages -->
+        <!-- ******************** -->
+      </stringTable>
+    </resources>
+    <!-- Add new cultures above this line -->
+  </localization>
+</instrumentationManifest>

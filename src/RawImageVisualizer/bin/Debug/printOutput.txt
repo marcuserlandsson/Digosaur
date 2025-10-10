@@ -1,0 +1,1098 @@
+DEBUG: Program.Main() started successfully
+DEBUG: App1 constructor called
+1
+2
+ServerListener Started!
+DEBUG: Server created
+HELLO
+DEBUG: Initialize() called
+DEBUG: Window set on surface
+DEBUG: Surface input initialized
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 38 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 21 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 30 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 10 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 10 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 9 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 19 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 12 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 12 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 12 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 17 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 17 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 5 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 10 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 6 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 36 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 2 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 2 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 17 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 17 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 19 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 11 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 10 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 10 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 8 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 12 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 9 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 5 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 2 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 7 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 60 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 11 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 6 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 3 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 11 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 2 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 43 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 18 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 17 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 18 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 24 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 5 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 3 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 8 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 34 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 39 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 17 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 7 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 7 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 12 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 10 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 7 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 12 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 10 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 5 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 3 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 10 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 18 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 10 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 11 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 10 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 20 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 17 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 12 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 9 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 11 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 11 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 7 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 17 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 10 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 9 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 4 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 12 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 6 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 11 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 19 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 17 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 10 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 27 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 20 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 12 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 8 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 10 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 18 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 10 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 20 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 17 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 11 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 18 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 23 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 18 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 18 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 20 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 18 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 21 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 9 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 3 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 11 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 11 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 19 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 18 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 9 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 9 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 18 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 3 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 11 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 3 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 2 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 18 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 50 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 17 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 17 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 2 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 19 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 9 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 20 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 17 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 12 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 19 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 12 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 5 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 19 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 11 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 20 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 17 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 12 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 20 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 12 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 10 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 52 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 7 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 9 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 3 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 11 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 2 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 6 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 1 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 10 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 15 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 14 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 17 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 22 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 5 ms
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 16 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 13 ms
+DEBUG: OnTouchTargetFrameReceived called!
+DEBUG: OnTouchTargetFrameReceived called!
+A frame was not compressed because the previous thread failed to complete in 24 ms

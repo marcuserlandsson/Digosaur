@@ -1,0 +1,1275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<instrumentationManifest xmlns="http://schemas.microsoft.com/win/2004/08/events">
+  <instrumentation xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <events xmlns="http://schemas.microsoft.com/win/2004/08/events">
+    <provider name="Microsoft-Surface-Shell" guid="{F1EDBAD2-81B7-43d9-89F8-433B586C58D8}" symbol="EventsShell" resourceFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-shell.man.dll" messageFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-shell.man.dll" parameterFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-shell.man.dll">
+    <channels>
+      <!-- This channel is used to publish events destined to the system administrator -->
+      <channel name="Microsoft-Surface-Shell/Operational" chid="channelOperational" 
+               symbol="channelOperational" type="Operational" isolation="Application" enabled="true" value="16" />
+      <!-- This channel is used to publish events used in tracing -->
+      <channel name="Microsoft-Surface-Shell/Debug" chid="channelDebug" 
+               symbol="channelDebug" type="Debug" isolation="Application" enabled="false" value="17" />
+      <!-- This channel is used to publish events used in performance tracing -->
+      <channel name="Microsoft-Surface-Shell/Performance" chid="channelPerformance"
+               symbol="channelPerformance" type="Analytic" isolation="Application" enabled="false" value="19" />
+      <!-- Add new channels above this line -->
+    </channels>
+    <templates>
+      <template tid="templateNone">
+        <UserData>
+        </UserData>
+      </template>
+
+      <template tid="templateOneString">
+        <data name="string1" inType="win:UnicodeString" /> 
+        <UserData>
+          <oneStringEvent xmlns="nullNS">
+            <string1>%1</string1>
+          </oneStringEvent>
+        </UserData>
+      </template>
+
+      <template tid="templateTwoStrings">
+        <data name="string1" inType="win:UnicodeString" />
+        <data name="string2" inType="win:UnicodeString" />
+        <UserData>
+          <twoStringsEvent xmlns="nullNS">
+            <string1>%1</string1>
+            <string2>%2</string2>
+          </twoStringsEvent>
+        </UserData>
+      </template>
+
+      <template tid="templateThreeStrings">
+        <data name="string1" inType="win:UnicodeString" />
+        <data name="string2" inType="win:UnicodeString" />
+        <data name="string3" inType="win:UnicodeString" />
+        <UserData>
+          <threeStringsEvent xmlns="nullNS">
+            <string1>%1</string1>
+            <string2>%2</string2>
+            <string3>%3</string3>
+          </threeStringsEvent>
+        </UserData>
+      </template>
+
+      <template tid="templateFourStrings">
+        <data name="string1" inType="win:UnicodeString" />
+        <data name="string2" inType="win:UnicodeString" />
+        <data name="string3" inType="win:UnicodeString" />
+        <data name="string4" inType="win:UnicodeString" />
+        <UserData>
+            <fourStringsEvent xmlns="nullNS">
+                <string1>%1</string1>
+                <string2>%2</string2>
+                <string3>%3</string3>
+                <string3>%4</string3>
+            </fourStringsEvent>
+        </UserData>
+      </template>
+
+      <template tid="templateFiveStrings">
+        <data name="string1" inType="win:UnicodeString" />
+        <data name="string2" inType="win:UnicodeString" />
+        <data name="string3" inType="win:UnicodeString" />
+        <data name="string4" inType="win:UnicodeString" />
+        <data name="string5" inType="win:UnicodeString" />
+        <UserData>
+          <fourStringsEvent xmlns="nullNS">
+            <string1>%1</string1>
+            <string2>%2</string2>
+            <string3>%3</string3>
+            <string3>%4</string3>
+            <string3>%5</string3>
+          </fourStringsEvent>
+        </UserData>
+      </template>
+
+      <template tid="templateSixStrings">
+        <data name="string1" inType="win:UnicodeString" />
+        <data name="string2" inType="win:UnicodeString" />
+        <data name="string3" inType="win:UnicodeString" />
+        <data name="string4" inType="win:UnicodeString" />
+        <data name="string5" inType="win:UnicodeString" />
+        <data name="string6" inType="win:UnicodeString" />
+        <UserData>
+          <fourStringsEvent xmlns="nullNS">
+            <string1>%1</string1>
+            <string2>%2</string2>
+            <string3>%3</string3>
+            <string3>%4</string3>
+            <string3>%5</string3>
+            <string3>%6</string3>
+          </fourStringsEvent>
+        </UserData>
+      </template>
+      
+      <template tid="templateLastError">
+      <data name="lastError" inType="win:UInt32" />
+      <UserData>
+        <lastErrorEvent xmlns="nullNS">
+          <lastError>%1</lastError>
+        </lastErrorEvent>
+      </UserData>
+      </template>
+
+      <template tid="templateWindowProcessIdName">
+        <data name="windowHandle" inType="win:Int32" />
+        <data name="windowText" inType="win:UnicodeString" />
+        <data name="processId" inType="win:Int32" />
+        <data name="processName" inType="win:UnicodeString" />
+        <UserData>
+          <WindowProcessIdNameEvent xmlns="nullNS">
+            <windowHandle>%1</windowHandle>
+            <windowText>%2</windowText>
+            <processId>%3</processId>
+            <processName>%4</processName>
+          </WindowProcessIdNameEvent>
+        </UserData>
+      </template>
+
+      <template tid="templateTwoIntegers">
+        <data name="int1" inType="win:Int32" />
+        <data name="int2" inType="win:Int32" />
+        <UserData>
+          <templateTwoIntegers xmlns="nullNS">
+            <int1>%1</int1>
+            <int2>%2</int2>
+          </templateTwoIntegers>
+        </UserData>
+      </template>
+
+      <template tid="templateThreeIntegers">
+        <data name="int1" inType="win:Int32" />
+        <data name="int2" inType="win:Int32" />
+        <data name="int3" inType="win:Int32" />
+        <UserData>
+          <templateThreeIntegers xmlns="nullNS">
+            <int1>%1</int1>
+            <int2>%2</int2>
+            <int3>%3</int3>
+          </templateThreeIntegers>
+        </UserData>
+      </template>
+
+      <template tid="templateProcessIdPathArguments">
+        <data name="processId" inType="win:Int32" />
+        <data name="processPath" inType="win:UnicodeString" />
+        <data name="processArguments" inType="win:UnicodeString" />
+        <UserData>
+          <templateProcessIdPathArguments xmlns="nullNS">
+            <processId>%1</processId>
+            <processPath>%2</processPath>
+            <processArguments>%3</processArguments>
+          </templateProcessIdPathArguments>
+        </UserData>
+      </template>
+
+      <template tid="templateOneInteger">
+        <data name="integer1" inType="win:Int32" />
+        <UserData>
+          <oneIntegerEvent xmlns="nullNS">
+            <integer1>%1</integer1>
+          </oneIntegerEvent >
+        </UserData>
+      </template>
+
+        <template tid="templateAccessPointActivation">
+            <data name="accessPoint" inType="win:UnicodeString" />
+            <data name="startLocationX" inType="win:Int32" />
+            <data name="startLocationY" inType="win:Int32" />
+            <data name="endLocationX" inType="win:Int32" />
+            <data name="endLocationY" inType="win:Int32" />
+            <data name="distance" inType="win:Int32" />
+            <data name="duration" inType="win:Int32" />			
+            <data name="velocity" inType="win:Int32" />
+            <UserData>
+                <AccessPointActivationEvent xmlns="nullNS">
+                    <accessPoint>%1</accessPoint>
+                    <startLocationX>%2</startLocationX>
+                    <startLocationY>%3</startLocationY>
+                    <endLocationX>%4</endLocationX>
+                    <endLocationY>%5</endLocationY>
+                    <distance>%6</distance>
+                    <duration>%7</duration>					
+                    <velocity>%8</velocity>
+                </AccessPointActivationEvent>
+            </UserData>
+        </template>
+
+      <template tid="templateTimeoutUniqueNameExeName">
+        <data name="timeout" inType="win:Int32" />
+        <data name="uniqueName" inType="win:UnicodeString" />
+        <data name="exeName" inType="win:UnicodeString" />
+        <UserData>
+          <templateTimeoutUniqueNameExeName xmlns="nullNS">
+            <timeout>%1</timeout>
+            <uniqueName>%2</uniqueName>
+            <exeName>%3</exeName>
+          </templateTimeoutUniqueNameExeName>
+        </UserData>
+      </template>
+      
+      <template tid="templateTitleBarDetected">
+        <data name="windowHandle" inType="win:UnicodeString" />
+        <data name="processName" inType="win:UnicodeString" />
+        <data name="windowText" inType="win:UnicodeString" />
+        <UserData>
+          <templateTitleBarDetected xmlns="nullNS">
+            <windowHandle>%1</windowHandle>
+            <processName>%2</processName>
+            <windowText>%3</windowText>
+          </templateTitleBarDetected>
+        </UserData>
+      </template>
+
+      <template tid="templateApplication">
+        <data name="appInfoFileName" inType="win:UnicodeString" />
+        <data name="fileName" inType="win:UnicodeString" />
+        <data name="processId" inType="win:Int32" />
+        <UserData>
+          <threeStringsEvent xmlns="nullNS">
+            <uniqueName>%1</uniqueName>
+            <fileName>%2</fileName>
+            <processId>%3</processId>
+          </threeStringsEvent>
+        </UserData>
+      </template>
+
+      <template tid="templateCultureName">
+        <data name="cultureName" inType="win:UnicodeString" />
+        <UserData>
+          <templateCultureName xmlns="nullNS">
+            <cultureName>%1</cultureName>
+          </templateCultureName>
+        </UserData>
+      </template>
+
+      <template tid="templateCultureNameError">
+        <data name="cultureName" inType="win:UnicodeString" />
+        <data name="defaultCultureName" inType="win:UnicodeString" />
+        <data name="errorText" inType="win:UnicodeString" />
+        <UserData>
+          <templateCultureNameError xmlns="nullNS">
+            <cultureName>%1</cultureName>
+            <defaultCultureName>%2</defaultCultureName>
+            <errorText>%3</errorText>
+          </templateCultureNameError>
+        </UserData>
+      </template>
+
+      <template tid="templateInputLocaleId">
+        <data name="inputLocaleId" inType="win:UnicodeString" />
+        <data name="inputLocaleDisplayName" inType="win:UnicodeString" />
+        <UserData>
+          <templateInputLocaleId xmlns="nullNS">
+            <inputLocaleId>%1</inputLocaleId>
+            <inputLocaleDisplayName>%2</inputLocaleDisplayName>
+          </templateInputLocaleId>
+        </UserData>
+      </template>
+
+      <template tid="templateNotSupportedInputLocaleId">
+        <data name="specifiedInputLocaleId" inType="win:UnicodeString" />
+        <data name="specifiedInputLocaleDisplayName" inType="win:UnicodeString" />
+        <data name="bestMatchInputLocaleId" inType="win:UnicodeString" />
+        <data name="bestMatchInputLocaleName" inType="win:UnicodeString" />
+        <UserData>
+          <templateNotSupportedInputLocaleId xmlns="nullNS">
+            <specifiedInputLocaleId>%1</specifiedInputLocaleId>
+            <specifiedInputLocaleDisplayName>%2</specifiedInputLocaleDisplayName>
+            <bestMatchInputLocaleId>%3</bestMatchInputLocaleId>
+            <bestMatchInputLocaleName>%4</bestMatchInputLocaleName>
+          </templateNotSupportedInputLocaleId>
+        </UserData>
+      </template>
+
+      <template tid="templateInputLocaleIdError">
+        <data name="inputLocaleId" inType="win:UnicodeString" />
+        <data name="inputLocaleDisplayName" inType="win:UnicodeString" />
+        <data name="currentLocaleId" inType="win:UnicodeString" />
+        <data name="currentLocaleDisplayName" inType="win:UnicodeString" />
+        <data name="errorText" inType="win:UnicodeString" />
+        <UserData>
+          <templateInputLocaleIdError xmlns="nullNS">
+            <inputLocaleId>%1</inputLocaleId>
+            <inputLocaleDisplayName>%2</inputLocaleDisplayName>
+            <currentLocaleId>%3</currentLocaleId>
+            <currentLocaleDisplayName>%4</currentLocaleDisplayName>
+            <errorText>%5</errorText>
+          </templateInputLocaleIdError>
+        </UserData>
+      </template>
+
+      <template tid="templateSqmLibraryError">
+        <data name="pathToSqmDll" inType="win:UnicodeString" />
+        <data name="errorInformation" inType="win:UnicodeString" />
+        <UserData>
+          <twoStringsEvent xmlns="nullNS">
+            <pathToSqmDll>%1</pathToSqmDll>
+            <lastError>%2</lastError>
+          </twoStringsEvent>
+        </UserData>
+      </template>
+
+      <!-- Add new templates above this line -->
+    </templates>
+    <opcodes>
+      <!-- Add new opcodes above this line -->
+    </opcodes>
+    <keywords>
+      <keyword name="KeywordOperational" mask="0x00000001" message="$(string.KeywordOperational)" symbol="KeywordOperational" />
+      <keyword name="KeywordDiagnostic" mask="0x00000002" message="$(string.KeywordDiagnostic)" symbol="KeywordDiagnostic" />
+      <keyword name="KeywordDebug" mask="0x000000004" message="$(string.KeywordDebug)" symbol="KeywordDebug" />
+      <keyword name="KeywordPerformance" mask="0x00000008" message="$(string.KeywordPerformance)" symbol="KeywordPerformance" />
+    </keywords>
+    <tasks>
+      <task name="ShellStartup" value="101" />
+      <task name="ShellShutdown" value="102" />
+      <task name="ShellApplicationLaunch" value="103" />
+      <task name="EstablishShellApiConnection" value="104" />
+      <task name="AppLauncherDisplay" value="105" />
+      <task name="ShellEndSession" value="106" />
+      <task name="SignalApplicationLoadCompleteApi" value="107" />
+
+      <!-- Startup -->
+      <!-- Start simulator on typical dev PC and begin to measure time from when Shell 
+                process is first started to the point where access points are visible on the screen. -->
+      <task name="ShellApplicationLaunchFromSimulator" value="108" />
+
+      <!-- New Session / Attract Application -->
+      <!-- When a new session starts, measure the time from when the session begins to the 
+                point we begin to load the attract app. -->
+      <task name="NewSessionLoadingAttract" value="109" />
+
+      <!-- When a session is ended, measure the time from when the contact is released on the 
+                "Close everything" button to when the loading screen for the attract app appears 
+                with the mesmo animation. -->
+      <task name="EndSessionConfirmToLoadingScreen" value="110" />
+
+      <!-- Access Points -->
+      <!-- When any app calls DismissLoadingScreen, measure the time it takes until the loading 
+                screen is removed and the access points fully transition on screen. -->
+      <task name="LoadingScreenToActionable" value="111" />
+
+      <!-- When transitioning to the launcher from an app, measure the time it takes from 
+                releasing touch on the access point in the app to the point where the launcher has 
+                fully appeared and a new contact will be able to interact with it (scroll, launch, 
+                etc.). -->
+      <task name="TransitionApplicationToLauncher" value="112" />
+
+      <!-- App Launcher -->
+      <!-- When beginning to scroll the launcher, measure the time from contact down and 
+                immediately begin to drag in one direction (at 12"/sec) until the time it takes to 
+                begin scrolling (preview transitions to icon and icons begin to move). -->
+      <task name="AppLauncherStartDragToScroll" value="113" />
+
+      <!-- 1-5 App: Touch an icon on the launcher and measure the time it takes from 
+                contact up to the point where the touched icon has transitioned to the preview 
+                state and is beginning to play preview content. -->
+      <task name="AppLauncherTouchToPreview1To5" value="114" />
+
+      <!-- 6+ App: Touch an icon on the launcher and measure the time it takes from 
+                contact up to the point where the touched icon has transitioned to the preview 
+                state and is beginning to play preview content. -->
+      <task name="AppLauncherTouchToPreview6Plus" value="115" />
+
+      <!-- Keyboard -->
+      <!-- When a user touches a SDK textbox control, measure the time from contact up to 
+                the time when the keyboard is visible on the screen and accepting input. -->
+      <task name="TextBoxFocusedToKeyboardReady" value="116" />
+
+      <!-- When dragging or rotating the keyboard, measure the time from when the contact 
+                begins moving to the point when the keyboard begins moving in the same direction. -->
+      <task name="KeyboardStartDragToMovement" value="117" />
+
+      <!-- Measure the time from contact down on a key to the point where the keyboard 
+                sends the character to the stack.  -->
+      <task name="KeyboardContactDownToKeySent" value="118" />
+
+      <!-- Measure the time from contact down on the key to the point where the text 
+                input is received by the textbox. -->
+      <task name="KeyboardContactDownToKeyReceived" value="119" />
+
+      <!-- This metric measures how quickly the keyboard can perform AltGr layout change. 
+                This requires a starting event to be raised when the contact down event is received on the AltGr key, 
+                and an ending event to be raised when the keyboard layout is updated. -->
+      <task name="KeyboardAltGrLayoutOn" value="120" />
+
+      <!-- This metric measures how quickly the keyboard can perform AltGr layout change. 
+                This requires a starting event to be raised when the contact up event is received on the AltGr key, 
+                and an ending event to be raised when the keyboard layout is updated. -->
+      <task name="KeyboardAltGrLayoutOff" value="121" />
+
+      <!-- This metric measures how quickly the keyboard can perform Shift layout change. 
+                This requires a starting event to be raised when the contact down event is received on a Shift key, 
+                and an ending event to be raised when the keyboard layout is updated.  -->
+      <task name="KeyboardShiftedLayoutOn" value="122" />
+
+      <!-- This metric measures how quickly the keyboard can perform Shift layout change. 
+                This requires a starting event to be raised when the contact up event is received on a Shift key, 
+                and an ending event to be raised when the keyboard layout is updated. -->
+      <task name="KeyboardShiftedLayoutOff" value="123" />
+
+      <!-- Measure the time from the contact down to the object routing UI being summoned. -->
+      <task name="ContactDownToObjectRoutingUISummoned" value="124" />
+
+      <!-- Measure the time from the shell transferring the contact to the contact being 
+              recevied by the target app. -->
+      <task name="ContactTransferredByShellToContactReceivedByApp" value="125" />
+
+      <!-- Measures the amount of time required to display the error message when an application times out. -->
+      <task name="LaunchTimeoutToErrorNotification" value="126" />
+
+      <!-- Measures the amount of time taken for the loading screen to appear when the user launches an applicaiton. -->
+      <task name="LaunchContactUpToLoadingScreen" value="127" />
+
+      <!-- Measures the time the ApplicationLauncher.ActivateApplication() call takes until the shell switches to the application. -->
+      <task name="ActivateApplicationToWindowInteractive" value="128" />
+
+      <!-- Measures the time the hide button on the soft keyboard is clicked to the time the keyboard is hidden. -->
+      <task name="KeyboardHideButtonClicked" value="129" />
+
+      <!-- Measure the time spent doing the AccessPoint draw in animation. -->
+      <task name="AccessPointDrawInAnimation" value="130" />
+
+      <!-- Measure the time spent doing the ObjectRouting Summon animation. -->
+      <task name="ObjectRoutingSummonAnimation" value="131" />
+
+      <!-- Measures the time the it takes for the notification to get off the screen. -->
+      <task name="NotificationDismissedToNotificationGone" value="132" />
+
+      <!-- Measures the time the it takes for the notification to get off the screen. -->
+      <task name="LogoAnimationFrameRate" value="133" />
+    </tasks>
+    <events>
+      <!-- ************************************************** -->
+      <!-- START EVENTS PUBLISHED TO "Administration" channel -->
+      <!-- ************************************************** -->
+      <event symbol="InvalidApplicationInfoFile" value="1" level="win:Warning" template="templateTwoStrings" message="$(string.InvalidApplicationInfoFile)" channel="channelOperational" version="0" />
+      <event symbol="MissingApplicationExecutable" value="2" level="win:Warning" template="templateTwoStrings" message="$(string.MissingApplicationExecutable)" channel="channelOperational" version="0" />
+      <event symbol="MissingApplicationInfoFile" value="3" level="win:Warning" template="templateOneString" message="$(string.MissingApplicationInfoFile)" channel="channelOperational" version="0" />
+      <event symbol="EmptyApplicationTitle" value="4" level="win:Warning" template="templateOneString" message="$(string.EmptyApplicationTitle)" channel="channelOperational" version="0" />
+      <event symbol="DuplicateApplicationInfoExeArgsPair" value="8" level="win:Warning" template="templateTwoStrings" message="$(string.DuplicateApplicationInfoExeArgsPair)" channel="channelOperational" version="0" />
+      <event symbol="ApplicationInfoSearchFolderAccessFailure" value="9" level="win:Error" template="templateTwoStrings" message="$(string.ApplicationInfoSearchFolderAccessFailure)" channel="channelOperational" version="0" />
+      <event symbol="MissingAttractApplication" value="11" level="win:Error" template="templateOneString" message="$(string.MissingAttractApplication)" channel="channelOperational" version="0" />
+      <event symbol="SingleInstanceFailure" value="12" level="win:Warning" message="$(string.SingleInstanceFailure)" channel="channelOperational" version="0" />
+      <event symbol="CreateMutexFailure" value="13" level="win:Error" template="templateOneString" message="$(string.CreateMutexFailure)" channel="channelOperational" version="0" />
+      <event symbol="MissingAsset" value="14" level="win:Warning" template="templateThreeStrings" message="$(string.MissingAsset)" channel="channelOperational" version="0" />
+      <event symbol="LoadingAssetFailure" value="15" level="win:Warning" template="templateThreeStrings" message="$(string.LoadingAssetFailure)" channel="channelOperational" version="0" />
+      <event symbol="KilledProcess" value="17" level="win:Error" template="templateTwoStrings" message="$(string.KilledProcess)" channel="channelOperational" version="0" />
+      <event symbol="UnableToLaunchAttractApplication" value="20" level="win:Error" template="templateOneString" message="$(string.UnableToLaunchAttractApplication)" channel="channelOperational" version="0" />
+      <event symbol="AttractLaunchTimedOut" value="22" level="win:Error" message="$(string.AttractLaunchTimedOut)" channel="channelOperational" version="0" />
+      <event symbol="AttractApplicationCrashed" value="24" level="win:Error" message="$(string.AttractApplicationCrashed)" channel="channelOperational" version="0" />
+      <event symbol="UnableToLaunchApplication" value="25" level="win:Error" template="templateTwoStrings" message="$(string.UnableToLaunchApplication)" channel="channelOperational" version="0" />
+      <event symbol="ApplicationLaunchTimedOut" value="26" level="win:Error" template="templateOneString" message="$(string.ApplicationLaunchTimedOut)" channel="channelOperational" version="0" />
+      <event symbol="BadApplicationInfoXmlSchemaFile" value="28" level="win:Error" template="templateOneString" message="$(string.BadApplicationInfoXmlSchemaFile)" channel="channelOperational" version="0" />
+      <event symbol="InvalidTimeoutInterval" value="29" level="win:Warning" template="templateTwoStrings" message="$(string.InvalidTimeoutInterval)" channel="channelOperational" version="0" />
+      <event symbol="InvalidLoadingTimeoutInterval" value="34" level="win:Error" template="templateThreeStrings" message="$(string.InvalidLoadingTimeoutInterval)" channel="channelOperational" version="0" />
+      <event symbol="ApplicationCrashDetected" value="35" level="win:Error" template="templateApplication" message="$(string.ApplicationCrashDetected)" channel="channelOperational" version="0" />
+      <event symbol="ApplicationHangDetected" value="36" level="win:Error" template="templateApplication" message="$(string.ApplicationHangDetected)" channel="channelOperational" version="0" />      
+      <event symbol="SurfaceUserSessionStarted" value="37" level="win:Informational" message="$(string.SurfaceUserSessionStarted)" channel="channelOperational" version="0" />
+      <event symbol="ApplicationLaunched" value="38" level="win:Informational" template="templateOneString" message="$(string.ApplicationLaunched)" channel="channelOperational" version="0" />
+      <event symbol="ShellExitingBecauseServerFailedToStart" value="39" level="win:Error" message="$(string.ShellExitingBecauseServerFailedToStart)" channel="channelOperational" version="0" />
+      <event symbol="ShellFailedToStartServer" value="40" level="win:Error" template="templateOneString" message="$(string.ShellFailedToStartServer)" channel="channelOperational" version="0" />
+      <event symbol="InvalidApplicationHangingTimeoutInterval" value="47" level="win:Error" template="templateThreeStrings" message="$(string.InvalidApplicationHangingTimeoutInterval)" channel="channelOperational" version="0" />
+      <event symbol="UnknownUIWindowClosed" value="48" level="win:Warning" template="templateFourStrings" message="$(string.UnknownUIWindowClosed)" channel="channelOperational" version="0" />
+      <event symbol="UnknownUIProcessKilled" value="49" level="win:Warning" template="templateTwoStrings" message="$(string.UnknownUIProcessKilled)" channel="channelOperational" version="0" />
+      <event symbol="UnknownUIProcessKillFailed" value="50" level="win:Error" template="templateTwoStrings" message="$(string.UnknownUIProcessKillFailed)" channel="channelOperational" version="0" />
+      <event symbol="UnknownUIQuotaExceeded" value="51" level="win:Error" template="templateTwoStrings" message="$(string.UnknownUIQuotaExceeded)" channel="channelOperational" version="0" />
+      <event symbol="InvalidAttractLoadingTimeoutInterval" value="52" level="win:Error" template="templateThreeStrings" message="$(string.InvalidAttractLoadingTimeoutInterval)" channel="channelOperational" version="0" />
+      <event symbol="InvalidApplicationOrderFile" value="54" level="win:Warning" template="templateTwoStrings" message="$(string.InvalidApplicationOrderFile)" channel="channelOperational" version="0" />
+      <event symbol="ShellExitingDueToBadShellUIState" value="57" level="win:Error" message="$(string.ShellExitingDueToBadShellUIState)" channel="channelOperational" version="0" />
+      <event symbol="BadShellUIStateDetected" value="58" level="win:Error" template="templateOneString" message="$(string.BadShellUIStateDetected)" channel="channelOperational" version="0" />
+      <event symbol="ExternalDebuggerAttachedToApplication" value="59" level="win:Warning" template="templateTwoStrings" message="$(string.ExternalDebuggerAttachedToApplication)" channel="channelOperational" version="0" />      
+      <event symbol="GeneratingHangDumpForApplication" value="60" level="win:Warning" template="templateThreeStrings" message="$(string.GeneratingHangDumpForApplication)" channel="channelOperational" version="0" />      
+      <event symbol="InvalidDebugDumpTimeoutInterval" value="61" level="win:Error" template="templateThreeStrings" message="$(string.InvalidDebugDumpTimeoutInterval)" channel="channelOperational" version="0" />
+      <event symbol="DebuggerDetectedDuringEndSession" value="62" level="win:Warning" template="templateTimeoutUniqueNameExeName" message="$(string.DebuggerDetectedDuringEndSession)" channel="channelOperational" version="0" />
+      <event symbol="DebuggerDetectedDuringAppLoad" value="63" level="win:Warning" template="templateTimeoutUniqueNameExeName" message="$(string.DebuggerDetectedDuringAppLoad)" channel="channelOperational" version="0" />
+      <event symbol="GoingToOutOfOrderDueToDebugDumpTimeout" value="64" level="win:Error" template="templateTimeoutUniqueNameExeName" message="$(string.GoingToOutOfOrderDueToDebugDumpTimeout)" channel="channelOperational" version="0" />
+      <event symbol="ApplicationOrderFileAccessFailure" value="65" level="win:Error" template="templateTwoStrings" message="$(string.ApplicationOrderFileAccessFailure)" channel="channelOperational" version="0" />
+      <event symbol="TitleBarWindowDetected" value="66" level="win:Informational" template="templateTitleBarDetected" message="$(string.TitleBarWindowDetected)" channel="channelOperational" version="0" />
+      <event symbol="InvalidApplicationOrderUniqueName" value="67" level="win:Warning" template="templateTwoStrings" message="$(string.InvalidApplicationOrderUniqueName)" channel="channelOperational" version="0" />
+      <event symbol="CurrentSingleAppApplicationNotConfigured" value="68" level="win:Error" message="$(string.CurrentSingleAppApplicationNotConfigured)" channel="channelOperational" version="0" />
+      <event symbol="CurrentSingleAppApplicationXmlMissing" value="69" level="win:Error" template="templateOneString" message="$(string.CurrentSingleAppApplicationXmlMissing)" channel="channelOperational" version="0" />
+      <event symbol="SingleAppFailureTransitionToOOO" value="70" level="win:Error" message="$(string.SingleAppFailureTransitionToOOO)" channel="channelOperational" version="0" />
+      <event symbol="CurrentSingleAppApplicationDefinitionFailure" value="71" level="win:Error" template="templateOneString" message="$(string.CurrentSingleAppApplicationDefinitionFailure)" channel="channelOperational" version="0" />
+      <event symbol="InvalidSingleAppLoadingTimeoutInterval" value="72" level="win:Warning" template="templateFourStrings" message="$(string.InvalidSingleAppLoadingTimeoutInterval)" channel="channelOperational" version="0" />
+      <event symbol="ApplicationReactivated" value="73" level="win:Informational" template="templateOneString" message="$(string.ApplicationReactivated)" channel="channelOperational" version="0" />
+      <event symbol="DuplicateTagInApplicationInfoFile" value="74" level="win:Warning" template="templateTwoStrings" message="$(string.DuplicateTagInApplicationInfoFile)" channel="channelOperational" version="0" />
+      <event symbol="CannotAccessTagInfoRoot" value="75" level="win:Error" template="templateTwoStrings" message="$(string.CannotAccessTagInfoRoot)" channel="channelOperational" version="0" />
+      <event symbol="MissingTagInfoRoot" value="76" level="win:Error"  template="templateOneString" message="$(string.MissingTagInfoRoot)" channel="channelOperational" version="0" />
+      <event symbol="MissingTagInfo" value="77" level="win:Warning" template="templateThreeStrings" message="$(string.MissingTagInfo)" channel="channelOperational" version="0" />
+      <event symbol="MissingTagInfoSetting" value="78" level="win:Warning" template="templateFourStrings" message="$(string.MissingTagInfoSetting)" channel="channelOperational" version="0" />
+      <event symbol="CannotAccessTagInfoSetting" value="79" level="win:Warning" template="templateFiveStrings" message="$(string.CannotAccessTagInfoSetting)" channel="channelOperational" version="0" />
+      <event symbol="InvalidTagInfoSetting" value="80" level="win:Warning" template="templateFiveStrings" message="$(string.InvalidTagInfoSetting)" channel="channelOperational" version="0" />
+      <event symbol="DuplicateApplicationInApplicationOrderFile" value="81" level="win:Warning" template="templateTwoStrings" message="$(string.DuplicateApplicationInApplicationOrderFile)" channel="channelOperational" version="0" />
+      <event symbol="TooManyApplicationsForObjectRoutingTag" value="82" level="win:Warning" template="templateThreeStrings" message="$(string.TooManyApplicationsForObjectRoutingTag)" channel="channelOperational" version="0" />
+      <event symbol="UILanguageNameNotSpecified" value="83" level="win:Informational" message="$(string.UILanguageNameNotSpecified)" channel="channelOperational" template="templateCultureName" version="0" />
+      <event symbol="UILanguageInitialized" value="84" level="win:Informational" message="$(string.UILanguageInitialized)" channel="channelOperational" template="templateCultureName" version="0" />
+      <event symbol="InvalidUILanguageName" value="85" level="win:Warning" message="$(string.InvalidUILanguageName)" channel="channelOperational" template="templateCultureNameError" version="0" />
+      <event symbol="LocaleNameNotSpecified" value="86" level="win:Informational" message="$(string.LocaleNameNotSpecified)" channel="channelOperational" template="templateCultureName" version="0" />
+      <event symbol="LocaleInitialized" value="87" level="win:Informational" message="$(string.LocaleInitialized)" channel="channelOperational" template="templateCultureName" version="0" />
+      <event symbol="InvalidLocaleName" value="88" level="win:Warning" message="$(string.InvalidLocaleName)" channel="channelOperational" template="templateCultureNameError" version="0" />
+      <event symbol="InputLanguageIdNotSpecified" value="89" level="win:Informational" message="$(string.InputLanguageIdNotSpecified)" channel="channelOperational" template="templateInputLocaleId" version="0" />
+      <event symbol="InputLanguageIdNotSupported" value="90" level="win:Warning" message="$(string.InputLanguageIdNotSupported)" channel="channelOperational" template="templateNotSupportedInputLocaleId" version="0" />
+      <event symbol="InputLanguageIdInitialized" value="91" level="win:Informational" message="$(string.InputLanguageIdInitialized)" channel="channelOperational" template="templateInputLocaleId" version="0" />
+      <event symbol="InvalidInputLanguageId" value="92" level="win:Error" message="$(string.InvalidInputLanguageId)" channel="channelOperational" template="templateInputLocaleIdError" version="0" />
+      <event symbol="InvalidTagInfoSettingDimension" value="93" level="win:Warning" template="templateSixStrings" message="$(string.InvalidTagInfoSettingDimension)" channel="channelOperational" version="0" />
+      <event symbol="ErrorCreatingSqmSession" value="94" level="win:Warning" template="templateOneString" message="$(string.ErrorCreatingSqmSession)" channel="channelOperational" version="0" />
+      <event symbol="ErrorWritingAtSqmBeginSession" value="95" level="win:Warning" template="templateOneString" message="$(string.ErrorWritingAtSqmBeginSession)" channel="channelOperational" version="0" />
+      <event symbol="ErrorWritingAtSqmEndSession" value="96" level="win:Warning" template="templateOneString" message="$(string.ErrorWritingAtSqmEndSession)" channel="channelOperational" version="0" />
+      <event symbol="ErrorLoadingSqmLibrary" value="97" level="win:Error" template="templateSqmLibraryError" message="$(string.ErrorLoadingSqmLibrary)" channel="channelOperational" version="0" />
+      <event symbol="TagInfoSettingTypeMismatch" value="98" level="win:Warning" template="templateFourStrings" message="$(string.TagInfoSettingTypeMismatch)" channel="channelOperational" version="0" />
+      <event symbol="ObjectRoutingIsDisabledByOneAppMode" value="99" level="win:Informational" message="$(string.ObjectRoutingIsDisabledByOneAppMode)" channel="channelOperational" version="0" />
+      <event symbol="ObjectRoutingIsDisabledByConfig" value="100" level="win:Informational" message="$(string.ObjectRoutingIsDisabledByConfig)" channel="channelOperational" version="0" />
+      <event symbol="ObjectRoutingIsDisabledByConfigForAllTagTypes" value="101" level="win:Informational" message="$(string.ObjectRoutingIsDisabledByConfigForAllTagTypes)" channel="channelOperational" version="0" />
+      <event symbol="ObjectRoutingIsEnabled" value="102" level="win:Informational" message="$(string.ObjectRoutingIsEnabled)" channel="channelOperational" version="0" />
+      <event symbol="ObjectRoutingIsEnabledOnlyForIdentityTags" value="103" level="win:Informational" message="$(string.ObjectRoutingIsEnabledOnlyForIdentityTags)" channel="channelOperational" version="0" />
+      <event symbol="ObjectRoutingIsEnabledOnlyForByteTags" value="104" level="win:Informational" message="$(string.ObjectRoutingIsEnabledOnlyForByteTags)" channel="channelOperational" version="0" />
+      <event symbol="InvalidIdentityTagInAppInfoFile" value="105" level="win:Warning" template="templateTwoStrings" message="$(string.InvalidIdentityTagInAppInfoFile)" channel="channelOperational" version="0" />
+      <event symbol="InvalidByteTagInAppInfoFile" value="106" level="win:Warning" template="templateTwoStrings" message="$(string.InvalidByteTagInAppInfoFile)" channel="channelOperational" version="0" />
+      <event symbol="AppConflictsWithService" value="107" level="win:Warning" template="templateTwoStrings" message="$(string.AppConflictsWithService)" channel="channelOperational" version="0" />
+      <event symbol="InvalidApplicationTypeInApplicationOrder" value="108" level="win:Warning" template="templateTwoStrings" message="$(string.InvalidApplicationTypeInApplicationOrder)" channel="channelOperational" version="0" />
+      <event symbol="InvalidInitialOrientation" value="109" level="win:Warning" template="templateOneString" message="$(string.InvalidInitialOrientation)" channel="channelOperational" version="0" />
+      <event symbol="InvalidTagInfoSettingOffset" value="110" level="win:Warning" template="templateSixStrings" message="$(string.InvalidTagInfoSettingOffset)" channel="channelOperational" version="0" />
+      <event symbol="CannotAccessTagInfo" value="111" level="win:Warning" template="templateFourStrings" message="$(string.CannotAccessTagInfo)" channel="channelOperational" version="0" />
+      <event symbol="ApplicationClosedByMemoryManager" value="112" level="win:Informational" template="templateApplication" message="$(string.ApplicationClosedByMemoryManager)" channel="channelOperational" version="0" />
+      <!-- *Events below this line have not been vetted by Loc -->
+      <event symbol="ApplicationShortcutFolderAccessFailure" value="113" level="win:Warning" template="templateOneString" message="$(string.ApplicationShortcutFolderAccessFailure)" channel="channelOperational" version="0" />
+      <event symbol="NetworkApplicationExecutablePath" value="114" level="win:Warning" template="templateOneString" message="$(string.NetworkApplicationExecutablePath)" channel="channelOperational" version="0" />
+      <event symbol="NetworkApplicationInfoFilePath" value="115" level="win:Warning" template="templateOneString" message="$(string.NetworkApplicationInfoFilePath)" channel="channelOperational" version="0" />
+
+      <event symbol="InvalidObjectDescriptionFile" value="121" level="win:Warning" template="templateTwoStrings" message="$(string.InvalidObjectDescriptionFile)" channel="channelOperational" version="0" />
+      <event symbol="BadObjectDescriptionXmlSchemaFile" value="122" level="win:Error" template="templateOneString" message="$(string.BadObjectDescriptionXmlSchemaFile)" channel="channelOperational" version="0" />
+      <event symbol="DuplicateObjectDescription" value="123" level="win:Warning" template="templateTwoStrings" message="$(string.DuplicateObjectDescription)" channel="channelOperational" version="0" />
+      <event symbol="InvalidLayoutInObjectDescription" value="124" level="win:Warning" template="templateThreeStrings" message="$(string.InvalidLayoutInObjectDescription)" channel="channelOperational" version="0" />
+      <event symbol="InvalidTagFieldInObjectDescription" value="125" level="win:Warning" template="templateThreeStrings" message="$(string.InvalidTagFieldInObjectDescription)" channel="channelOperational" version="0" />
+      <event symbol="MultipleObjectLayoutDefinitionFound" value="126" level="win:Warning" template="templateTwoStrings" message="$(string.MultipleObjectLayoutDefinitionFound)" channel="channelOperational" version="0" />
+
+      <!-- Exit Surface Mode-->
+      <event symbol="ExitSurfaceModeCredentialPrompted" value="131" level="win:Warning" template="templateNone" message="$(string.ExitSurfaceModeCredentialPrompted)" channel="channelOperational" version="0" />
+      <event symbol="ExitSurfaceModeSubmitted" value="132" level="win:Warning" template="templateNone" message="$(string.ExitSurfaceModeSubmitted)" channel="channelOperational" version="0" />
+
+      <!-- DWM diagnotics -->
+      <event symbol="DwmNotEnabled" value="141" level="win:Warning" message="$(string.DwmNotEnabled)" channel="channelOperational" version="0" />
+
+      <event symbol="AttractNeedsToBeRestarted" value="151" level="win:Informational" template="templateTwoIntegers" message="$(string.AttractNeedsToBeRestarted)" channel="channelOperational" version="0" />
+      <event symbol="AttractLifespanEnded" value="152" level="win:Informational" template="templateOneString" message="$(string.AttractLifespanEnded)" channel="channelOperational" version="0" />
+      <event symbol="ApplicationClosing" value="153" level="win:Informational" template="templateOneString" message="$(string.ApplicationClosing)" channel="channelOperational" version="0" />
+      <event symbol="ShellLayerWindowNotTopmost" value="154" level="win:Error" template="templateOneString" message="$(string.ShellLayerWindowNotTopmost)" channel="channelOperational" version="0" />
+      <event symbol="ApplicationCloseFailed" value="155" level="win:Error" template="templateTwoStrings" message="$(string.ApplicationCloseFailed)" channel="channelOperational" version="0" />
+      <event symbol="SurfaceUserSessionEnding" value="156" level="win:Informational" template="templateNone" message="$(string.SurfaceUserSessionEnding)" channel="channelOperational" version="0" />
+
+      <!-- ************************************************ -->
+      <!-- END EVENTS PUBLISHED TO "Administration" channel -->
+      <!-- ************************************************ -->
+      
+      <!-- ***************************************** -->
+      <!-- START EVENTS PUBLISHED TO "Debug" channel -->
+      <!-- ***************************************** -->
+      <event symbol="FailedToSetCursorPosition" value="5000" level="win:Warning" template="templateLastError" message="$(string.FailedToSetCursorPosition)" channel="channelDebug" version="0" />
+      <event symbol="FailedToCopyCursor" value="5001" level="win:Warning" template="templateLastError" message="$(string.FailedToCopyCursor)" channel="channelDebug" version="0" />
+      <event symbol="SetSystemCursorFailed" value="5002" level="win:Warning" template="templateLastError" message="$(string.SetSystemCursorFailed)" channel="channelDebug" version="0" />
+      <event symbol="CouldNotLoadEmptyCursor" value="5003" level="win:Warning" template="templateLastError" message="$(string.CouldNotLoadEmptyCursor)" channel="channelDebug" version="0" />
+      <event symbol="FailedToRestoreCursors" value="5004" level="win:Warning" template="templateLastError" message="$(string.FailedToRestoreCursors)" channel="channelDebug" version="0" />
+      <event symbol="SuppressedMousePointers" value="5005" level="win:Informational" message="$(string.SuppressedMousePointers)" channel="channelDebug" version="0" />
+      <event symbol="RestoredMousePointers" value="5006" level="win:Informational" message="$(string.RestoredMousePointers)" channel="channelDebug" version="0" />
+      <event symbol="MovedCursorOverAccessPoint" value="5007" level="win:Informational" message="$(string.MovedCursorOverAccessPoint)" channel="channelDebug" version="0" />
+      <event symbol="NotificationQueueIsFull" value="5009" level="win:Warning" message="$(string.NotificationQueueIsFull)" channel="channelDebug" version="0" />
+      <event symbol="DesktopSwitchHookFailed" value="5010" level="win:Warning" template="templateLastError" message="$(string.DesktopSwitchHookFailed)" channel="channelDebug" version="0" />
+      <event symbol="UISuppressionHookFailed" value="5011" level="win:Error" template="templateLastError" message="$(string.UISuppressionHookFailed)" channel="channelDebug" version="0" />
+      <event symbol="WindowAddedToKillList" value="5012" level="win:Informational" template="templateWindowProcessIdName" message="$(string.WindowAddedToKillList)" channel="channelDebug" version="0" />
+      <event symbol="MovedWindowOffScreen" value="5013" level="win:Informational" template="templateWindowProcessIdName" message="$(string.MovedWindowOffScreen)" channel="channelDebug" version="0" />
+      <event symbol="PostedWindowCloseMessage" value="5014" level="win:Informational" template="templateWindowProcessIdName" message="$(string.PostedWindowCloseMessage)" channel="channelDebug" version="0" />
+      <event symbol="KillingProcess" value="5016" level="win:Informational" template="templateWindowProcessIdName" message="$(string.KillingProcess)" channel="channelDebug" version="0" />
+      <event symbol="FailedToKillWindow" value="5018" level="win:Warning" template="templateWindowProcessIdName" message="$(string.FailedToKillWindow)" channel="channelDebug" version="0" />
+      <event symbol="RemovedStaleWindowFromKillList" value="5020" level="win:Informational" template="templateWindowProcessIdName" message="$(string.RemovedStaleWindowFromKillList)" channel="channelDebug" version="0" />
+      <event symbol="AddedWindowToMonitoredList" value="5021" level="win:Informational" template="templateWindowProcessIdName" message="$(string.AddedWindowToMonitoredList)" channel="channelDebug" version="0" />
+      <event symbol="MovedWindowFromMonitoredToKillList" value="5022" level="win:Informational" template="templateWindowProcessIdName" message="$(string.MovedWindowFromMonitoredToKillList)" channel="channelDebug" version="0" />
+      <event symbol="RemovedStaleWindowFromMonitoredList" value="5023" level="win:Informational" template="templateWindowProcessIdName" message="$(string.RemovedStaleWindowFromMonitoredList)" channel="channelDebug" version="0" />
+      <event symbol="UnknownUIQuotaUpdated" value="5024" level="win:Informational" template="templateThreeIntegers" message="$(string.UnknownUIQuotaUpdated)" channel="channelDebug" version="0" />
+      <event symbol="IgnoringWindowAgainstQuota" value="5025" level="win:Informational" template="templateWindowProcessIdName" message="$(string.IgnoringWindowAgainstQuota)" channel="channelDebug" version="0" />
+      <event symbol="DuplicateWindowsDifferentProcesses" value="5026" level="win:Error" message="$(string.DuplicateWindowsDifferentProcesses)" channel="channelDebug" version="0" />
+      <event symbol="ApplicationNotRegistered" value="5027" level="win:Warning" template="templateProcessIdPathArguments" message="$(string.ApplicationNotRegistered)" channel="channelDebug" version="0" />
+      <event symbol="ApplicationStartedBeforeShell" value="5028" level="win:Warning" template="templateProcessIdPathArguments" message="$(string.ApplicationStartedBeforeShell)" channel="channelDebug" version="0" />
+      <event symbol="ApplicationAlreadyConnected" value="5029" level="win:Warning" template="templateProcessIdPathArguments" message="$(string.ApplicationAlreadyConnected)" channel="channelDebug" version="0" />
+      <event symbol="ApplicationDynamicallyRegistered" value="5030" level="win:Informational" template="templateProcessIdPathArguments" message="$(string.ApplicationDynamicallyRegistered)" channel="channelDebug" version="0" />
+      <event symbol="IgnoringWindowAgainstQuotaEnumeration" value="5044" level="win:Informational" template="templateWindowProcessIdName" message="$(string.IgnoringWindowAgainstQuotaEnumeration)" channel="channelDebug" version="0" />
+      <event symbol="TimedOutAppCannotConnect" value="5045" level="win:Informational" template="templateProcessIdPathArguments" message="$(string.TimedOutAppCannotConnect)" channel="channelDebug" version="0" />
+      <event symbol="SoundInitializationFailure" value="5046" level="win:Error" template="templateOneString" message="$(string.SoundInitializationFailure)" channel="channelDebug" version="0" />
+      <event symbol="CommunicationException" value="5048" level="win:Warning" template="templateOneString" message="$(string.CommunicationException)" channel="channelDebug" version="0" />
+      <event symbol="SignalApplicationLoadCompleteFailed" value="5049" level="win:Informational" template="templateOneString" message="$(string.SignalApplicationLoadCompleteFailed)" channel="channelDebug" version="0" />
+      <event symbol="RequestNotificationFailed" value="5050" level="win:Informational" template="templateOneString" message="$(string.RequestNotificationFailed)" channel="channelDebug" version="0" />
+      <event symbol="GetKeyboardPropertyFailed" value="5051" level="win:Informational" template="templateOneString" message="$(string.GetKeyboardPropertyFailed)" channel="channelDebug" version="0" />
+      <event symbol="SetKeyboardPropertyFailed" value="5052" level="win:Informational" template="templateOneString" message="$(string.SetKeyboardPropertyFailed)" channel="channelDebug" version="0" />
+      <event symbol="GetKeyboardLayoutFailed" value="5053" level="win:Informational" template="templateOneString" message="$(string.GetKeyboardLayoutFailed)" channel="channelDebug" version="0" />
+      <event symbol="SetKeyboardLayoutFailed" value="5054" level="win:Informational" template="templateOneString" message="$(string.SetKeyboardLayoutFailed)" channel="channelDebug" version="0" />
+      <event symbol="EndSessionAlreadyInProgress" value="5055" level="win:Informational" message="$(string.EndSessionAlreadyInProgress)" channel="channelDebug" version="0" />
+      <event symbol="KeyboardAutocorrectedPosition" value="5056" level="win:Informational" message="$(string.KeyboardAutocorrectedPosition)" channel="channelDebug" version="0" />
+      <event symbol="AccessPointActivation" value="5057" level="win:Informational" template="templateAccessPointActivation" message="$(string.AccessPointActivation)" channel="channelDebug" version="0" />
+      <event symbol="AccessPointAccidentalActivation" value="5058" level="win:Informational" template="templateAccessPointActivation" message="$(string.AccessPointAccidentalActivation)" channel="channelDebug" version="0" />
+      <event symbol="SecondAppRejectedInOneAppMode" value="5060" level="win:Informational" template="templateProcessIdPathArguments" message="$(string.SecondAppRejectedInOneAppMode)" channel="channelDebug" version="0" />
+      <event symbol="GettingCurrentCultureInShellApiFailed" value="5061" level="win:Informational" template="templateOneString" message="$(string.GettingCurrentCultureInShellApiFailed)" channel="channelDebug" version="0" />
+      <event symbol="GettingCurrentCultureInShellApiResultedInNeutralCulture" value="5062" level="win:Informational" template="templateOneString" message="$(string.GettingCurrentCultureInShellApiResultedInNeutralCulture)" channel="channelDebug" version="0" />
+      <event symbol="GettingCurrentUICultureInShellApiFailed" value="5063" level="win:Informational" template="templateOneString" message="$(string.GettingCurrentUICultureInShellApiFailed)" channel="channelDebug" version="0" />
+      <event symbol="GettingCurrentInputLocaleInShellApiFailed" value="5064" level="win:Informational" template="templateOneString" message="$(string.GettingCurrentInputLocaleInShellApiFailed)" channel="channelDebug" version="0" />
+      <event symbol="ApplyingCurrentInputLocaleInShellApiFailed" value="5065" level="win:Informational" template="templateOneString" message="$(string.ApplyingCurrentInputLocaleInShellApiFailed)" channel="channelDebug" version="0" />
+      <event symbol="LocalizedAppInfoLoaded" value="5066" level="win:Informational" template="templateTwoStrings" message="$(string.LocalizedAppInfoLoaded)" channel="channelDebug" version="0" />
+      <event symbol="OnlyNeutralAppInfoLoaded" value="5067" level="win:Informational" template="templateOneString" message="$(string.OnlyNeutralAppInfoLoaded)" channel="channelDebug" version="0" />
+      <event symbol="HandleInactivityTimeoutOccurringResponseFailed" value="5068" level="win:Informational" template="templateOneString" message="$(string.HandleInactivityTimeoutOccurringResponseFailed)" channel="channelDebug" version="0" />
+      <event symbol="UnableToKillProcess" value="5069" level="win:Informational" template="templateTwoStrings" message="$(string.UnableToKillProcess)" channel="channelDebug" version="0" />
+      <event symbol="FailedToTransferForeground" value="5070" level="win:Warning" template="templateTwoStrings" message="$(string.FailedToTransferForeground)" channel="channelDebug" version="0" />
+      <event symbol="InactivityTimeout" value="5071" level="win:Informational" template="templateThreeStrings" message="$(string.InactivityTimeout)" channel="channelDebug" version="0" />
+      <event symbol="ApplicationCanceledTimeout" value="5072" level="win:Informational" template="templateOneString" message="$(string.ApplicationCanceledTimeout)" channel="channelDebug" version="0" />
+      <event symbol="ApplicationIgnoredClose" value="5073" level="win:Warning" template="templateOneString" message="$(string.ApplicationIgnoredClose)" channel="channelDebug" version="0" />
+      <event symbol="IOErrorSavingAttractImage" value="5074" level="win:Error" template="templateTwoStrings" message="$(string.IOErrorSavingAttractImage)" channel="channelDebug" version="0" />
+      <event symbol="ErrorGettingSystemPreferredUILanguage" value="5075" level="win:Error" template="templateTwoStrings" message="$(string.ErrorGettingSystemPreferredUILanguage)" channel="channelDebug" version="0" />
+      <event symbol="InvalidShellLightSetting" value="5076" level="win:Warning" template="templateTwoStrings" message="$(string.InvalidShellLightSetting)" channel="channelDebug" version="0" />
+      <event symbol="SessionIdFailed" value="5077" level="win:Informational" template="templateOneString" message="$(string.SessionIdFailed)" channel="channelDebug" version="0" />
+      <event symbol="ShutdownReasonFailed" value="5078" level="win:Informational" template="templateOneString" message="$(string.ShutdownReasonFailed)" channel="channelDebug" version="0" />
+      <event symbol="WindowAvailabilityFailed" value="5079" level="win:Informational" template="templateOneString" message="$(string.WindowAvailabilityFailed)" channel="channelDebug" version="0" />
+      <event symbol="RegisterHotkeyFailed" value="5080" level="win:Informational" template="templateLastError" message="$(string.RegisterHotkeyFailed)" channel="channelDebug" version="0" />
+      <event symbol="UnknownUIDetectionStaticallyExempted" value="5082" level="win:Informational" template="templateFourStrings" message="$(string.UnknownUIDetectionStaticallyExempted)" channel="channelDebug" version="0" />
+      
+      <!-- *Events below this line have not been vetted by Loc -->
+      <!-- Add new debug events/traces above this line -->
+      <!-- *************************************** -->
+      <!-- END EVENTS PUBLISHED TO "Debug" channel -->
+      <!-- *************************************** -->
+
+      <!-- *********************************************** -->
+      <!-- START EVENTS PUBLISHED TO "Performance" channel -->
+      <!-- *********************************************** -->
+      <event symbol="MainApplicationStarted" value="10000" level="win:Informational" keywords="KeywordPerformance" opcode="win:Start" task="ShellStartup"
+             template="templateNone" message="$(string.MainApplicationStarted)" channel="channelPerformance" version="0" />
+      <event symbol="MainApplicationEnded" value="10001" level="win:Informational" keywords="KeywordPerformance" opcode="win:Stop" task="ShellShutdown"
+             template="templateNone" message="$(string.MainApplicationEnded)" channel="channelPerformance" version="0" />
+      <event symbol="UIControllerInitializationStarted" value="10002" level="win:Informational" keywords="KeywordPerformance" opcode="win:Start" task="ShellStartup"
+             template="templateNone" message="$(string.UIControllerInitializationStarted)" channel="channelPerformance" version="0" />
+      <event symbol="UIControllerInitializationEnded" value="10003" level="win:Informational" keywords="KeywordPerformance" opcode="win:Stop" task="ShellStartup"
+             template="templateNone" message="$(string.UIControllerInitializationEnded)" channel="channelPerformance" version="0" />
+      <event symbol="SoundInitializationStarted" value="10004" level="win:Informational" keywords="KeywordPerformance" opcode="win:Start" task="ShellStartup"
+             template="templateNone" message="$(string.SoundInitializationStarted)" channel="channelPerformance" version="0" />
+      <event symbol="SoundInitializationEnded" value="10005" level="win:Informational" keywords="KeywordPerformance" opcode="win:Stop" task="ShellStartup"
+             template="templateNone" message="$(string.SoundInitializationEnded)" channel="channelPerformance" version="0" />
+      <event symbol="WindowMonitorInitializationStarted" value="10006" level="win:Informational" keywords="KeywordPerformance" opcode="win:Start" task="ShellStartup"
+             template="templateNone" message="$(string.WindowMonitorInitializationStarted)" channel="channelPerformance" version="0" />
+      <event symbol="WindowMonitorInitializationEnded" value="10007" level="win:Informational" keywords="KeywordPerformance" opcode="win:Stop" task="ShellStartup"
+             template="templateNone" message="$(string.WindowMonitorInitializationEnded)" channel="channelPerformance" version="0" />
+      <event symbol="ShellZOrderInitializationStarted" value="10008" level="win:Informational" keywords="KeywordPerformance" opcode="win:Start" task="ShellStartup"
+             template="templateNone" message="$(string.ShellZOrderInitializationStarted)" channel="channelPerformance" version="0" />
+      <event symbol="ShellZOrderInitializationEnded" value="10009" level="win:Informational" keywords="KeywordPerformance" opcode="win:Stop" task="ShellStartup"
+             template="templateNone" message="$(string.ShellZOrderInitializationEnded)" channel="channelPerformance" version="0" />
+      <event symbol="UISuppressionInitializationStarted" value="10012" level="win:Informational" keywords="KeywordPerformance" opcode="win:Start" task="ShellStartup"
+             template="templateNone" message="$(string.UISuppressionInitializationStarted)" channel="channelPerformance" version="0" />
+      <event symbol="UISuppressionInitializationEnded" value="10013" level="win:Informational" keywords="KeywordPerformance" opcode="win:Stop" task="ShellStartup"
+             template="templateNone" message="$(string.UISuppressionInitializationEnded)" channel="channelPerformance" version="0" />
+      <event symbol="SqmInitializationStarted" value="10014" level="win:Informational" keywords="KeywordPerformance" opcode="win:Start" task="ShellStartup"
+             template="templateNone" message="$(string.SqmInitializationStarted)" channel="channelPerformance" version="0" />
+      <event symbol="SqmInitializationEnded" value="10015" level="win:Informational" keywords="KeywordPerformance" opcode="win:Stop" task="ShellStartup"
+             template="templateNone" message="$(string.SqmInitializationEnded)" channel="channelPerformance" version="0" />
+      <event symbol="ShellEngineInitializationStarted" value="10016" level="win:Informational" keywords="KeywordPerformance" opcode="win:Start" task="ShellStartup"
+             template="templateNone" message="$(string.ShellEngineInitializationStarted)" channel="channelPerformance" version="0" />
+      <event symbol="ShellEngineInitializationEnded" value="10017" level="win:Informational" keywords="KeywordPerformance" opcode="win:Stop" task="ShellStartup"
+             template="templateNone" message="$(string.ShellEngineInitializationEnded)" channel="channelPerformance" version="0" />
+      <event symbol="MainApplicationInitializationStarted" value="10018" level="win:Informational" keywords="KeywordPerformance" opcode="win:Start" task="ShellStartup"
+             template="templateNone" message="$(string.MainApplicationInitializationStarted)" channel="channelPerformance" version="0" />
+      <event symbol="MainApplicationInitializationEnded" value="10019" level="win:Informational" keywords="KeywordPerformance" opcode="win:Stop" task="ShellStartup"
+             template="templateNone" message="$(string.MainApplicationInitializationEnded)" channel="channelPerformance" version="0" />
+      <event symbol="MainApplicationWpfWrappersInitializationStarted" value="10022" level="win:Informational" keywords="KeywordPerformance" opcode="win:Start" task="ShellStartup"
+             template="templateNone" message="$(string.MainApplicationWpfWrappersInitializationStarted)" channel="channelPerformance" version="0" />
+      <event symbol="MainApplicationWpfWrappersInitializationEnded" value="10023" level="win:Informational" keywords="KeywordPerformance" opcode="win:Stop" task="ShellStartup"
+             template="templateNone" message="$(string.MainApplicationWpfWrappersInitializationEnded)" channel="channelPerformance" version="0" />
+      <event symbol="MainApplicationSqmInitializationStarted" value="10024" level="win:Informational" keywords="KeywordPerformance" opcode="win:Start" task="ShellStartup"
+             template="templateNone" message="$(string.MainApplicationSqmInitializationStarted)" channel="channelPerformance" version="0" />
+      <event symbol="MainApplicationSqmInitializationEnded" value="10025" level="win:Informational" keywords="KeywordPerformance" opcode="win:Stop" task="ShellStartup"
+             template="templateNone" message="$(string.MainApplicationSqmInitializationEnded)" channel="channelPerformance" version="0" />
+      <event symbol="ShellMainWindowInitializationStarted" value="10026" level="win:Informational" keywords="KeywordPerformance" opcode="win:Start" task="ShellStartup"
+             template="templateNone" message="$(string.ShellMainWindowInitializationStarted)" channel="channelPerformance" version="0" />
+      <event symbol="ShellMainWindowInitializationEnded" value="10027" level="win:Informational" keywords="KeywordPerformance" opcode="win:Stop" task="ShellStartup"
+             template="templateNone" message="$(string.ShellMainWindowInitializationEnded)" channel="channelPerformance" version="0" />
+      <event symbol="ApplicationStoreInitializationStarted" value="10028" level="win:Informational" keywords="KeywordPerformance" opcode="win:Start" task="ShellStartup"
+         template="templateNone" message="$(string.ApplicationStoreInitializationStarted)" channel="channelPerformance" version="0" />
+      <event symbol="ApplicationStoreInitializationCompleted" value="10029" level="win:Informational" keywords="KeywordPerformance" opcode="win:Stop" task="ShellStartup"
+         template="templateNone" message="$(string.ApplicationStoreInitializationCompleted)" channel="channelPerformance" version="0" />
+
+          <event symbol="ShellApplicationLaunchStarted" value="10030" level="win:Informational"
+               task="ShellApplicationLaunch" opcode="win:Start"
+               keywords="KeywordPerformance" message="$(string.ShellApplicationLaunchStarted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="ShellApplicationLaunchCompleted" value="10031" level="win:Informational"
+               task="ShellApplicationLaunch" opcode="win:Stop"
+               keywords="KeywordPerformance" message="$(string.ShellApplicationLaunchCompleted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="EstablishShellApiConnectionStarted" value="10032" level="win:Informational"
+               task="EstablishShellApiConnection" opcode="win:Start"
+               keywords="KeywordPerformance" message="$(string.EstablishShellApiConnectionStarted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="EstablishShellApiConnectionCompleted" value="10033" level="win:Informational"
+               task="EstablishShellApiConnection" opcode="win:Stop"
+               keywords="KeywordPerformance" message="$(string.EstablishShellApiConnectionCompleted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="AppLauncherDisplayStarted" value="10034" level="win:Informational"
+               task="AppLauncherDisplay" opcode="win:Start"
+               keywords="KeywordPerformance" message="$(string.AppLauncherDisplayStarted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="AppLauncherDisplayCompleted" value="10035" level="win:Informational"
+               task="AppLauncherDisplay" opcode="win:Stop"
+               keywords="KeywordPerformance" message="$(string.AppLauncherDisplayCompleted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="ShellEndSessionStarted" value="10036" level="win:Informational"
+               task="ShellEndSession" opcode="win:Start"
+               keywords="KeywordPerformance" message="$(string.ShellEndSessionStarted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="ShellEndSessionCompleted" value="10037" level="win:Informational"
+               task="ShellEndSession" opcode="win:Stop"
+               keywords="KeywordPerformance" message="$(string.ShellEndSessionCompleted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="SignalApplicationLoadCompleteApiStarted" value="10038" level="win:Informational"
+               task="SignalApplicationLoadCompleteApi" opcode="win:Start"
+               keywords="KeywordPerformance" message="$(string.SignalApplicationLoadCompleteApiStarted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="SignalApplicationLoadCompleteApiCompleted" value="10039" level="win:Informational"
+               task="SignalApplicationLoadCompleteApi" opcode="win:Stop"
+               keywords="KeywordPerformance" message="$(string.SignalApplicationLoadCompleteApiCompleted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="ShellApplicationLaunchFromSimulatorStarted" value="10040" level="win:Informational"
+               task="ShellApplicationLaunchFromSimulator" opcode="win:Start"
+               keywords="KeywordPerformance" message="$(string.ShellApplicationLaunchFromSimulatorStarted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="ShellApplicationLaunchFromSimulatorCompleted" value="10041" level="win:Informational"
+               task="ShellApplicationLaunchFromSimulator" opcode="win:Stop"
+               keywords="KeywordPerformance" message="$(string.ShellApplicationLaunchFromSimulatorCompleted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="NewSessionLoadingAttractStarted" value="10042" level="win:Informational"
+               task="NewSessionLoadingAttract" opcode="win:Start"
+               keywords="KeywordPerformance" message="$(string.NewSessionLoadingAttractStarted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="NewSessionLoadingAttractCompleted" value="10043" level="win:Informational"
+               task="NewSessionLoadingAttract" opcode="win:Stop"
+               keywords="KeywordPerformance" message="$(string.NewSessionLoadingAttractCompleted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="EndSessionConfirmToLoadingScreenStarted" value="10044" level="win:Informational"
+               task="EndSessionConfirmToLoadingScreen" opcode="win:Start"
+               keywords="KeywordPerformance" message="$(string.EndSessionConfirmToLoadingScreenStarted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="EndSessionConfirmToLoadingScreenCompleted" value="10045" level="win:Informational"
+               task="EndSessionConfirmToLoadingScreen" opcode="win:Stop"
+               keywords="KeywordPerformance" message="$(string.EndSessionConfirmToLoadingScreenCompleted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="LoadingScreenToActionableStarted" value="10046" level="win:Informational"
+               task="LoadingScreenToActionable" opcode="win:Start"
+               keywords="KeywordPerformance" message="$(string.LoadingScreenToActionableStarted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="LoadingScreenToActionableCompleted" value="10047" level="win:Informational"
+               task="LoadingScreenToActionable" opcode="win:Stop"
+               keywords="KeywordPerformance" message="$(string.LoadingScreenToActionableCompleted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="TransitionApplicationToLauncherStarted" value="10048" level="win:Informational"
+               task="TransitionApplicationToLauncher" opcode="win:Start"
+               keywords="KeywordPerformance" message="$(string.TransitionApplicationToLauncherStarted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="TransitionApplicationToLauncherCompleted" value="10049" level="win:Informational"
+               task="TransitionApplicationToLauncher" opcode="win:Stop"
+               keywords="KeywordPerformance" message="$(string.TransitionApplicationToLauncherCompleted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="AppLauncherStartDragToScrollStarted" value="10050" level="win:Informational"
+               task="AppLauncherStartDragToScroll" opcode="win:Start"
+               keywords="KeywordPerformance" message="$(string.AppLauncherStartDragToScrollStarted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="AppLauncherStartDragToScrollCompleted" value="10051" level="win:Informational"
+               task="AppLauncherStartDragToScroll" opcode="win:Stop"
+               keywords="KeywordPerformance" message="$(string.AppLauncherStartDragToScrollCompleted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="AppLauncherTouchToPreview1To5Started" value="10052" level="win:Informational"
+               task="AppLauncherTouchToPreview1To5" opcode="win:Start"
+               keywords="KeywordPerformance" message="$(string.AppLauncherTouchToPreview1To5Started)"
+               channel="channelPerformance" version="0" />
+          <event symbol="AppLauncherTouchToPreview1To5Completed" value="10053" level="win:Informational"
+               task="AppLauncherTouchToPreview1To5" opcode="win:Stop"
+               keywords="KeywordPerformance" message="$(string.AppLauncherTouchToPreview1To5Completed)"
+               channel="channelPerformance" version="0" />
+          <event symbol="AppLauncherTouchToPreview6PlusStarted" value="10054" level="win:Informational"
+               task="AppLauncherTouchToPreview6Plus" opcode="win:Start"
+               keywords="KeywordPerformance" message="$(string.AppLauncherTouchToPreview6PlusStarted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="AppLauncherTouchToPreview6PlusCompleted" value="10055" level="win:Informational"
+               task="AppLauncherTouchToPreview6Plus" opcode="win:Stop"
+               keywords="KeywordPerformance" message="$(string.AppLauncherTouchToPreview6PlusCompleted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="TextBoxFocusedToKeyboardReadyStarted" value="10056" level="win:Informational"
+               task="TextBoxFocusedToKeyboardReady" opcode="win:Start"
+               keywords="KeywordPerformance" message="$(string.TextBoxFocusedToKeyboardReadyStarted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="TextBoxFocusedToKeyboardReadyCompleted" value="10057" level="win:Informational"
+               task="TextBoxFocusedToKeyboardReady" opcode="win:Stop"
+               keywords="KeywordPerformance" message="$(string.TextBoxFocusedToKeyboardReadyCompleted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="KeyboardStartDragToMovementStarted" value="10058" level="win:Informational"
+               task="KeyboardStartDragToMovement" opcode="win:Start"
+               keywords="KeywordPerformance" message="$(string.KeyboardStartDragToMovementStarted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="KeyboardStartDragToMovementCompleted" value="10059" level="win:Informational"
+               task="KeyboardStartDragToMovement" opcode="win:Stop"
+               keywords="KeywordPerformance" message="$(string.KeyboardStartDragToMovementCompleted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="KeyboardContactDownToKeySentStarted" value="10060" level="win:Informational"
+               task="KeyboardContactDownToKeySent" opcode="win:Start"
+               keywords="KeywordPerformance" message="$(string.KeyboardContactDownToKeySentStarted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="KeyboardContactDownToKeySentCompleted" value="10061" level="win:Informational"
+               task="KeyboardContactDownToKeySent" opcode="win:Stop"
+               keywords="KeywordPerformance" message="$(string.KeyboardContactDownToKeySentCompleted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="KeyboardContactDownToKeyReceivedStarted" value="10062" level="win:Informational"
+               task="KeyboardContactDownToKeyReceived" opcode="win:Start"
+               keywords="KeywordPerformance" message="$(string.KeyboardContactDownToKeyReceivedStarted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="KeyboardContactDownToKeyReceivedCompleted" value="10063" level="win:Informational"
+               task="KeyboardContactDownToKeyReceived" opcode="win:Stop"
+               keywords="KeywordPerformance" message="$(string.KeyboardContactDownToKeyReceivedCompleted)"
+               channel="channelPerformance" version="0" />
+          <event symbol="KeyboardAltGrLayoutOnStarted" value="10064" level="win:Informational"
+             task="KeyboardAltGrLayoutOn" opcode="win:Start"
+             keywords="KeywordPerformance" message="$(string.KeyboardAltGrLayoutOnStarted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="KeyboardAltGrLayoutOnCompleted" value="10065" level="win:Informational"
+             task="KeyboardAltGrLayoutOn" opcode="win:Stop"
+             keywords="KeywordPerformance" message="$(string.KeyboardAltGrLayoutOnCompleted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="KeyboardAltGrLayoutOffStarted" value="10066" level="win:Informational"
+             task="KeyboardAltGrLayoutOff" opcode="win:Start"
+             keywords="KeywordPerformance" message="$(string.KeyboardAltGrLayoutOffStarted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="KeyboardAltGrLayoutOffCompleted" value="10067" level="win:Informational"
+             task="KeyboardAltGrLayoutOff" opcode="win:Stop"
+             keywords="KeywordPerformance" message="$(string.KeyboardAltGrLayoutOffCompleted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="KeyboardShiftedLayoutOnStarted" value="10068" level="win:Informational"
+             task="KeyboardShiftedLayoutOn" opcode="win:Start"
+             keywords="KeywordPerformance" message="$(string.KeyboardShiftedLayoutOnStarted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="KeyboardShiftedLayoutOnCompleted" value="10069" level="win:Informational"
+             task="KeyboardShiftedLayoutOn" opcode="win:Stop"
+             keywords="KeywordPerformance" message="$(string.KeyboardShiftedLayoutOnCompleted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="KeyboardShiftedLayoutOffStarted" value="10070" level="win:Informational"
+             task="KeyboardShiftedLayoutOff" opcode="win:Start"
+             keywords="KeywordPerformance" message="$(string.KeyboardShiftedLayoutOffStarted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="KeyboardShiftedLayoutOffCompleted" value="10071" level="win:Informational"
+             task="KeyboardShiftedLayoutOff" opcode="win:Stop"
+             keywords="KeywordPerformance" message="$(string.KeyboardShiftedLayoutOffCompleted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="ContactDownToObjectRoutingUISummonedStarted" value="10072" level="win:Informational"
+             task="ContactDownToObjectRoutingUISummoned" opcode="win:Start" template="templateOneString"
+             keywords="KeywordPerformance" message="$(string.ContactDownToObjectRoutingUISummonedStarted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="ContactDownToObjectRoutingUISummonedCompleted" value="10073" level="win:Informational"
+             task="ContactDownToObjectRoutingUISummoned" opcode="win:Stop" template="templateOneString"
+             keywords="KeywordPerformance" message="$(string.ContactDownToObjectRoutingUISummonedCompleted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="ContactTransferredByShell" value="10074" level="win:Informational"
+             task="ContactTransferredByShellToContactReceivedByApp" opcode="win:Stop" template="templateOneString"
+             keywords="KeywordPerformance" message="$(string.ContactTransferredByShell)"
+             channel="channelPerformance" version="0" />
+          <event symbol="LaunchTimeoutToErrorNotificationStarted" value="10075" level="win:Informational"
+             task="LaunchTimeoutToErrorNotification" opcode="win:Start"
+             keywords="KeywordPerformance" message="$(string.LaunchTimeoutToErrorNotificationStarted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="LaunchTimeoutToErrorNotificationCompleted" value="10076" level="win:Informational"
+             task="LaunchTimeoutToErrorNotification" opcode="win:Stop"
+             keywords="KeywordPerformance" message="$(string.LaunchTimeoutToErrorNotificationCompleted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="LaunchContactUpToLoadingScreenStarted" value="10077" level="win:Informational"
+             task="LaunchContactUpToLoadingScreen" opcode="win:Start"
+             keywords="KeywordPerformance" message="$(string.LaunchContactUpToLoadingScreenStarted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="LaunchContactUpToLoadingScreenCompleted" value="10078" level="win:Informational"
+             task="LaunchContactUpToLoadingScreen" opcode="win:Stop"
+             keywords="KeywordPerformance" message="$(string.LaunchContactUpToLoadingScreenCompleted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="ActivateApplicationToWindowInteractiveStarted" value="10079" level="win:Informational"
+             task="ActivateApplicationToWindowInteractive" opcode="win:Start"
+             keywords="KeywordPerformance" message="$(string.ActivateApplicationToWindowInteractiveStarted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="ActivateApplicationToWindowInteractiveCompleted" value="10080" level="win:Informational"
+             task="ActivateApplicationToWindowInteractive" opcode="win:Stop"
+             keywords="KeywordPerformance" message="$(string.ActivateApplicationToWindowInteractiveCompleted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="KeyboardHideButtonClickedStarted" value="10081" level="win:Informational"
+             task="KeyboardHideButtonClicked" opcode="win:Start"
+             keywords="KeywordPerformance" message="$(string.KeyboardHideButtonClickedStarted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="AccessPointDrawInAnimationStarted" value="10082" level="win:Informational"
+             task="AccessPointDrawInAnimation" opcode="win:Start"
+             keywords="KeywordPerformance" message="$(string.AccessPointDrawInAnimationStarted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="AccessPointDrawInAnimationCompleted" value="10083" level="win:Informational"
+             task="AccessPointDrawInAnimation" opcode="win:Stop"
+             keywords="KeywordPerformance" message="$(string.AccessPointDrawInAnimationCompleted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="ObjectRoutingSummonAnimationStarted" value="10084" level="win:Informational"
+             task="ObjectRoutingSummonAnimation" opcode="win:Start" template="templateOneString"
+             keywords="KeywordPerformance" message="$(string.ObjectRoutingSummonAnimationStarted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="ObjectRoutingSummonAnimationCompleted" value="10085" level="win:Informational"
+             task="ObjectRoutingSummonAnimation" opcode="win:Stop" template="templateOneString"
+             keywords="KeywordPerformance" message="$(string.ObjectRoutingSummonAnimationCompleted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="NotificationDismissedToNotificationGoneStarted" value="10086" level="win:Informational"
+             task="NotificationDismissedToNotificationGone" opcode="win:Start"
+             keywords="KeywordPerformance" message="$(string.NotificationDismissedToNotificationGoneStarted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="NotificationDismissedToNotificationGoneCompleted" value="10087" level="win:Informational"
+             task="NotificationDismissedToNotificationGone" opcode="win:Stop"
+             keywords="KeywordPerformance" message="$(string.NotificationDismissedToNotificationGoneCompleted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="LogoAnimationFrameRateStarted" value="10088" level="win:Informational"
+             task="LogoAnimationFrameRate" opcode="win:Start"
+             keywords="KeywordPerformance" message="$(string.LogoAnimationFrameRateStarted)"
+             channel="channelPerformance" version="0" />
+          <event symbol="LogoAnimationFrameRateCompleted" value="10089" level="win:Informational"
+             task="LogoAnimationFrameRate" opcode="win:Stop"
+             keywords="KeywordPerformance" message="$(string.LogoAnimationFrameRateCompleted)"
+             channel="channelPerformance" version="0" />
+    </events>
+    </provider>
+  </events>
+  </instrumentation>
+  <!-- String table for eventing/logging -->
+  <localization>
+    <!--- en-US resources -->
+    <resources culture="en-US">
+      <stringTable>
+        <!-- ******************** -->
+        <!-- START Event Messages -->
+        <!-- ******************** -->
+        <!-- ************************************************** -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Administration" channel -->
+        <!-- ************************************************** -->
+        <string id="InvalidApplicationInfoFile" value="The application info file %1 contains errors. %nAdditional information: %n%2" />
+        <string id="MissingApplicationExecutable" value="Application executable file %1 is either missing or inaccessible. Application info file: %2" />
+        <string id="MissingApplicationInfoFile" value="The application info file %1 does not exist." />
+        <string id="EmptyApplicationTitle" value="The application info file %1 has an empty title." />
+        <string id="DuplicateApplicationInfoExeArgsPair" value="The application defined in %1 was rejected because its executable file name and arguments are the same as those for the application defined in %2. The combination of file name and arguments must be unique." />
+        <string id="ApplicationInfoSearchFolderAccessFailure" value="An error occurred while accessing the application info search folder %1. %nAdditional information: %n%2" />
+        <string id="MissingAttractApplication" value="The attract application %1 is missing." />
+        <string id="SingleInstanceFailure" value="There is already an existing instance of SurfaceShell.exe running. Surface Shell will exit." />
+        <string id="CreateMutexFailure" value="Could not create a system mutex for single instancing. %nAdditional information: %n%1" />
+        <string id="MissingAsset" value="There is an error in application info file %3. The asset %1 is missing. %nAdditional information: %n%2" />
+        <string id="LoadingAssetFailure" value="There was an error in application info file %3 while loading asset %1. %nAdditional information: %n%2" />
+        <string id="KilledProcess" value="The Surface Shell attempted to terminate the process with ID %1 (which corresponds to the application defined in %2)." />
+        <string id="UnableToLaunchAttractApplication" value="The attract application failed to launch. %nAdditional information: %n%1" />
+        <string id="AttractLaunchTimedOut" value="The attract application failed to connect to Surface Shell within the expected amount of time." />
+        <string id="AttractApplicationCrashed" value="The attract application either crashed or stopped responding." />
+        <string id="UnableToLaunchApplication" value="The application defined in %1 failed to launch. %nAdditional information: %n%2" />
+        <string id="ApplicationLaunchTimedOut" value="The application defined in %1 failed to connect to Surface Shell within the expected amount of time." />
+        <string id="BadApplicationInfoXmlSchemaFile" value="The XML schema file %1, required for validation of application info files, is missing or invalid." />
+        <string id="InvalidTimeoutInterval" value="The time-out interval must either be 0 or a value between 10 and 3600. Use 0 to disable the time-out. %n%1: %2" />
+        <string id="InvalidLoadingTimeoutInterval" value="The loading screen time-out interval value is invalid. %nRequested value: %1 seconds, %nMinimum value: %2, %nMaximum value: %3" />
+        <string id="ApplicationCrashDetected" value="An application exited unexpectedly. It might have crashed or exited with a non-zero exit code. %nApplication info file: %1 %nApplication file name: %2 %nProcess ID: %3" />
+        <string id="ApplicationHangDetected" value="An application hang was detected. %nApplication info file: %1 %nApplication file name: %2 %nProcess ID: %3" />
+        <string id="SurfaceUserSessionStarted" value="Surface Shell started a new user session." />
+        <string id="ApplicationLaunched" value="Surface Shell launched the application defined in %1." />
+        <string id="ShellExitingBecauseServerFailedToStart" value="Surface Shell is exiting because it failed to start the Shell API COM server." />
+        <string id="ShellFailedToStartServer" value="The Shell API COM server initialization failed. %nError message:%n%1" />
+        <string id="InvalidApplicationHangingTimeoutInterval" value="The time-out interval for application hanging detection is invalid. %nValue requested:%n%1 seconds %nMinimum value:%n%2 %nMaximum value:%n%3" />
+        <string id="UnknownUIWindowClosed" value="UI Suppression attempted to close an unexpected or unknown window (window handle 0x%1, title %3, class name %4) from process %2." />
+        <string id="UnknownUIProcessKilled" value="UI Suppression had to terminate process %1, because it displayed a window with unexpected or unknown UI that could not be closed. Window title was %2." />
+        <string id="UnknownUIProcessKillFailed" value="UI Suppression detected a fatal failure because a window with unexpected or unknown UI appeared, and the Surface Shell was unable to either hide or close that window, or close or terminate its owner process, %1. The title of the window was %2. Surface Shell will exit and the system will transition to the out-of-order state." />
+        <string id="UnknownUIQuotaExceeded" value="UI Suppression detected a fatal failure because the unknown UI quota has been exceeded. (By default, no more than three windows with unexpected or unknown UI are allowed to appear within one minute.) The last window was owned by process %1. The last window title was %2. Surface Shell will exit and the system will transition to the out-of-order state." />
+        <string id="InvalidAttractLoadingTimeoutInterval" value="The loading screen time-out value for the attract application is invalid. %nRequested value:%n%1 seconds %nMinimum value:%n%2 %nMaximum value:%n%3" />
+        <string id="InvalidApplicationOrderFile" value="The application order file %1 contains errors.%nError message:%n%2" />
+        <string id="ShellExitingDueToBadShellUIState" value="The Surface Shell UI Monitor detected a bad state. Surface Shell will now exit a non-zero exit code." />
+        <string id="BadShellUIStateDetected" value="The Surface Shell UI Monitor detected a bad state. %nState:%n%1" />
+        <string id="ExternalDebuggerAttachedToApplication" value="An application stopped responding. A debugger has been attached to the application's process. This could indicate that the application crashed. The application process will not be restarted until it exits. %nApplication XML file:%n%1 %nApplication process:%n%2" />
+        <string id="GeneratingHangDumpForApplication" value="An application stopped responding. Because the functionality of hang dumps is enabled, debug dump generation was started by launching the following command: %3. The application process will not be terminated and restarted until it exits. Application XML file: %1; application process: %2." />
+        <string id="InvalidDebugDumpTimeoutInterval" value="The debug dump time-out value is invalid. %nRequested value:%n%1 seconds %nMinimum value:%n%2 %nMaximum value:%n%3" />
+        <string id="DebuggerDetectedDuringEndSession" value="An application did not terminate on time (within %1 seconds) during the user session termination. The debugger has been attached to the application's process. This could indicate that the application crashed. The user session will not be restarted until the process exits. %nApplication XML file:%n%2 %nApplication process:%n%3" />
+        <string id="DebuggerDetectedDuringAppLoad" value="An application did not call SignalApplicationLoadComplete on time (within %1 seconds). The debugger has been attached to the application's process. This could indicate that the application crashed. The Shell loading screen will be shown until the application process exits. %nApplication XML file:%n%2 %nApplication process:%n%3" />
+        <string id="GoingToOutOfOrderDueToDebugDumpTimeout" value="Surface Shell experienced a fatal failure because the debug dump of an application did not complete on time. The system is going to transition to the out-of-order state. %nDebug dump time-out:%n%1 seconds %nApplication XML file:%n%2 %nApplication process:%n%3" />
+        <string id="ApplicationOrderFileAccessFailure" value="An error occured and Surface Shell will not be able to monitor the application order file %1. %nError message:%n%2" />
+        <string id="TitleBarWindowDetected" value="UI Suppression detected a window with a title bar in a Surface application and will try to close it. %nWindow handle: 0x%1 %nProcess name: %2 %nTitle bar text: &quot;%3&quot;" />
+        <string id="InvalidApplicationOrderUniqueName" value="The application %1 specified in the application order file has no corresponding application info file in the directory %2." />
+        <string id="CurrentSingleAppApplicationNotConfigured" value="Surface Shell is configured to run in single application mode, but there is no application info file specified in the corresponding registry value. Specify the application info file and restart Surface Shell." />
+        <string id="CurrentSingleAppApplicationXmlMissing" value="Surface Shell is configured to run in single application mode, but it could not find the application info file specified in the corresponding registry value. Make sure that the application info file is located in the installed applications folder, and restart Shell. %nMissing application info file name: %1.xml" />
+        <string id="SingleAppFailureTransitionToOOO" value="Surface Shell is configured to run in single application mode, but it could not load the application. Surface Shell will exit and the system will transition to the out-of-order state. See preceding events for detailed error information." />
+        <string id="CurrentSingleAppApplicationDefinitionFailure" value="Surface Shell is configured to run in single application mode, but the application info file defines an application that is not the correct type for single application mode. The application must be a regular Surface application (neither an attract, nor a Surface service application). %nApplication info file: %1.xml" />
+        <string id="InvalidSingleAppLoadingTimeoutInterval" value="The single application mode loading screen timeout value is invalid. A default value of %1 seconds will be used. %nRequested value: %2 seconds %nMinimum value: %3 %nMaximum value: %4" />
+        <string id="ApplicationReactivated" value="Surface Shell reactivated the application defined in %1." />
+        <string id="DuplicateTagInApplicationInfoFile" value="The application info file %1 contains duplicate tag definitions. Surface Shell will ignore the second definition for tag '%2'." />
+        <string id="CannotAccessTagInfoRoot" value="Surface Shell cannot access the tag configuration information in the registry. Make sure that Microsoft Surface is correctly installed and configured. Default values will be used. %nPath to the tag configuration information in the registry: %1; %nAdditional information: %n%2" />
+        <string id="MissingTagInfoRoot" value="Object routing tag configuration information is missing in the registry. Make sure that Microsoft Surface is correctly installed and configured. Default values will be used. %nPath to the missing tag configuration information in the registry: %1" />
+        <string id="MissingTagInfo" value="The application info file %1 refers to tag %2, however, configuration information for %2 does not exist in the registry. Default values will be used. %nPath to the tag configuration information in the registry: %3" />
+        <string id="MissingTagInfoSetting" value="The application info file %1 refers to tag %2, however, some configuration information for %2 is missing from the registry. The default value '%3' will be used for the missing setting. %nPath to the tag's missing configuration setting in the registry: %n%4" />
+        <string id="CannotAccessTagInfoSetting" value="The application info file %1 refers to a tag (%2) with a registry setting that Surface Shell cannot access. Make sure that all applications are installed correctly and that the appropriate privileges/permissions are in place. The default value '%3' will be used for the inaccessible setting. %nPath to the tag's configuration setting in the registry: %n%4; %nAdditional information: %n%5" />
+        <string id="InvalidTagInfoSetting" value="The application info file %1 refers to tag %2, however, the registry configuration information for %2 is invalid. Make sure that all applications are installed correctly, and that the tag's configuration information is valid. The default value '%3' will be used for the incorrect setting. %nPath to the tag's incorrect configuration setting in the registry: %n%4; %nAdditional information: %n%5" />
+        <string id="DuplicateApplicationInApplicationOrderFile" value="The application %1 is specified more than once in the application order file %2. Surface Shell will use the first occurrence of the application, and ignore the rest." />
+        <string id="TooManyApplicationsForObjectRoutingTag" value="There are too many applications associated with tag %1 to be displayed on the object routing menu. Only the first %3 applications out of the total of %2 will be displayed. (Precedence is based on the order given in the application order file, or if none exists, the applications are considered in alphabetical order.) Consider unregistering some applications from object routing." />
+        <string id="UILanguageNameNotSpecified" value="The Surface UI language was not specified in the registry. The Surface system will use Windows default UI language: %1" />
+        <string id="UILanguageInitialized" value="The Surface UI language has been set to: %1" />
+        <string id="InvalidUILanguageName" value="The Surface UI language specified in the registry is invalid. Registry value: %1. The Surface system will use Windows default UI language: %2. %nAdditional information: %3" />
+        <string id="LocaleNameNotSpecified" value="The Surface locale was not specified in the registry. The Surface system will use Windows default locale: %1" />
+        <string id="LocaleInitialized" value="The Surface locale has been set to: %1" />
+        <string id="InvalidLocaleName" value="The Surface locale specified in the registry is invalid. Registry value: %1. The Surface system will use Windows default locale: %2. %nAdditional information: %3" />
+        <string id="InputLanguageIdNotSpecified" value="The Surface input language was not specified in the registry. The Surface system will use the best match based on the Surface locale. Best match: %1 (%2)" />
+        <string id="InputLanguageIdNotSupported" value="The Surface input language specified in the registry is not supported. Registry value: %1 (%2). The Surface system will use the best match based on the Surface locale. Best match: %3 (%4)" />
+        <string id="InputLanguageIdInitialized" value="The Surface input language has been set to: %1 (%2)" />
+        <string id="InvalidInputLanguageId" value="The Surface input language could not be set to %1 (%2) due to an error. The Surface system will use the Windows OS default input language: %3 (%4). It may result in inconsistent user  experience.%nAdditional information: %5" />
+        <string id="InvalidTagInfoSettingDimension" value="The application info file %1 refers to tag %2, however, the registry configuration information for %2 is invalid. The registry setting should have a value in the range %3 to %4. Make sure that all applications are installed correctly, and that the tag's configuration information is valid. The default value '%5' will be used for the invalid setting. %nPath to the tag's invalid configuration setting in the registry: %n%6" />
+        <string id="ErrorCreatingSqmSession" value="Surface Shell is unable to log information for the Microsoft Surface Customer Experience Improvement Program. Surface Shell will continue operating normally.%nAdditional information:%n%1" />
+        <string id="ErrorWritingAtSqmBeginSession" value="Surface Shell is unable to log Shell session startup information for the Microsoft Surface Customer Experience Improvement Program. Surface Shell will continue operating normally.%nAdditional information:%n%1" />
+        <string id="ErrorWritingAtSqmEndSession" value="Surface Shell is unable to log Shell end session information for the Microsoft Surface Customer Experience Improvement Program. Surface Shell will continue operating normally.%nAdditional information:%n%1" />
+        <string id="ErrorLoadingSqmLibrary" value="Surface Shell is unable to load the file '%1' required for Microsoft Surface Customer Experience Improvement Program. Surface Shell will continue operating normally. Refer to the Surface Community Web site for more information.%nAdditional information:%n%2" />
+        <string id="TagInfoSettingTypeMismatch" value="The application info file %1 refers to tag %2, however, the registry configuration information for %2 is invalid. The setting specifies the wrong data type. The setting data type should be String. Make sure that all applications are installed correctly, and that the tag's configuration information is correct. The default value '%3' will be used for the incorrect setting. %nPath to the tag's incorrect configuration setting in the registry: %n%4" />
+        <string id="ObjectRoutingIsDisabledByOneAppMode" value="Object routing is disabled because Surface Shell is running in single application mode." />
+        <string id="ObjectRoutingIsDisabledByConfig" value="Object routing has been disabled through the EnableObjectRouting registry key." />
+        <string id="ObjectRoutingIsDisabledByConfigForAllTagTypes" value="Object routing is disabled because it has been configured in the registry to ignore all supported tag types." />
+        <string id="ObjectRoutingIsEnabled" value="Object routing is enabled." />
+        <string id="ObjectRoutingIsEnabledOnlyForIdentityTags" value="Object routing is enabled, but has been configured to ignore byte tags." />
+        <string id="ObjectRoutingIsEnabledOnlyForByteTags" value="Object routing is enabled, but has been configured to ignore identity tags." />
+        <string id="InvalidIdentityTagInAppInfoFile" value="The application info file %1 refers to an identity tag with an invalid series attribute, '%2'. Make sure that the series values are 64-bit numbers and that they are represented in hexadecimal format. The application will not be associated with this tag." />
+        <string id="InvalidByteTagInAppInfoFile" value="The application info file %1 refers to a byte tag with an invalid value attribute, '%2'. Make sure that the byte values are 8-bit numbers and that they are represented in hexadecimal format. The application will not be associated with this tag." />
+        <string id="AppConflictsWithService" value="Standard application info file %1 was rejected because it contains the same executable file and arguments as those in the service application info file %2.  Surface doesn't support standard apps with the same executable and arguments as service apps." />
+        <string id="InvalidApplicationTypeInApplicationOrder" value="Application order file contains a reference to the application info file that defines an application that is not the correct type. The application must be a regular Surface application (not a Surface service application). %nApplication order file: %1 %nApplication info file: %2" />
+        <string id="InvalidInitialOrientation" value="The initial orientation setting in the registry is invalid. Surface Shell will use the default orientation (%1). Valid values are either 'top' or 'bottom'. Path to the setting in the registry: HKLM\SOFTWARE\Microsoft\Surface\v2.0\Shell\InitialOrientation" />
+        <string id="InvalidTagInfoSettingOffset" value="The application info file %1 refers to tag %2, however, the registry configuration information for %2 is invalid. The specified physical offset should be within the range of the bounding box (%3 to %4). Make sure that all applications are installed correctly, and that the tag's configuration information is valid. The default value '%5' will be used for the invalid setting. %nPath to the tag's invalid configuration setting in the registry: %n%6" />
+        <string id="CannotAccessTagInfo" value="The application info file %1 refers to tag %2, however, Surface Shell cannot access the tag configuration information in the registry. Make sure that Microsoft Surface is correctly installed and configured. Default values will be used. %nPath to the tag configuration information in the registry: %3; %nAdditional information: %n%4" />
+        <string id="ApplicationClosedByMemoryManager" value="Surface Shell closed an application to avoid overloading the system memory.  %nApplication info file: %1 %nApplication file name: %2 %nProcess ID: %3" />
+
+        <!-- *Events below this line have not been vetted by Loc -->
+        <string id="ApplicationShortcutFolderAccessFailure" value="An error occurred while accessing the application shortcut folder %1." />
+        <string id="NetworkApplicationExecutablePath" value="Application executable file %1 is a network path.  Surface does not support network paths for application executables." />
+        <string id="NetworkApplicationInfoFilePath" value="Application info file %1 is a network path.  Surface does not support network paths for application info file." />
+        
+        <!-- Object bounds logging -->
+        <string id="InvalidObjectDescriptionFile" value="The object description file %1 contains errors. %nAdditional information: %n%2" />
+        <string id="BadObjectDescriptionXmlSchemaFile" value="The XML schema file %1, required for validation of object description files, is missing or invalid." />
+        <string id="DuplicateObjectDescription" value="The object description file %1 contains duplicate object definitions. Surface Shell will ignore the second definition for object description '%2'." />
+        <string id="InvalidLayoutInObjectDescription" value="The object description %1 in file %2 contains invalid layout. '%3'" />
+        <string id="InvalidTagFieldInObjectDescription" value="The object description %1 in file %2 refers to a tag with an invalid value, '%3'. Make sure that the values are 64-bit numbers and that they are represented in hexadecimal format. The object description will not be associated with this tag." />
+        <string id="MultipleObjectLayoutDefinitionFound" value="Multiple object set data found for %1 in files %2" />
+
+        <!-- Exit Surface Mode-->
+        <string id="ExitSurfaceModeCredentialPrompted" value="Exit Surface Mode credential is prompted." />
+        <string id="ExitSurfaceModeSubmitted" value="Exit Surface Mode is submitted." />
+
+        <!-- DWM diagnotics -->
+        <string id="DwmNotEnabled" value="DWM is not enabled." />
+
+        <string id="AttractNeedsToBeRestarted" value="Attract has been running for %1 seconds and will be closed within the next %2 seconds." />
+        <string id="AttractLifespanEnded" value="Restarting Attract because the Attract lifespan has ended. Shell State:%1" />
+        <string id="ApplicationClosing" value="Surface Shell is closing the application defined in %1." />
+        <string id="ShellLayerWindowNotTopmost" value="Shell Layer Windows are not Topmost. Shell State:%1" />
+        <string id="ApplicationCloseFailed" value="Surface Shell failed to close the application defined in %1. %nMain window handle:%2" />
+        <string id="SurfaceUserSessionEnding" value="Surface Shell is ending the user session." />        
+
+        <!-- Add new "Administration" channel event messages above this line -->
+        <!-- ************************************************ -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Administration" channel -->
+        <!-- ************************************************ -->
+        
+        <!-- ***************************************** -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Debug" channel -->
+        <!-- ***************************************** -->
+        <string id="UnableToKillProcess" value="The Surface Shell was unable to terminate process ID %1. %nAdditional information: %n%2" />
+        <string id="FailedToTransferForeground" value="The Surface Shell failed to transfer target application %1 to the foreground. %nError message:%n%2" />
+        <string id="InactivityTimeout" value="An inactivity time-out occurred. %nRunning applications:%n%1  %nActive application:%n%2  %nApplication Menu:%n%3" />
+        <string id="ApplicationCanceledTimeout" value="Application %1 canceled the inactivity time-out." />
+        <string id="ApplicationIgnoredClose" value="Application %1 was terminated because it did not close within the required time after receiving a WM_CLOSE message." />
+        <string id="IOErrorSavingAttractImage" value="An error occurred while writing a file %2. %nAdditional information: %n%1" />
+        <string id="FailedToSetCursorPosition" value="The Surface Shell failed to set the cursor position. %nError returned:%n%1" />
+        <string id="FailedToCopyCursor" value="The Surface Shell failed to copy the cursor. %nError returned:%n%1" />
+        <string id="SetSystemCursorFailed" value="SetSystemCursor failed. %nError returned:%n%1" />
+        <string id="CouldNotLoadEmptyCursor" value="Loading of the empty cursor failed. %nError returned:%n%1" />
+        <string id="FailedToRestoreCursors" value="Restoration of the system cursors failed. %nError message:%n%1" />
+        <string id="SuppressedMousePointers" value="Surface Shell suppressed mouse pointers." />
+        <string id="RestoredMousePointers" value="Surface Shell restored mouse pointers." />
+        <string id="MovedCursorOverAccessPoint" value="The mouse pointer was moved beyond the bottom-right access point." />
+        <string id="NotificationQueueIsFull" value="A notification request was ignored because the notification queue is full." />
+        <string id="DesktopSwitchHookFailed" value="Surface Shell failed to add Desktop Switch WinEvent hook. %nError message:%n%1" />
+        <string id="UISuppressionHookFailed" value="Surface Shell failed to add a UI Suppression WinEvent hook. %nError message:%n%1" />
+        <string id="WindowAddedToKillList" value="Window %1 (%2) belonging to process %3 (%4) has been added to the list of windows to close." />
+        <string id="MovedWindowOffScreen" value="Attempting to move unknown window offscreen. Window %1 (%2) belongs to process %3 (%4)." />
+        <string id="PostedWindowCloseMessage" value="A Window Close message was posted to window %1 (%2) belonging to process %3 (%4)." />
+        <string id="KillingProcess" value="Attempting to terminate process %3 (%4) in order to suppress window %1 (%2)." />
+        <string id="FailedToKillWindow" value="Failed to close window %1 (%2) belonging to process %3 (%4)." />
+        <string id="RemovedStaleWindowFromKillList" value="Window %1 (%2) belonging to process %3 (%4) was stale and therefore was removed from the list of windows to close." />
+        <string id="AddedWindowToMonitoredList" value="Window %1 (%2) belonging to process %3 (%4) has been added to the monitored list." />
+        <string id="MovedWindowFromMonitoredToKillList" value="Window %1 (%2) belonging to process %3 (%4) has been moved from the monitored list to the list of windows to close." />
+        <string id="RemovedStaleWindowFromMonitoredList" value="Removed window %1 (%2) belonging to process %3 (%4) from the monitored list because it was stale." />
+        <string id="UnknownUIQuotaUpdated" value="The Unknown UI quota has been updated. Currently %1 unknown UIs have occurred against a quota of %2 in a window of %3 seconds." />
+        <string id="IgnoringWindowAgainstQuota" value="Window %1 (%2) belonging to process %3 (%4) will no longer count against the UnknownUI suppression quota (debouncing)." />
+        <string id="DuplicateWindowsDifferentProcesses" value="Surface Shell tried to add two windows with the same window handle, but different owning processes, to the list of windows to close." />
+        <string id="ApplicationNotRegistered" value="Surface Shell rejected a connection from a process because the application is not registered. %nProcess id:%n%1 %nProcess path:%n%2 %nProcess arguments:%n%3"/>
+        <string id="ApplicationStartedBeforeShell" value="Surface Shell rejected a connection from a process because the application was started before Surface Shell was started. %nProcess id:%n%1 %nProcess path:%n%2 %nProcess arguments:%n%3"/>
+        <string id="ApplicationAlreadyConnected" value="Surface Shell rejected a connection from a process because there is already an application of the same name connected. %nProcess id:%n%1 %nProcess path:%n%2 %nProcess arguments:%n%3"/>
+        <string id="ApplicationDynamicallyRegistered" value="Surface Shell accepted a connection from an unregistered process, which will be treated as a dynamically registered application. %nProcess id:%n%1 %nProcess path:%n%2 %nProcess arguments:%n%3"/>
+        <string id="IgnoringWindowAgainstQuotaEnumeration" value="Window %1 (%2) belonging to process %3 (%4) will not count against the unknown UI suppression quota because it was present before Surface Shell was started (initial enumeration)." />
+        <string id="TimedOutAppCannotConnect" value="Surface Shell rejected the connection from a process because it connected after the SignalApplicationLoadComplete time-out.%nProcess id:%n%1 %nProcess path:%n%2 %nProcess arguments:%n%3"/>
+        <string id="SoundInitializationFailure" value="Surface Shell audio failed to load. %nError message:%n%1"/>
+        <string id="AccessPointActivation" value="An access point was activated. %nAccessPoint:%n%1 %nStartLocation.X:%n%2 %nStartLocation.Y:%n%3 %nEndLocation.X:%n%4 %nEndLocation.Y:%n%5 %nDistance:%n%6 pixels %nDuration:%n%7 milliseconds %nVelocity:%n%8 pixels/second" />
+        <string id="AccessPointAccidentalActivation" value="Access point accidental activation was detected. %nAccessPoint:%n%1 %nStartLocation.X:%n%2 %nStartLocation.Y:%n%3 %nEndLocation.X:%n%4 %nEndLocation.Y:%n%5 %nDistance:%n%6 pixels %nDuration:%n%7 milliseconds %nVelocity:%n%8 pixels/second" />
+        <string id="CommunicationException" value="A communication exception occurred. %nError message:%n%1" />
+        <string id="SignalApplicationLoadCompleteFailed" value="SignalApplicationLoadComplete failed. %nError message:%n%1" />
+        <string id="RequestNotificationFailed" value="RequestNotification failed. %nError message:%n%1" />
+        <string id="GetKeyboardPropertyFailed" value="Failed to get keyboard property. %nError message:%n%1" />
+        <string id="SetKeyboardPropertyFailed" value="Failed to set keyboard property. %nError message:%n%1" />
+        <string id="GetKeyboardLayoutFailed" value="Failed to get keyboard layout. %nError message:%n%1" />
+        <string id="SetKeyboardLayoutFailed" value="Failed to set keyboard layout. %nError message:%n%1" />
+        <string id="EndSessionAlreadyInProgress" value="UIController.EndSession was called, but a session restart is already in progress." />
+        <string id="KeyboardAutocorrectedPosition" value="The requested position for the keyboard was out of bounds. Surface Shell assigned the closest position possible instead." />
+        <string id="SecondAppRejectedInOneAppMode" value="Surface Shell is running in single application mode with the application connected. Another application process attempted to connect. The request was rejected because only one application can be connected to Surface Shell in single application mode. %nProcess id: %1 %nProcess path:%n%2 %nProcess arguments:%n%3"/>
+        <string id="GettingCurrentCultureInShellApiFailed" value="Retrieving Surface locale failed in ShellApi. %nAdditional information: %1" />
+        <string id="GettingCurrentCultureInShellApiResultedInNeutralCulture" value="Retrieving Surface locale failed in ShellApi. Returned locale '%1' was culture neutral." />
+        <string id="GettingCurrentUICultureInShellApiFailed" value="Retrieving Surface UI language failed in ShellApi. %nAdditional information: %1" />
+        <string id="GettingCurrentInputLocaleInShellApiFailed" value="Retrieving Surface input language failed in ShellApi. %nAdditional information: %1" />
+        <string id="ApplyingCurrentInputLocaleInShellApiFailed" value="Applying Surface input language failed in ShellApi. %nAdditional information: %1" />
+        <string id="LocalizedAppInfoLoaded" value="Localized application info file %1 was used for the application defined in language-neutral file %2" />
+        <string id="OnlyNeutralAppInfoLoaded" value="No localized files were found for the application defined in language-neutral file %1" />
+        <string id="HandleInactivityTimeoutOccurringResponseFailed" value="Failed to send InactivityTimeoutOccurring response to Shell. %nError message:%n%1" />
+        <string id="ErrorGettingSystemPreferredUILanguage" value="Retrieving the operating system UI language failed. Fallback language that will be used is: %1. %nAdditional information: %2" />
+        <string id="InvalidShellLightSetting" value="The shell light setting in the registry is invalid (%1). Surface Shell will use the default setting (%2). Valid values are either 'on', 'off', or 'auto'. Path to the setting in the registry: HKLM\SOFTWARE\Microsoft\Surface\v2.0\Shell\ShellLight" />
+        <string id="SessionIdFailed" value="SessionId_get failed. %nError message:%n%1" />
+        <string id="ShutdownReasonFailed" value="ShutdownReason_get failed. %nError message:%n%1" />
+        <string id="WindowAvailabilityFailed" value="WindowAvailability_get failed. %nError message:%n%1" />
+        <string id="RegisterHotkeyFailed" value="RegisterHotKey failed. %nError returned:%n%1" />
+        <string id="UnknownUIDetectionStaticallyExempted" value="UI Suppression detected an unexpected or unknown window but doesn't close since it's statically exempted (window handle 0x%1, title %3, class name %4) from process %2." />
+        <!-- Add new "Debug" channel event messages above this line -->
+        <!-- *************************************** -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Debug" channel -->
+        <!-- *************************************** -->
+        
+        <!-- ******************************************************* -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Performance" channel -->
+        <!-- ******************************************************* -->
+        <string id="MainApplicationStarted" value="Shell MainApplication started." />
+        <string id="MainApplicationEnded" value="Shell MainApplication ended." />
+        <string id="UIControllerInitializationStarted" value="UIController initialization started." />
+        <string id="UIControllerInitializationEnded" value="UIController initialization ended." />
+        <string id="SoundInitializationStarted" value="Sound initialization started." />
+        <string id="SoundInitializationEnded" value="Sound initialization ended." />
+        <string id="WindowMonitorInitializationStarted" value="WindowMonitor initialization started." />
+        <string id="WindowMonitorInitializationEnded" value="WindowMonitor initialization ended." />
+        <string id="ShellZOrderInitializationStarted" value="Shell Z-Order initialization started." />
+        <string id="ShellZOrderInitializationEnded" value="Shell Z-Order initialization ended." />
+        <string id="CanvasWindowInitializationStarted" value="CanvasWindow initialization started." />
+        <string id="CanvasWindowInitializationEnded" value="CanvasWindow initialization ended." />
+        <string id="UISuppressionInitializationStarted" value="UISuppression initialization started." />
+        <string id="UISuppressionInitializationEnded" value="UISuppression initialization ended." />
+        <string id="SqmInitializationStarted" value="SQM initialization started." />
+        <string id="SqmInitializationEnded" value="SQM initialization ended." />
+        <string id="ShellEngineInitializationStarted" value="ShellEngine initialization started." />
+        <string id="ShellEngineInitializationEnded" value="ShellEngine initialization ended." />
+        <string id="MainApplicationInitializationStarted" value="MainApplication initialization started." />
+        <string id="MainApplicationInitializationEnded" value="MainApplication initialization ended." />
+        <string id="MainApplicationWpfWrappersInitializationStarted" value="MainApplication WpfWrappers initialization started." />
+        <string id="MainApplicationWpfWrappersInitializationEnded" value="MainApplication WpfWrappers initialization ended." />
+        <string id="MainApplicationSqmInitializationStarted" value="MainApplication SQM initialization started." />
+        <string id="MainApplicationSqmInitializationEnded" value="MainApplication SQM initialization ended." />
+        <string id="ShellMainWindowInitializationStarted" value="ShellMainWindow initialization started." />
+        <string id="ShellMainWindowInitializationEnded" value="ShellMainWindow initialization ended." />
+        <string id="ApplicationStoreInitializationStarted" value="Application Store initialization started." />
+        <string id="ApplicationStoreInitializationCompleted" value="Application Store initialization completed." />
+        <string id="ShellApplicationLaunchStarted" value="The shell application was launched." />
+        <string id="ShellApplicationLaunchCompleted" value="The shell application finished launching." />
+        <string id="EstablishShellApiConnectionStarted" value="Establishing Shell API connection." />
+        <string id="EstablishShellApiConnectionCompleted" value="Shell API connection established." />
+        <string id="AppLauncherDisplayStarted" value="App launcher summoned from access point" />
+        <string id="AppLauncherDisplayCompleted" value="App launcher display complete." />
+        <string id="ShellEndSessionStarted" value="App launcher end session process started." />
+        <string id="ShellEndSessionCompleted" value="App launcher end session process complete." />
+        <string id="SignalApplicationLoadCompleteApiStarted" value="SignalApplicationLoadCompleteToVisible() is called." />
+        <string id="SignalApplicationLoadCompleteApiCompleted" value="SignalApplicationLoadCompleteToVisible() has returned." />
+        <string id="ShellApplicationLaunchFromSimulatorStarted" value="Simulator is launched." />
+        <string id="ShellApplicationLaunchFromSimulatorCompleted" value="Access Points are visible" />
+        <string id="NewSessionLoadingAttractStarted" value="New session starts." />
+        <string id="NewSessionLoadingAttractCompleted" value="Begin to load the attract app" />
+        <string id="EndSessionConfirmToLoadingScreenStarted" value="Close everything button is pressed." />
+        <string id="EndSessionConfirmToLoadingScreenCompleted" value="Loading screen appears" />
+        <string id="LoadingScreenToActionableStarted" value="SignalLoadingComplete is called by Attract app" />
+        <string id="LoadingScreenToActionableCompleted" value="Attract appears and Access Points are visible" />
+        <string id="TransitionApplicationToLauncherStarted" value="An access point is pressed." />
+        <string id="TransitionApplicationToLauncherCompleted" value="AppLauncher is ready for interaction" />
+        <string id="AppLauncherStartDragToScrollStarted" value="Drag starts" />
+        <string id="AppLauncherStartDragToScrollCompleted" value="AppLauncher scrolling starts" />
+        <string id="AppLauncherTouchToPreview1To5Started" value="Icon on applauncher is touched (1-5 app)" />
+        <string id="AppLauncherTouchToPreview1To5Completed" value="Preview content starts to play (1-5 app)" />
+        <string id="AppLauncherTouchToPreview6PlusStarted" value="Icon on applauncher is touched (6+ app)" />
+        <string id="AppLauncherTouchToPreview6PlusCompleted" value="Preview content starts to play (6+ app)" />
+        <string id="TextBoxFocusedToKeyboardReadyStarted" value="Textbox received input focus" />
+        <string id="TextBoxFocusedToKeyboardReadyCompleted" value="Keyboard shows up and ready for input" />
+        <string id="KeyboardStartDragToMovementStarted" value="Drag gesture started" />
+        <string id="KeyboardStartDragToMovementCompleted" value="Keyboard starts moving" />
+        <string id="KeyboardContactDownToKeySentStarted" value="Contact on key is pressed" />
+        <string id="KeyboardContactDownToKeySentCompleted" value="Key press is sent out to Windows" />
+        <string id="KeyboardContactDownToKeyReceivedStarted" value="Contact on key is pressed" />
+        <string id="KeyboardContactDownToKeyReceivedCompleted" value="Key press is received by the text control" />
+        <string id="KeyboardAltGrLayoutOnStarted" value="AltGr key contact down" />
+        <string id="KeyboardAltGrLayoutOnCompleted" value="Keyboard layout finished updating from AltGr contact down" />
+        <string id="KeyboardAltGrLayoutOffStarted" value="AltGr key contact up" />
+        <string id="KeyboardAltGrLayoutOffCompleted" value="Keyboard layout finished updating from AltGr contact up" />
+        <string id="KeyboardShiftedLayoutOnStarted" value="Shift key contact down" />
+        <string id="KeyboardShiftedLayoutOnCompleted" value="Keyboard layout finished updating from Shift contact down" />
+        <string id="KeyboardShiftedLayoutOffStarted" value="Shift key contact up" />
+        <string id="KeyboardShiftedLayoutOffCompleted" value="Keyboard layout finished updating from Shift contact up" />
+        <string id="ContactDownToObjectRoutingUISummonedStarted" value="Tagged contact is detected for tag ID %1." />
+        <string id="ContactDownToObjectRoutingUISummonedCompleted" value="Object routing UI is summoned for tag ID %1." />
+        <string id="ContactTransferredByShell" value="Contact transferred by Shell for tag ID %1." />
+        <string id="LaunchTimeoutToErrorNotificationStarted" value="Application Launch timeout detected.." />
+        <string id="LaunchTimeoutToErrorNotificationCompleted" value="Error message displayed in previewpane.." />
+        <string id="LaunchContactUpToLoadingScreenStarted" value="Contact / mouse up on preview pane." />
+        <string id="LaunchContactUpToLoadingScreenCompleted" value="Loading screen is visible" />
+        <string id="ActivateApplicationToWindowInteractiveStarted" value="ApplicationLauncher.ActivateApplication called." />
+        <string id="ActivateApplicationToWindowInteractiveCompleted" value="ApplicationLauncher.WindowInteractive raised." />
+        <string id="KeyboardHideButtonClickedStarted" value="Keyboard hide button clicked." />
+        <string id="AccessPointDrawInAnimationStarted" value="The AccessPoint DrawIn animation started." />
+        <string id="AccessPointDrawInAnimationCompleted" value="The AccessPoint DrawIn animation completed." />
+        <string id="ObjectRoutingSummonAnimationStarted" value="The ObjectRouting Summon animation started. Contact tag ID: %1" />
+        <string id="ObjectRoutingSummonAnimationCompleted" value="The ObjectRouting Summon animation completed. Contact tag ID: %1" />
+        <string id="NotificationDismissedToNotificationGoneStarted" value="Notification Dismiss Button was Released." />
+        <string id="NotificationDismissedToNotificationGoneCompleted" value="Notification is no longer visible." />
+        <string id="LogoAnimationFrameRateStarted" value="Logo animation started." />
+        <string id="LogoAnimationFrameRateCompleted" value="Logo animation finished." />
+
+        <!-- Add new "Performance" channel event messages above this line -->
+        <!-- ***************************************************** -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Performance" channel -->
+        <!-- ***************************************************** -->
+        
+        <!-- ***************** -->
+        <!-- END Event Message -->
+        <!-- ***************** -->
+        <!-- ********************* -->
+        <!-- START Opcode Messages -->
+        <!-- ********************* -->
+        <!-- Add new opcode messages above this line -->
+        <!-- ******************* -->
+        <!-- END Opcode Messages -->
+        <!-- ******************* -->
+        <!-- ******************* -->
+        <!-- START Task Messages -->
+        <!-- ******************* -->
+        <!-- Add new task messages above this line -->
+        <!-- ***************** -->
+        <!-- END Task Messages -->
+        <!-- ***************** -->
+        <!-- ********************** -->
+        <!-- START Keyword Messages -->
+        <!-- ********************** -->
+        <string id="KeywordOperational" value="Operational" />
+        <string id="KeywordDiagnostic" value="Diagnostic" />
+        <string id="KeywordDebug" value="Debug" />
+        <string id="KeywordPerformance" value="Performance" />
+        <!-- Add new keyword messages above this line -->
+        <!-- ******************** -->
+        <!-- END Keyword Messages -->
+        <!-- ******************** -->
+      </stringTable>
+    </resources>
+    <!-- Add new cultures above this line -->
+  </localization>
+</instrumentationManifest>

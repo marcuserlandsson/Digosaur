@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<startupProcesses
+  xmlns="http://www.microsoft.com/Surface/1.0/ShellInit/LoaderSchema"
+  xmlns:xsi="http://www.microsoft.com/Surface/1.0/ShellInit/LoaderSchema">
+  <!--
+    This file contains the set of processes/services that are critical
+    to table operation and should be started when the table user is logged in.
+  -->
+
+  <executableStartupProcess processName="Run Once" processType="NonUI" fileName="%SYSTEMROOT%\system32\RunOnce.exe" arguments="/AlternateShellStartup" createConsoleWindow="false" waitForExit="true" registerWithCpm="false"/>
+  
+  <executableStartupProcess processName="Surface Shell" processType="NonUI" fileName="SurfaceShell.exe" argumentsOnRestart="-recover" createConsoleWindow="false" />
+
+</startupProcesses>

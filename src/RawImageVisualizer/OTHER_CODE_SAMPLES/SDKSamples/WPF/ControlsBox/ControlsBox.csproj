@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{30C3617A-FA0D-41E8-9B00-CBD72C90DE78}</ProjectGuid>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <RootNamespace>ControlsBox</RootNamespace>
+    <AssemblyName>ControlsBox</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <WarningLevel>4</WarningLevel>
+    <OutputType>winexe</OutputType>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <ApplicationVersion>1.0.0.*</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <PublishUrl>Publish\</PublishUrl>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ControlsBox.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Microsoft.Surface" />
+    <Reference Include="Microsoft.Surface.Presentation" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="..\Shared\LibraryControlResourceDictionary.xaml">
+      <Link>Shared\LibraryControlResourceDictionary.xaml </Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TagVisual.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ImageInfo.cs" />
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TagVisual.xaml.cs">
+      <DependentUpon>TagVisual.xaml</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="InstalledAppInfo\ControlsBox.xml">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="InstalledAppInfo\appIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Resources.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\add.png" />
+    <Resource Include="Resources\Icons\adjust color.png" />
+    <Resource Include="Resources\Icons\attach.png" />
+    <Resource Include="Resources\Icons\bookmark - add.png" />
+    <Resource Include="Resources\Icons\bookmark - delete.png" />
+    <Resource Include="Resources\Icons\calculator - addition.png" />
+    <Resource Include="Resources\Icons\calculator - divide.png" />
+    <Resource Include="Resources\Icons\calculator - equal.png" />
+    <Resource Include="Resources\Icons\calculator - minus.png" />
+    <Resource Include="Resources\Icons\calculator - multiply.png" />
+    <Resource Include="Resources\Icons\chat.png" />
+    <Resource Include="Resources\Icons\check.png" />
+    <Resource Include="Resources\Icons\delete.png" />
+    <Resource Include="Resources\Icons\document - copy.png" />
+    <Resource Include="Resources\Icons\document - delete.png" />
+    <Resource Include="Resources\Icons\document.png" />
+    <Resource Include="Resources\Icons\edit.png" />
+    <Resource Include="Resources\Icons\file - close.png" />
+    <Resource Include="Resources\Icons\file - copy.png" />
+    <Resource Include="Resources\Icons\file.png" />
+    <Resource Include="Resources\Icons\gift.png" />
+    <Resource Include="Resources\Icons\help.png" />
+    <Resource Include="Resources\Icons\mail %28reversed%29.png" />
+    <Resource Include="Resources\Icons\mail - copy.png" />
+    <Resource Include="Resources\Icons\mail - delete.png" />
+    <Resource Include="Resources\Icons\mail.png" />
+    <Resource Include="Resources\Icons\more.png" />
+    <Resource Include="Resources\Icons\photo - copy.png" />
+    <Resource Include="Resources\Icons\photo - crop.png" />
+    <Resource Include="Resources\Icons\photo - delete.png" />
+    <Resource Include="Resources\Icons\photo - redeye correction.png" />
+    <Resource Include="Resources\Icons\photo.png" />
+    <Resource Include="Resources\Icons\player - fastforward.png" />
+    <Resource Include="Resources\Icons\player - pause.png" />
+    <Resource Include="Resources\Icons\player - play.png" />
+    <Resource Include="Resources\Icons\player - rewind.png" />
+    <Resource Include="Resources\Icons\player - skipbackwards.png" />
+    <Resource Include="Resources\Icons\player - skipforward.png" />
+    <Resource Include="Resources\Icons\print.png" />
+    <Resource Include="Resources\Icons\purchase.png" />
+    <Resource Include="Resources\Icons\refresh.png" />
+    <Resource Include="Resources\Icons\rss.png" />
+    <Resource Include="Resources\Icons\search.png" />
+    <Resource Include="Resources\Icons\tools - alternative.png" />
+    <Resource Include="Resources\Icons\tools.png" />
+    <Resource Include="Resources\Icons\trash.png" />
+    <Resource Include="Resources\Icons\usb.png" />
+    <Resource Include="Resources\Icons\volume - mute.png" />
+    <Resource Include="Resources\Icons\volume.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\blue0.jpg" />
+    <Resource Include="Resources\Images\blue1.jpg" />
+    <Resource Include="Resources\Images\blue2.jpg" />
+    <Resource Include="Resources\Images\blue3.jpg" />
+    <Resource Include="Resources\Images\blue4.jpg" />
+    <Resource Include="Resources\Images\blue5.jpg" />
+    <Resource Include="Resources\Images\blue6.jpg" />
+    <Resource Include="Resources\Images\blue7.jpg" />
+    <Resource Include="Resources\Images\blue8.jpg" />
+    <Resource Include="Resources\Images\blue9.jpg" />
+    <Resource Include="Resources\Images\green0.jpg" />
+    <Resource Include="Resources\Images\green1.jpg" />
+    <Resource Include="Resources\Images\green2.jpg" />
+    <Resource Include="Resources\Images\green3.jpg" />
+    <Resource Include="Resources\Images\green4.jpg" />
+    <Resource Include="Resources\Images\green5.jpg" />
+    <Resource Include="Resources\Images\green6.jpg" />
+    <Resource Include="Resources\Images\green7.jpg" />
+    <Resource Include="Resources\Images\green8.jpg" />
+    <Resource Include="Resources\Images\green9.jpg" />
+    <Resource Include="Resources\Images\orange0.jpg" />
+    <Resource Include="Resources\Images\orange1.jpg" />
+    <Resource Include="Resources\Images\orange2.jpg" />
+    <Resource Include="Resources\Images\orange3.jpg" />
+    <Resource Include="Resources\Images\orange4.jpg" />
+    <Resource Include="Resources\Images\orange5.jpg" />
+    <Resource Include="Resources\Images\orange6.jpg" />
+    <Resource Include="Resources\Images\orange7.jpg" />
+    <Resource Include="Resources\Images\orange8.jpg" />
+    <Resource Include="Resources\Images\orange9.jpg" />
+    <Resource Include="Resources\Images\rhodamine0.jpg" />
+    <Resource Include="Resources\Images\rhodamine1.jpg" />
+    <Resource Include="Resources\Images\rhodamine2.jpg" />
+    <Resource Include="Resources\Images\rhodamine3.jpg" />
+    <Resource Include="Resources\Images\rhodamine4.jpg" />
+    <Resource Include="Resources\Images\rhodamine5.jpg" />
+    <Resource Include="Resources\Images\rhodamine6.jpg" />
+    <Resource Include="Resources\Images\rhodamine7.jpg" />
+    <Resource Include="Resources\Images\rhodamine8.jpg" />
+    <Resource Include="Resources\Images\rhodamine9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ControlsBox.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<instrumentationManifest xmlns="http://schemas.microsoft.com/win/2004/08/events">
+  <instrumentation xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <events xmlns="http://schemas.microsoft.com/win/2004/08/events">
+      <provider name="Microsoft-Surface-AppLauncherApi" guid="{CC57EAFE-4332-408a-9320-0D00FD9206A1}" symbol="EventsAppLauncherApi" resourceFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-AppLauncherApi.man.dll" messageFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-AppLauncherApi.man.dll" parameterFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-AppLauncherApi.man.dll">
+        <channels>
+          <!-- This channel is used to publish events destined to the system administrator -->
+          <channel name="Microsoft-Surface-AppLauncherApi/Operational" chid="channelOperational" symbol="channelOperational" type="Operational" isolation="Application" enabled="true" value="16" />
+          <!-- This channel is used to publish events used in tracing -->
+          <channel name="Microsoft-Surface-AppLauncherApi/Debug" chid="channelDebug" symbol="channelDebug" type="Debug" isolation="Application" enabled="false" value="17" />
+          <!-- Add new channels above this line -->
+        </channels>
+        <templates>
+          <template tid="templateOneString">
+            <data name="string1" inType="win:UnicodeString" />
+            <UserData>
+              <oneStringEvent xmlns="nullNS">
+                <string1>%1</string1>
+              </oneStringEvent>
+            </UserData>
+          </template>
+
+          <template tid="templateTwoStrings">
+            <data name="string1" inType="win:UnicodeString" />
+            <data name="string2" inType="win:UnicodeString" />
+            <UserData>
+              <twoStringsEvent xmlns="nullNS">
+                <string1>%1</string1>
+                <string2>%1</string2>
+              </twoStringsEvent>
+            </UserData>
+          </template>
+
+          <template tid="templateThreeStrings">
+            <data name="string1" inType="win:UnicodeString" />
+            <data name="string2" inType="win:UnicodeString" />
+            <data name="string3" inType="win:UnicodeString" />
+            <UserData>
+              <threeStringsEvent xmlns="nullNS">
+                <string1>%1</string1>
+                <string2>%1</string2>
+                <string3>%1</string3>
+              </threeStringsEvent>
+            </UserData>
+          </template>
+
+          <template tid="templateFourStrings">
+            <data name="string1" inType="win:UnicodeString" />
+            <data name="string2" inType="win:UnicodeString" />
+            <data name="string3" inType="win:UnicodeString" />
+            <data name="string4" inType="win:UnicodeString" />
+            <UserData>
+              <fourStringsEvent xmlns="nullNS">
+                <string1>%1</string1>
+                <string2>%1</string2>
+                <string3>%1</string3>
+                <string4>%1</string4>
+              </fourStringsEvent>
+            </UserData>
+          </template>
+
+          <template tid="templateFiveStrings">
+            <data name="string1" inType="win:UnicodeString" />
+            <data name="string2" inType="win:UnicodeString" />
+            <data name="string3" inType="win:UnicodeString" />
+            <data name="string4" inType="win:UnicodeString" />
+            <data name="string5" inType="win:UnicodeString" />
+            <UserData>
+              <fiveStringsEvent xmlns="nullNS">
+                <string1>%1</string1>
+                <string2>%1</string2>
+                <string3>%1</string3>
+                <string4>%1</string4>
+                <string5>%1</string5>
+              </fiveStringsEvent>
+            </UserData>
+          </template>
+
+          <template tid="templateSixStrings">
+            <data name="string1" inType="win:UnicodeString" />
+            <data name="string2" inType="win:UnicodeString" />
+            <data name="string3" inType="win:UnicodeString" />
+            <data name="string4" inType="win:UnicodeString" />
+            <data name="string5" inType="win:UnicodeString" />
+            <data name="string6" inType="win:UnicodeString" />
+            <UserData>
+              <sixStringsEvent xmlns="nullNS">
+                <string1>%1</string1>
+                <string2>%1</string2>
+                <string3>%1</string3>
+                <string4>%1</string4>
+                <string5>%1</string5>
+                <string6>%1</string6>
+              </sixStringsEvent>
+            </UserData>
+          </template>
+
+          <template tid="templateOneInteger">
+            <data name="integer1" inType="win:Int32" />
+            <UserData>
+              <oneIntegerEvent xmlns="nullNS">
+                <integer1>%1</integer1>
+              </oneIntegerEvent >
+            </UserData>
+          </template>
+          <!-- Add new templates above this line -->
+        </templates>
+        <opcodes>
+          <!-- Add new opcodes above this line -->
+        </opcodes>
+        <keywords>
+          <keyword name="keywordException" mask="0x000000000001" message="$(string.keywordException)" symbol="keywordException" />
+          <keyword name="keywordConnection" mask="0x000000000002" message="$(string.keywordConnection)" symbol="keywordConnection" />
+          <keyword name="keywordProperty" mask="0x000000000004" message="$(string.keywordProperty)" symbol="keywordProperty" />
+          <keyword name="keywordEvent" mask="0x000000000008" message="$(string.keywordEvent)" symbol="keywordEvent" />
+          <keyword name="keywordMethod" mask="0x000000000010" message="$(string.keywordMethod)" symbol="keywordMethod" />
+          <!-- Add new keywords above this line (0x000000000001 to 0x800000000000) -->
+        </keywords>
+        <tasks>
+          <!-- Add new tasks above this line -->
+        </tasks>
+        <events>
+          <!-- ************************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Administration" channel -->
+          <!-- ************************************************** -->
+
+          <!--<event symbol="EventTest" value="1" level="win:Informational" message="$(string.eventMessageTest)" channel="channelOperational" version="0" />-->
+          <!-- Add new System Events above this line -->
+          <!-- ************************************************ -->
+          <!-- END EVENTS PUBLISHED TO "Administration" channel -->
+          <!-- ************************************************ -->
+          <!-- ***************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Debug" channel -->
+          <!-- ***************************************** -->
+
+          <event symbol="OrientationChangedEvent" value="5000" level="win:Informational" keywords="keywordEvent" template="templateOneInteger" message="$(string.OrientationChangedEvent)" channel="channelDebug" version="0" />
+          <event symbol="EnteringSuggestedOrientation" value="5001" level="win:Informational" keywords="keywordProperty" message="$(string.EnteringSuggestedOrientation)" channel="channelDebug" version="0" />
+          <event symbol="LeavingSuggestedOrientation" value="5002" level="win:Informational" keywords="keywordProperty" message="$(string.LeavingSuggestedOrientation)" channel="channelDebug" version="0" />
+          <event symbol="EnteringSignalApplicationLoadComplete" value="5003" level="win:Informational" keywords="keywordMethod" message="$(string.EnteringSignalApplicationLoadComplete)" channel="channelDebug" version="0" />
+          <event symbol="LeavingSignalApplicationLoadComplete" value="5004" level="win:Informational" keywords="keywordMethod" message="$(string.LeavingSignalApplicationLoadComplete)" channel="channelDebug" version="0" />
+          <event symbol="EnteringActivateApplication" value="5005" level="win:Informational" keywords="keywordMethod" template="templateOneString" message="$(string.EnteringActivateApplication)" channel="channelDebug" version="0" />
+          <event symbol="LeavingActivateApplication" value="5006" level="win:Informational" keywords="keywordMethod" template="templateOneString" message="$(string.LeavingActivateApplication)" channel="channelDebug" version="0" />
+          <event symbol="EnteringActivateApplicationAndOrient" value="5007" level="win:Informational" keywords="keywordMethod" template="templateTwoStrings" message="$(string.EnteringActivateApplicationAndOrient)" channel="channelDebug" version="0" />
+          <event symbol="LeavingActivateApplicationAndOrient" value="5008" level="win:Informational" keywords="keywordMethod" template="templateTwoStrings" message="$(string.LeavingActivateApplicationAndOrient)" channel="channelDebug" version="0" />
+          <!-- 5009 deleted -->
+          <event symbol="InactivityTimeoutOccurringEvent" value="5010" level="win:Informational" keywords="keywordEvent" template="templateOneInteger" message="$(string.InactivityTimeoutOccurringEvent)" channel="channelDebug" version="0" />
+          <event symbol="EnteringRequestNotification" value="5011" level="win:Informational" keywords="keywordEvent" template="templateTwoStrings" message="$(string.EnteringRequestNotification)" channel="channelDebug" version="0" />
+          <event symbol="LeavingRequestNotification" value="5012" level="win:Informational" keywords="keywordEvent" template="templateTwoStrings" message="$(string.LeavingRequestNotification)" channel="channelDebug" version="0" />
+          <event symbol="SessionEndedEvent" value="5013" level="win:Informational" keywords="keywordEvent" template="templateOneInteger" message="$(string.SessionEndedEvent)" channel="channelDebug" version="0" />
+          <!-- 5014 deleted -->
+          <event symbol="EnteringRequestNotificationWithDuration" value="5015" level="win:Informational" keywords="keywordEvent" template="templateThreeStrings" message="$(string.EnteringRequestNotificationWithDuration)" channel="channelDebug" version="0" />
+          <event symbol="LeavingRequestNotificationWithDuration" value="5016" level="win:Informational" keywords="keywordEvent" template="templateThreeStrings" message="$(string.LeavingRequestNotificationWithDuration)" channel="channelDebug" version="0" />
+          <event symbol="NotificationDisplayedEvent" value="5017" level="win:Informational" keywords="keywordEvent" template="templateOneInteger" message="$(string.NotificationDisplayedEvent)" channel="channelDebug" version="0" />
+          <event symbol="NotificationDismissedEvent" value="5018" level="win:Informational" keywords="keywordEvent" template="templateOneInteger" message="$(string.NotificationDismissedEvent)" channel="channelDebug" version="0" />
+          <event symbol="ClientConnected" value="5019" level="win:Informational" keywords="keywordConnection" template="templateOneString" message="$(string.ClientConnected)" channel="channelDebug" version="0" />
+          <event symbol="ClientReconnected" value="5020" level="win:Warning" keywords="keywordConnection" template="templateOneString" message="$(string.ClientReconnected)" channel="channelDebug" version="0" />
+          <event symbol="ClientConnectionRejected" value="5021" level="win:Warning" keywords="keywordConnection" template="templateTwoStrings" message="$(string.ClientConnectionRejected)" channel="channelDebug" version="0" />
+          <event symbol="ClientReconnectionRejected" value="5022" level="win:Warning" keywords="keywordConnection" template="templateTwoStrings" message="$(string.ClientReconnectionRejected)" channel="channelDebug" version="0" />
+          <event symbol="ServerConnectionRejected" value="5023" level="win:Warning" keywords="keywordConnection" template="templateOneInteger" message="$(string.ServerConnectionRejected)" channel="channelDebug" version="0" />
+          <event symbol="WindowInteractiveEvent" value="5024" level="win:Informational" keywords="keywordEvent" template="templateOneInteger" message="$(string.WindowInteractiveEvent)" channel="channelDebug" version="0" />
+          <event symbol="WindowUnavailableEvent" value="5025" level="win:Informational" keywords="keywordEvent" template="templateOneInteger" message="$(string.WindowUnavailableEvent)" channel="channelDebug" version="0" />
+          <event symbol="WindowNoninteractiveEvent" value="5026" level="win:Informational" keywords="keywordEvent" template="templateOneInteger" message="$(string.WindowNoninteractiveEvent)" channel="channelDebug" version="0" />
+          <event symbol="EnteringInitialOrientation" value="5027" level="win:Informational" keywords="keywordProperty" message="$(string.EnteringInitialOrientation)" channel="channelDebug" version="0" />
+          <event symbol="LeavingInitialOrientation" value="5028" level="win:Informational" keywords="keywordProperty" message="$(string.LeavingInitialOrientation)" channel="channelDebug" version="0" />
+          <event symbol="InitializeProcessCommunicationClient" value="5029" level="win:Informational" template="templateOneInteger" message="$(string.InitializeProcessCommunicationClient)" channel="channelDebug" version="0" />
+          <event symbol="DisposeProcessCommunicationClient" value="5030" level="win:Informational" template="templateOneInteger" message="$(string.DisposeProcessCommunicationClient)" channel="channelDebug" version="0" />
+          <event symbol="ClientReconnectOnRestartFailed" value="5031" level="win:Informational" template="templateOneString" message="$(string.ClientReconnectOnRestartFailed)" channel="channelDebug" version="0" />
+          <event symbol="ServerCreatedRestartEvent" value="5032" level="win:Informational" template="templateOneString" message="$(string.ServerCreatedRestartEvent)" channel="channelDebug" version="0" />
+          <event symbol="RequestingReconnectsAfterRestart" value="5033" level="win:Informational" template="templateOneString" message="$(string.RequestingReconnectsAfterRestart)" channel="channelDebug" version="0" />
+          <event symbol="ClientCreatedRestartEvent" value="5034" level="win:Informational" template="templateOneString" message="$(string.ClientCreatedRestartEvent)" channel="channelDebug" version="0" />
+          <event symbol="FoundExistingRestartEvent" value="5035" level="win:Informational" template="templateOneString" message="$(string.FoundExistingRestartEvent)" channel="channelDebug" version="0" />
+          <event symbol="RegisteredRestartCallback" value="5036" level="win:Informational" template="templateOneString" message="$(string.RegisteredRestartCallback)" channel="channelDebug" version="0" />
+          <event symbol="EnteringRequestNotificationWithImage" value="5039" level="win:Informational" keywords="keywordEvent" template="templateThreeStrings" message="$(string.EnteringRequestNotificationWithImage)" channel="channelDebug" version="0" />
+          <event symbol="LeavingRequestNotificationWithImage" value="5040" level="win:Informational" keywords="keywordEvent" template="templateThreeStrings" message="$(string.LeavingRequestNotificationWithImage)" channel="channelDebug" version="0" />
+          <event symbol="EnteringRequestNotificationWithImageAndUniqueName" value="5041" level="win:Informational" keywords="keywordEvent" template="templateFourStrings" message="$(string.EnteringRequestNotificationWithImageAndUniqueName)" channel="channelDebug" version="0" />
+          <event symbol="LeavingRequestNotificationWithImageAndUniqueName" value="5042" level="win:Informational" keywords="keywordEvent" template="templateFourStrings" message="$(string.LeavingRequestNotificationWithImageAndUniqueName)" channel="channelDebug" version="0" />
+          <event symbol="EnteringRequestNotificationWithImageAndDuration" value="5043" level="win:Informational" keywords="keywordEvent" template="templateFourStrings" message="$(string.EnteringRequestNotificationWithImageAndDuration)" channel="channelDebug" version="0" />
+          <event symbol="LeavingRequestNotificationWithImageAndDuration" value="5044" level="win:Informational" keywords="keywordEvent" template="templateFourStrings" message="$(string.LeavingRequestNotificationWithImageAndDuration)" channel="channelDebug" version="0" />
+          <event symbol="EnteringRequestNotificationWithImageDurationAndUniqueName" value="5045" level="win:Informational" keywords="keywordEvent" template="templateFiveStrings" message="$(string.EnteringRequestNotificationWithImageDurationAndUniqueName)" channel="channelDebug" version="0" />
+          <event symbol="LeavingRequestNotificationWithImageDurationAndUniqueName" value="5046" level="win:Informational" keywords="keywordEvent" template="templateFiveStrings" message="$(string.LeavingRequestNotificationWithImageDurationAndUniqueName)" channel="channelDebug" version="0" />
+          <event symbol="EnteringSessionId" value="5047" level="win:Informational" keywords="keywordEvent" message="$(string.EnteringSessionId)" channel="channelDebug" version="0" />
+          <event symbol="LeavingSessionId" value="5048" level="win:Informational" keywords="keywordEvent" message="$(string.LeavingSessionId)" channel="channelDebug" version="0" />
+          <event symbol="EnteringShutdownReason" value="5049" level="win:Informational" keywords="keywordEvent" message="$(string.EnteringShutdownReason)" channel="channelDebug" version="0" />
+          <event symbol="LeavingShutdownReason" value="5050" level="win:Informational" keywords="keywordEvent" message="$(string.LeavingShutdownReason)" channel="channelDebug" version="0" />
+          <event symbol="EnteringWindowAvailability" value="5051" level="win:Informational" keywords="keywordEvent" message="$(string.EnteringWindowAvailability)" channel="channelDebug" version="0" />
+          <event symbol="LeavingWindowAvailability" value="5052" level="win:Informational" keywords="keywordEvent" message="$(string.LeavingWindowAvailability)" channel="channelDebug" version="0" />
+          <!-- Add new debug events/traces above this line -->
+          <!-- *************************************** -->
+          <!-- END EVENTS PUBLISHED TO "Debug" channel -->
+          <!-- *************************************** -->
+        </events>
+      </provider>
+    </events>
+  </instrumentation>
+  <!-- String table for eventing/logging -->
+  <localization>
+    <!--- en-US resources -->
+    <resources culture="en-US">
+      <stringTable>
+        <!-- ******************** -->
+        <!-- START Event Messages -->
+        <!-- ******************** -->
+        <!-- ************************************************** -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Administration" channel -->
+        <!-- ************************************************** -->
+
+        <!-- Add new "Administration" channel event messages above this line -->
+        <!-- ************************************************ -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Administration" channel -->
+        <!-- ************************************************ -->
+        <!-- ***************************************** -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Debug" channel -->
+        <!-- ***************************************** -->
+        <string id="ClientConnected" value="Surface IPC Client connected to server [%1]" />
+        <string id="ClientReconnected" value="Surface IPC Client reconnected to server [%1]" />
+        <string id="OrientationChangedEvent" value="[Thread %1] Signalling SuggestedOrientationChanged event" />
+        <string id="InactivityTimeoutOccurringEvent" value="[Thread %1] Signalling InactivityTimeoutOccurring event" />
+        <string id="EnteringSuggestedOrientation" value="Entering SuggestedOrientation_get property" />
+        <string id="LeavingSuggestedOrientation" value="Leaving SuggestedOrientation_get property" />
+        <string id="EnteringSignalApplicationLoadComplete" value="Entering SignalApplicationLoadComplete method" />
+        <string id="LeavingSignalApplicationLoadComplete" value="Leaving SignalApplicationLoadComplete method" />
+        <string id="EnteringActivateApplication" value="Entering ActivateApplication(%1) method" />
+        <string id="LeavingActivateApplication" value="Leaving ActivateApplication(%1) method" />
+        <string id="EnteringActivateApplicationAndOrient" value="Entering ActivateApplication(%1, %2) method" />
+        <string id="LeavingActivateApplicationAndOrient" value="Leaving ActivateApplication(%1, %2) method" />
+        <string id="EnteringRequestNotification" value="Entering RequestNotification(%1, %2) method" />
+        <string id="LeavingRequestNotification" value="Leaving RequestNotification(%1, %2) method" />
+        <string id="EnteringRequestNotificationWithLevel" value="Entering RequestNotification(%1, %2, %3) method" />
+        <string id="LeavingRequestNotificationWithLevel" value="Leaving RequestNotification(%1, %2, %3) method" />
+        <string id="EnteringRequestNotificationWithDuration" value="Entering RequestNotification(%1, %2, %3) method" />
+        <string id="LeavingRequestNotificationWithDuration" value="Leaving RequestNotification(%1, %2, %3) method" />
+        <string id="EnteringRequestNotificationWithImage" value="Entering RequestNotification(%1, %2, %3) method" />
+        <string id="LeavingRequestNotificationWithImage" value="Leaving RequestNotification(%1, %2, %3) method" />
+        <string id="EnteringRequestNotificationWithImageAndUniqueName" value="Entering RequestNotification(%1, %2, %3, %4) method" />
+        <string id="LeavingRequestNotificationWithImageAndUniqueName" value="Leaving RequestNotification(%1, %2, %3, %4) method" />
+        <string id="EnteringRequestNotificationWithImageAndDuration" value="Entering RequestNotification(%1, %2, %3, %4) method" />
+        <string id="LeavingRequestNotificationWithImageAndDuration" value="Leaving RequestNotification(%1, %2, %3, %4) method" />
+        <string id="EnteringRequestNotificationWithImageDurationAndUniqueName" value="Entering RequestNotification(%1, %2, %3, %4, %5) method" />
+        <string id="LeavingRequestNotificationWithImageDurationAndUniqueName" value="Leaving RequestNotification(%1, %2, %3, %4, %5) method" />
+        <string id="NotificationDisplayedEvent" value="[Thread %1] Signalling NotificationDisplayed event" />
+        <string id="NotificationDismissedEvent" value="[Thread %1] Signalling NotificationDismissed event" />
+        <string id="ClientConnectionRejected" value="Surface IPC Client connection was rejected by server [%1]. Message returned: %2." />
+        <string id="ClientReconnectionRejected" value="Surface IPC Client reconnection was rejected by server [%1]. Message returned: %2." />
+        <string id="ServerConnectionRejected" value="Surface IPC Server rejected connection from process: %1." />
+        <string id="WindowInteractiveEvent" value="[Thread %1] Signalling WindowInteractive event" />
+        <string id="WindowUnavailableEvent" value="[Thread %1] Signalling WindowUnavailable event" />
+        <string id="WindowNoninteractiveEvent" value="[Thread %1] Signalling WindowNoninteractive event" />
+        <string id="EnteringInitialOrientation" value="Entering InitialOrientation_get property" />
+        <string id="LeavingInitialOrientation" value="Leaving InitialOrientation_get property" />
+        <string id="InitializeProcessCommunicationClient" value="Initializing ProcessCommunicationClient on process %1" />
+        <string id="DisposeProcessCommunicationClient" value="Called Dispose ProcessCommunicationClient on process %1" />
+        <string id="ClientReconnectOnRestartFailed" value="Surface IPC Client reconnect on restart failed. Message returned: %1." />
+        <string id="ServerCreatedRestartEvent" value="Server created new RestartEvent. Event name: %1." />
+        <string id="RequestingReconnectsAfterRestart" value="Server could not create new RestartEvent. Requesting reconnects after restart. Event name: %1." />
+        <string id="ClientCreatedRestartEvent" value="Client created new RestartEvent. Event name: %1." />
+        <string id="FoundExistingRestartEvent" value="Client found existing RestartEvent when trying to initialize. Event name: %1." />
+        <string id="RegisteredRestartCallback" value="Registered client callback for restart event. Event name: %1." />
+        <string id="SessionEndedEvent" value="[Thread %1] Signalling SessionEnded event" />
+        <string id="EnteringSessionId" value="Entering SessionId_get property" />
+        <string id="LeavingSessionId" value="Entering SessionId_get property" />
+        <string id="EnteringShutdownReason" value="Entering ShutdownReason_get property" />
+        <string id="LeavingShutdownReason" value="Entering ShutdownReason_get property" />
+        <string id="EnteringWindowAvailability" value="Entering WindowAvailability_get property" />
+        <string id="LeavingWindowAvailability" value="Entering WindowAvailability_get property" />
+        <!-- Add new "Debug" channel event messages above this line -->
+        <!-- *************************************** -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Debug" channel -->
+        <!-- *************************************** -->
+        <!-- Add new event messages above this line -->
+        <!-- ***************** -->
+        <!-- END Event Message -->
+        <!-- ***************** -->
+        <!-- ********************* -->
+        <!-- START Opcode Messages -->
+        <!-- ********************* -->
+        <!-- Add new opcode messages above this line -->
+        <!-- ******************* -->
+        <!-- END Opcode Messages -->
+        <!-- ******************* -->
+        <!-- ******************* -->
+        <!-- START Task Messages -->
+        <!-- ******************* -->
+        <!-- Add new task messages above this line -->
+        <!-- ***************** -->
+        <!-- END Task Messages -->
+        <!-- ***************** -->
+        <!-- ********************** -->
+        <!-- START Keyword Messages -->
+        <!-- ********************** -->
+        <string id="keywordConnection" value="Connection" />
+        <string id="keywordProperty" value="Property" />
+        <string id="keywordEvent" value="Event" />
+        <string id="keywordMethod" value="Method" />
+        <string id="keywordException" value="Exception" />
+        <!-- Add new keyword messages above this line -->
+        <!-- ******************** -->
+        <!-- END Keyword Messages -->
+        <!-- ******************** -->
+      </stringTable>
+    </resources>
+    <!-- Add new cultures above this line -->
+  </localization>
+</instrumentationManifest>

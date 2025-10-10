@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<instrumentationManifest xmlns="http://schemas.microsoft.com/win/2004/08/events">
+  <instrumentation xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <events xmlns="http://schemas.microsoft.com/win/2004/08/events">
+      <provider xmlns:mtc="http://schemas.microsoft.com/surface/2007/09/manifesttocode"
+                mtc:providerNamespace="Microsoft.Surface.Configuration"
+                name="Microsoft-Surface-Configuration" 
+                guid="{BE68CF18-5B0E-4b65-A1BB-247AE38FE4CE}" 
+                symbol="EventsConfiguration"
+                resourceFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-Configuration.man.dll"
+                messageFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-Configuration.man.dll"
+                parameterFileName="%ProgramFiles%\Microsoft Surface\v2.0\Microsoft-Surface-Configuration.man.dll">
+        <channels>
+          <!-- This channel is used to publish events destined to the system administrator -->
+          <!-- channel name="Microsoft-Surface-Configuration/Operational" chid="channelOperational"
+                   symbol="channelOperational" type="Operational" isolation="Application" enabled="true" value="16" / -->
+          <!-- This channel is used to publish diagnostic events with detailed presistent error message -->
+          <!-- channel name="Microsoft-Surface-Configuration/Diagnostic" chid="channelDiagnostic"
+                   symbol="channelDiagnostic" type="Admin" isolation="Application" enabled="true" value="17" / -->
+          <!-- This channel is used to publish events used in debug tracing -->
+          <channel name="Microsoft-Surface-Configuration/Debug" chid="channelDebug"
+                   symbol="channelDebug" type="Debug" isolation="Application" enabled="false" value="18" />
+          <!-- This channel is used to publish events used in performance tracing -->
+          <channel name="Microsoft-Surface-Configuration/Performance" chid="channelPerformance"
+                   symbol="channelPerformance" type="Analytic" isolation="Application" enabled="false" value="19" />
+          <!-- Add new channels above this line -->
+        </channels>
+
+        <templates>
+          <template tid="templateNone">
+            <UserData>
+            </UserData>
+          </template>
+
+          <template tid="templateString">
+            <data name="string1" inType="win:UnicodeString" />
+            <UserData>
+              <stringData xmlns="nullNS">
+                <string1>%1</string1>
+              </stringData>
+            </UserData>
+          </template>
+
+          <template tid="templateTwoStrings">
+            <data name="string1" inType="win:UnicodeString" />
+            <data name="string2" inType="win:UnicodeString" />
+            <UserData>
+              <stringData xmlns="nullNS">
+                <string1>%1</string1>
+                <string2>%2</string2>
+              </stringData>
+            </UserData>
+          </template>
+
+          <template tid="templateInteger">
+            <data name="integer1" inType="win:Int32" />
+            <UserData>
+              <integerData xmlns="nullNS">
+                <integer1>%1</integer1>
+              </integerData>
+            </UserData>
+          </template>
+
+          <template tid="templateTwoIntegers">
+            <data name="integer1" inType="win:Int32" />
+            <data name="integer2" inType="win:Int32" />
+            <UserData>
+              <integerData xmlns="nullNS">
+                <integer1>%1</integer1>
+                <integer2>%2</integer2>
+              </integerData>
+            </UserData>
+          </template>
+
+          <template tid="templateIntegerAndString">
+            <data name="integer1" inType="win:Int32" />
+            <data name="string1" inType="win:UnicodeString" />
+            <UserData>
+              <integerData xmlns="nullNS">
+                <integer1>%1</integer1>
+                <string1>%2</string1>
+              </integerData>
+            </UserData>
+          </template>
+
+          <template tid="templateLogError">
+            <data name="type" inType="win:UnicodeString" />
+            <data name="message" inType="win:UnicodeString" />
+            <UserData>
+              <errorData xmlns="nullNS">
+                <type>%1</type>
+                <message>%2</message>
+              </errorData>
+            </UserData>
+          </template>
+
+          <template tid="templateLogException">
+            <data name="type" inType="win:UnicodeString" />
+            <data name="message" inType="win:UnicodeString" />
+            <data name="exception" inType="win:UnicodeString" />
+            <UserData>
+              <exceptionData xmlns="nullNS">
+                <type>%1</type>
+                <message>%2</message>
+                <exception>%3</exception>
+              </exceptionData>
+            </UserData>
+          </template>
+
+          <template tid="templateInputConnectionBytesTransferred">
+            <data name="frameBytes" inType="win:Int32" />
+            <data name="imageBytes" inType="win:Int32" />
+            <data name="clientProcessId" inType="win:Int32" />
+            <UserData>
+              <TransferredBytesData xmlns="nullNS">
+                <frameBytes>%1</frameBytes>
+                <imageBytes>%2</imageBytes>
+                <clientProcessId>%3</clientProcessId>
+              </TransferredBytesData>
+            </UserData>
+          </template>
+
+          <template tid="templateGestureFilterAddEvent">
+            <data name="type" inType="win:UnicodeString" />
+            <data name="clientX" inType="win:Float" />
+            <data name="clientY" inType="win:Float" />
+            <data name="clientId" inType="win:Int32" />
+            <data name="windowText" inType="win:UnicodeString" />
+            <data name="windowHandle" inType="win:UnicodeString" />
+            <UserData>
+              <gestureFilterAddEventData xmlns="nullNS">
+                <type>%1</type>
+                <clientX>%2</clientX>
+                <clientY>%3</clientY>
+                <clientId>%4</clientId>
+                <windowText>%5</windowText>
+                <windowHandle>%6</windowHandle>
+              </gestureFilterAddEventData>
+            </UserData>
+          </template>
+        </templates>
+        
+        <opcodes>
+          <!-- Add new opcodes above this line -->
+        </opcodes>
+
+        <keywords>
+          <keyword name="KeywordOperational" mask="0x00000001" message="$(string.KeywordOperational)" symbol="KeywordOperational" />
+          <keyword name="KeywordDiagnostic" mask="0x00000002" message="$(string.KeywordDiagnostic)" symbol="KeywordDiagnostic" />
+          <keyword name="KeywordDebug" mask="0x000000004" message="$(string.KeywordDebug)" symbol="KeywordDebug" />
+          <keyword name="KeywordPerformance" mask="0x00000008" message="$(string.KeywordPerformance)" symbol="KeywordPerformance" />
+          <!-- Add new keywords above this line (0x000000000001 to 0x800000000000) -->    
+        </keywords>
+        <tasks>
+          <task name="ChildProperties" value="101" />
+          <task name="ChildPaths" value="102" />
+          <task name="PropertyValue" value="103" />
+        </tasks>
+        <events>
+
+          <!-- *********************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Operational" channel -->
+          <!-- *********************************************** -->
+          <!--
+          <event symbol="OperationalEvent1" value="1001" level="win:Informational" template="templateNone"
+                           message="$(string.OperationalEvent1)" channel="channelOperational" version="0" />
+          <event symbol="OperationalEvent2" value="1002" level="win:Error" template="templateString"
+                           message="$(string.OperationalEvent2)" channel="channelOperational" version="0" />
+          <event symbol="OperationalEvent3" value="1003" level="win:Error" template="templateTwoStrings"
+                           message="$(string.OperationalEvent3)" channel="channelOperational" version="0" />
+          <event symbol="OperationalEvent4" value="1004" level="win:Error" template="templateGestureFilterAddEvent"
+                           message="$(string.OperationalEvent4)" channel="channelOperational" version="0" />
+          -->
+
+          <!-- ********************************************* -->
+          <!-- END EVENTS PUBLISHED TO "Operational" channel -->
+          <!-- ********************************************* -->
+
+
+          <!-- ********************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Diagnostic" channel -->
+          <!-- ********************************************** -->
+          <!--
+            <event symbol="DiagnosticEvent1" value="2001" level="win:Informational" template="templateNone"
+                             message="$(string.DiagnosticEvent1)" channel="channelDiagnostic" version="0" />
+          <event symbol="DiagnosticEvent2" value="2002" level="win:Error" template="templateString"
+                           message="$(string.DiagnosticEvent2)" channel="channelDiagnostic" version="0" />
+          -->
+
+          <!-- ******************************************** -->
+          <!-- END EVENTS PUBLISHED TO "Diagnostic" channel -->
+          <!-- ******************************************** -->
+
+
+          <!-- ***************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Debug" channel -->
+          <!-- ***************************************** -->
+          <event symbol="DebugEvent1" value="3001" level="win:Informational" template="templateNone"
+                 message="$(string.DebugEvent1)" channel="channelDebug" version="0" />
+          <event symbol="DebugEvent2" value="3002" level="win:Error" template="templateString"
+                 message="$(string.DebugEvent1)" channel="channelDebug" version="0" />
+
+          <!-- *************************************** -->
+          <!-- END EVENTS PUBLISHED TO "Debug" channel -->
+          <!-- *************************************** -->
+
+
+          <!-- *********************************************** -->
+          <!-- START EVENTS PUBLISHED TO "Performance" channel -->
+          <!-- *********************************************** -->
+          <event symbol="ChildPropertiesStart" value="4001" level="win:Informational" keywords="KeywordPerformance" opcode="win:Start" task="ChildProperties"
+                 template="templateNone" message="$(string.ChildPropertiesStart)" channel="channelPerformance" version="0" />
+          <event symbol="ChildPropertiesEnd" value="4002" level="win:Informational" keywords="KeywordPerformance" opcode="win:Stop" task="ChildProperties"
+                 template="templateNone" message="$(string.ChildPropertiesEnd)" channel="channelPerformance" version="0" />
+          <event symbol="ChildPathsStart" value="4003" level="win:Informational" keywords="KeywordPerformance" opcode="win:Start" task="ChildPaths"
+                 template="templateNone" message="$(string.ChildPathsStart)" channel="channelPerformance" version="0" />
+          <event symbol="ChildPathsEnd" value="4004" level="win:Informational" keywords="KeywordPerformance" opcode="win:Stop" task="ChildPaths"
+                 template="templateNone" message="$(string.ChildPathsEnd)" channel="channelPerformance" version="0" />
+          <event symbol="PropertyValueStart" value="4005" level="win:Informational" keywords="KeywordPerformance" opcode="win:Start" task="PropertyValue"
+                 template="templateNone" message="$(string.PropertyValueStart)" channel="channelPerformance" version="0" />
+          <event symbol="PropertyValueEnd" value="4006" level="win:Informational" keywords="KeywordPerformance" opcode="win:Stop" task="PropertyValue"
+                 template="templateNone" message="$(string.PropertyValueEnd)" channel="channelPerformance" version="0" />
+
+          <!-- ********************************************* -->
+          <!-- END EVENTS PUBLISHED TO "Performance" channel -->
+          <!-- ********************************************* -->
+
+
+
+        </events>
+      </provider>
+    </events>
+  </instrumentation>
+  <!-- String table for eventing/logging -->
+  <localization>
+    <!--- en-US resources -->
+    <resources culture="en-US">
+      <stringTable>
+        <!-- ******************** -->
+        <!-- START Event Messages -->
+        <!-- ******************** -->
+
+        <!-- ******************************************************* -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Operational" channel -->
+        <!-- ******************************************************* -->
+        <string id="OperationalEvent1" value="This is operational event 1"/>
+        <string id="OperationalEvent2" value="This is operational event 2 with parameter: %1"/>
+        <string id="OperationalEvent3" value="Event with 2 with parameters. Param1: %1 Param2: %2"/>
+        <string id="OperationalEvent4" value="GestureFilter Event - %1: (%2,%3), contactID: %4, window: %5 (%6)" />
+
+
+        <!-- ***************************************************** -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Operational" channel -->
+        <!-- ***************************************************** -->
+
+
+        <!-- ****************************************************** -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Diagnostic" channel -->
+        <!-- ****************************************************** -->
+        <string id="DiagnosticEvent1" value="This is diagnostic event 1"/>
+        <string id="DiagnosticEvent2" value="This is diagnostic event 2 with parameter: %1"/>
+
+        <!-- **************************************************** -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Diagnostic" channel -->
+        <!-- **************************************************** -->
+
+
+        <!-- ************************************************* -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Debug" channel -->
+        <!-- ************************************************* -->
+        <string id="DebugEvent1" value="This is debug event 1"/>
+        <string id="DebugEvent2" value="This is debug event 2 with parameter: %1"/>
+
+        <!-- *********************************************** -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Debug" channel -->
+        <!-- *********************************************** -->
+
+
+        <!-- ******************************************************* -->
+        <!-- START EVENT MESSAGES PUBLISHED TO "Performance" channel -->
+        <!-- ******************************************************* -->
+        <string id="ChildPropertiesStart" value="Search for Child Properties started." />
+        <string id="ChildPropertiesEnd" value="Search for Child Properties completed." />
+        <string id="ChildPathsStart" value="Search for Child Paths started." />
+        <string id="ChildPathsEnd" value="Search for Child Paths completed." />
+        <string id="PropertyValueStart" value="Search for Property Value started." />
+        <string id="PropertyValueEnd" value="Search for Property Value completed." />
+
+        <!-- ***************************************************** -->
+        <!-- END EVENT MESSAGES PUBLISHED TO "Performance" channel -->
+        <!-- ***************************************************** -->
+        <!-- ***************** -->
+        <!-- END Event Message -->
+        <!-- ***************** -->
+        <!-- ********************* -->
+        <!-- START Opcode Messages -->
+        <!-- ********************* -->
+        <!-- Add new opcode messages above this line -->
+        <!-- ******************* -->
+        <!-- END Opcode Messages -->
+        <!-- ******************* -->
+        <!-- ******************* -->
+        <!-- START Task Messages -->
+        <!-- ******************* -->
+        <!-- Add new task messages above this line -->
+        <!-- ***************** -->
+        <!-- END Task Messages -->
+        <!-- ***************** -->
+        <!-- ********************** -->
+        <!-- START Keyword Messages -->
+        <!-- ********************** -->
+        <string id="KeywordOperational" value="Operational" />
+        <string id="KeywordDiagnostic" value="Diagnostic" />
+        <string id="KeywordDebug" value="Debug" />
+        <string id="KeywordPerformance" value="Performance" />
+        <!-- Add new keyword messages above this line -->
+        <!-- ******************** -->
+        <!-- END Keyword Messages -->
+        <!-- ******************** -->
+      </stringTable>
+    </resources>
+    <!-- Add new cultures above this line -->
+  </localization>
+</instrumentationManifest>
