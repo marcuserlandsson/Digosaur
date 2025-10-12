@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ko3ojv2ietf3"]
+[gd_scene load_steps=33 format=3 uid="uid://ko3ojv2ietf3"]
 
 [ext_resource type="Texture2D" uid="uid://dt331qt4j7bn6" path="res://textures/Wall/brick_wall_006_diff_4k.png" id="1_brh1u"]
 [ext_resource type="Script" uid="uid://cji0a1m53rhiq" path="res://museum.gd" id="1_r7hfq"]
@@ -16,6 +16,13 @@
 [ext_resource type="PackedScene" uid="uid://dflv338w5mqhy" path="res://3D_Models/Toebone/scene.gltf" id="13_jk1hh"]
 [ext_resource type="PackedScene" uid="uid://ygqxyfcdhqtt" path="res://3D_Models/skull/scene.gltf" id="14_b6b7p"]
 [ext_resource type="PackedScene" uid="uid://dik261ry07cdh" path="res://3D models/dogbone3.glb" id="15_hmial"]
+[ext_resource type="PackedScene" uid="uid://h76qgwnnmrpi" path="res://3D_Models/Complete dinosaur/stegosaurus.glb" id="17_k0m5h"]
+[ext_resource type="PackedScene" uid="uid://dwdf3vwlq00kx" path="res://3D_Models/Complete dinosaur/back_legs.glb" id="18_6qy77"]
+[ext_resource type="PackedScene" uid="uid://cl35u7wr4qpfk" path="res://3D_Models/Complete dinosaur/ribcage.glb" id="19_h8q7c"]
+[ext_resource type="PackedScene" uid="uid://csdgfcsoexfp1" path="res://3D_Models/Complete dinosaur/front_legs.glb" id="20_6osv0"]
+[ext_resource type="PackedScene" uid="uid://c21yhon74m6fm" path="res://3D_Models/Complete dinosaur/head.glb" id="21_pdgca"]
+[ext_resource type="PackedScene" uid="uid://cfuv2e3ywqjgy" path="res://3D_Models/Complete dinosaur/spine.glb" id="22_pspw5"]
+[ext_resource type="PackedScene" uid="uid://b6jvdnq6oqa54" path="res://3D_Models/Complete dinosaur/tail.glb" id="23_yued6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_77koe"]
 albedo_texture = ExtResource("1_brh1u")
@@ -56,6 +63,8 @@ uv1_scale = Vector3(4, 4, 4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_j7beh"]
 material = SubResource("StandardMaterial3D_8vou4")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_g1gc3"]
 
 [node name="Museum" type="Node3D"]
 script = ExtResource("1_r7hfq")
@@ -98,7 +107,7 @@ transform = Transform3D(-1.31134e-06, 0, 1, 0, 30, 0, -30, 0, -4.37114e-08, 62.9
 mesh = SubResource("BoxMesh_j7beh")
 
 [node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(-0.737278, 0.141616, -0.66058, 0, 0.977783, 0.209618, 0.67559, 0.154547, -0.720898, 28.3634, 17.945, -19.025)
+transform = Transform3D(-0.737278, 0.141616, -0.66058, 0, 0.977783, 0.209618, 0.67559, 0.154547, -0.720898, 28.3634, 12.6477, -19.025)
 current = true
 
 [node name="Pedestal" parent="." instance=ExtResource("10_qfqip")]
@@ -106,12 +115,15 @@ transform = Transform3D(0.555, 0, 0, 0, 0.555, 0, 0, 0, 0.555, 59.3646, -0.13755
 
 [node name="Pedestal5" parent="." instance=ExtResource("10_qfqip")]
 transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, 47.6773, -0.137555, -0.816595)
+visible = false
 
 [node name="Pedestal7" parent="." instance=ExtResource("10_qfqip")]
 transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, 39.9125, -0.137555, -0.816595)
+visible = false
 
 [node name="Pedestal6" parent="." instance=ExtResource("10_qfqip")]
 transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, 47.6773, -0.137555, -8.35427)
+visible = false
 
 [node name="Pedestal4" parent="." instance=ExtResource("10_qfqip")]
 transform = Transform3D(0.555, 0, 0, 0, 0.555, 0, 0, 0, 0.555, 40.1346, -0.137555, 11.3945)
@@ -145,3 +157,32 @@ visible = false
 [node name="dogbone5" parent="." instance=ExtResource("15_hmial")]
 transform = Transform3D(0.318039, 0, -0.385812, 0, 0.5, 0, 0.385812, 0, 0.318039, 41.3229, 8.56894, -2.2302)
 visible = false
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(20.05, 0, 0, 0, 1.383, 0, 0, 0, 20.05, 44.3277, 0, -3.08237)
+mesh = SubResource("CylinderMesh_g1gc3")
+
+[node name="stegosaurus" parent="." instance=ExtResource("17_k0m5h")]
+transform = Transform3D(-5.97559, 0, 0.540666, 0, 6, 0, -0.540666, 0, -5.97559, -10.2141, 3.79581, -27.6374)
+visible = false
+
+[node name="Stegosaur" type="Node3D" parent="."]
+transform = Transform3D(1.55222, 0, 0.366929, 0, 1.595, 0, -0.366929, 0, 1.55222, 41.778, -0.523862, -5.02411)
+
+[node name="back_legs" parent="Stegosaur" instance=ExtResource("18_6qy77")]
+transform = Transform3D(-4.24264, 0, 4.24264, 0, 6, 0, -4.24264, 0, -4.24264, 0.1303, 0.199, 2.2579)
+
+[node name="ribcage" parent="Stegosaur" instance=ExtResource("19_h8q7c")]
+transform = Transform3D(-4.24264, 0, 4.24264, 0, 6, 0, -4.24264, 0, -4.24264, 0, 0.594, 2.417)
+
+[node name="front_legs" parent="Stegosaur" instance=ExtResource("20_6osv0")]
+transform = Transform3D(-4.24264, 0, 4.24264, 0, 6, 0, -4.24264, 0, -4.24264, 0.0300188, 0.192086, 2.44936)
+
+[node name="head2" parent="Stegosaur" instance=ExtResource("21_pdgca")]
+transform = Transform3D(-4.24264, 0, 4.24264, 0, 6, 0, -4.24264, 0, -4.24264, -0.174883, -1.90735e-06, 2.4689)
+
+[node name="spine" parent="Stegosaur" instance=ExtResource("22_pspw5")]
+transform = Transform3D(-4.24264, 0, 4.24264, 0, 6, 0, -4.24264, 0, -4.24264, -0.116907, 0.464561, 2.34511)
+
+[node name="tail" parent="Stegosaur" instance=ExtResource("23_yued6")]
+transform = Transform3D(-4.24264, 0, 4.24264, 0, 6, 0, -4.24264, 0, -4.24264, -0.233135, 0.752951, 2.45437)
