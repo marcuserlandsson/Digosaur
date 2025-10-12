@@ -8,6 +8,12 @@ func _ready():
 func _on_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		print("Clicked:", bone_id)
-		Global.bones.append(bone_id) 
+		Global.add_bone(bone_id)
 		print("Bones array now:", Global.bones)
 		#get_tree().change_scene_to_file("res://museum.tscn")
+		hide_bone()
+		
+func hide_bone():
+	visible = false
+	$Area3D.monitoring = false 
+	print("Bone hidden:", bone_id)
