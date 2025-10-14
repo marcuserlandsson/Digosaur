@@ -101,10 +101,12 @@ func _physics_process(delta: float):
 			#print("DEBUG: Mapped to world coords: ", coords)
 			
 			#print("touchPoint ", i, " movement: ", touch[4])
+			
+			#Check if the touchPoint is new or a previous one that has moved
 			if touch[4] == Vector2(-1, -1):
 				print("New touchPoint ", i, " at: [", touch[0], ", ", touch[1], "]")
 			else:
-				print("Moved touchPoint ", i, " from ", "[", touch[0] - touch[4][0], ", ", touch[1] - touch[4][1], "] to [", touch[0], ", ", touch[1], "]")
+				print("Moved touchPoint ", i, " from ", "[", [4][0], ", ", [4][1], "] to [", touch[0], ", ", touch[1], "]")
 			
 			# Create persistent touch trail
 			if i == 0:
