@@ -1,0 +1,11 @@
+Model Information:
+* title:	Bone 2
+* source:	https://sketchfab.com/3d-models/bone-2-c173ed821f7c437aa8e9757e9553c6a8
+* author:	uliashershidskaya (https://sketchfab.com/uliashershidskaya)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Bone 2" (https://sketchfab.com/3d-models/bone-2-c173ed821f7c437aa8e9757e9553c6a8) by uliashershidskaya (https://sketchfab.com/uliashershidskaya) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

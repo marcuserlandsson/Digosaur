@@ -1,0 +1,8 @@
+Model Information:
+* title:	T Rex Skull
+* source:	https://sketchfab.com/3d-models/t-rex-skull-161dbc591c4949d8a934344c6d772cab
+* author:	raydev (https://sketchfab.com/raydevv)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
