@@ -2,6 +2,7 @@ extends Node
 
 var bones: Array = []
 const TOTAL_BONES := 6
+const SKELETON_BONES = ["head", "front", "back", "spine", "ribs", "tail"]
 signal bone_added(bone_id: String)
 
 func add_bone(bone_id: String):

@@ -7,6 +7,18 @@
 [ext_resource type="Script" uid="uid://deay6844ie42x" path="res://tcp_client.gd" id="5_tcp_client"]
 [ext_resource type="Script" uid="uid://xdkwkiy3j5j1" path="res://blob_tracking.gd" id="6_3dxm6"]
 [ext_resource type="Script" path="res://bone_collectible.gd" id="7_bone_collectible"]
+[ext_resource type="Script" path="res://head.gd" id="8_head"]
+[ext_resource type="Script" path="res://front.gd" id="9_front"]
+[ext_resource type="Script" path="res://back.gd" id="10_back"]
+[ext_resource type="Script" path="res://spine.gd" id="11_spine"]
+[ext_resource type="Script" path="res://ribs.gd" id="12_ribs"]
+[ext_resource type="Script" path="res://tail.gd" id="13_tail"]
+[ext_resource type="PackedScene" path="res://3D_Models/Complete dinosaur/head.glb" id="14_head"]
+[ext_resource type="PackedScene" path="res://3D_Models/Complete dinosaur/front_legs.glb" id="15_front"]
+[ext_resource type="PackedScene" path="res://3D_Models/Complete dinosaur/back_legs.glb" id="16_back"]
+[ext_resource type="PackedScene" path="res://3D_Models/Complete dinosaur/spine.glb" id="17_spine"]
+[ext_resource type="PackedScene" path="res://3D_Models/Complete dinosaur/ribcage.glb" id="18_ribs"]
+[ext_resource type="PackedScene" path="res://3D_Models/Complete dinosaur/tail.glb" id="19_tail"]
 
 [sub_resource type="Environment" id="Environment_i3pvo"]
 background_mode = 1
@@ -491,41 +503,50 @@ fixed_fps = 0
 process_material = SubResource("ParticleProcessMaterial_jt61w")
 draw_pass_1 = SubResource("QuadMesh_arh4n")
 
-[node name="dogbone3" parent="." instance=ExtResource("4_cm0pq")]
-transform = Transform3D(-3.34589e-10, -2.38073e-09, 0.055, -0.0544647, 0.00765452, 0, -0.00765452, -0.0544647, -2.40413e-09, 2.09973, 0.0986554, -0.106219)
-script = ExtResource("7_bone_collectible")
-bone_id = "dogbone3"
+[node name="Stegosaur" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.241804, 0)
 
-[node name="Area3D" type="Area3D" parent="dogbone3"]
-collision_layer = 0
-collision_mask = 1
+[node name="head" type="Node3D" parent="Stegosaur"]
+script = ExtResource("8_head")
+bone_id = "head"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="dogbone3/Area3D"]
-shape = SubResource("SphereShape3D_bone1")
+[node name="head2" parent="Stegosaur/head" instance=ExtResource("14_head")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.313769, 0.11025, 1.49516)
 
-[node name="dogbone4" parent="." instance=ExtResource("4_cm0pq")]
-transform = Transform3D(0.00765452, 0.0544647, 0, -0.0544647, 0.00765452, 0, 0, 0, 0.055, 0.724235, 0.0986555, -2.25403)
-script = ExtResource("7_bone_collectible")
-bone_id = "dogbone4"
+[node name="Front" type="Node3D" parent="Stegosaur"]
+script = ExtResource("9_front")
+bone_id = "front"
 
-[node name="Area3D" type="Area3D" parent="dogbone4"]
-collision_layer = 0
-collision_mask = 1
+[node name="front_legs" parent="Stegosaur/Front" instance=ExtResource("15_front")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.132406, -1.27329, -3.40064)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="dogbone4/Area3D"]
-shape = SubResource("SphereShape3D_bone2")
+[node name="Back" type="Node3D" parent="Stegosaur"]
+script = ExtResource("10_back")
+bone_id = "back"
 
-[node name="dogbone5" parent="." instance=ExtResource("4_cm0pq")]
-transform = Transform3D(0.00765452, 0.0544647, 0, -0.0544647, 0.00765452, 0, 0, 0, 0.055, 0.154106, 0.0572571, 1.30792)
-script = ExtResource("7_bone_collectible")
-bone_id = "dogbone5"
+[node name="back_legs" parent="Stegosaur/Back" instance=ExtResource("16_back")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0362227, 0.594683, -0.431989)
 
-[node name="Area3D" type="Area3D" parent="dogbone5"]
-collision_layer = 0
-collision_mask = 1
+[node name="spine" type="Node3D" parent="Stegosaur"]
+script = ExtResource("11_spine")
+bone_id = "spine"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="dogbone5/Area3D"]
-shape = SubResource("SphereShape3D_bone3")
+[node name="spine" parent="Stegosaur/spine" instance=ExtResource("17_spine")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="ribs" type="Node3D" parent="Stegosaur"]
+script = ExtResource("12_ribs")
+bone_id = "ribs"
+
+[node name="ribcage" parent="Stegosaur/ribs" instance=ExtResource("18_ribs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="tail" type="Node3D" parent="Stegosaur"]
+script = ExtResource("13_tail")
+bone_id = "tail"
+
+[node name="tail" parent="Stegosaur/tail" instance=ExtResource("19_tail")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="TCPClient" type="Node" parent="."]
 script = ExtResource("5_tcp_client")
