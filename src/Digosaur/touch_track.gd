@@ -283,3 +283,35 @@ func update_touch_trails(delta: float):
 
 func _on_blob_tracking_track_data(tracking: Variant) -> void:
 	current_touches = tracking.duplicate(true)
+	
+	# Check for bone collection on each touch
+	check_bone_collection()
+
+func check_bone_collection():
+	"""Check if any touches are overlapping with collectible bones"""
+	if current_touches.size() == 0:
+		return
+		
+	# Get all bone collectibles in the scene
+	var bone_collectibles = get_tree().get_nodes_in_group("bone_collectibles")
+	if bone_collectibles.size() == 0:
+		return
+		
+	# Check each touch against each bone
+	for touch in current_touches:
+		if touch[0] < 0 or touch[0] > 1920 or touch[1] < 0 or touch[1] > 1080:
+			continue
+			
+		# Convert touch coordinates to world position
+		var x_to_z = float(2.67 - touch[0] / 1920 * 10.68)
+		var y_to_x = float(-0.8 + touch[1] / 1080 * 6.1)
+		var world_pos = Vector3(y_to_x, 0.05, x_to_z)
+		
+		# Check if this world position overlaps with any bone
+		for bone in bone_collectibles:
+			if bone.visible and bone.has_method("collect_bone"):
+				# Simple distance check (can be improved with proper Area3D detection)
+				var distance = world_pos.distance_to(bone.global_position)
+				if distance < 0.5:  # Collection radius
+					bone.collect_bone()
+					break  # Only collect one bone per touch

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dik261ry07cdh" path="res://3D models/dogbone3.glb" id="4_cm0pq"]
 [ext_resource type="Script" uid="uid://deay6844ie42x" path="res://tcp_client.gd" id="5_tcp_client"]
 [ext_resource type="Script" uid="uid://xdkwkiy3j5j1" path="res://blob_tracking.gd" id="6_3dxm6"]
+[ext_resource type="Script" path="res://bone_collectible.gd" id="7_bone_collectible"]
 
 [sub_resource type="Environment" id="Environment_i3pvo"]
 background_mode = 1
@@ -38,6 +39,15 @@ subdivide_depth = 256
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0v47j"]
 size = Vector3(10.0605, 0.1, 10.0717)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bone1"]
+radius = 0.3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bone2"]
+radius = 0.3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bone3"]
+radius = 0.3
 
 [sub_resource type="Environment" id="Environment_ms5u6"]
 background_mode = 1
@@ -483,12 +493,39 @@ draw_pass_1 = SubResource("QuadMesh_arh4n")
 
 [node name="dogbone3" parent="." instance=ExtResource("4_cm0pq")]
 transform = Transform3D(-3.34589e-10, -2.38073e-09, 0.055, -0.0544647, 0.00765452, 0, -0.00765452, -0.0544647, -2.40413e-09, 2.09973, 0.0986554, -0.106219)
+script = ExtResource("7_bone_collectible")
+bone_id = "dogbone3"
+
+[node name="Area3D" type="Area3D" parent="dogbone3"]
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dogbone3/Area3D"]
+shape = SubResource("SphereShape3D_bone1")
 
 [node name="dogbone4" parent="." instance=ExtResource("4_cm0pq")]
 transform = Transform3D(0.00765452, 0.0544647, 0, -0.0544647, 0.00765452, 0, 0, 0, 0.055, 0.724235, 0.0986555, -2.25403)
+script = ExtResource("7_bone_collectible")
+bone_id = "dogbone4"
+
+[node name="Area3D" type="Area3D" parent="dogbone4"]
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dogbone4/Area3D"]
+shape = SubResource("SphereShape3D_bone2")
 
 [node name="dogbone5" parent="." instance=ExtResource("4_cm0pq")]
 transform = Transform3D(0.00765452, 0.0544647, 0, -0.0544647, 0.00765452, 0, 0, 0, 0.055, 0.154106, 0.0572571, 1.30792)
+script = ExtResource("7_bone_collectible")
+bone_id = "dogbone5"
+
+[node name="Area3D" type="Area3D" parent="dogbone5"]
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dogbone5/Area3D"]
+shape = SubResource("SphereShape3D_bone3")
 
 [node name="TCPClient" type="Node" parent="."]
 script = ExtResource("5_tcp_client")
