@@ -1,0 +1,33 @@
+# .NET build artifacts (but keep Surface SDK files)
+src/SurfaceTrackLibrary/bin/
+src/SurfaceTrackLibrary/obj/
+*.user
+*.suo
+*.cache
+*.pdb
+
+# Visual Studio
+.vs/
+*.sln.docstates
+*.userprefs
+
+# Godot
+src/Digosaur/.godot/
+*.tmp
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*~
+*.swp
+*.swo

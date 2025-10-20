@@ -482,7 +482,7 @@ process_material = SubResource("ParticleProcessMaterial_jt61w")
 draw_pass_1 = SubResource("QuadMesh_arh4n")
 
 [node name="dogbone3" parent="." instance=ExtResource("4_cm0pq")]
-transform = Transform3D(0.00765452, 0.0544647, 0, -0.0544647, 0.00765452, 0, 0, 0, 0.055, 2.09973, 0.0986554, -0.106219)
+transform = Transform3D(-3.34589e-10, -2.38073e-09, 0.055, -0.0544647, 0.00765452, 0, -0.00765452, -0.0544647, -2.40413e-09, 2.09973, 0.0986554, -0.106219)
 
 [node name="dogbone4" parent="." instance=ExtResource("4_cm0pq")]
 transform = Transform3D(0.00765452, 0.0544647, 0, -0.0544647, 0.00765452, 0, 0, 0, 0.055, 0.724235, 0.0986555, -2.25403)
@@ -498,3 +498,4 @@ script = ExtResource("6_3dxm6")
 
 [connection signal="touch_points" from="TCPClient" to="TouchTrack" method="_on_tcp_client_touch_points"]
 [connection signal="touch_points" from="TCPClient" to="BlobTracking" method="_on_tcp_client_touch_points"]
+[connection signal="track_data" from="BlobTracking" to="TouchTrack" method="_on_blob_tracking_track_data"]

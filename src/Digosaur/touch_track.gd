@@ -35,9 +35,11 @@ const TRAIL_DURATION = 2.0  # seconds - how long trails last
 var query := PhysicsRayQueryParameters3D.new()
 var touch_position: Vector3
 var is_touching: bool = false
-var current_touches:= Array([], TYPE_VECTOR4, "", null)
+var current_touches:= Array([])
 var touch_trails: Array = []  # Store persistent touch trails
-var last_touch_positions:= Array([], TYPE_VECTOR4, "", null)  # Track previous touch positions
+#var last_touch_positions:= Array([], TYPE_VECTOR4, "", null)  # Track previous touch positions
+
+signal movePoint(point, newPosition)
 
 func _ready():
 	query.set_collide_with_areas(true)
@@ -71,7 +73,7 @@ func _physics_process(delta: float):
 	
 	# Get touch data from TCP client
 	if current_touches.size() > 0:
-		print("DEBUG: Processing ", current_touches.size(), " touches")
+		#print("DEBUG: Processing ", current_touches.size(), " touches")
 		
 		# 1. Limit array size to prevent memory bloat
 		if current_touches.size() > MAX_TOUCHES:
@@ -83,62 +85,70 @@ func _physics_process(delta: float):
 		# 3. Process all touches (multi-touch support)
 		for i in range(current_touches.size()):
 			var touch = current_touches[i]
-			# Debug: Print touch coordinates
-			print("DEBUG: Touch coords - X:", touch.x, " Y:", touch.y, " Intensity:", touch.z, " Size:", touch.w)
+			# Debug: #print touch coordinates
+			#print("DEBUG: Touch coords - X:", touch[0], " Y:", touch[1], " Intensity:", touch[2], " Size:", touch[3])
 			
 			# Validate touch coordinates (should be within Surface table bounds)
-			if touch.x < 0 or touch.x > 1920 or touch.y < 0 or touch.y > 1080:
-				print("DEBUG: Invalid touch coordinates, skipping")
+			if touch[0] < 0 or touch[0] > 1920 or touch[1] < 0 or touch[1] > 1080:
+				#print("DEBUG: Invalid touch coordinates, skipping")
 				continue
 			
 			# Direct coordinate mapping (same resolution: 1920x1080)
-			var x_to_z = float(2.67 - touch.x / 1920 * 10.68)
-			var y_to_x = float(-0.8 + touch.y / 1080 * 6.1)
+			var x_to_z = float(2.67 - touch[0] / 1920 * 10.68)
+			var y_to_x = float(-0.8 + touch[1] / 1080 * 6.1)
 			var coords = Vector3(y_to_x, 0.05, x_to_z)
 			
-			print("DEBUG: Mapped to world coords: ", coords)
+			#print("DEBUG: Mapped to world coords: ", coords)
+			
+			#print("touchPoint ", i, " movement: ", touch[4])
+			
+			#Check if the touchPoint is new or a previous one that has moved
+			if touch[4] == Vector2(-1, -1):
+				print("New touchPoint ", i, " at: [", touch[0], ", ", touch[1], "]")
+			else:
+				print("Moved touchPoint ", i, " from ", "[", [4][0], ", ", [4][1], "] to [", touch[0], ", ", touch[1], "]")
 			
 			# Create persistent touch trail
 			if i == 0:
-				create_persistent_trail(coords, touch.w, particles1)  # touch.w is intensity
+				create_persistent_trail(coords, touch[3], particles1)  # touch[3] is intensity
 			elif i == 1:
-				create_persistent_trail(coords, touch.w, particles2)  # touch.w is intensity
+				create_persistent_trail(coords, touch[3], particles2)  # touch[3] is intensity
 			elif i == 2:
-				create_persistent_trail(coords, touch.w, particles3)  # touch.w is intensity
+				create_persistent_trail(coords, touch[3], particles3)  # touch[3] is intensity
 			elif i == 3:
-				create_persistent_trail(coords, touch.w, particles4)  # touch.w is intensity
+				create_persistent_trail(coords, touch[3], particles4)  # touch[3] is intensity
 			elif i == 4:
-				create_persistent_trail(coords, touch.w, particles5)  # touch.w is intensity
+				create_persistent_trail(coords, touch[3], particles5)  # touch[3] is intensity
 			elif i == 5:
-				create_persistent_trail(coords, touch.w, particles6)  # touch.w is intensity
+				create_persistent_trail(coords, touch[3], particles6)  # touch[3] is intensity
 			elif i == 6:
-				create_persistent_trail(coords, touch.w, particles7)  # touch.w is intensity
+				create_persistent_trail(coords, touch[3], particles7)  # touch[3] is intensity
 			elif i == 7:
-				create_persistent_trail(coords, touch.w, particles8)  # touch.w is intensity
+				create_persistent_trail(coords, touch[3], particles8)  # touch[3] is intensity
 			elif i == 9:
-				create_persistent_trail(coords, touch.w, particles9)  # touch.w is intensity
+				create_persistent_trail(coords, touch[3], particles9)  # touch[3] is intensity
 			elif i == 9:
-				create_persistent_trail(coords, touch.w, particles10)  # touch.w is intensity
+				create_persistent_trail(coords, touch[3], particles10)  # touch[3] is intensity
 			elif i == 10:
-				create_persistent_trail(coords, touch.w, particles11)  # touch.w is intensity
+				create_persistent_trail(coords, touch[3], particles11)  # touch[3] is intensity
 			elif i == 11:
-				create_persistent_trail(coords, touch.w, particles12)  # touch.w is intensity
+				create_persistent_trail(coords, touch[3], particles12)  # touch[3] is intensity
 			elif i == 12:
-				create_persistent_trail(coords, touch.w, particles13)  # touch.w is intensity
+				create_persistent_trail(coords, touch[3], particles13)  # touch[3] is intensity
 			elif i == 13:
-				create_persistent_trail(coords, touch.w, particles14)  # touch.w is intensity
+				create_persistent_trail(coords, touch[3], particles14)  # touch[3] is intensity
 			elif i == 14:
-				create_persistent_trail(coords, touch.w, particles15)  # touch.w is intensity
+				create_persistent_trail(coords, touch[3], particles15)  # touch[3] is intensity
 			elif i == 15:
-				create_persistent_trail(coords, touch.w, particles16)  # touch.w is intensity
+				create_persistent_trail(coords, touch[3], particles16)  # touch[3] is intensity
 			elif i == 16:
-				create_persistent_trail(coords, touch.w, particles17)  # touch.w is intensity
+				create_persistent_trail(coords, touch[3], particles17)  # touch[3] is intensity
 			elif i == 17:
-				create_persistent_trail(coords, touch.w, particles18)  # touch.w is intensity
+				create_persistent_trail(coords, touch[3], particles18)  # touch[3] is intensity
 			elif i == 18:
-				create_persistent_trail(coords, touch.w, particles19)  # touch.w is intensity
+				create_persistent_trail(coords, touch[3], particles19)  # touch[3] is intensity
 			elif i == 19:
-				create_persistent_trail(coords, touch.w, particles20)  # touch.w is intensity
+				create_persistent_trail(coords, touch[3], particles20)  # touch[3] is intensity
 		
 		# 4. Clear array after processing (prevents backlog but allows trail creation)
 		current_touches.clear()
@@ -159,9 +169,9 @@ func _get_world_touch_ray(cam: Camera3D, touch_screen_pos: Vector2) -> Vector3:
 	return cam.project_ray_normal(touch_screen_pos) * INTERACT_RADIUS
 
 
-func _on_tcp_client_touch_points(current_touches_input: Variant) -> void:
-	last_touch_positions = current_touches.duplicate(true)
-	current_touches = current_touches_input.duplicate(true)
+#func _on_tcp_client_touch_points(current_touches_input: Variant) -> void:
+#	last_touch_positions = current_touches.duplicate(true)
+#	current_touches = current_touches_input.duplicate(true)
 
 func merge_nearby_touches():
 	"""Merge touches that are close together (same finger/hand)"""
@@ -185,14 +195,14 @@ func merge_nearby_touches():
 				continue
 				
 			var other_touch = current_touches[j]
-			var distance = sqrt(pow(touch.x - other_touch.x, 2) + pow(touch.y - other_touch.y, 2))
+			var distance = sqrt(pow(touch[0] - other_touch[0], 2) + pow(touch[1] - other_touch[1], 2))
 			
 			if distance < MERGE_DISTANCE:
 				# Merge touches: average position, sum intensity, max size
-				merged_touch.x = (merged_touch.x * merge_count + other_touch.x) / (merge_count + 1)
-				merged_touch.y = (merged_touch.y * merge_count + other_touch.y) / (merge_count + 1)
-				merged_touch.z = max(merged_touch.z, other_touch.z)  # Max intensity
-				merged_touch.w = max(merged_touch.w, other_touch.w)  # Max size
+				merged_touch[0] = (merged_touch[0] * merge_count + other_touch[0]) / (merge_count + 1)
+				merged_touch[1] = (merged_touch[1] * merge_count + other_touch[1]) / (merge_count + 1)
+				merged_touch[2] = max(merged_touch[2], other_touch[2])  # Max intensity
+				merged_touch[3] = max(merged_touch[3], other_touch[3])  # Max size
 				merge_count += 1
 				processed.append(j)
 		
@@ -269,3 +279,7 @@ func update_touch_trails(delta: float):
 		particles18.emitting = false
 		particles19.emitting = false
 		particles20.emitting = false
+
+
+func _on_blob_tracking_track_data(tracking: Variant) -> void:
+	current_touches = tracking.duplicate(true)
