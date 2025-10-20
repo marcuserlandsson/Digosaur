@@ -288,7 +288,7 @@ func _on_blob_tracking_track_data(tracking: Variant) -> void:
 	check_bone_collection()
 
 func check_bone_collection():
-	"""Check if any touches are overlapping with collectible bones"""
+	"""Check if any touches are overlapping with collectible bones using proper Area3D detection"""
 	if current_touches.size() == 0:
 		return
 		
@@ -297,7 +297,7 @@ func check_bone_collection():
 	if bone_collectibles.size() == 0:
 		return
 		
-	# Check each touch against each bone
+	# Check each touch against each bone using Area3D collision detection
 	for touch in current_touches:
 		if touch[0] < 0 or touch[0] > 1920 or touch[1] < 0 or touch[1] > 1080:
 			continue
@@ -307,11 +307,19 @@ func check_bone_collection():
 		var y_to_x = float(-0.8 + touch[1] / 1080 * 6.1)
 		var world_pos = Vector3(y_to_x, 0.05, x_to_z)
 		
-		# Check if this world position overlaps with any bone
+		# Use proper Area3D collision detection for precise bone collection
 		for bone in bone_collectibles:
-			if bone.visible and bone.has_method("collect_bone"):
-				# Simple distance check (can be improved with proper Area3D detection)
-				var distance = world_pos.distance_to(bone.global_position)
-				if distance < 0.5:  # Collection radius
-					bone.collect_bone()
-					break  # Only collect one bone per touch
+			if bone.visible and bone.has_method("collect_bone") and bone.has_node("Area3D"):
+				var area = bone.get_node("Area3D")
+				if area.monitoring:
+					# Check if the touch position is within the bone's Area3D collision shape
+					var space_state = get_world_3d().direct_space_state
+					var query = PhysicsPointQueryParameters3D.new()
+					query.position = world_pos
+					query.collision_mask = area.collision_layer
+					
+					var results = space_state.intersect_point(query)
+					for result in results:
+						if result.collider == area:
+							bone.collect_bone()
+							break  # Only collect one bone per touch
