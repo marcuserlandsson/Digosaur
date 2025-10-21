@@ -13,12 +13,6 @@
 [ext_resource type="Script" path="res://spine.gd" id="11_spine"]
 [ext_resource type="Script" path="res://ribs.gd" id="12_ribs"]
 [ext_resource type="Script" path="res://tail.gd" id="13_tail"]
-[ext_resource type="PackedScene" path="res://3D_Models/Complete dinosaur/head.glb" id="14_head"]
-[ext_resource type="PackedScene" path="res://3D_Models/Complete dinosaur/front_legs.glb" id="15_front"]
-[ext_resource type="PackedScene" path="res://3D_Models/Complete dinosaur/back_legs.glb" id="16_back"]
-[ext_resource type="PackedScene" path="res://3D_Models/Complete dinosaur/spine.glb" id="17_spine"]
-[ext_resource type="PackedScene" path="res://3D_Models/Complete dinosaur/ribcage.glb" id="18_ribs"]
-[ext_resource type="PackedScene" path="res://3D_Models/Complete dinosaur/tail.glb" id="19_tail"]
 
 [sub_resource type="Environment" id="Environment_i3pvo"]
 background_mode = 1
@@ -61,13 +55,8 @@ radius = 0.3
 [sub_resource type="SphereShape3D" id="SphereShape3D_bone3"]
 radius = 0.3
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_guak0"]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_m7p5v"]
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_j4qnp"]
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fpfj3"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_n4p8j"]
 
 [sub_resource type="Environment" id="Environment_ms5u6"]
 background_mode = 1
