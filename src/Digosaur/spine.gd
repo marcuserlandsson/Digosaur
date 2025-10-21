@@ -16,7 +16,4 @@ func collect_bone():
 
 func hide_bone():
 	visible = false
-	if has_node("spine_mesh/Area3D"):
-		$spine_mesh/Area3D.monitoring = false
-		$spine_mesh/Area3D.monitorable = false
 	print("Bone hidden:", bone_id)

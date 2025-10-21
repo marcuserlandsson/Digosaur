@@ -1,78 +1,78 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1761046838
-back.gd::GDScript/GDScript::4257430371664218486::1761046521::0::1::::<>Node3D<><>0<>0<><>::
-blob_tracking.gd::GDScript/GDScript::1621183533050689612::1761046045::0::1::::<>Node<><>0<>0<><>::
-bone_collectible.gd::GDScript/GDScript::7955130719914826736::1761046045::0::1::::<>Node3D<><>0<>0<><>::
-front.gd::GDScript/GDScript::8765981845817768589::1761046519::0::1::::<>Node3D<><>0<>0<><>::
-Global.gd::GDScript/GDScript::4683431648440963351::1761046045::0::1::::<>Node<><>0<>0<><>::
-head.gd::GDScript/GDScript::1624319172471917528::1761046516::0::1::::<>Node3D<><>0<>0<><>::
-icon.svg::CompressedTexture2D/CompressedTexture2D::4323380189673864131::1761046045::1761046607::1::::<><><>0<>0<>903a621573894b5c3b33f1c95e74d345<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-Main.tscn::PackedScene::8514439357767927727::1761046802::0::1::::<><><>0<>0<><>::uid://epvgbo8kssyx::::res://touch_track.gd<>uid://1cujdx38cxxa::::res://Images/snow_height.png<>uid://lappm6o7lj1m::::res://tracks.tres<>uid://dik261ry07cdh::::res://3D models/dogbone3.glb<>uid://deay6844ie42x::::res://tcp_client.gd<>uid://xdkwkiy3j5j1::::res://blob_tracking.gd<>res://bone_collectible.gd<>res://head.gd<>res://front.gd<>res://back.gd<>res://spine.gd<>res://ribs.gd<>res://tail.gd
-ribs.gd::GDScript/GDScript::8727812690700185716::1761046591::0::1::::<>Node3D<><>0<>0<><>::
-spine.gd::GDScript/GDScript::1339380718258979680::1761046523::0::1::::<>Node3D<><>0<>0<><>::
-tail.gd::GDScript/GDScript::7805316804650630888::1761046514::0::1::::<>Node3D<><>0<>0<><>::
-tcp_client.gd::GDScript/GDScript::7441531772467272097::1761046045::0::1::::<>Node<><>0<>0<><>::
-touch_track.gd::GDScript/GDScript::313006888138624735::1761046047::0::1::::TouchTrack<>Node3D<><>0<>0<><>::
-tracks.tres::Shader/Shader::773015500666867580::1761046047::0::1::::<><><>0<>0<><>::
-::res://3D models/::1761046622
-dogbone3.glb::PackedScene/PackedScene::7743112689133803845::1761046045::1761046622::1::::<><><>0<>0<>39b71bddd05c8f085ce3d97b9865c257<>res://.godot/imported/dogbone3.glb-b08c33be4f0f17b6078c3cb519b496ea.scn::
-::res://3D_Models/::1761046045
-::res://3D_Models/Bone/::1761046618
-license.txt::TextFile/TextFile::-1::1761046045::0::1::::<><><>0<>0<><>::
-scene.gltf::PackedScene/PackedScene::8626289946525224426::1761046045::1761046618::1::::<><><>0<>0<>423e75a9eb7e0213c8f3a795cfe93d23<>res://.godot/imported/scene.gltf-402458594485bf8ce1149a74e41608eb.scn::
-::res://3D_Models/Bone/textures/::1761046610
-bone_diffuse.png::CompressedTexture2D/CompressedTexture2D::432324992201269939::1761046045::1761046610::1::::<><><>0<>0<>e5c5cfe37e963f9348362c853414d007<>res://.godot/imported/bone_diffuse.png-d3595fad9e6f5dc94820ec20b403d76f.ctex::
-::res://3D_Models/Complete dinosaur/::1761046614
-back_legs.glb::PackedScene/PackedScene::8709964469069597431::1761046045::1761046614::1::::<><><>0<>0<>a0ce6eb36b52a591a5ccec0f807642df<>res://.godot/imported/back_legs.glb-3f67bc2b1d3d76c2fac52f86a8cfa9e6.scn::uid://df525thvi56bx::::res://3D_Models/Complete dinosaur/back_legs_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg
-back_legs_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg::CompressedTexture2D/CompressedTexture2D::7573831544236433029::1761046045::1761046608::1::::<><><>0<>0<>157e609f720c72f82eea01d689fe594e<>res://.godot/imported/back_legs_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg-5b0b3fcf8174eba5444aa7e1a4ab22a2.s3tc.ctex::
-front_legs.glb::PackedScene/PackedScene::6042807050554618980::1761046045::1761046614::1::::<><><>0<>0<>25dd909c054c8a0450b282051b3a77f4<>res://.godot/imported/front_legs.glb-be7ed32b24868487a7bb9bf97416c54f.scn::uid://p3pdy1wppa4b::::res://3D_Models/Complete dinosaur/front_legs_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg
-front_legs_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg::CompressedTexture2D/CompressedTexture2D::1111552645702904323::1761046045::1761046607::1::::<><><>0<>0<>037ce54f17d72338e96407a94f4368c0<>res://.godot/imported/front_legs_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg-c242f3a2ea2b36f146ecf7e5f2b329ad.s3tc.ctex::
-head.glb::PackedScene/PackedScene::6723084432504914466::1761046045::1761046613::1::::<><><>0<>0<>25ae94ae56325902594952d582c2c6fe<>res://.godot/imported/head.glb-5945ee377d78b21f34d1971212dbee78.scn::uid://bf38848uxlkor::::res://3D_Models/Complete dinosaur/head_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg
-head_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg::CompressedTexture2D/CompressedTexture2D::2797231646052680093::1761046045::1761046607::1::::<><><>0<>0<>0155ae88f7d93630596b448529a1e49d<>res://.godot/imported/head_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg-230e0d71b9c38eb688b2485f3574dd7c.s3tc.ctex::
-ribcage.glb::PackedScene/PackedScene::5604580165724028000::1761046045::1761046613::1::::<><><>0<>0<>708b3b508987df97f1ca28ff6292c452<>res://.godot/imported/ribcage.glb-b2fd38a9b846063c6cb50e5e732ae8ec.scn::uid://hr1q53gl865p::::res://3D_Models/Complete dinosaur/ribcage_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg
-ribcage_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg::CompressedTexture2D/CompressedTexture2D::528025161043323391::1761046045::1761046608::1::::<><><>0<>0<>b7c7bb9ef758b834c97d14a9d067223b<>res://.godot/imported/ribcage_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg-bd5693a1db7efe85d5c386d856f4c7ab.s3tc.ctex::
-spine.glb::PackedScene/PackedScene::5166396668409500776::1761046045::1761046613::1::::<><><>0<>0<>0ebc98738b51e0fe91e4a5da939ad5db<>res://.godot/imported/spine.glb-715d92c72e7b30a4c46e1524b4038395.scn::uid://dv3ql7jwmy75::::res://3D_Models/Complete dinosaur/spine_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg
-spine_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg::CompressedTexture2D/CompressedTexture2D::255647739878703390::1761046045::1761046607::1::::<><><>0<>0<>ee5244df95594d79628452a1b449d483<>res://.godot/imported/spine_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg-9453152486a7a628976be1b6f78c7634.s3tc.ctex::
-stegosaurus.glb::PackedScene/PackedScene::559293142808700954::1761046045::1761046612::1::::<><><>0<>0<>39491dd1d3e6a942d3f63182a007c53e<>res://.godot/imported/stegosaurus.glb-a238226a71ba1f5d3514edf1e5f9cbd0.scn::uid://dig58c0hq36un::::res://3D_Models/Complete dinosaur/stegosaurus_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg
-stegosaurus_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg::CompressedTexture2D/CompressedTexture2D::7735039651697153457::1761046045::1761046607::1::::<><><>0<>0<>906f235d50eaa329db469661adab4586<>res://.godot/imported/stegosaurus_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg-6fd6d3c58ed72e966011ead4d6458b17.s3tc.ctex::
-tail.glb::PackedScene/PackedScene::4582135359436712665::1761046045::1761046612::1::::<><><>0<>0<>c8f924dfb9563574106f2f26aa588ceb<>res://.godot/imported/tail.glb-128fa5b0077b251293ee7dcf7cc04858.scn::uid://1iijo2utm04r::::res://3D_Models/Complete dinosaur/tail_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg
-tail_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg::CompressedTexture2D/CompressedTexture2D::1841927542679817631::1761046045::1761046605::1::::<><><>0<>0<>57a2d1c47d737e1825084788b153e4db<>res://.godot/imported/tail_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg-a9213ac9abec1bcab8d5434017d46f07.s3tc.ctex::
-::res://3D_Models/Pedestal/::1761046611
-license.txt::TextFile/TextFile::-1::1761046045::0::1::::<><><>0<>0<><>::
-scene.gltf::PackedScene/PackedScene::1051758505673871005::1761046045::1761046611::1::::<><><>0<>0<>1f36157d5e1df8cc7c779d2c8d6b78fa<>res://.godot/imported/scene.gltf-19a9b9a8f60a7f5fffc2e49988a17993.scn::
-::res://3D_Models/skull/::1761046611
-license.txt::TextFile/TextFile::-1::1761046045::0::1::::<><><>0<>0<><>::
-scene.gltf::PackedScene/PackedScene::1697932327360811585::1761046045::1761046611::1::::<><><>0<>0<>fac6b3b349151d56a96c48de8766a1cc<>res://.godot/imported/scene.gltf-3c31441d8e14429f0f1e63a0c976de59.scn::uid://d2ma6ddw3yl2y::::res://3D_Models/skull/textures/DefaultMaterial_1001_baseColor.jpeg<>uid://lm2ehp7hjmfw::::res://3D_Models/skull/textures/DefaultMaterial_1001_metallicRoughness.png<>uid://cw74k0jrdg3sx::::res://3D_Models/skull/textures/DefaultMaterial_1001_normal.png
-::res://3D_Models/skull/textures/::1761046607
-DefaultMaterial_1001_baseColor.jpeg::CompressedTexture2D/CompressedTexture2D::9079188885208363994::1761046045::1761046606::1::::<><><>0<>0<>7053ac6320bedf07ab40dabdd1fe6275<>res://.godot/imported/DefaultMaterial_1001_baseColor.jpeg-674a730ae3e9c0f2a69181983ba7f0fc.s3tc.ctex::
-DefaultMaterial_1001_metallicRoughness.png::CompressedTexture2D/CompressedTexture2D::798496707346560616::1761046045::1761046607::1::::<><><>0<>0<>fdb010de292f9cfa74f1df2e5d65b1cb<>res://.godot/imported/DefaultMaterial_1001_metallicRoughness.png-e15a969f2c1d1e9e7ede2667b5e4dafe.s3tc.ctex::
-DefaultMaterial_1001_normal.png::CompressedTexture2D/CompressedTexture2D::6384835994045777195::1761046045::1761046606::1::::<><><>0<>0<>0448944581cc2a3fcdd66b429874befb<>res://.godot/imported/DefaultMaterial_1001_normal.png-695d56d7344bb3b9f0afc10a38b5c3b4.s3tc.ctex::
-::res://3D_Models/Toebone/::1761046611
-license.txt::TextFile/TextFile::-1::1761046045::0::1::::<><><>0<>0<><>::
-scene.gltf::PackedScene/PackedScene::7534241006314065030::1761046045::1761046611::1::::<><><>0<>0<>5c32939520defc4c8099674c96ac7958<>res://.godot/imported/scene.gltf-708c5c1d9b00533b1adf8788b63cc84c.scn::uid://bye0o5aya8wom::::res://3D_Models/Toebone/textures/SPinosaur_phalanx01SPinosaur_phalanx01_baseColor.png<>uid://cfrxyf5ong1yp::::res://3D_Models/Toebone/textures/SPinosaur_phalanx01SPinosaur_phalanx01_metallicRoughness.png
-::res://3D_Models/Toebone/textures/::1761046606
-SPinosaur_phalanx01SPinosaur_phalanx01_baseColor.png::CompressedTexture2D/CompressedTexture2D::4080754944748224968::1761046045::1761046605::1::::<><><>0<>0<>0a1c6db86fc453eb02934d5c3e630087<>res://.godot/imported/SPinosaur_phalanx01SPinosaur_phalanx01_baseColor.png-664c7876e9bf3ff01a65b05245e0c614.s3tc.ctex::
-SPinosaur_phalanx01SPinosaur_phalanx01_metallicRoughness.png::CompressedTexture2D/CompressedTexture2D::5160319666897344615::1761046045::1761046606::1::::<><><>0<>0<>246237c97a80bb40fb8279991a8e3980<>res://.godot/imported/SPinosaur_phalanx01SPinosaur_phalanx01_metallicRoughness.png-a90937352ab2254c098f5730d307ab2f.s3tc.ctex::
-::res://3D_Models/T_rex skull/::1761046611
-license.txt::TextFile/TextFile::-1::1761046045::0::1::::<><><>0<>0<><>::
-scene.gltf::PackedScene/PackedScene::5760046109699825635::1761046045::1761046611::1::::<><><>0<>0<>b5cc7eafdcceb4698911a798beb757ed<>res://.godot/imported/scene.gltf-af982a33b06f30f0e93b37e6a5556e37.scn::uid://b0btcfqq8kp8j::::res://3D_Models/T_rex skull/textures/Material.001_baseColor.png
-::res://3D_Models/T_rex skull/textures/::1761046605
-Material.001_baseColor.png::CompressedTexture2D/CompressedTexture2D::4144363634953441799::1761046045::1761046605::1::::<><><>0<>0<>ee4a0a82f75ec9b1f8ebb76a94989809<>res://.godot/imported/Material.001_baseColor.png-66043a2cc7598b37d31e9a0c97e38a05.s3tc.ctex::
-::res://Images/::1761046606
-snow_albedo.png::CompressedTexture2D/CompressedTexture2D::8073262939501494826::1761046045::1761046606::1::::<><><>0<>0<>3c64f00f9a1acc8d5444dade82c73b6c<>res://.godot/imported/snow_albedo.png-974f5a78129911f465f22a7edea46fee.s3tc.ctex::
-snow_height.png::CompressedTexture2D/CompressedTexture2D::1830269296514383818::1761046045::1761046605::1::::<><><>0<>0<>77fc58ba2d7e51537e6cdb9834d2da4d<>res://.godot/imported/snow_height.png-ff65ee253cb6b87b553882e9e3031205.s3tc.ctex::
-::res://textures/::1761046046
-::res://textures/Floor/::1761046607
-rock_tile_floor_diff_4k.png::CompressedTexture2D/CompressedTexture2D::3481795689494503119::1761046045::1761046607::1::::<><><>0<>0<>081d74a803108fdef2ac8f08dc2ad26b<>res://.godot/imported/rock_tile_floor_diff_4k.png-3c5cdc3d916ddad44c6120d50fed09f8.s3tc.ctex::
-rock_tile_floor_nor_gl_4k.png::CompressedTexture2D/CompressedTexture2D::1856368997705391975::1761046046::1761046607::1::::<><><>0<>0<>33702800e61d0a2ab8eca5439f30a1d1<>res://.godot/imported/rock_tile_floor_nor_gl_4k.png-fe9202b39a3a0a19123f786346068d1b.s3tc.ctex::
-rock_tile_floor_rough_4k.png::CompressedTexture2D/CompressedTexture2D::257178312977590530::1761046046::1761046607::1::::<><><>0<>0<>8f5870bf6a1ba8831055493b712fb3fb<>res://.godot/imported/rock_tile_floor_rough_4k.png-47af4e68c1cb438bc4c7723997cfa563.s3tc.ctex::
-wood_floor_disp_4k.png::CompressedTexture2D/CompressedTexture2D::4332582788452207031::1761046046::1761046607::1::::<><><>0<>0<>31d45dd45b3507f751ce79f08e493972<>res://.godot/imported/wood_floor_disp_4k.png-567e23f44fb61f5ad1a09588269a5c31.s3tc.ctex::
-wood_floor_nor_gl_4k.png::CompressedTexture2D/CompressedTexture2D::1873835865445974938::1761046046::1761046607::1::::<><><>0<>0<>67f7ff5430ea19399fd7bab96f326cfc<>res://.godot/imported/wood_floor_nor_gl_4k.png-583485a64d1852df2a7c5a67e1f403ca.s3tc.ctex::
-wood_floor_rough_4k.png::CompressedTexture2D/CompressedTexture2D::5632574038759442718::1761046046::1761046606::1::::<><><>0<>0<>d7e16d7f606dbbf411ae8dcc2c480b54<>res://.godot/imported/wood_floor_rough_4k.png-decd1dee161a7131b64508f08e50ac57.s3tc.ctex::
-::res://textures/Wall/::1761046608
-brick_wall_006_diff_4k.png::CompressedTexture2D/CompressedTexture2D::8552400034810380365::1761046046::1761046607::1::::<><><>0<>0<>bb46046638ca1a1878812300a29d3933<>res://.godot/imported/brick_wall_006_diff_4k.png-763cee6d1d9e616a55290adfd49cb094.s3tc.ctex::
-brick_wall_006_nor_gl_4k.png::CompressedTexture2D/CompressedTexture2D::8967905182164929813::1761046046::1761046608::1::::<><><>0<>0<>8c0cb683feb9e01ac6cb011f8da611ab<>res://.godot/imported/brick_wall_006_nor_gl_4k.png-cc4e66e0ab4b3287a06d85038c3ad876.s3tc.ctex::
-brick_wall_006_rough_4k.png::CompressedTexture2D/CompressedTexture2D::967693933230310740::1761046047::1761046608::1::::<><><>0<>0<>1453eb2996ede769530246941161e42e<>res://.godot/imported/brick_wall_006_rough_4k.png-ca4c39c1f15bf187ae9fce11b006b78d.s3tc.ctex::
-stone_tile_wall_disp_4k.png::CompressedTexture2D/CompressedTexture2D::5907922056358438076::1761046047::1761046608::1::::<><><>0<>0<>0346fc8399ada48a930157d015354eaa<>res://.godot/imported/stone_tile_wall_disp_4k.png-08b643ab4bccfcee426e13b9423d0985.s3tc.ctex::
-stone_tile_wall_nor_gl_4k.png::CompressedTexture2D/CompressedTexture2D::2515930473409613262::1761046047::1761046608::1::::<><><>0<>0<>b0a580b1293f851c49370f3e9efa03be<>res://.godot/imported/stone_tile_wall_nor_gl_4k.png-d41bc3456850cc26e20140a8a125d1f7.s3tc.ctex::
-stone_tile_wall_rough_4k.png::CompressedTexture2D/CompressedTexture2D::8492792875929566052::1761046047::1761046608::1::::<><><>0<>0<>9e2fcd3e4c7e258f86b1bfb1f0f58b49<>res://.godot/imported/stone_tile_wall_rough_4k.png-5b3cb8fd7c9fdba663650f818ebc7227.s3tc.ctex::
+::res://::1761047447
+back.gd::GDScript/GDScript::4257430371664218486::1761047638::0::1::::<>Node3D<><>0<>0<><>::
+blob_tracking.gd::GDScript/GDScript::1621183533050689612::1761047446::0::1::::<>Node<><>0<>0<><>::
+bone_collectible.gd::GDScript/GDScript::7955130719914826736::1761047446::0::1::::<>Node3D<><>0<>0<><>::
+front.gd::GDScript/GDScript::8765981845817768589::1761047632::0::1::::<>Node3D<><>0<>0<><>::
+Global.gd::GDScript/GDScript::4683431648440963351::1761047446::0::1::::<>Node<><>0<>0<><>::
+head.gd::GDScript/GDScript::1624319172471917528::1761047622::0::1::::<>Node3D<><>0<>0<><>::
+icon.svg::CompressedTexture2D/CompressedTexture2D::4323380189673864131::1761047446::1761047653::1::::<><><>0<>0<>903a621573894b5c3b33f1c95e74d345<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+Main.tscn::PackedScene::8514439357767927727::1761047618::0::1::::<><><>0<>0<><>::uid://epvgbo8kssyx::::res://touch_track.gd<>uid://1cujdx38cxxa::::res://Images/snow_height.png<>uid://lappm6o7lj1m::::res://tracks.tres<>uid://dik261ry07cdh::::res://3D models/dogbone3.glb<>uid://deay6844ie42x::::res://tcp_client.gd<>uid://xdkwkiy3j5j1::::res://blob_tracking.gd<>res://bone_collectible.gd<>res://head.gd<>res://front.gd<>res://back.gd<>res://spine.gd<>res://ribs.gd<>res://tail.gd
+ribs.gd::GDScript/GDScript::8727812690700185716::1761047643::0::1::::<>Node3D<><>0<>0<><>::
+spine.gd::GDScript/GDScript::1339380718258979680::1761047640::0::1::::<>Node3D<><>0<>0<><>::
+tail.gd::GDScript/GDScript::7805316804650630888::1761047646::0::1::::<>Node3D<><>0<>0<><>::
+tcp_client.gd::GDScript/GDScript::7441531772467272097::1761047446::0::1::::<>Node<><>0<>0<><>::
+touch_track.gd::GDScript/GDScript::313006888138624735::1761047447::0::1::::TouchTrack<>Node3D<><>0<>0<><>::
+tracks.tres::Shader/Shader::773015500666867580::1761047447::0::1::::<><><>0<>0<><>::
+::res://3D models/::1761047446
+dogbone3.glb::PackedScene/PackedScene::7743112689133803845::1761047446::1761047657::1::::<><><>0<>0<>39b71bddd05c8f085ce3d97b9865c257<>res://.godot/imported/dogbone3.glb-b08c33be4f0f17b6078c3cb519b496ea.scn::
+::res://3D_Models/::1761047446
+::res://3D_Models/Bone/::1761047446
+license.txt::TextFile/TextFile::-1::1761047446::0::1::::<><><>0<>0<><>::
+scene.gltf::PackedScene/PackedScene::8626289946525224426::1761047446::1761047446::1::::<><><>0<>0<>423e75a9eb7e0213c8f3a795cfe93d23<>res://.godot/imported/scene.gltf-402458594485bf8ce1149a74e41608eb.scn::
+::res://3D_Models/Bone/textures/::1761047446
+bone_diffuse.png::CompressedTexture2D/CompressedTexture2D::432324992201269939::1761047446::1761047446::1::::<><><>0<>0<>e5c5cfe37e963f9348362c853414d007<>res://.godot/imported/bone_diffuse.png-d3595fad9e6f5dc94820ec20b403d76f.ctex::
+::res://3D_Models/Complete dinosaur/::1761047446
+back_legs.glb::PackedScene/PackedScene::8709964469069597431::1761047446::1761047446::1::::<><><>0<>0<>a0ce6eb36b52a591a5ccec0f807642df<>res://.godot/imported/back_legs.glb-3f67bc2b1d3d76c2fac52f86a8cfa9e6.scn::uid://df525thvi56bx::::res://3D_Models/Complete dinosaur/back_legs_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg
+back_legs_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg::CompressedTexture2D/CompressedTexture2D::7573831544236433029::1761047446::1761047446::1::::<><><>0<>0<>157e609f720c72f82eea01d689fe594e<>res://.godot/imported/back_legs_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg-5b0b3fcf8174eba5444aa7e1a4ab22a2.s3tc.ctex::
+front_legs.glb::PackedScene/PackedScene::6042807050554618980::1761047446::1761047446::1::::<><><>0<>0<>25dd909c054c8a0450b282051b3a77f4<>res://.godot/imported/front_legs.glb-be7ed32b24868487a7bb9bf97416c54f.scn::uid://p3pdy1wppa4b::::res://3D_Models/Complete dinosaur/front_legs_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg
+front_legs_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg::CompressedTexture2D/CompressedTexture2D::1111552645702904323::1761047446::1761047446::1::::<><><>0<>0<>037ce54f17d72338e96407a94f4368c0<>res://.godot/imported/front_legs_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg-c242f3a2ea2b36f146ecf7e5f2b329ad.s3tc.ctex::
+head.glb::PackedScene/PackedScene::6723084432504914466::1761047446::1761047446::1::::<><><>0<>0<>25ae94ae56325902594952d582c2c6fe<>res://.godot/imported/head.glb-5945ee377d78b21f34d1971212dbee78.scn::uid://bf38848uxlkor::::res://3D_Models/Complete dinosaur/head_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg
+head_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg::CompressedTexture2D/CompressedTexture2D::2797231646052680093::1761047446::1761047446::1::::<><><>0<>0<>0155ae88f7d93630596b448529a1e49d<>res://.godot/imported/head_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg-230e0d71b9c38eb688b2485f3574dd7c.s3tc.ctex::
+ribcage.glb::PackedScene/PackedScene::5604580165724028000::1761047446::1761047446::1::::<><><>0<>0<>708b3b508987df97f1ca28ff6292c452<>res://.godot/imported/ribcage.glb-b2fd38a9b846063c6cb50e5e732ae8ec.scn::uid://hr1q53gl865p::::res://3D_Models/Complete dinosaur/ribcage_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg
+ribcage_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg::CompressedTexture2D/CompressedTexture2D::528025161043323391::1761047446::1761047446::1::::<><><>0<>0<>b7c7bb9ef758b834c97d14a9d067223b<>res://.godot/imported/ribcage_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg-bd5693a1db7efe85d5c386d856f4c7ab.s3tc.ctex::
+spine.glb::PackedScene/PackedScene::5166396668409500776::1761047446::1761047446::1::::<><><>0<>0<>0ebc98738b51e0fe91e4a5da939ad5db<>res://.godot/imported/spine.glb-715d92c72e7b30a4c46e1524b4038395.scn::uid://dv3ql7jwmy75::::res://3D_Models/Complete dinosaur/spine_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg
+spine_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg::CompressedTexture2D/CompressedTexture2D::255647739878703390::1761047446::1761047446::1::::<><><>0<>0<>ee5244df95594d79628452a1b449d483<>res://.godot/imported/spine_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg-9453152486a7a628976be1b6f78c7634.s3tc.ctex::
+stegosaurus.glb::PackedScene/PackedScene::559293142808700954::1761047446::1761047446::1::::<><><>0<>0<>39491dd1d3e6a942d3f63182a007c53e<>res://.godot/imported/stegosaurus.glb-a238226a71ba1f5d3514edf1e5f9cbd0.scn::uid://dig58c0hq36un::::res://3D_Models/Complete dinosaur/stegosaurus_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg
+stegosaurus_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg::CompressedTexture2D/CompressedTexture2D::7735039651697153457::1761047446::1761047446::1::::<><><>0<>0<>906f235d50eaa329db469661adab4586<>res://.godot/imported/stegosaurus_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg-6fd6d3c58ed72e966011ead4d6458b17.s3tc.ctex::
+tail.glb::PackedScene/PackedScene::4582135359436712665::1761047446::1761047446::1::::<><><>0<>0<>c8f924dfb9563574106f2f26aa588ceb<>res://.godot/imported/tail.glb-128fa5b0077b251293ee7dcf7cc04858.scn::uid://1iijo2utm04r::::res://3D_Models/Complete dinosaur/tail_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg
+tail_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg::CompressedTexture2D/CompressedTexture2D::1841927542679817631::1761047446::1761047446::1::::<><><>0<>0<>57a2d1c47d737e1825084788b153e4db<>res://.godot/imported/tail_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg-a9213ac9abec1bcab8d5434017d46f07.s3tc.ctex::
+::res://3D_Models/Pedestal/::1761047446
+license.txt::TextFile/TextFile::-1::1761047446::0::1::::<><><>0<>0<><>::
+scene.gltf::PackedScene/PackedScene::1051758505673871005::1761047446::1761047446::1::::<><><>0<>0<>1f36157d5e1df8cc7c779d2c8d6b78fa<>res://.godot/imported/scene.gltf-19a9b9a8f60a7f5fffc2e49988a17993.scn::
+::res://3D_Models/skull/::1761047446
+license.txt::TextFile/TextFile::-1::1761047446::0::1::::<><><>0<>0<><>::
+scene.gltf::PackedScene/PackedScene::1697932327360811585::1761047446::1761047446::1::::<><><>0<>0<>fac6b3b349151d56a96c48de8766a1cc<>res://.godot/imported/scene.gltf-3c31441d8e14429f0f1e63a0c976de59.scn::uid://d2ma6ddw3yl2y::::res://3D_Models/skull/textures/DefaultMaterial_1001_baseColor.jpeg<>uid://lm2ehp7hjmfw::::res://3D_Models/skull/textures/DefaultMaterial_1001_metallicRoughness.png<>uid://cw74k0jrdg3sx::::res://3D_Models/skull/textures/DefaultMaterial_1001_normal.png
+::res://3D_Models/skull/textures/::1761047446
+DefaultMaterial_1001_baseColor.jpeg::CompressedTexture2D/CompressedTexture2D::9079188885208363994::1761047446::1761047446::1::::<><><>0<>0<>7053ac6320bedf07ab40dabdd1fe6275<>res://.godot/imported/DefaultMaterial_1001_baseColor.jpeg-674a730ae3e9c0f2a69181983ba7f0fc.s3tc.ctex::
+DefaultMaterial_1001_metallicRoughness.png::CompressedTexture2D/CompressedTexture2D::798496707346560616::1761047446::1761047446::1::::<><><>0<>0<>fdb010de292f9cfa74f1df2e5d65b1cb<>res://.godot/imported/DefaultMaterial_1001_metallicRoughness.png-e15a969f2c1d1e9e7ede2667b5e4dafe.s3tc.ctex::
+DefaultMaterial_1001_normal.png::CompressedTexture2D/CompressedTexture2D::6384835994045777195::1761047446::1761047446::1::::<><><>0<>0<>0448944581cc2a3fcdd66b429874befb<>res://.godot/imported/DefaultMaterial_1001_normal.png-695d56d7344bb3b9f0afc10a38b5c3b4.s3tc.ctex::
+::res://3D_Models/Toebone/::1761047446
+license.txt::TextFile/TextFile::-1::1761047446::0::1::::<><><>0<>0<><>::
+scene.gltf::PackedScene/PackedScene::7534241006314065030::1761047446::1761047446::1::::<><><>0<>0<>5c32939520defc4c8099674c96ac7958<>res://.godot/imported/scene.gltf-708c5c1d9b00533b1adf8788b63cc84c.scn::uid://bye0o5aya8wom::::res://3D_Models/Toebone/textures/SPinosaur_phalanx01SPinosaur_phalanx01_baseColor.png<>uid://cfrxyf5ong1yp::::res://3D_Models/Toebone/textures/SPinosaur_phalanx01SPinosaur_phalanx01_metallicRoughness.png
+::res://3D_Models/Toebone/textures/::1761047446
+SPinosaur_phalanx01SPinosaur_phalanx01_baseColor.png::CompressedTexture2D/CompressedTexture2D::4080754944748224968::1761047446::1761047446::1::::<><><>0<>0<>0a1c6db86fc453eb02934d5c3e630087<>res://.godot/imported/SPinosaur_phalanx01SPinosaur_phalanx01_baseColor.png-664c7876e9bf3ff01a65b05245e0c614.s3tc.ctex::
+SPinosaur_phalanx01SPinosaur_phalanx01_metallicRoughness.png::CompressedTexture2D/CompressedTexture2D::5160319666897344615::1761047446::1761047446::1::::<><><>0<>0<>246237c97a80bb40fb8279991a8e3980<>res://.godot/imported/SPinosaur_phalanx01SPinosaur_phalanx01_metallicRoughness.png-a90937352ab2254c098f5730d307ab2f.s3tc.ctex::
+::res://3D_Models/T_rex skull/::1761047446
+license.txt::TextFile/TextFile::-1::1761047446::0::1::::<><><>0<>0<><>::
+scene.gltf::PackedScene/PackedScene::5760046109699825635::1761047446::1761047446::1::::<><><>0<>0<>b5cc7eafdcceb4698911a798beb757ed<>res://.godot/imported/scene.gltf-af982a33b06f30f0e93b37e6a5556e37.scn::uid://b0btcfqq8kp8j::::res://3D_Models/T_rex skull/textures/Material.001_baseColor.png
+::res://3D_Models/T_rex skull/textures/::1761047446
+Material.001_baseColor.png::CompressedTexture2D/CompressedTexture2D::4144363634953441799::1761047446::1761047446::1::::<><><>0<>0<>ee4a0a82f75ec9b1f8ebb76a94989809<>res://.godot/imported/Material.001_baseColor.png-66043a2cc7598b37d31e9a0c97e38a05.s3tc.ctex::
+::res://Images/::1761047446
+snow_albedo.png::CompressedTexture2D/CompressedTexture2D::8073262939501494826::1761047446::1761047653::1::::<><><>0<>0<>3c64f00f9a1acc8d5444dade82c73b6c<>res://.godot/imported/snow_albedo.png-974f5a78129911f465f22a7edea46fee.s3tc.ctex::
+snow_height.png::CompressedTexture2D/CompressedTexture2D::1830269296514383818::1761047446::1761047653::1::::<><><>0<>0<>77fc58ba2d7e51537e6cdb9834d2da4d<>res://.godot/imported/snow_height.png-ff65ee253cb6b87b553882e9e3031205.s3tc.ctex::
+::res://textures/::1761047447
+::res://textures/Floor/::1761047447
+rock_tile_floor_diff_4k.png::CompressedTexture2D/CompressedTexture2D::3481795689494503119::1761047446::1761047446::1::::<><><>0<>0<>081d74a803108fdef2ac8f08dc2ad26b<>res://.godot/imported/rock_tile_floor_diff_4k.png-3c5cdc3d916ddad44c6120d50fed09f8.s3tc.ctex::
+rock_tile_floor_nor_gl_4k.png::CompressedTexture2D/CompressedTexture2D::1856368997705391975::1761047446::1761047446::1::::<><><>0<>0<>33702800e61d0a2ab8eca5439f30a1d1<>res://.godot/imported/rock_tile_floor_nor_gl_4k.png-fe9202b39a3a0a19123f786346068d1b.s3tc.ctex::
+rock_tile_floor_rough_4k.png::CompressedTexture2D/CompressedTexture2D::257178312977590530::1761047446::1761047446::1::::<><><>0<>0<>8f5870bf6a1ba8831055493b712fb3fb<>res://.godot/imported/rock_tile_floor_rough_4k.png-47af4e68c1cb438bc4c7723997cfa563.s3tc.ctex::
+wood_floor_disp_4k.png::CompressedTexture2D/CompressedTexture2D::4332582788452207031::1761047446::1761047446::1::::<><><>0<>0<>31d45dd45b3507f751ce79f08e493972<>res://.godot/imported/wood_floor_disp_4k.png-567e23f44fb61f5ad1a09588269a5c31.s3tc.ctex::
+wood_floor_nor_gl_4k.png::CompressedTexture2D/CompressedTexture2D::1873835865445974938::1761047447::1761047447::1::::<><><>0<>0<>67f7ff5430ea19399fd7bab96f326cfc<>res://.godot/imported/wood_floor_nor_gl_4k.png-583485a64d1852df2a7c5a67e1f403ca.s3tc.ctex::
+wood_floor_rough_4k.png::CompressedTexture2D/CompressedTexture2D::5632574038759442718::1761047447::1761047447::1::::<><><>0<>0<>d7e16d7f606dbbf411ae8dcc2c480b54<>res://.godot/imported/wood_floor_rough_4k.png-decd1dee161a7131b64508f08e50ac57.s3tc.ctex::
+::res://textures/Wall/::1761047447
+brick_wall_006_diff_4k.png::CompressedTexture2D/CompressedTexture2D::8552400034810380365::1761047447::1761047447::1::::<><><>0<>0<>bb46046638ca1a1878812300a29d3933<>res://.godot/imported/brick_wall_006_diff_4k.png-763cee6d1d9e616a55290adfd49cb094.s3tc.ctex::
+brick_wall_006_nor_gl_4k.png::CompressedTexture2D/CompressedTexture2D::8967905182164929813::1761047447::1761047447::1::::<><><>0<>0<>8c0cb683feb9e01ac6cb011f8da611ab<>res://.godot/imported/brick_wall_006_nor_gl_4k.png-cc4e66e0ab4b3287a06d85038c3ad876.s3tc.ctex::
+brick_wall_006_rough_4k.png::CompressedTexture2D/CompressedTexture2D::967693933230310740::1761047447::1761047447::1::::<><><>0<>0<>1453eb2996ede769530246941161e42e<>res://.godot/imported/brick_wall_006_rough_4k.png-ca4c39c1f15bf187ae9fce11b006b78d.s3tc.ctex::
+stone_tile_wall_disp_4k.png::CompressedTexture2D/CompressedTexture2D::5907922056358438076::1761047447::1761047447::1::::<><><>0<>0<>0346fc8399ada48a930157d015354eaa<>res://.godot/imported/stone_tile_wall_disp_4k.png-08b643ab4bccfcee426e13b9423d0985.s3tc.ctex::
+stone_tile_wall_nor_gl_4k.png::CompressedTexture2D/CompressedTexture2D::2515930473409613262::1761047447::1761047447::1::::<><><>0<>0<>b0a580b1293f851c49370f3e9efa03be<>res://.godot/imported/stone_tile_wall_nor_gl_4k.png-d41bc3456850cc26e20140a8a125d1f7.s3tc.ctex::
+stone_tile_wall_rough_4k.png::CompressedTexture2D/CompressedTexture2D::8492792875929566052::1761047447::1761047447::1::::<><><>0<>0<>9e2fcd3e4c7e258f86b1bfb1f0f58b49<>res://.godot/imported/stone_tile_wall_rough_4k.png-5b3cb8fd7c9fdba663650f818ebc7227.s3tc.ctex::
