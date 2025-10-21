@@ -30,7 +30,7 @@ func _on_body_entered(body):
 	collect_bone()
 
 func collect_bone():
-	print("Collected bone:", bone_id)3
+	print("Collected bone:", bone_id)
 	Global.add_bone(bone_id)
 	hide_bone()
 
