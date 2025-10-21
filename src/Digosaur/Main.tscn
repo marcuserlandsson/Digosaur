@@ -61,6 +61,14 @@ radius = 0.3
 [sub_resource type="SphereShape3D" id="SphereShape3D_bone3"]
 radius = 0.3
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_guak0"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_m7p5v"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_j4qnp"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fpfj3"]
+
 [sub_resource type="Environment" id="Environment_ms5u6"]
 background_mode = 1
 background_color = Color(1, 1, 1, 1)
@@ -510,43 +518,79 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.
 script = ExtResource("8_head")
 bone_id = "head"
 
-[node name="head2" parent="Stegosaur/head" instance=ExtResource("14_head")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.313769, 0.11025, 1.49516)
+[node name="head_mesh" type="MeshInstance3D" parent="Stegosaur/head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CapsuleMesh_n4p8j")
+
+[node name="Area3D" type="Area3D" parent="Stegosaur/head/head_mesh"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stegosaur/head/head_mesh/Area3D"]
+shape = SubResource("SphereShape3D_bone1")
 
 [node name="Front" type="Node3D" parent="Stegosaur"]
 script = ExtResource("9_front")
 bone_id = "front"
 
-[node name="front_legs" parent="Stegosaur/Front" instance=ExtResource("15_front")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.132406, -1.27329, -3.40064)
+[node name="front_mesh" type="MeshInstance3D" parent="Stegosaur/Front"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.3, 0)
+mesh = SubResource("CapsuleMesh_n4p8j")
+
+[node name="Area3D" type="Area3D" parent="Stegosaur/Front/front_mesh"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stegosaur/Front/front_mesh/Area3D"]
+shape = SubResource("SphereShape3D_bone2")
 
 [node name="Back" type="Node3D" parent="Stegosaur"]
 script = ExtResource("10_back")
 bone_id = "back"
 
-[node name="back_legs" parent="Stegosaur/Back" instance=ExtResource("16_back")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0362227, 0.594683, -0.431989)
+[node name="back_mesh" type="MeshInstance3D" parent="Stegosaur/Back"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.3, 0)
+mesh = SubResource("CapsuleMesh_n4p8j")
+
+[node name="Area3D" type="Area3D" parent="Stegosaur/Back/back_mesh"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stegosaur/Back/back_mesh/Area3D"]
+shape = SubResource("SphereShape3D_bone3")
 
 [node name="spine" type="Node3D" parent="Stegosaur"]
 script = ExtResource("11_spine")
 bone_id = "spine"
 
-[node name="spine" parent="Stegosaur/spine" instance=ExtResource("17_spine")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="spine_mesh" type="MeshInstance3D" parent="Stegosaur/spine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+mesh = SubResource("CapsuleMesh_n4p8j")
+
+[node name="Area3D" type="Area3D" parent="Stegosaur/spine/spine_mesh"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stegosaur/spine/spine_mesh/Area3D"]
+shape = SubResource("SphereShape3D_bone1")
 
 [node name="ribs" type="Node3D" parent="Stegosaur"]
 script = ExtResource("12_ribs")
 bone_id = "ribs"
 
-[node name="ribcage" parent="Stegosaur/ribs" instance=ExtResource("18_ribs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="ribs_mesh" type="MeshInstance3D" parent="Stegosaur/ribs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("CapsuleMesh_n4p8j")
+
+[node name="Area3D" type="Area3D" parent="Stegosaur/ribs/ribs_mesh"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stegosaur/ribs/ribs_mesh/Area3D"]
+shape = SubResource("SphereShape3D_bone2")
 
 [node name="tail" type="Node3D" parent="Stegosaur"]
 script = ExtResource("13_tail")
 bone_id = "tail"
 
-[node name="tail" parent="Stegosaur/tail" instance=ExtResource("19_tail")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="tail_mesh" type="MeshInstance3D" parent="Stegosaur/tail"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 1)
+mesh = SubResource("CapsuleMesh_n4p8j")
+
+[node name="Area3D" type="Area3D" parent="Stegosaur/tail/tail_mesh"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stegosaur/tail/tail_mesh/Area3D"]
+shape = SubResource("SphereShape3D_bone3")
 
 [node name="TCPClient" type="Node" parent="."]
 script = ExtResource("5_tcp_client")
