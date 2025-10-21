@@ -503,42 +503,42 @@ script = ExtResource("8_head")
 bone_id = "head"
 
 [node name="head_model" parent="Stegosaur/head" instance=ExtResource("14_head_glb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.313769, 0.11025, 1.49516)
 
 [node name="Front" type="Node3D" parent="Stegosaur"]
 script = ExtResource("9_front")
 bone_id = "front"
 
 [node name="front_model" parent="Stegosaur/Front" instance=ExtResource("15_front_glb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.132406, -1.27329, -3.40064)
 
 [node name="Back" type="Node3D" parent="Stegosaur"]
 script = ExtResource("10_back")
 bone_id = "back"
 
 [node name="back_model" parent="Stegosaur/Back" instance=ExtResource("16_back_glb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0362227, 0.594683, -0.431989)
 
 [node name="spine" type="Node3D" parent="Stegosaur"]
 script = ExtResource("11_spine")
 bone_id = "spine"
 
 [node name="spine_model" parent="Stegosaur/spine" instance=ExtResource("17_spine_glb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.295798, -4.131168, -2.25362)
 
 [node name="ribs" type="Node3D" parent="Stegosaur"]
 script = ExtResource("12_ribs")
 bone_id = "ribs"
 
 [node name="ribs_model" parent="Stegosaur/ribs" instance=ExtResource("18_ribs_glb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0494698, -3.21438, 1.45412)
 
 [node name="tail" type="Node3D" parent="Stegosaur"]
 script = ExtResource("13_tail")
 bone_id = "tail"
 
 [node name="tail_model" parent="Stegosaur/tail" instance=ExtResource("19_tail_glb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.235474, 0.291646, -2.50554)
 
 [node name="TCPClient" type="Node" parent="."]
 script = ExtResource("5_tcp_client")
