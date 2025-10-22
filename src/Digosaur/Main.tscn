@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://spine.gd" id="11_spine"]
 [ext_resource type="Script" path="res://ribs.gd" id="12_ribs"]
 [ext_resource type="Script" path="res://tail.gd" id="13_tail"]
+[ext_resource type="Script" path="res://museum_network.gd" id="14_museum_network"]
 [ext_resource type="PackedScene" path="res://3D_Models/Complete dinosaur/head.glb" id="14_head_glb"]
 [ext_resource type="PackedScene" path="res://3D_Models/Complete dinosaur/front_legs.glb" id="15_front_glb"]
 [ext_resource type="PackedScene" path="res://3D_Models/Complete dinosaur/back_legs.glb" id="16_back_glb"]
@@ -260,6 +261,9 @@ color = Color(0, 0, 0, 1)
 color_ramp = SubResource("GradientTexture1D_gngx1")
 
 [node name="Main" type="Node3D"]
+
+[node name="MuseumNetwork" type="Node" parent="."]
+script = ExtResource("14_museum_network")
 
 [node name="NOTES" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.17429, 0)

@@ -11,6 +11,11 @@ func _ready():
 	$Stegosaur/ribcage.visible = false
 	$Stegosaur/tail.visible = false
 	
+	# Connect to museum server for network bone events
+	if has_node("/root/MuseumServer"):
+		get_node("/root/MuseumServer").bone_received.connect(_on_network_bone_received)
+	
+	# Also connect to Global for local testing
 	Global.bone_added.connect(_on_bone_added)
 	for bone_id in Global.bones:
 		_show_bone(bone_id)
@@ -18,6 +23,10 @@ func _ready():
 
 func _on_bone_added(bone_id: String):
 	print("Museum: bone added:", bone_id)
+	_show_bone(bone_id)
+
+func _on_network_bone_received(bone_id: String):
+	print("Museum: Network bone received:", bone_id)
 	_show_bone(bone_id)
 	
 

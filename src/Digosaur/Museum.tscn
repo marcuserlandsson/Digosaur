@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dt331qt4j7bn6" path="res://textures/Wall/brick_wall_006_diff_4k.png" id="1_brh1u"]
 [ext_resource type="Script" uid="uid://cji0a1m53rhiq" path="res://museum.gd" id="1_r7hfq"]
+[ext_resource type="Script" path="res://museum_server.gd" id="2_museum_server"]
 [ext_resource type="Texture2D" uid="uid://d01ec84t24jbx" path="res://textures/Wall/brick_wall_006_nor_gl_4k.png" id="2_n4p8j"]
 [ext_resource type="Texture2D" uid="uid://n101pawo3ffw" path="res://textures/Wall/brick_wall_006_rough_4k.png" id="3_jms4e"]
 [ext_resource type="Texture2D" uid="uid://b2y0agniwe7dr" path="res://textures/Floor/wood_floor_disp_4k.png" id="4_77koe"]
@@ -68,6 +69,9 @@ material = SubResource("StandardMaterial3D_8vou4")
 
 [node name="Museum" type="Node3D"]
 script = ExtResource("1_r7hfq")
+
+[node name="MuseumServer" type="Node" parent="."]
+script = ExtResource("2_museum_server")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.82886, -0.559443, 0.00386416, 0.091618, -0.128919, 0.987414, -0.551904, 0.818781, 0.158111, -90.7383, 27.5802, 9.37328)

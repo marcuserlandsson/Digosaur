@@ -12,5 +12,9 @@ func add_bone(bone_id: String):
 		print("📊 Total bones found: ", bones.size(), "/", TOTAL_BONES)
 		print("🗂️ Complete collection: ", bones)
 		emit_signal("bone_added", bone_id)
+		
+		# Send bone collection to museum if network is available
+		if has_node("/root/MuseumNetwork"):
+			get_node("/root/MuseumNetwork").send_bone_collected(bone_id)
 	else:
 		print("⚠️ Bone ", bone_id, " already collected!")
