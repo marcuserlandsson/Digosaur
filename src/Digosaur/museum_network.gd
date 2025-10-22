@@ -14,6 +14,12 @@ signal museum_disconnected
 func _ready():
 	print("Museum Network: Starting museum connection...")
 	connect_to_museum()
+	
+	# Send test message every 10 seconds
+	while true:
+		await get_tree().create_timer(10.0).timeout
+		if is_connected_to_museum:
+			send_bone_collected("connection_test")
 
 func connect_to_museum():
 	if connection_attempts >= max_connection_attempts:
