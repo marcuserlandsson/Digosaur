@@ -1,4 +1,4 @@
-[gd_scene load_steps=185 format=4 uid="uid://dtkptpruv1ay6"]
+[gd_scene load_steps=186 format=4 uid="uid://dtkptpruv1ay6"]
 
 [ext_resource type="Script" uid="uid://hchqm6lfkw6u" path="res://main.gd" id="1_3dxm6"]
 [ext_resource type="Script" uid="uid://b0pj4o5nptdjs" path="res://mouse_track.gd" id="2_bwx1l"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://hr1q53gl865p" path="res://3D_Models/Complete dinosaur/ribcage_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg" id="18_2gh4u"]
 [ext_resource type="Script" uid="uid://c1dmkrkr0ahu5" path="res://tail.gd" id="19_2gh4u"]
 [ext_resource type="Texture2D" uid="uid://1iijo2utm04r" path="res://3D_Models/Complete dinosaur/tail_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg" id="20_devvj"]
+[ext_resource type="PackedScene" uid="uid://beofq8y3ayb6o" path="res://RestartButton.tscn" id="21_devvj"]
 
 [sub_resource type="Environment" id="Environment_cm0pq"]
 
@@ -2481,3 +2482,5 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stegosaur/Tail/tail/Plane_008/Area3D"]
 shape = SubResource("ConcavePolygonShape3D_gdb40")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("21_devvj")]

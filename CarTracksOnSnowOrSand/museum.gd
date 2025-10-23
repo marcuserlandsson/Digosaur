@@ -1,6 +1,14 @@
 extends Node3D
 
 func _ready():
+	Global.museum_ref = self
+	setup_scene()
+	
+	Global.bone_added.connect(_on_bone_added)
+	for bone_id in Global.bones:
+		_show_bone(bone_id)
+		
+func setup_scene():
 	$dogbone3.visible = false
 	$dogbone4.visible = false
 	$dogbone5.visible = false
@@ -10,10 +18,7 @@ func _ready():
 	$Stegosaur/spine.visible = false
 	$Stegosaur/ribcage.visible = false
 	$Stegosaur/tail.visible = false
-	
-	Global.bone_added.connect(_on_bone_added)
-	for bone_id in Global.bones:
-		_show_bone(bone_id)
+	print("Museum scene reset")
 
 
 func _on_bone_added(bone_id: String):
