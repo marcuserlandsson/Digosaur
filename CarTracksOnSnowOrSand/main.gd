@@ -7,7 +7,6 @@ func _ready():
 	Global.sand_ref = self
 	_save_original_positions()
 	_randomize_bone_positions()
-	_test_vector()
 	print("sandscene registered in global")
 
 	var existing_window = get_tree().root.get_node_or_null("MuseumWindow")
@@ -29,13 +28,10 @@ func _ready():
 	museum_scene.name = "Museum"
 	museum_window.add_child(museum_scene)
 
-	get_tree().root.add_child(museum_window)
+	get_tree().root.call_deferred("add_child", museum_window)
 	museum_window.visible = true
 	print("Created new Museum window.")
-	
-func _test_vector():
-	var v = Vector3(1, 2, 3)
-	print(v)
+
 
 func _reset_museum_scene():
 	if museum_window:
@@ -43,6 +39,7 @@ func _reset_museum_scene():
 		if museum_scene and museum_scene.has_method("setup_scene"):
 			museum_scene.setup_scene()
 			print("Reset museum scene in same window.")
+
 
 func _save_original_positions():
 	var stego = $Stegosaur
@@ -59,8 +56,9 @@ func _save_original_positions():
 		var path = bone_paths[bone_name]
 		if stego.has_node(path):
 			var bone = stego.get_node(path)
-			original_bone_positions[bone_name] = bone.position
-	print("Saved main bone part positions.")
+			# Save GLOBAL position (not local) to preserve world height
+			original_bone_positions[bone_name] = bone.global_position
+	print("Saved original bone global positions.")
 
 
 func _randomize_bone_positions():
@@ -74,9 +72,21 @@ func _randomize_bone_positions():
 		"tail": "Tail/tail"
 	}
 
-	var range = 4.0               # How far bones can move horizontally
-	var sand_center = Vector3(0, 0, 0)
-	var sand_bounds = 8.0
+	# Camera bounds relative to camera center
+	var min_x = -1.6
+	var max_x = 3.2
+	var min_z = -4.2
+	var max_z = 3.9
+
+	# Padding so bones don’t appear at edges
+	var padding = 0.4
+	min_x += padding
+	max_x -= padding
+	min_z += padding
+	max_z -= padding
+
+	# Camera center offset
+	var camera_center = Vector3(0.857, 0, -0.114)
 
 	var seed_val = Time.get_ticks_usec()
 	seed(seed_val)
@@ -86,25 +96,19 @@ func _randomize_bone_positions():
 		var path = bone_paths[bone_name]
 		if stego.has_node(path):
 			var bone = stego.get_node(path)
-			var base_pos = original_bone_positions.get(bone_name, bone.position)
+			var base_pos = original_bone_positions.get(bone_name, bone.global_position)
 
-			# Create new position that only changes X and Z
-			var new_x = clamp(
-				base_pos.x + randf_range(-range, range),
-				sand_center.x - sand_bounds,
-				sand_center.x + sand_bounds
-			)
-			var new_z = clamp(
-				base_pos.z + randf_range(-range, range),
-				sand_center.z - sand_bounds,
-				sand_center.z + sand_bounds
-			)
+			# Randomize X/Z within camera view, offset by camera center
+			var new_x = randf_range(min_x, max_x) + camera_center.x
+			var new_z = randf_range(min_z, max_z) + camera_center.z
 
-			bone.position = Vector3(new_x, base_pos.y, new_z)
+			bone.global_position = Vector3(new_x, base_pos.y, new_z)
+			print("  🦴", bone_name, "->", bone.global_position)
 
-			print("  🦴", bone_name, "->", bone.position)
+	print("Bones randomized within adjusted camera bounds.")
 
-	print("Bones randomized — heights preserved.")
+
+
 
 func _get_all_bones(node: Node) -> Array:
 	var bones := []
