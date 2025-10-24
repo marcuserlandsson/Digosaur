@@ -45,7 +45,7 @@ shader_parameter/ditch_height = 0.325
 [sub_resource type="PlaneMesh" id="PlaneMesh_8muh3"]
 resource_local_to_scene = true
 material = SubResource("ShaderMaterial_ctokp")
-size = Vector2(10, 10)
+size = Vector2(16, 9)
 subdivide_width = 256
 subdivide_depth = 256
 
@@ -280,7 +280,8 @@ cull_mask = 1048573
 environment = SubResource("Environment_i3pvo")
 
 [node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0.78, 2.005, 0)
+transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 0, 7.9, 0)
+fov = 60.0
 cull_mask = 1048573
 environment = SubResource("Environment_cm0pq")
 current = true

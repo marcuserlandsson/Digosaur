@@ -3,7 +3,7 @@
 extends Node3D
 class_name TouchTrack
 
-@onready var cam: Camera3D = $"../Camera3D"
+@onready var cam: Camera3D = $"../Camera3D2"
 @onready var particles1: GPUParticles3D = $"../SubViewport/RemoteParticles/TrackParticles1"
 @onready var particles2: GPUParticles3D = $"../SubViewport/RemoteParticles/TrackParticles2"
 @onready var particles3: GPUParticles3D = $"../SubViewport/RemoteParticles/TrackParticles3"
@@ -93,10 +93,19 @@ func _physics_process(delta: float):
 				#print("DEBUG: Invalid touch coordinates, skipping")
 				continue
 			
-			# Direct coordinate mapping (same resolution: 1920x1080)
-			var x_to_z = float(2.67 - touch[0] / 1920 * 10.68)
-			var y_to_x = float(-0.8 + touch[1] / 1080 * 6.1)
-			var coords = Vector3(y_to_x, 0.05, x_to_z)
+			# Manual coordinate mapping with perspective correction for 16x9 sand area
+			# Normalize coordinates to -1 to +1 range (flipped for correct direction)
+			var norm_x = 1.0 - (touch[0] / 960.0) * 2.0  # 0-960 to +1 to -1 (flipped)
+			var norm_y = 1.0 - (touch[1] / 540.0) * 2.0  # 0-540 to +1 to -1 (flipped)
+			
+			# Apply perspective correction only to X-axis (reduces movement at left/right edges)
+			var corrected_x = norm_x * (1.0 - abs(norm_x) * 0.4)  # Reduce movement at edges
+			var corrected_y = norm_y  # No correction for Y-axis (up/down movement)
+			
+			# Map to world coordinates
+			var x_to_x = corrected_x * 8.0  # -8 to +8 (16 units wide)
+			var y_to_z = corrected_y * 4.5  # -4.5 to +4.5 (9 units tall)
+			var coords = Vector3(x_to_x, 0.05, y_to_z)
 			
 			#print("DEBUG: Mapped to world coords: ", coords)
 			
@@ -106,7 +115,8 @@ func _physics_process(delta: float):
 			if touch[4] == Vector2(-1, -1):
 				print("New touchPoint ", i, " at: [", touch[0], ", ", touch[1], "]")
 			else:
-				print("Moved touchPoint ", i, " from ", "[", [4][0], ", ", [4][1], "] to [", touch[0], ", ", touch[1], "]")
+				print("Moved touchpoint")
+				#print("Moved touchPoint ", i, " from ", "[", [4][0], ", ", [4][1], "] to [", touch[0], ", ", touch[1], "]")
 			
 			# Create persistent touch trail
 			if i == 0:
@@ -302,10 +312,19 @@ func check_bone_collection():
 		if touch[0] < 0 or touch[0] > 1920 or touch[1] < 0 or touch[1] > 1080:
 			continue
 			
-		# Convert touch coordinates to world position
-		var x_to_z = float(2.67 - touch[0] / 1920 * 10.68)
-		var y_to_x = float(-0.8 + touch[1] / 1080 * 6.1)
-		var world_pos = Vector3(y_to_x, 0.05, x_to_z)
+		# Manual coordinate mapping with perspective correction for 16x9 sand area
+		# Normalize coordinates to -1 to +1 range (flipped for correct direction)
+		var norm_x = 1.0 - (touch[0] / 960.0) * 2.0  # 0-960 to +1 to -1 (flipped)
+		var norm_y = 1.0 - (touch[1] / 540.0) * 2.0  # 0-540 to +1 to -1 (flipped)
+		
+		# Apply perspective correction only to X-axis (reduces movement at left/right edges)
+		var corrected_x = norm_x * (1.0 - abs(norm_x) * 0.4)  # Reduce movement at edges
+		var corrected_y = norm_y  # No correction for Y-axis (up/down movement)
+		
+		# Map to world coordinates
+		var x_to_x = corrected_x * 8.0  # -8 to +8 (16 units wide)
+		var y_to_z = corrected_y * 4.5  # -4.5 to +4.5 (9 units tall)
+		var world_pos = Vector3(x_to_x, 0.05, y_to_z)
 		
 		# Use proper Area3D collision detection for precise bone collection
 		for bone in bone_collectibles:
