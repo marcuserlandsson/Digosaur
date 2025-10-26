@@ -59,7 +59,6 @@ func _save_original_positions():
 		var path = bone_paths[bone_name]
 		if stego.has_node(path):
 			var bone = stego.get_node(path)
-			# Save GLOBAL position (not local) to preserve world height
 			original_bone_positions[bone_name] = bone.global_position
 	print("Saved original bone global positions.")
 
@@ -75,20 +74,17 @@ func _randomize_bone_positions():
 		"tail": "Tail/tail"
 	}
 
-	# Camera bounds relative to camera center
 	var min_x = -1.6
 	var max_x = 3.2
 	var min_z = -4.2
 	var max_z = 3.9
 
-	# Padding so bones don’t appear at edges
 	var padding = 0.4
 	min_x += padding
 	max_x -= padding
 	min_z += padding
 	max_z -= padding
 
-	# Camera center offset
 	var camera_center = Vector3(0.857, 0, -0.114)
 
 	var seed_val = Time.get_ticks_usec()
@@ -101,7 +97,6 @@ func _randomize_bone_positions():
 			var bone = stego.get_node(path)
 			var base_pos = original_bone_positions.get(bone_name, bone.global_position)
 
-			# Randomize X/Z within camera view, offset by camera center
 			var new_x = randf_range(min_x, max_x) + camera_center.x
 			var new_z = randf_range(min_z, max_z) + camera_center.z
 
@@ -130,6 +125,5 @@ func _on_all_bones_found():
 	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	add_child(label)
 	label.global_position = Vector3(0, 1, 0)
-
-	if has_node("CelebrationSound"):
-		$CelebrationSound.play()
+	
+	
