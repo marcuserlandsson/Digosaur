@@ -8,6 +8,7 @@ func _ready():
 	_save_original_positions()
 	_randomize_bone_positions()
 	print("sandscene registered in global")
+	Global.all_bones_found.connect(_on_all_bones_found)
 
 	var existing_window = get_tree().root.get_node_or_null("MuseumWindow")
 	if existing_window:
@@ -31,6 +32,8 @@ func _ready():
 	get_tree().root.call_deferred("add_child", museum_window)
 	museum_window.visible = true
 	print("Created new Museum window.")
+	
+	
 
 
 func _reset_museum_scene():
@@ -108,8 +111,6 @@ func _randomize_bone_positions():
 	print("Bones randomized within adjusted camera bounds.")
 
 
-
-
 func _get_all_bones(node: Node) -> Array:
 	var bones := []
 	for child in node.get_children():
@@ -117,3 +118,18 @@ func _get_all_bones(node: Node) -> Array:
 			bones.append(child)
 			bones += _get_all_bones(child)
 	return bones
+
+
+func _on_all_bones_found():
+	print("Wohoo!!")
+
+	var label = Label3D.new()
+	label.text = "Congratulations!!! You found all the bones!"
+	label.modulate = Color(1, 1, 0)
+	label.scale = Vector3(1, 1, 1)
+	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	add_child(label)
+	label.global_position = Vector3(0, 1, 0)
+
+	if has_node("CelebrationSound"):
+		$CelebrationSound.play()

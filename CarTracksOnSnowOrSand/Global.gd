@@ -5,12 +5,17 @@ const TOTAL_BONES := 6
 signal bone_added(bone_id: String)
 var museum_ref: Node = null
 var sand_ref: Node = null
+signal all_bones_found
 
 func add_bone(bone_id: String):
 	if bone_id not in bones:
 		bones.append(bone_id)
 		print("Added bone:", bone_id)
 		emit_signal("bone_added", bone_id)
+		
+		if bones.size() == TOTAL_BONES:
+			print("All bones found!")
+			emit_signal("all_bones_found")
 
 func reset_game():
 	bones.clear()
