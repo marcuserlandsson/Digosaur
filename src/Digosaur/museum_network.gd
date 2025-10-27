@@ -66,6 +66,9 @@ func connect_to_museum():
 		connect_to_museum()
 
 func send_bone_collected(bone_id: String):
+	print("Museum Network: Attempting to send bone:", bone_id)
+	print("Museum Network: Connection status:", is_connected_to_museum)
+	
 	if not is_connected_to_museum:
 		print("Museum Network: Not connected to museum, cannot send bone:", bone_id)
 		return

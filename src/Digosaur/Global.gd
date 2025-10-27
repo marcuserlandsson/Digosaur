@@ -21,8 +21,11 @@ func add_bone(bone_id: String):
 			emit_signal("all_bones_found")
 		
 		# Send bone collection to museum if network is available
-		if has_node("/root/MuseumNetwork"):
-			get_node("/root/MuseumNetwork").send_bone_collected(bone_id)
+		if has_node("/root/Main/MuseumNetwork"):
+			print("🌐 Sending bone to museum:", bone_id)
+			get_node("/root/Main/MuseumNetwork").send_bone_collected(bone_id)
+		else:
+			print("⚠️ MuseumNetwork node not found - cannot send bone to museum")
 	else:
 		print("⚠️ Bone ", bone_id, " already collected!")
 
@@ -30,8 +33,8 @@ func reset_game():
 	bones.clear()
 	
 	# Send reset signal to museum scene via network
-	if has_node("/root/MuseumNetwork"):
-		get_node("/root/MuseumNetwork").send_game_reset()
+	if has_node("/root/Main/MuseumNetwork"):
+		get_node("/root/Main/MuseumNetwork").send_game_reset()
 	
 	if sand_ref and sand_ref.has_method("_start_timer"):
 		sand_ref._start_timer()
