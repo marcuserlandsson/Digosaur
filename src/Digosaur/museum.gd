@@ -1,5 +1,8 @@
 extends Node3D
 
+# Museum scene - tracks and displays collected bones
+var collected_bones: Array = []
+
 func _ready():
 	Global.museum_ref = self
 	setup_scene()
@@ -7,6 +10,7 @@ func _ready():
 	# Connect to museum server for network bone events
 	if has_node("/root/MuseumServer"):
 		get_node("/root/MuseumServer").bone_received.connect(_on_network_bone_received)
+		get_node("/root/MuseumServer").game_reset.connect(_on_network_game_reset)
 	
 	# Also connect to Global for local testing
 	Global.bone_added.connect(_on_bone_added)
@@ -14,6 +18,7 @@ func _ready():
 		_show_bone(bone_id)
 
 func setup_scene():
+	# Hide all bones initially
 	$dogbone3.visible = false
 	$dogbone4.visible = false
 	$dogbone5.visible = false
@@ -23,17 +28,31 @@ func setup_scene():
 	$Stegosaur/spine.visible = false
 	$Stegosaur/ribcage.visible = false
 	$Stegosaur/tail.visible = false
-	print("Museum scene reset")
-
+	
+	# Clear collected bones tracking
+	collected_bones.clear()
+	print("Museum scene reset - all bones hidden")
 
 func _on_bone_added(bone_id: String):
-	print("Museum: bone added:", bone_id)
-	_show_bone(bone_id)
+	print("Museum: Local bone added:", bone_id)
+	_add_bone_to_collection(bone_id)
 
 func _on_network_bone_received(bone_id: String):
 	print("Museum: Network bone received:", bone_id)
-	_show_bone(bone_id)
-	
+	_add_bone_to_collection(bone_id)
+
+func _on_network_game_reset():
+	print("Museum: Network game reset received!")
+	setup_scene()
+
+func _add_bone_to_collection(bone_id: String):
+	# Add to our local tracking if not already collected
+	if bone_id not in collected_bones:
+		collected_bones.append(bone_id)
+		print("Museum: Added", bone_id, "to collection. Total:", collected_bones.size())
+		_show_bone(bone_id)
+	else:
+		print("Museum: Bone", bone_id, "already collected")
 
 func _show_bone(bone_id: String):
 	match bone_id:

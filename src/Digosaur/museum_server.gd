@@ -6,6 +6,7 @@ var museum_port = 8888
 var is_server_running = false
 
 signal bone_received(bone_id: String)
+signal game_reset
 
 func _ready():
 	print("Museum Server: Starting museum server on port ", museum_port)
@@ -63,13 +64,17 @@ func handle_client_connection(client: StreamPeerTCP):
 					
 					if parse_result == OK:
 						var message = json.data
-						if message.has("type") and message["type"] == "bone_collected":
-							var bone_id = message.get("bone_id", "")
-							if bone_id == "connection_test":
-								print("🧪 CONNECTION TEST RECEIVED!")
-							else:
-								print("Museum Server: Bone collected: ", bone_id)
-								bone_received.emit(bone_id)
+						if message.has("type"):
+							if message["type"] == "bone_collected":
+								var bone_id = message.get("bone_id", "")
+								if bone_id == "connection_test":
+									print("🧪 CONNECTION TEST RECEIVED!")
+								else:
+									print("Museum Server: Bone collected: ", bone_id)
+									bone_received.emit(bone_id)
+							elif message["type"] == "game_reset":
+								print("Museum Server: Game reset received!")
+								game_reset.emit()
 					else:
 						print("Museum Server: Failed to parse JSON message")
 				else:

@@ -29,6 +29,10 @@ func add_bone(bone_id: String):
 func reset_game():
 	bones.clear()
 	
+	# Send reset signal to museum scene via network
+	if has_node("/root/MuseumNetwork"):
+		get_node("/root/MuseumNetwork").send_game_reset()
+	
 	if sand_ref and sand_ref.has_method("_start_timer"):
 		sand_ref._start_timer()
 	

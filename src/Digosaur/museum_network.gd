@@ -15,11 +15,11 @@ func _ready():
 	print("Museum Network: Starting museum connection...")
 	connect_to_museum()
 	
-	# Send test message every 10 seconds
-	while true:
-		await get_tree().create_timer(10.0).timeout
-		if is_connected_to_museum:
-			send_bone_collected("connection_test")
+	# Connection test commented out - we know it works!
+	# while true:
+	#	await get_tree().create_timer(10.0).timeout
+	#	if is_connected_to_museum:
+	#		send_bone_collected("connection_test")
 
 func connect_to_museum():
 	if connection_attempts >= max_connection_attempts:
@@ -100,6 +100,40 @@ func send_bone_collected(bone_id: String):
 		return
 	
 	print("Museum Network: Sent bone collection to museum:", bone_id)
+
+func send_game_reset():
+	if not is_connected_to_museum:
+		print("Museum Network: Not connected to museum, cannot send reset")
+		return
+	
+	# Create JSON message for game reset
+	var message = {
+		"type": "game_reset",
+		"timestamp": Time.get_datetime_string_from_system()
+	}
+	
+	var json_string = JSON.stringify(message)
+	var json_bytes = json_string.to_utf8_buffer()
+	
+	# Send message length first (4 bytes)
+	var length_data = PackedByteArray()
+	length_data.resize(4)
+	length_data.encode_u32(0, json_bytes.size())
+	
+	var send_result = museum_client.put_partial_data(length_data)
+	if send_result[0] != OK or send_result[1] != 4:
+		print("Museum Network: Failed to send reset message length")
+		handle_connection_error()
+		return
+	
+	# Send JSON message
+	send_result = museum_client.put_partial_data(json_bytes)
+	if send_result[0] != OK or send_result[1] != json_bytes.size():
+		print("Museum Network: Failed to send reset data")
+		handle_connection_error()
+		return
+	
+	print("Museum Network: Sent game reset to museum")
 
 func handle_connection_error():
 	print("Museum Network: Connection error, attempting to reconnect...")
