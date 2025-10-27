@@ -297,6 +297,18 @@ func _on_blob_tracking_track_data(tracking: Variant) -> void:
 	# Check for bone collection on each touch
 	check_bone_collection()
 
+func _find_area3d_nodes(node: Node) -> Array:
+	"""Recursively find all Area3D nodes in the node hierarchy"""
+	var area_nodes = []
+	
+	if node is Area3D:
+		area_nodes.append(node)
+	
+	for child in node.get_children():
+		area_nodes.append_array(_find_area3d_nodes(child))
+	
+	return area_nodes
+
 func check_bone_collection():
 	"""Check if any touches are overlapping with collectible bones using proper Area3D detection"""
 	if current_touches.size() == 0:
@@ -328,17 +340,19 @@ func check_bone_collection():
 		
 		# Use proper Area3D collision detection for precise bone collection
 		for bone in bone_collectibles:
-			if bone.visible and bone.has_method("collect_bone") and bone.has_node("Area3D"):
-				var area = bone.get_node("Area3D")
-				if area.monitoring:
-					# Check if the touch position is within the bone's Area3D collision shape
-					var space_state = get_world_3d().direct_space_state
-					var query = PhysicsPointQueryParameters3D.new()
-					query.position = world_pos
-					query.collision_mask = area.collision_layer
-					
-					var results = space_state.intersect_point(query)
-					for result in results:
-						if result.collider == area:
-							bone.collect_bone()
-							break  # Only collect one bone per touch
+			if bone.visible and bone.has_method("collect_bone"):
+				# Check all Area3D nodes in the bone hierarchy
+				var area_nodes = _find_area3d_nodes(bone)
+				for area in area_nodes:
+					if area.monitoring:
+						# Check if the touch position is within the bone's Area3D collision shape
+						var space_state = get_world_3d().direct_space_state
+						var query = PhysicsPointQueryParameters3D.new()
+						query.position = world_pos
+						query.collision_mask = area.collision_layer
+						
+						var results = space_state.intersect_point(query)
+						for result in results:
+							if result.collider == area:
+								bone.collect_bone()
+								break  # Only collect one bone per touch
