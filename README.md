@@ -113,3 +113,7 @@ Closes issue #45
 **Small letters for tags:** fix, feat doc, etc.
 
 **Do not merge your own branch:** Make somebody else merge yours
+
+# Temporarily disable Windows Firewall for testing
+
+netsh advfirewall set allprofiles state off
