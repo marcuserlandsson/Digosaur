@@ -1,0 +1,96 @@
+extends Node3D
+
+var original_bone_positions := {}
+var elapsed := 0.0
+var timer_running := false
+
+func _ready():
+	Global.sand_ref = self
+	_save_original_positions()
+	_randomize_bone_positions()
+	_start_timer()
+	print("Sand scene registered in global")
+	Global.all_bones_found.connect(_on_all_bones_found)
+
+func _save_original_positions():
+	var stego = $Stegosaur
+	var bone_paths = {
+		"head": "head",
+		"front": "Front", 
+		"back": "Back",
+		"spine": "spine",
+		"ribs": "ribs",
+		"tail": "tail"
+	}
+
+	for bone_name in bone_paths.keys():
+		var path = bone_paths[bone_name]
+		if stego.has_node(path):
+			var bone = stego.get_node(path)
+			original_bone_positions[bone_name] = bone.global_position
+	print("Saved original bone global positions.")
+
+func _randomize_bone_positions():
+	var stego = $Stegosaur
+	var bone_paths = {
+		"head": "head",
+		"front": "Front",
+		"back": "Back", 
+		"spine": "spine",
+		"ribs": "ribs",
+		"tail": "tail"
+	}
+
+	# Adjusted bounds for our 16x9 sand area
+	var min_x = -8.0
+	var max_x = 8.0
+	var min_z = -4.5
+	var max_z = 4.5
+
+	var padding = 0.4
+	min_x += padding
+	max_x -= padding
+	min_z += padding
+	max_z -= padding
+
+	var seed_val = Time.get_ticks_usec()
+	seed(seed_val)
+	print("Using seed:", seed_val)
+
+	for bone_name in bone_paths.keys():
+		var path = bone_paths[bone_name]
+		if stego.has_node(path):
+			var bone = stego.get_node(path)
+			var base_pos = original_bone_positions.get(bone_name, bone.global_position)
+
+			var new_x = randf_range(min_x, max_x)
+			var new_z = randf_range(min_z, max_z)
+
+			bone.global_position = Vector3(new_x, base_pos.y, new_z)
+			print("  🦴", bone_name, "->", bone.global_position)
+
+	print("Bones randomized within sand bounds.")
+
+func _on_all_bones_found():
+	_stop_timer()
+	var minutes := int(elapsed) / 60
+	var seconds := fmod(elapsed, 60.0)
+
+	var label = Label3D.new()
+	label.text = "Congratulations!!!\nYou found all the bones!\nTime: %02d:%05.2f" % [minutes, seconds]
+	label.modulate = Color(1, 1, 0)
+	label.scale = Vector3(1, 1, 1)
+	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	add_child(label)
+	label.global_position = Vector3(0, 1, 0)
+
+func _start_timer():
+	elapsed = 0.0
+	timer_running = true
+
+func _stop_timer():
+	timer_running = false
+
+func _process(delta: float) -> void:
+	if timer_running:
+		elapsed += delta

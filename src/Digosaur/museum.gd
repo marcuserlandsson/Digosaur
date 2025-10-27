@@ -1,15 +1,8 @@
 extends Node3D
 
 func _ready():
-	$dogbone3.visible = false
-	$dogbone4.visible = false
-	$dogbone5.visible = false
-	$Stegosaur/head2.visible = false
-	$Stegosaur/front_legs.visible = false
-	$Stegosaur/back_legs.visible = false
-	$Stegosaur/spine.visible = false
-	$Stegosaur/ribcage.visible = false
-	$Stegosaur/tail.visible = false
+	Global.museum_ref = self
+	setup_scene()
 	
 	# Connect to museum server for network bone events
 	if has_node("/root/MuseumServer"):
@@ -19,6 +12,18 @@ func _ready():
 	Global.bone_added.connect(_on_bone_added)
 	for bone_id in Global.bones:
 		_show_bone(bone_id)
+
+func setup_scene():
+	$dogbone3.visible = false
+	$dogbone4.visible = false
+	$dogbone5.visible = false
+	$Stegosaur/head2.visible = false
+	$Stegosaur/front_legs.visible = false
+	$Stegosaur/back_legs.visible = false
+	$Stegosaur/spine.visible = false
+	$Stegosaur/ribcage.visible = false
+	$Stegosaur/tail.visible = false
+	print("Museum scene reset")
 
 
 func _on_bone_added(bone_id: String):
