@@ -2,11 +2,14 @@ extends Node3D
 
 var museum_window: Window
 var original_bone_positions := {}
+var elapsed := 0.0
+var timer_running := false
 
 func _ready():
 	Global.sand_ref = self
 	_save_original_positions()
 	_randomize_bone_positions()
+	_start_timer()
 	print("sandscene registered in global")
 	Global.all_bones_found.connect(_on_all_bones_found)
 
@@ -116,14 +119,30 @@ func _get_all_bones(node: Node) -> Array:
 
 
 func _on_all_bones_found():
-	print("Wohoo!!")
+	_stop_timer()
+	var minutes := int(elapsed) / 60
+	var seconds := fmod(elapsed, 60.0)
 
 	var label = Label3D.new()
-	label.text = "Congratulations!!! You found all the bones!"
+	label.text = "Congratulations!!!\nYou found all the bones!\nTime: %02d:%05.2f" % [minutes, seconds]
 	label.modulate = Color(1, 1, 0)
 	label.scale = Vector3(1, 1, 1)
 	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	add_child(label)
 	label.global_position = Vector3(0, 1, 0)
+
 	
+
+
+func _start_timer():
+	elapsed = 0.0
+	timer_running = true
+
+func _stop_timer():
+	timer_running = false
+
+func _process(delta: float) -> void:
+	if timer_running:
+		elapsed += delta
+
 	

@@ -7,6 +7,7 @@ var museum_ref: Node = null
 var sand_ref: Node = null
 signal all_bones_found
 
+
 func add_bone(bone_id: String):
 	if bone_id not in bones:
 		bones.append(bone_id)
@@ -19,7 +20,10 @@ func add_bone(bone_id: String):
 
 func reset_game():
 	bones.clear()
-
+	
+	if sand_ref and sand_ref.has_method("_start_timer"):
+		sand_ref._start_timer()
+	
 	if sand_ref:
 		print("Restarting: scheduling bone randomization...")
 		await get_tree().process_frame
