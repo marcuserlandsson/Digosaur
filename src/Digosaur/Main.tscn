@@ -1,4 +1,4 @@
-[gd_scene load_steps=227 format=4 uid="uid://dtkptpruv1ay6"]
+[gd_scene load_steps=229 format=4 uid="uid://dtkptpruv1ay6"]
 
 [ext_resource type="Script" uid="uid://epvgbo8kssyx" path="res://touch_track.gd" id="2_bwx1l"]
 [ext_resource type="Texture2D" uid="uid://1cujdx38cxxa" path="res://Images/snow_height.png" id="3_8neod"]
@@ -25,7 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://b6jvdnq6oqa54" path="res://3D_Models/Complete dinosaur/tail.glb" id="19_tail_glb"]
 [ext_resource type="Texture2D" uid="uid://1iijo2utm04r" path="res://3D_Models/Complete dinosaur/tail_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg" id="22_w3rk5"]
 [ext_resource type="PackedScene" uid="uid://beofq8y3ayb6o" path="res://RestartButton.tscn" id="23_restart_button"]
-[ext_resource type="Script" path="res://main.gd" id="24_main"]
+[ext_resource type="Script" uid="uid://cdlosera7lwnq" path="res://main.gd" id="24_main"]
 
 [sub_resource type="Environment" id="Environment_i3pvo"]
 background_mode = 1
@@ -2126,6 +2126,7 @@ omni_range = 7.838
 script = ExtResource("2_bwx1l")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("PlaneMesh_8muh3")
 
 [node name="Area3D" type="Area3D" parent="Floor"]
@@ -2331,7 +2332,7 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.
 script = ExtResource("8_head")
 
 [node name="head_model" parent="Stegosaur/head" instance=ExtResource("14_head_glb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.313769, 0.11025, 1.49516)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.314, 6.967, 2.714)
 
 [node name="head2" type="Node3D" parent="Stegosaur/head/head_model"]
 
@@ -2816,8 +2817,8 @@ script = ExtResource("5_tcp_client")
 [node name="BlobTracking" type="Node" parent="."]
 script = ExtResource("6_3dxm6")
 
+[node name="RestartButton" parent="." instance=ExtResource("23_restart_button")]
+
 [connection signal="touch_points" from="TCPClient" to="TouchTrack" method="_on_tcp_client_touch_points"]
 [connection signal="touch_points" from="TCPClient" to="BlobTracking" method="_on_tcp_client_touch_points"]
 [connection signal="track_data" from="BlobTracking" to="TouchTrack" method="_on_blob_tracking_track_data"]
-
-[node name="RestartButton" parent="." instance=ExtResource("23_restart_button")]

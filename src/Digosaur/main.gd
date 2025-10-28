@@ -1,5 +1,6 @@
 extends Node3D
 
+var museum_window: Window
 var original_bone_positions := {}
 var elapsed := 0.0
 var timer_running := false
@@ -12,11 +13,43 @@ func _ready():
 	print("Sand scene registered in global")
 	Global.all_bones_found.connect(_on_all_bones_found)
 
+	var existing_window = get_tree().root.get_node_or_null("MuseumWindow")
+	if existing_window:
+		museum_window = existing_window
+		print("Reusing existing Museum window.")
+		_reset_museum_scene()
+		return
+
+	museum_window = Window.new()
+	museum_window.name = "MuseumWindow"
+	museum_window.title = "Museum"
+	museum_window.mode = Window.MODE_WINDOWED
+	museum_window.transient = false
+	museum_window.position = Vector2i(5, 300)
+	museum_window.size = Vector2i(800, 1000)
+
+	var museum_scene = load("res://Museum.tscn").instantiate()
+	museum_scene.name = "Museum"
+	museum_window.add_child(museum_scene)
+
+	get_tree().root.call_deferred("add_child", museum_window)
+	museum_window.visible = true
+	print("Created new Museum window.")
+
+
+func _reset_museum_scene():
+	if museum_window:
+		var museum_scene = museum_window.get_node_or_null("Museum")
+		if museum_scene and museum_scene.has_method("setup_scene"):
+			museum_scene.setup_scene()
+			print("Reset museum scene in same window.")
+
+
 func _save_original_positions():
 	var stego = $Stegosaur
 	var bone_paths = {
 		"head": "head",
-		"front": "Front", 
+		"front": "Front",
 		"back": "Back",
 		"spine": "spine",
 		"ribs": "ribs",
@@ -30,94 +63,59 @@ func _save_original_positions():
 			original_bone_positions[bone_name] = bone.global_position
 	print("Saved original bone global positions.")
 
+
 func _randomize_bone_positions():
 	var stego = $Stegosaur
 	var bone_paths = {
 		"head": "head",
 		"front": "Front",
-		"back": "Back", 
+		"back": "Back",
 		"spine": "spine",
 		"ribs": "ribs",
 		"tail": "tail"
 	}
 
-	# Bone size estimates (approximate bounding box radius for each bone)
-	var bone_sizes = {
-		"head": 0.8,
-		"front": 1.2,
-		"back": 1.2,
-		"spine": 1.5,
-		"ribs": 1.0,
-		"tail": 1.3
-	}
+	var min_x = -1.434
+	var max_x = 3.007
+	var min_z = -4.059
+	var max_z = 3.719
 
-	# Adjusted bounds for our 16x9 sand area with extra padding for bone sizes
-	var min_x = -8.0
-	var max_x = 8.0
-	var min_z = -4.5
-	var max_z = 4.5
+	var padding = 0.4
+	min_x += padding
+	max_x -= padding
+	min_z += padding
+	max_z -= padding
 
-	var boundary_padding = 0.8  # Extra padding from edges
-	min_x += boundary_padding
-	max_x -= boundary_padding
-	min_z += boundary_padding
-	max_z -= boundary_padding
+	var camera_center = Vector3(0.857, 0, -0.114)
 
 	var seed_val = Time.get_ticks_usec()
 	seed(seed_val)
 	print("Using seed:", seed_val)
-
-	var placed_bones = []  # Array to track placed bone positions and sizes
 
 	for bone_name in bone_paths.keys():
 		var path = bone_paths[bone_name]
 		if stego.has_node(path):
 			var bone = stego.get_node(path)
 			var base_pos = original_bone_positions.get(bone_name, bone.global_position)
-			var bone_size = bone_sizes.get(bone_name, 1.0)
-			
-			var max_attempts = 50
-			var placed = false
-			
-			for attempt in range(max_attempts):
-				var new_x = randf_range(min_x, max_x)
-				var new_z = randf_range(min_z, max_z)
-				var new_pos = Vector3(new_x, base_pos.y, new_z)
-				
-				# Check if this position collides with any already placed bone
-				var collision = false
-				for placed_bone in placed_bones:
-					var distance = new_pos.distance_to(placed_bone.position)
-					var min_distance = bone_size + placed_bone.size
-					
-					if distance < min_distance:
-						collision = true
-						break
-				
-				# Check if bone would stick out of bounds
-				var out_of_bounds = false
-				if new_x - bone_size < min_x or new_x + bone_size > max_x:
-					out_of_bounds = true
-				if new_z - bone_size < min_z or new_z + bone_size > max_z:
-					out_of_bounds = true
-				
-				if not collision and not out_of_bounds:
-					# Position is valid!
-					bone.global_position = new_pos
-					placed_bones.append({"position": new_pos, "size": bone_size})
-					print("  🦴", bone_name, "->", new_pos, "(attempt", attempt + 1, ")")
-					placed = true
-					break
-			
-			if not placed:
-				print("  ⚠️", bone_name, "failed to place after", max_attempts, "attempts - using fallback position")
-				# Fallback: place at a safe distance from other bones
-				var fallback_x = randf_range(min_x + bone_size, max_x - bone_size)
-				var fallback_z = randf_range(min_z + bone_size, max_z - bone_size)
-				bone.global_position = Vector3(fallback_x, base_pos.y, fallback_z)
-				placed_bones.append({"position": bone.global_position, "size": bone_size})
 
-	print("Bones randomized with collision detection!")
+			# Randomize only X and Z, keep original Y
+			var new_x = randf_range(min_x, max_x) + camera_center.x
+			var new_z = randf_range(min_z, max_z) + camera_center.z
+
+			bone.global_position = Vector3(new_x, base_pos.y, new_z)
+			print("  🦴", bone_name, "->", bone.global_position)
+
+	print("Bones randomized using original working logic.")
+
+
+func _get_all_bones(node: Node) -> Array:
+	var bones := []
+	for child in node.get_children():
+		if child is Node3D and child.name != "CollisionShape3D":
+			bones.append(child)
+			bones += _get_all_bones(child)
+	return bones
+
 
 func _on_all_bones_found():
 	_stop_timer()
@@ -131,6 +129,7 @@ func _on_all_bones_found():
 	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	add_child(label)
 	label.global_position = Vector3(0, 1, 0)
+
 
 func _start_timer():
 	elapsed = 0.0
