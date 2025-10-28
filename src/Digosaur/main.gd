@@ -65,6 +65,12 @@ func _save_original_positions():
 
 
 func _randomize_bone_positions():
+	
+	if not $Stegosaur.is_inside_tree():
+		await $Stegosaur.ready
+
+	await get_tree().process_frame 
+	
 	var stego = $Stegosaur
 	var bone_paths = {
 		"head": "head",
