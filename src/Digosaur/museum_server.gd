@@ -71,6 +71,12 @@ func handle_client_connection(client: StreamPeerTCP):
 									print("🧪 CONNECTION TEST RECEIVED!")
 								else:
 									print("Museum Server: Bone collected: ", bone_id)
+									# Prefer direct call via Global autoload to avoid path/timing issues
+									if Global and Global.museum_ref:
+										Global.museum_ref.call_deferred("_on_network_bone_received", bone_id)
+									else:
+										print("Museum Server: Global.museum_ref not set")
+									# Also emit signal for any additional listeners
 									bone_received.emit(bone_id)
 							elif message["type"] == "game_reset":
 								print("Museum Server: Game reset received!")
