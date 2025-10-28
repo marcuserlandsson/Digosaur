@@ -74,7 +74,7 @@ material = SubResource("StandardMaterial3D_8vou4")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_srsvm"]
 transparency = 1
-albedo_color = Color(0, 0, 0, 0.72156864)
+albedo_color = Color(0, 0, 0, 0.50980395)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eyvrr"]
 resource_name = "Dino color"
@@ -255,7 +255,7 @@ shadow_mesh = SubResource("ArrayMesh_84uan")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_td8uw"]
 transparency = 1
-albedo_color = Color(0, 0, 0, 0.72156864)
+albedo_color = Color(0, 0, 0, 0.50980395)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_22o5d"]
 resource_name = "Dino color"
@@ -470,7 +470,7 @@ shadow_mesh = SubResource("ArrayMesh_001op")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ov8d"]
 transparency = 1
-albedo_color = Color(0, 0, 0, 0.72156864)
+albedo_color = Color(0, 0, 0, 0.50980395)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_du3wx"]
 resource_name = "Dino color"
@@ -730,11 +730,11 @@ albedo_color = Color(0, 0, 0, 0.72156864)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1w66u"]
 transparency = 1
-albedo_color = Color(0, 0, 0, 0.72156864)
+albedo_color = Color(0, 0, 0, 0.50980395)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rs5w7"]
 transparency = 1
-albedo_color = Color(0, 0, 0, 0.72156864)
+albedo_color = Color(0, 0, 0, 0.50980395)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3urh"]
 resource_name = "Dino color"
@@ -1357,7 +1357,7 @@ shadow_mesh = SubResource("ArrayMesh_jxr4y")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3iff"]
 transparency = 1
-albedo_color = Color(0, 0, 0, 0.72156864)
+albedo_color = Color(0, 0, 0, 0.50980395)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwkp4"]
 resource_name = "Dino color"
@@ -1882,6 +1882,7 @@ transform = Transform3D(1.55222, 0, 0.366929, 0, 1.595, 0, -0.366929, 0, 1.55222
 
 [node name="back_legs" parent="Stegosaur" instance=ExtResource("18_6qy77")]
 transform = Transform3D(-4.24264, 0, 4.24264, 0, 6, 0, -4.24264, 0, -4.24264, 0.1303, 0.199, 2.2579)
+visible = false
 
 [node name="back_legs_shadow" type="Node3D" parent="Stegosaur"]
 transform = Transform3D(-4.24264, 0, 4.24264, 0, 6, 0, -4.24264, 0, -4.24264, 0.1303, 0.199, 2.2579)
@@ -1913,6 +1914,7 @@ skeleton = NodePath("")
 
 [node name="ribcage" parent="Stegosaur" instance=ExtResource("19_h8q7c")]
 transform = Transform3D(-4.24264, 0, 4.24264, 0, 6, 0, -4.24264, 0, -4.24264, 0, 0.594, 2.417)
+visible = false
 
 [node name="ribcage_shadow" type="Node3D" parent="Stegosaur"]
 transform = Transform3D(-4.24264, 0, 4.24264, 0, 6, 0, -4.24264, 0, -4.24264, 0, 0.594, 2.417)
@@ -1949,6 +1951,7 @@ skeleton = NodePath("")
 
 [node name="front_legs" parent="Stegosaur" instance=ExtResource("20_6osv0")]
 transform = Transform3D(-4.24264, 0, 4.24264, 0, 6, 0, -4.24264, 0, -4.24264, 0.0300188, 0.192086, 2.44936)
+visible = false
 
 [node name="front_legs_shadow" type="Node3D" parent="Stegosaur"]
 transform = Transform3D(-4.24264, 0, 4.24264, 0, 6, 0, -4.24264, 0, -4.24264, 0.0300188, 0.192086, 2.44936)
@@ -1980,6 +1983,7 @@ skeleton = NodePath("")
 
 [node name="head2" type="Node3D" parent="Stegosaur"]
 transform = Transform3D(-4.24264, 0, 4.24264, 0, 6, 0, -4.24264, 0, -4.24264, -0.174883, -1.90735e-06, 2.4689)
+visible = false
 
 [node name="Cube_041" type="MeshInstance3D" parent="Stegosaur/head2"]
 transform = Transform3D(0.049612433, 0, 0, 0, 0.025177682, -0.012009837, 0, 0.009290398, 0.032547563, 0, 0.71727157, 1.2678404)
@@ -2006,6 +2010,7 @@ skeleton = NodePath("")
 
 [node name="spine" parent="Stegosaur" instance=ExtResource("22_pspw5")]
 transform = Transform3D(-4.24264, 0, 4.24264, 0, 6, 0, -4.24264, 0, -4.24264, -0.116907, 0.464561, 2.34511)
+visible = false
 
 [node name="spine_shadow" type="Node3D" parent="Stegosaur"]
 transform = Transform3D(-4.24264, 0, 4.24264, 0, 6, 0, -4.24264, 0, -4.24264, -0.116907, 0.464561, 2.34511)
@@ -2102,6 +2107,7 @@ skeleton = NodePath("")
 
 [node name="tail" parent="Stegosaur" instance=ExtResource("23_yued6")]
 transform = Transform3D(-4.24264, 0, 4.24264, 0, 6, 0, -4.24264, 0, -4.24264, -0.233135, 0.752951, 2.45437)
+visible = false
 
 [node name="tail_shadow" type="Node3D" parent="Stegosaur"]
 transform = Transform3D(-4.24264, 0, 4.24264, 0, 6, 0, -4.24264, 0, -4.24264, -0.233135, 0.752951, 2.45437)
