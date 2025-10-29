@@ -1,4 +1,5 @@
 extends Node3D
+@onready var audio = $FinishedSound
 
 var original_bone_positions := {}
 var elapsed := 0.0
@@ -97,6 +98,7 @@ func _on_all_bones_found():
 	var seconds := fmod(elapsed, 60.0)
 
 	var label = Label3D.new()
+	audio.play()
 	label.text = "Congratulations!!!\nYou found all the bones!\nTime: %02d:%05.2f" % [minutes, seconds]
 	label.modulate = Color(1, 1, 0)
 	label.scale = Vector3(1, 1, 1)
