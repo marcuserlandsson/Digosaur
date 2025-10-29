@@ -3,7 +3,7 @@ extends Node3D
 @export var bone_id: String = "dogbone3"
 @onready var audio = $AudioStreamPlayer
 
-var sound = preload("res://Sounds/Magic Spell.wav")
+#var sound = preload("res://Sounds/Magic_Spell.wav")
 
 func _ready():
 	# Add to bone collectibles group for touch detection
@@ -31,6 +31,7 @@ func _on_body_entered(body):
 func collect_bone():
 	print("Collected bone:", bone_id)
 	Global.add_bone(bone_id)
+	audio.play()
 	hide_bone()
 
 func hide_bone():

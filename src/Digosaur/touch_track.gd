@@ -25,6 +25,9 @@ class_name TouchTrack
 @onready var particles19: GPUParticles3D = $"../SubViewport/RemoteParticles/TrackParticles19"
 @onready var particles20: GPUParticles3D = $"../SubViewport/RemoteParticles/TrackParticles20"
 
+@onready var audio1 = $"../SandSound"
+@onready var audio2 = $"../SandSound2"
+
 @onready var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 #@onready var tcp_client = $"../TCPClient"
 
@@ -121,44 +124,124 @@ func _physics_process(delta: float):
 			# Create persistent touch trail
 			if i == 0:
 				create_persistent_trail(coords, touch[3], particles1)  # touch[3] is intensity
+				if !audio1.is_playing(): 
+					audio1.play()
+				if !audio2.is_playing() && audio1.is_playing():
+					audio2.play()
 			elif i == 1:
 				create_persistent_trail(coords, touch[3], particles2)  # touch[3] is intensity
+				if !audio1.is_playing(): 
+					audio1.play()
+				if !audio2.is_playing() && audio1.is_playing():
+					audio2.play()
 			elif i == 2:
 				create_persistent_trail(coords, touch[3], particles3)  # touch[3] is intensity
+				if !audio1.is_playing(): 
+					audio1.play()
+				if !audio2.is_playing() && audio1.is_playing():
+					audio2.play()
 			elif i == 3:
 				create_persistent_trail(coords, touch[3], particles4)  # touch[3] is intensity
+				if !audio1.is_playing(): 
+					audio1.play()
+				if !audio2.is_playing() && audio1.is_playing():
+					audio2.play()
 			elif i == 4:
 				create_persistent_trail(coords, touch[3], particles5)  # touch[3] is intensity
+				if !audio1.is_playing(): 
+					audio1.play()
+				if !audio2.is_playing() && audio1.is_playing():
+					audio2.play()
 			elif i == 5:
 				create_persistent_trail(coords, touch[3], particles6)  # touch[3] is intensity
+				if !audio1.is_playing(): 
+					audio1.play()
+				if !audio2.is_playing() && audio1.is_playing():
+					audio2.play()
 			elif i == 6:
 				create_persistent_trail(coords, touch[3], particles7)  # touch[3] is intensity
+				if !audio1.is_playing(): 
+					audio1.play()
+				if !audio2.is_playing() && audio1.is_playing():
+					audio2.play()
 			elif i == 7:
 				create_persistent_trail(coords, touch[3], particles8)  # touch[3] is intensity
+				if !audio1.is_playing(): 
+					audio1.play()
+				if !audio2.is_playing() && audio1.is_playing():
+					audio2.play()
 			elif i == 9:
 				create_persistent_trail(coords, touch[3], particles9)  # touch[3] is intensity
+				if !audio1.is_playing(): 
+					audio1.play()
+				if !audio2.is_playing() && audio1.is_playing():
+					audio2.play()
 			elif i == 9:
 				create_persistent_trail(coords, touch[3], particles10)  # touch[3] is intensity
+				if !audio1.is_playing(): 
+					audio1.play()
+				if !audio2.is_playing() && audio1.is_playing():
+					audio2.play()
 			elif i == 10:
 				create_persistent_trail(coords, touch[3], particles11)  # touch[3] is intensity
+				if !audio1.is_playing(): 
+					audio1.play()
+				if !audio2.is_playing() && audio1.is_playing():
+					audio2.play()
 			elif i == 11:
 				create_persistent_trail(coords, touch[3], particles12)  # touch[3] is intensity
+				if !audio1.is_playing(): 
+					audio1.play()
+				if !audio2.is_playing() && audio1.is_playing():
+					audio2.play()
 			elif i == 12:
 				create_persistent_trail(coords, touch[3], particles13)  # touch[3] is intensity
+				if !audio1.is_playing(): 
+					audio1.play()
+				if !audio2.is_playing() && audio1.is_playing():
+					audio2.play()
 			elif i == 13:
 				create_persistent_trail(coords, touch[3], particles14)  # touch[3] is intensity
+				if !audio1.is_playing(): 
+					audio1.play()
+				if !audio2.is_playing() && audio1.is_playing():
+					audio2.play()
 			elif i == 14:
 				create_persistent_trail(coords, touch[3], particles15)  # touch[3] is intensity
+				if !audio1.is_playing(): 
+					audio1.play()
+				if !audio2.is_playing() && audio1.is_playing():
+					audio2.play()
 			elif i == 15:
 				create_persistent_trail(coords, touch[3], particles16)  # touch[3] is intensity
+				if !audio1.is_playing(): 
+					audio1.play()
+				if !audio2.is_playing() && audio1.is_playing():
+					audio2.play()
 			elif i == 16:
 				create_persistent_trail(coords, touch[3], particles17)  # touch[3] is intensity
+				if !audio1.is_playing(): 
+					audio1.play()
+				if !audio2.is_playing() && audio1.is_playing():
+					audio2.play()
 			elif i == 17:
 				create_persistent_trail(coords, touch[3], particles18)  # touch[3] is intensity
+				if !audio1.is_playing(): 
+					audio1.play()
+				if !audio2.is_playing() && audio1.is_playing():
+					audio2.play()
 			elif i == 18:
 				create_persistent_trail(coords, touch[3], particles19)  # touch[3] is intensity
+				if !audio1.is_playing(): 
+					audio1.play()
+				if !audio2.is_playing() && audio1.is_playing():
+					audio2.play()
 			elif i == 19:
 				create_persistent_trail(coords, touch[3], particles20)  # touch[3] is intensity
+				if !audio1.is_playing(): 
+					audio1.play()
+				if !audio2.is_playing() && audio1.is_playing():
+					audio2.play()
 		
 		# 4. Clear array after processing (prevents backlog but allows trail creation)
 		current_touches.clear()

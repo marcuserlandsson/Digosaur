@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dxubx7jcps6q8"
-path="res://.godot/imported/Magic Spell.wav-bc2c7398f6fc32f2225778feebfb6bdb.sample"
+uid="uid://byik5d7qdxvje"
+path="res://.godot/imported/ButtonClick.wav-a7503f2086d8aff67d6efbcffca4ee5b.sample"
 
 [deps]
 
-source_file="res://Magic Spell.wav"
-dest_files=["res://.godot/imported/Magic Spell.wav-bc2c7398f6fc32f2225778feebfb6bdb.sample"]
+source_file="res://Sounds/ButtonClick.wav"
+dest_files=["res://.godot/imported/ButtonClick.wav-a7503f2086d8aff67d6efbcffca4ee5b.sample"]
 
 [params]
 
