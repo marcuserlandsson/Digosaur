@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bdqnkfbw5tq6m"
-path="res://.godot/imported/Tada.wav-e12369e30d99a62c29daa1e1afb35a67.sample"
+uid="uid://dxubx7jcps6q8"
+path="res://.godot/imported/Magic Spell.wav-bc2c7398f6fc32f2225778feebfb6bdb.sample"
 
 [deps]
 
-source_file="res://Sounds/Tada.wav"
-dest_files=["res://.godot/imported/Tada.wav-e12369e30d99a62c29daa1e1afb35a67.sample"]
+source_file="res://Magic Spell.wav"
+dest_files=["res://.godot/imported/Magic Spell.wav-bc2c7398f6fc32f2225778feebfb6bdb.sample"]
 
 [params]
 

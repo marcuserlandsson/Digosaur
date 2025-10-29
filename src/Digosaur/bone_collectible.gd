@@ -1,11 +1,14 @@
 extends Node3D
 
 @export var bone_id: String = "dogbone3"
+@onready var audio = $AudioStreamPlayer
+
+var sound = preload("res://Sounds/Magic Spell.wav")
 
 func _ready():
 	# Add to bone collectibles group for touch detection
 	add_to_group("bone_collectibles")
-	
+
 	# Connect to the area's input event for touch detection
 	if has_node("Area3D"):
 		$Area3D.input_event.connect(_on_input_event)
