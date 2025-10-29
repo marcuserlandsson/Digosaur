@@ -48,7 +48,7 @@ func reset_game():
 	else:
 		print("Sand scene reference not found.")
 
-	if museum_ref and museum_ref.has_method("setup_scene"):
-		museum_ref.setup_scene()
+	# Note: Museum scene reset is handled via network message (_on_network_game_reset)
+	# museum_ref is only set on the museum machine, not the sand machine
 
 	print("🔄 Game restarted! All bones are back in the sand.")

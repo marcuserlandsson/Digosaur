@@ -1,6 +1,5 @@
 extends Node3D
 
-var museum_window: Window
 var original_bone_positions := {}
 var elapsed := 0.0
 var timer_running := false
@@ -12,37 +11,6 @@ func _ready():
 	_start_timer()
 	print("Sand scene registered in global")
 	Global.all_bones_found.connect(_on_all_bones_found)
-
-	var existing_window = get_tree().root.get_node_or_null("MuseumWindow")
-	if existing_window:
-		museum_window = existing_window
-		print("Reusing existing Museum window.")
-		_reset_museum_scene()
-		return
-
-	museum_window = Window.new()
-	museum_window.name = "MuseumWindow"
-	museum_window.title = "Museum"
-	museum_window.mode = Window.MODE_WINDOWED
-	museum_window.transient = false
-	museum_window.position = Vector2i(5, 300)
-	museum_window.size = Vector2i(800, 1000)
-
-	var museum_scene = load("res://Museum.tscn").instantiate()
-	museum_scene.name = "Museum"
-	museum_window.add_child(museum_scene)
-
-	get_tree().root.call_deferred("add_child", museum_window)
-	museum_window.visible = true
-	print("Created new Museum window.")
-
-
-func _reset_museum_scene():
-	if museum_window:
-		var museum_scene = museum_window.get_node_or_null("Museum")
-		if museum_scene and museum_scene.has_method("setup_scene"):
-			museum_scene.setup_scene()
-			print("Reset museum scene in same window.")
 
 
 func _save_original_positions():

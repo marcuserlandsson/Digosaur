@@ -50,6 +50,8 @@ func _on_network_bone_received(bone_id: String):
 
 func _on_network_game_reset():
 	print("Museum: Network game reset received!")
+	# Clear Global bones tracking 
+	Global.bones.clear()
 	setup_scene()
 
 func _add_bone_to_collection(bone_id: String):
