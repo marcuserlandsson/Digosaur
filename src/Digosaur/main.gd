@@ -27,6 +27,8 @@ func _save_original_positions():
 		var path = bone_paths[bone_name]
 		if stego.has_node(path):
 			var bone = stego.get_node(path)
+			if not is_instance_valid(bone) or not bone.is_inside_tree():
+				continue
 			original_bone_positions[bone_name] = bone.global_position
 	print("Saved original bone global positions.")
 
@@ -73,6 +75,8 @@ func _randomize_bone_positions():
 		var path = bone_paths[bone_name]
 		if stego.has_node(path):
 			var bone = stego.get_node(path)
+			if not is_instance_valid(bone) or not bone.is_inside_tree():
+				continue
 			var base_pos = original_bone_positions.get(bone_name, bone.global_position)
 			var bone_size = bone_sizes.get(bone_name, 1.0)
 			
@@ -103,7 +107,8 @@ func _randomize_bone_positions():
 				
 				if not collision and not out_of_bounds:
 					# Position is valid!
-					bone.global_position = new_pos
+					if is_instance_valid(bone) and bone.is_inside_tree():
+						bone.global_position = new_pos
 					placed_bones.append({"position": new_pos, "size": bone_size})
 					print("  🦴", bone_name, "->", new_pos, "(attempt", attempt + 1, ")")
 					placed = true
@@ -114,7 +119,8 @@ func _randomize_bone_positions():
 				# Fallback: place at a safe distance from other bones
 				var fallback_x = randf_range(min_x + bone_size, max_x - bone_size)
 				var fallback_z = randf_range(min_z + bone_size, max_z - bone_size)
-				bone.global_position = Vector3(fallback_x, base_pos.y, fallback_z)
+				if is_instance_valid(bone) and bone.is_inside_tree():
+					bone.global_position = Vector3(fallback_x, base_pos.y, fallback_z)
 				placed_bones.append({"position": bone.global_position, "size": bone_size})
 
 	print("Bones randomized with collision detection!")
