@@ -1,2 +1,7 @@
-res://Main.tscn
+res://chunk.tscn
 res://terrain.gdshader
+res://chunk.gd
+res://mesh_instance_3d.tscn
+res://main_generator.gd
+res://chunk_manager.gd
+res://chunk_manager.tscn

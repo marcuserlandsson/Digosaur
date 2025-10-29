@@ -1,7 +1,6 @@
 extends Node3D
 
 func _ready():
-	
 	#added stuff from demo 2d_in_3d, might break stuff
 	# Clear the viewport.
 	var viewport = $SubViewport2

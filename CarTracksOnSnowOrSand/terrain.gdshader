@@ -13,9 +13,12 @@ shader_type spatial;
 render_mode diffuse_lambert, specular_toon;
 
 
-group_uniforms heightmaps;
-uniform sampler2D heightmap:hint_default_white;
+// matrix with changes in up to 4 vertices, sent from script
+global uniform mat4 heightmap_changes; // index, intensity, +1/-1, 0
 //uniform sampler2D heightmap_normals;
+
+group_uniforms heightmaps;
+global uniform sampler2D heightmap:hint_default_white; //heightmap
 uniform float heightmap_normals_intensity : hint_range(0.0, 1.0);
 uniform sampler2D splatmap;
 uniform float heightmap_scale;
@@ -57,7 +60,25 @@ uniform float slope_metallic : hint_range(0.0, 1.0);
 uniform float slope_normal_intensity : hint_range(0.0, 1.0);
 
 //varying vec2 world_position;
-varying vec3 vert_normal;
+//varying vec3 vert_normal;
+
+varying vec4 heightmap_heights0; //array with all changes in height
+varying vec4 heightmap_heights1; //array with all changes in height
+varying vec4 heightmap_heights2;
+varying vec4 heightmap_heights4; //array with all changes in height
+varying vec4 heightmap_heights5; //array with all changes in height
+varying vec4 heightmap_heights6;
+varying vec4 heightmap_heights7; //array with all changes in height
+varying vec4 heightmap_heights8; //array with all changes in height
+varying vec4 heightmap_heights9;
+varying vec4 heightmap_heights10; //array with all changes in height
+varying vec4 heightmap_heights11; //array with all changes in height
+varying vec4 heightmap_heights12;
+varying vec4 heightmap_heights13; //array with all changes in height
+varying vec4 heightmap_heights14; //array with all changes in height
+varying vec4 heightmap_heights15;
+varying vec4 heightmap_heights16; //array with all changes in height
+varying vec4 heightmap_heights17; //array with all changes in height
 
 
 vec3 get_triplanarized_map(sampler2D sampler, vec4 projected_coords, vec3 normal_weights, float uv_scale) {
@@ -103,6 +124,7 @@ void fragment() {
 	vec3 slope_normal_scaled = mix(vec3(0.5, 0.5, 1), triplanarized_slope_normal, slope_normal_scale);
 	vec3 flat_normal_scaled = mix(vec3(0.5, 0.5, 1), triplanarized_flat_normal, flat_normal_scale);
 	
+	
 	ALBEDO = mix(slope_color, flat_color, slope_mask_inverted);
 	//ALBEDO = vec3(slope_mask);
 	SPECULAR = mix(slope_specular, flat_specular, slope_mask_inverted);
@@ -135,19 +157,59 @@ float fbm(vec2 x) {
   return height;
 }
 
+
 void vertex() {
+	int x_coord = int(round(VERTEX.x));
+	int z_coord = int(round(VERTEX.z));
+	
 	float pixel_size = 1.0 / float(textureSize(heightmap, 0).x);
 	vec2 half_pixel_offset = vec2(pixel_size, pixel_size) / 2.0;
 
 	float heightmap_size = float(textureSize(heightmap, 0).x);
 	
+	// change x and y to match positions in ints
+	VERTEX.x = float(x_coord);
+	VERTEX.z = float(z_coord);
+	
+	int number;
+		if(x_coord <0)
+			number = 16+x_coord;
+		if(x_coord < 10)
+			number = x_coord * z_coord -1;
+		
+	//heightmap_heights[number] = (heightmap_heights[number])*(heightmap_changes[0][1]);
 	//world_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xz * 1.0 / (heightmap_size * heightmap_scale) + vec2(0.5) + half_pixel_offset; 
-	VERTEX.y += texture(heightmap, UV/*world_position*/).r * heightmap_height_scale;
+	bool changed = false;
+	
+	
+	if(VERTEX.x == heightmap_changes[0].x && VERTEX.z == heightmap_changes[0].y && heightmap_changes[0].w>=0.0){
+		VERTEX.y += heightmap_changes[0].z * heightmap_changes[0].w * heightmap_height_scale;
+
+		changed = true;}
+	else if(VERTEX.x == heightmap_changes[1].x && VERTEX.z == heightmap_changes[1].y && heightmap_changes[1].w>=0.0){
+		VERTEX.y += heightmap_changes[1].z * heightmap_changes[1].w * heightmap_height_scale;
+		//heightmap_heights=VERTEX.y;
+		changed = true;}
+	else if(VERTEX.x == heightmap_changes[2].x && VERTEX.z == heightmap_changes[2].y && heightmap_changes[2].w>=0.0){
+		VERTEX.y += heightmap_changes[2].z * heightmap_changes[2].w * heightmap_height_scale;
+		//heightmap_heights=VERTEX.y;
+		changed = true;}
+	else if(VERTEX.x == heightmap_changes[3].x && VERTEX.z == heightmap_changes[3].y && heightmap_changes[3].w>=0.0){
+		VERTEX.y += heightmap_changes[3].z * heightmap_changes[3].w * heightmap_height_scale;
+		//heightmap_heights=VERTEX.y;
+		changed = true;}
+	//else if (heightmap_heights.x >= 0.0){
+		//VERTEX.y += heightmap_heights[number];
+	//}
+	if (changed == false)
+		VERTEX.y +=texture(heightmap, UV/*world_position*/).r * heightmap_height_scale;	
+		//else 
+			//VERTEX.y +=texture(heightmap, UV/*world_position*/).r * heightmap_height_scale;
 	
 	vec2 e = vec2(0.01, 0.0);
 	vec3 normal = normalize(vec3(fbm(VERTEX.xz - e) - fbm(VERTEX.xz + e), 2.0 * e.x, fbm(VERTEX.xz - e.yx) - fbm(VERTEX.xz + e.yx)));
 	//vec3 total_normal = unpack_normalmap(texture(heightmap_normals, world_position));
-	vert_normal = mix(vec3(0.5, 0.5, 1.0), normal, heightmap_normals_intensity);
+	/*vert_normal*/NORMAL = mix(vec3(0.5, 0.5, 1.0), normal, heightmap_normals_intensity);
 	
-	NORMAL = vert_normal;
+	//NORMAL = vert_normal;
 }

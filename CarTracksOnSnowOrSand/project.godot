@@ -24,3 +24,22 @@ project/assembly_name="CarTracksOnSnowOrSand"
 
 renderer/rendering_method="mobile"
 renderer/rendering_method.mobile="gl_compatibility"
+
+[shader_globals]
+
+testing_globals={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}
+heightmap={
+"type": "sampler2D",
+"value": "res://Images/snow_height.png"
+}
+heightmap_changes={
+"type": "mat4",
+"value": Projection(0, 0, 0, -1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 0, 0, -1)
+}
+first={
+"type": "bool",
+"value": true
+}

@@ -1,10 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://dtkptpruv1ay6"]
+[gd_scene load_steps=17 format=3 uid="uid://dtkptpruv1ay6"]
 
 [ext_resource type="Script" uid="uid://b0pj4o5nptdjs" path="res://mouse_track.gd" id="2_bwx1l"]
 [ext_resource type="Shader" uid="uid://bu3hmfhtkggrt" path="res://terrain.gdshader" id="2_cm0pq"]
 [ext_resource type="Script" uid="uid://chu1e26tjjy6y" path="res://drawing.gd" id="2_fos0i"]
 [ext_resource type="Texture2D" uid="uid://dna0pxa4867pe" path="res://Images/snow_albedo.png" id="3_fos0i"]
-[ext_resource type="Texture2D" uid="uid://1cujdx38cxxa" path="res://Images/snow_height.png" id="3_r0du0"]
+[ext_resource type="Texture2D" uid="uid://1cujdx38cxxa" path="res://Images/snow_height.png" id="4_3dxm6"]
+[ext_resource type="Script" uid="uid://btn625joxvu0c" path="res://sand_height.gd" id="5_lgr22"]
+[ext_resource type="PackedScene" uid="uid://bee0w2vfye55f" path="res://mesh_instance_3d.tscn" id="7_lgr22"]
 
 [sub_resource type="Environment" id="Environment_i3pvo"]
 background_mode = 1
@@ -37,47 +39,48 @@ material = SubResource("StandardMaterial3D_fos0i")
 radius = 0.23
 height = 0.63
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uu6xs"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r0du0"]
 render_priority = 0
 shader = ExtResource("2_cm0pq")
-shader_parameter/heightmap = ExtResource("3_r0du0")
-shader_parameter/heightmap_normals_intensity = 0.3090000146775
+shader_parameter/heightmap_normals_intensity = 0.234000011115
+shader_parameter/splatmap = ExtResource("4_3dxm6")
 shader_parameter/heightmap_scale = 1.0
-shader_parameter/heightmap_height_scale = 1.0
-shader_parameter/slope_edge_1 = 0.73600003496
-shader_parameter/slope_edge_2 = 0.76400003629
-shader_parameter/slope_edge_3 = 1.0
-shader_parameter/slope_edge_noise = ExtResource("3_r0du0")
+shader_parameter/heightmap_height_scale = 5.0
+shader_parameter/slope_edge_1 = 0.5330000253175
+shader_parameter/slope_edge_2 = 0.478000022705
+shader_parameter/slope_edge_3 = 0.46000002185
+shader_parameter/slope_edge_noise = ExtResource("4_3dxm6")
 shader_parameter/slope_edge_noise_scale = 1.0
-shader_parameter/slope_edge_noise_intensity = 0.50000002375
-shader_parameter/slope_color_remap_top = Color(1, 0.9254902, 0.61960787, 1)
-shader_parameter/slope_color_remap_bottom = Color(0.9644376, 0.90683234, 0.38109186, 1)
-shader_parameter/flat_color_remap_top = Color(0.81960785, 0.49411765, 0.23921569, 1)
+shader_parameter/slope_edge_noise_intensity = 0.0210000009975
+shader_parameter/slope_color_remap_top = Color(1, 0.92156863, 0.5882353, 1)
+shader_parameter/slope_color_remap_bottom = Color(0.98039216, 0.8, 0.4, 1)
+shader_parameter/flat_color_remap_top = Color(1, 0.85882354, 0.5294118, 1)
 shader_parameter/flat_color_remap_bottom = Color(0, 0, 0, 1)
 shader_parameter/flat_albedo = ExtResource("3_fos0i")
+shader_parameter/flat_normal = ExtResource("3_fos0i")
 shader_parameter/flat_uv_scale = 1.0
-shader_parameter/flat_normal_scale = 0.0
-shader_parameter/slope_albedo = ExtResource("3_fos0i")
+shader_parameter/flat_normal_scale = 0.246000011685
 shader_parameter/slope_uv_scale = 1.0
-shader_parameter/slope_normal_scale = 0.0
+shader_parameter/slope_normal_scale = 0.14000000665
 shader_parameter/flat_specular = 0.0
 shader_parameter/flat_roughness = 0.0
 shader_parameter/flat_metallic = 0.0
-shader_parameter/flat_normal_intensity = 0.0
+shader_parameter/flat_normal_intensity = 0.5600000266
 shader_parameter/slope_specular = 0.0
 shader_parameter/slope_roughness = 0.0
 shader_parameter/slope_metallic = 0.0
-shader_parameter/slope_normal_intensity = 0.0
+shader_parameter/slope_normal_intensity = 0.4830000229425
 
 [sub_resource type="QuadMesh" id="QuadMesh_wkp8b"]
 lightmap_size_hint = Vector2i(52, 52)
-material = SubResource("ShaderMaterial_uu6xs")
+material = SubResource("ShaderMaterial_r0du0")
 size = Vector2(10, 10)
-subdivide_width = 1000
-subdivide_depth = 1000
+subdivide_width = 10
+subdivide_depth = 10
 orientation = 1
 
 [node name="Main" type="Node3D"]
+visible = false
 
 [node name="NOTES" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.17429, 0)
@@ -113,6 +116,7 @@ environment = SubResource("Environment_ms5u6")
 
 [node name="RemoteParticles" type="Node3D" parent="SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.830201)
+visible = false
 
 [node name="NewTrackParticles" type="GPUParticles3D" parent="SubViewport/RemoteParticles"]
 transform = Transform3D(-0.997109, -0.0759882, -3.32155e-09, 0, -4.37114e-08, 1, -0.0759882, 0.997109, 4.3585e-08, 0, 0, -0.475)
@@ -126,7 +130,9 @@ draw_pass_1 = SubResource("SphereMesh_3dxm6")
 
 [node name="SandHeight" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0002450943, 0.00659132, 0.008224487)
+visible = false
 mesh = SubResource("QuadMesh_wkp8b")
+script = ExtResource("5_lgr22")
 
 [node name="GPUParticlesCollisionHeightField3D" type="GPUParticlesCollisionHeightField3D" parent="SandHeight"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19702148, 0, 0.19207764)
@@ -157,3 +163,5 @@ transform = Transform3D(0.9494364, -1.37235965e-08, 0.3139593, -0.3139593, -4.15
 light_energy = 0.5
 light_angular_distance = 1.0
 directional_shadow_mode = 0
+
+[node name="MeshInstance3D" parent="." instance=ExtResource("7_lgr22")]
