@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1761752953
+::res://::1761822726
 back.gd::GDScript::4257430371664218486::1761649964::0::1::::<>Node3D<><>0<>0<><>::
 blob_tracking.gd::GDScript::1621183533050689612::1761644340::0::1::::<>Node<><>0<>0<><>::
 bone_collectible.gd::GDScript::7955130719914826736::1761644340::0::1::::<>Node3D<><>0<>0<><>::
@@ -9,7 +9,7 @@ head.gd::GDScript::1624319172471917528::1761649964::0::1::::<>Node3D<><>0<>0<><>
 icon.png::CompressedTexture2D::557325075131260776::1761666847::1761666849::1::::<><><>0<>0<>0e1a00cf23d949a71514519660827b87<>res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.bptc.ctex::
 icon.svg::CompressedTexture2D/CompressedTexture2D::4323380189673864131::1761644340::1761742153::1::::<><><>0<>0<>44c7bfcc74b08ce2e818cdd23c83e6eb<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 main.gd::GDScript::8516523040216154707::1761747688::0::1::::<>Node3D<><>0<>0<><>::
-Main.tscn::PackedScene::8514439357767927727::1761752160::0::1::::<><><>0<>0<><>::uid://epvgbo8kssyx::::res://touch_track.gd<>uid://1cujdx38cxxa::::res://Images/snow_height.png<>uid://lappm6o7lj1m::::res://tracks.tres<>uid://bkdknufuoqu3::::res://textures/Floor/sand_texture.jpg<>uid://bocxx2c6u4xiw::::res://terrain_runtime_brush.gd<>uid://deay6844ie42x::::res://tcp_client.gd<>uid://xdkwkiy3j5j1::::res://blob_tracking.gd<>uid://bf38848uxlkor::::res://3D_Models/Complete dinosaur/head_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg<>uid://xe3kgf08ibmm::::res://head.gd<>uid://dw5ko77s4cjf6::::res://front.gd<>uid://b1wliyf2htgbu::::res://back.gd<>uid://p3pdy1wppa4b::::res://3D_Models/Complete dinosaur/front_legs_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg<>uid://tc2n05bwbw5e::::res://spine.gd<>uid://dwl22gv7k24rg::::res://ribs.gd<>uid://djg7oscuce3bw::::res://tail.gd<>uid://df525thvi56bx::::res://3D_Models/Complete dinosaur/back_legs_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg<>uid://c21yhon74m6fm::::res://3D_Models/Complete dinosaur/head.glb<>uid://b87uk4k0btso2::::res://museum_network.gd<>uid://csdgfcsoexfp1::::res://3D_Models/Complete dinosaur/front_legs.glb<>uid://dwdf3vwlq00kx::::res://3D_Models/Complete dinosaur/back_legs.glb<>uid://dv3ql7jwmy75::::res://3D_Models/Complete dinosaur/spine_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg<>uid://cfuv2e3ywqjgy::::res://3D_Models/Complete dinosaur/spine.glb<>uid://cl35u7wr4qpfk::::res://3D_Models/Complete dinosaur/ribcage.glb<>uid://hr1q53gl865p::::res://3D_Models/Complete dinosaur/ribcage_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg<>uid://b6jvdnq6oqa54::::res://3D_Models/Complete dinosaur/tail.glb<>uid://1iijo2utm04r::::res://3D_Models/Complete dinosaur/tail_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg<>uid://beofq8y3ayb6o::::res://RestartButton.tscn<>uid://dtlp5jcewa4d0::::res://main.gd
+Main.tscn::PackedScene::8514439357767927727::1761822369::0::1::::<><><>0<>0<><>::uid://epvgbo8kssyx::::res://touch_track.gd<>uid://1cujdx38cxxa::::res://Images/snow_height.png<>uid://lappm6o7lj1m::::res://tracks.tres<>uid://bkdknufuoqu3::::res://textures/Floor/sand_texture.jpg<>uid://bocxx2c6u4xiw::::res://terrain_runtime_brush.gd<>uid://deay6844ie42x::::res://tcp_client.gd<>uid://xdkwkiy3j5j1::::res://blob_tracking.gd<>uid://bf38848uxlkor::::res://3D_Models/Complete dinosaur/head_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg<>uid://xe3kgf08ibmm::::res://head.gd<>uid://dw5ko77s4cjf6::::res://front.gd<>uid://b1wliyf2htgbu::::res://back.gd<>uid://p3pdy1wppa4b::::res://3D_Models/Complete dinosaur/front_legs_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg<>uid://tc2n05bwbw5e::::res://spine.gd<>uid://dwl22gv7k24rg::::res://ribs.gd<>uid://djg7oscuce3bw::::res://tail.gd<>uid://df525thvi56bx::::res://3D_Models/Complete dinosaur/back_legs_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg<>uid://c21yhon74m6fm::::res://3D_Models/Complete dinosaur/head.glb<>uid://b87uk4k0btso2::::res://museum_network.gd<>uid://csdgfcsoexfp1::::res://3D_Models/Complete dinosaur/front_legs.glb<>uid://dwdf3vwlq00kx::::res://3D_Models/Complete dinosaur/back_legs.glb<>uid://dv3ql7jwmy75::::res://3D_Models/Complete dinosaur/spine_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg<>uid://cfuv2e3ywqjgy::::res://3D_Models/Complete dinosaur/spine.glb<>uid://cl35u7wr4qpfk::::res://3D_Models/Complete dinosaur/ribcage.glb<>uid://hr1q53gl865p::::res://3D_Models/Complete dinosaur/ribcage_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg<>uid://b6jvdnq6oqa54::::res://3D_Models/Complete dinosaur/tail.glb<>uid://1iijo2utm04r::::res://3D_Models/Complete dinosaur/tail_131d9086-1c09-4591-8631-9d4d851d3dcf_Kittl_Switch-Color-Palettes.jpg<>uid://beofq8y3ayb6o::::res://RestartButton.tscn<>uid://dtlp5jcewa4d0::::res://main.gd
 museum.gd::GDScript::1651736243862732767::1761649964::0::1::::<>Node3D<><>0<>0<><>::
 Museum.tscn::PackedScene::732515308237960786::1761644340::0::1::::<><><>0<>0<><>::uid://dt331qt4j7bn6::::res://textures/Wall/brick_wall_006_diff_4k.png<>uid://cji0a1m53rhiq::::res://museum.gd<>res://museum_server.gd<>uid://d01ec84t24jbx::::res://textures/Wall/brick_wall_006_nor_gl_4k.png<>uid://n101pawo3ffw::::res://textures/Wall/brick_wall_006_rough_4k.png<>uid://b2y0agniwe7dr::::res://textures/Floor/wood_floor_disp_4k.png<>uid://1xx2kgqlr48m::::res://textures/Floor/wood_floor_nor_gl_4k.png<>uid://cmipw3ig6rttu::::res://textures/Floor/wood_floor_rough_4k.png<>uid://cqf3u30w8g2ei::::res://textures/Wall/stone_tile_wall_disp_4k.png<>uid://bb30aiprk00ba::::res://textures/Wall/stone_tile_wall_nor_gl_4k.png<>uid://ds88b745mwljw::::res://textures/Wall/stone_tile_wall_rough_4k.png<>uid://o8qkrd8cspnx::::res://3D_Models/Pedestal/scene.gltf<>uid://du5vy81p8oorq::::res://3D_Models/Bone/scene.gltf<>uid://cocheai5t47pn::::res://3D_Models/T_rex skull/scene.gltf<>uid://dflv338w5mqhy::::res://3D_Models/Toebone/scene.gltf<>uid://ygqxyfcdhqtt::::res://3D_Models/skull/scene.gltf<>uid://dik261ry07cdh::::res://3D models/dogbone3.glb<>uid://h76qgwnnmrpi::::res://3D_Models/Complete dinosaur/stegosaurus.glb<>uid://dwdf3vwlq00kx::::res://3D_Models/Complete dinosaur/back_legs.glb<>uid://cl35u7wr4qpfk::::res://3D_Models/Complete dinosaur/ribcage.glb<>uid://csdgfcsoexfp1::::res://3D_Models/Complete dinosaur/front_legs.glb<>uid://c21yhon74m6fm::::res://3D_Models/Complete dinosaur/head.glb<>uid://cfuv2e3ywqjgy::::res://3D_Models/Complete dinosaur/spine.glb<>uid://b6jvdnq6oqa54::::res://3D_Models/Complete dinosaur/tail.glb
 museum_network.gd::GDScript::4769946349435649159::1761649964::0::1::::<>Node<><>0<>0<><>::
@@ -20,8 +20,8 @@ ribs.gd::GDScript::8727812690700185716::1761649964::0::1::::<>Node3D<><>0<>0<><>
 spine.gd::GDScript::1339380718258979680::1761649964::0::1::::<>Node3D<><>0<>0<><>::
 tail.gd::GDScript::7805316804650630888::1761649964::0::1::::<>Node3D<><>0<>0<><>::
 tcp_client.gd::GDScript::7441531772467272097::1761644340::0::1::::<>Node<><>0<>0<><>::
-terrain_runtime_brush.gd::GDScript::3374632236883569546::1761752961::0::1::::<>Node3D<><>0<>0<><>::
-touch_track.gd::GDScript::313006888138624735::1761743295::0::1::::TouchTrack<>Node3D<><>0<>0<><>::
+terrain_runtime_brush.gd::GDScript::3374632236883569546::1761822709::0::1::::<>Node3D<><>0<>0<><>::
+touch_track.gd::GDScript::313006888138624735::1761822347::0::1::::TouchTrack<>Node3D<><>0<>0<><>::
 tracks.tres::Shader::773015500666867580::1761644343::0::1::::<><><>0<>0<><>::
 ::res://3D models/::1761742177
 dogbone3.glb::PackedScene/PackedScene::7743112689133803845::1761644339::1761742177::1::::<><><>0<>0<>40ad0169f1e7428648be0159a126306c<>res://.godot/imported/dogbone3.glb-b08c33be4f0f17b6078c3cb519b496ea.scn::
@@ -73,7 +73,7 @@ LICENSE.txt::TextFile::-1::1761742237::0::1::::<><><>0<>0<><>::
 plugin.cfg::TextFile::-1::1761742239::0::1::::<><><>0<>0<><>::
 README.md::TextFile::-1::1761742237::0::1::::<><><>0<>0<><>::
 terrain.gdextension::GDExtension::2625506675569593757::1761742239::0::1::::<><><>0<>0<><>::
-::res://addons/terrain_3d/bin/::1761752946
+::res://addons/terrain_3d/bin/::1761822722
 ::res://addons/terrain_3d/bin/libterrain.macos.debug.framework/::1761742237
 ::res://addons/terrain_3d/bin/libterrain.macos.release.framework/::1761742237
 ::res://addons/terrain_3d/extras/::1761742238
@@ -197,11 +197,11 @@ UI.gd::GDScript::8081880012236297209::1761666847::0::1::::<>Control<><>0<>0<><>:
 ::res://Images/::1761742152
 snow_albedo.png::CompressedTexture2D/CompressedTexture2D::8073262939501494826::1761644340::1761742151::1::::<><><>0<>0<>6820291f4720a59af52d698977533e38<>res://.godot/imported/snow_albedo.png-974f5a78129911f465f22a7edea46fee.s3tc.ctex::
 snow_height.png::CompressedTexture2D/CompressedTexture2D::1830269296514383818::1761644340::1761742152::1::::<><><>0<>0<>14f8d7718d37357887d7485498a0063e<>res://.godot/imported/snow_height.png-ff65ee253cb6b87b553882e9e3031205.s3tc.ctex::
-::res://terrain_data/::1761752830
-terrain3d_00-01.res::Terrain3DRegion::1552090633786635987::1761752996::0::1::::<><><>0<>0<><>::
-terrain3d_00_00.res::Terrain3DRegion::62782228839837301::1761752996::0::1::::<><><>0<>0<><>::
-terrain3d-01_00.res::Terrain3DRegion::7325378354198762636::1761752996::0::1::::<><><>0<>0<><>::
-terrain3d-01-01.res::Terrain3DRegion::1337012328422101713::1761752996::0::1::::<><><>0<>0<><>::
+::res://terrain_data/::1761820383
+terrain3d-01-01.res::Terrain3DRegion::1337012328422101713::1761820383::0::1::::<><><>0<>0<><>::
+terrain3d-01_00.res::Terrain3DRegion::7325378354198762636::1761820383::0::1::::<><><>0<>0<><>::
+terrain3d_00-01.res::Terrain3DRegion::1552090633786635987::1761820383::0::1::::<><><>0<>0<><>::
+terrain3d_00_00.res::Terrain3DRegion::62782228839837301::1761820383::0::1::::<><><>0<>0<><>::
 ::res://textures/::1761644341
 ::res://textures/Floor/::1761751778
 rock_tile_floor_diff_4k.png::CompressedTexture2D/CompressedTexture2D::3481795689494503119::1761644340::1761742153::1::::<><><>0<>0<>8e4c5da46ce4704767ed61349dc1f39f<>res://.godot/imported/rock_tile_floor_diff_4k.png-3c5cdc3d916ddad44c6120d50fed09f8.s3tc.ctex::

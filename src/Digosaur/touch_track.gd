@@ -3,6 +3,10 @@
 extends Node3D
 class_name TouchTrack
 
+@export var brush_node_path : NodePath = NodePath("../Terrain3D")
+var brush_ref : Node = null
+var prev_touches : Dictionary = {}
+
 @onready var cam: Camera3D = $"../Camera3D2"
 @onready var particles1: GPUParticles3D = $"../SubViewport/RemoteParticles/TrackParticles1"
 @onready var particles2: GPUParticles3D = $"../SubViewport/RemoteParticles/TrackParticles2"
@@ -65,6 +69,9 @@ func _ready():
 	particles19.emitting = false
 	particles20.emitting = false
 
+	if brush_node_path != NodePath():
+		brush_ref = get_node(brush_node_path)
+
 
 func _physics_process(delta: float):
 	# Update existing trails (fade them out over time)
@@ -83,6 +90,7 @@ func _physics_process(delta: float):
 		merge_nearby_touches()
 		
 		# 3. Process all touches (multi-touch support)
+		var seen_ids := {}
 		for i in range(current_touches.size()):
 			var touch = current_touches[i]
 			# Debug: #print touch coordinates
@@ -98,68 +106,81 @@ func _physics_process(delta: float):
 			var norm_x = 1.0 - (touch[0] / 960.0) * 2.0  # 0-960 to +1 to -1 (flipped)
 			var norm_y = 1.0 - (touch[1] / 540.0) * 2.0  # 0-540 to +1 to -1 (flipped)
 			
-			# Apply perspective correction only to X-axis (reduces movement at left/right edges)
-			var corrected_x = norm_x * (1.0 - abs(norm_x) * 0.4)  # Reduce movement at edges
-			var corrected_y = norm_y  # No correction for Y-axis (up/down movement)
-			
+			var corrected_x = norm_x * 0.64 # Scale position in x-axis
+			var corrected_y = norm_y * 1.2 + (1 - norm_y) / 11 # Scale and correct position in y-axis
 			# Map to world coordinates
 			var x_to_x = corrected_x * 8.0  # -8 to +8 (16 units wide)
 			var y_to_z = corrected_y * 4.5  # -4.5 to +4.5 (9 units tall)
 			var coords = Vector3(x_to_x, 0.05, y_to_z)
+			#print("y-pixel: ", touch[1], ", z coordinate: ", y_to_z)
 			
 			#print("DEBUG: Mapped to world coords: ", coords)
 			
 			#print("touchPoint ", i, " movement: ", touch[4])
 			
 			#Check if the touchPoint is new or a previous one that has moved
-			if touch[4] == Vector2(-1, -1):
-				print("New touchPoint ", i, " at: [", touch[0], ", ", touch[1], "]")
-			else:
-				print("Moved touchpoint")
+			#if touch[4] == Vector2(-1, -1):
+				#print("New touchPoint ", i, " at: [", touch[0], ", ", touch[1], "]")
+			#else:
+				#print("Moved touchpoint")
 				#print("Moved touchPoint ", i, " from ", "[", [4][0], ", ", [4][1], "] to [", touch[0], ", ", touch[1], "]")
 			
 			# Create persistent touch trail
 			if i == 0:
-				create_persistent_trail(coords, touch[3], particles1)  # touch[3] is intensity
+				create_persistent_trail(coords, touch[3], touch[2], particles1)  # touch[3] is intensity
 			elif i == 1:
-				create_persistent_trail(coords, touch[3], particles2)  # touch[3] is intensity
+				create_persistent_trail(coords, touch[3], touch[2],  particles2)  # touch[3] is intensity
 			elif i == 2:
-				create_persistent_trail(coords, touch[3], particles3)  # touch[3] is intensity
+				create_persistent_trail(coords, touch[3], touch[2],  particles3)  # touch[3] is intensity
 			elif i == 3:
-				create_persistent_trail(coords, touch[3], particles4)  # touch[3] is intensity
+				create_persistent_trail(coords, touch[3], touch[2],  particles4)  # touch[3] is intensity
 			elif i == 4:
-				create_persistent_trail(coords, touch[3], particles5)  # touch[3] is intensity
+				create_persistent_trail(coords, touch[3], touch[2],  particles5)  # touch[3] is intensity
 			elif i == 5:
-				create_persistent_trail(coords, touch[3], particles6)  # touch[3] is intensity
+				create_persistent_trail(coords, touch[3], touch[2],  particles6)  # touch[3] is intensity
 			elif i == 6:
-				create_persistent_trail(coords, touch[3], particles7)  # touch[3] is intensity
+				create_persistent_trail(coords, touch[3], touch[2],  particles7)  # touch[3] is intensity
 			elif i == 7:
-				create_persistent_trail(coords, touch[3], particles8)  # touch[3] is intensity
+				create_persistent_trail(coords, touch[3], touch[2],  particles8)  # touch[3] is intensity
 			elif i == 9:
-				create_persistent_trail(coords, touch[3], particles9)  # touch[3] is intensity
+				create_persistent_trail(coords, touch[3], touch[2],  particles9)  # touch[3] is intensity
 			elif i == 9:
-				create_persistent_trail(coords, touch[3], particles10)  # touch[3] is intensity
+				create_persistent_trail(coords, touch[3], touch[2],  particles10)  # touch[3] is intensity
 			elif i == 10:
-				create_persistent_trail(coords, touch[3], particles11)  # touch[3] is intensity
+				create_persistent_trail(coords, touch[3], touch[2],  particles11)  # touch[3] is intensity
 			elif i == 11:
-				create_persistent_trail(coords, touch[3], particles12)  # touch[3] is intensity
+				create_persistent_trail(coords, touch[3], touch[2],  particles12)  # touch[3] is intensity
 			elif i == 12:
-				create_persistent_trail(coords, touch[3], particles13)  # touch[3] is intensity
+				create_persistent_trail(coords, touch[3], touch[2],  particles13)  # touch[3] is intensity
 			elif i == 13:
-				create_persistent_trail(coords, touch[3], particles14)  # touch[3] is intensity
+				create_persistent_trail(coords, touch[3], touch[2],  particles14)  # touch[3] is intensity
 			elif i == 14:
-				create_persistent_trail(coords, touch[3], particles15)  # touch[3] is intensity
+				create_persistent_trail(coords, touch[3], touch[2],  particles15)  # touch[3] is intensity
 			elif i == 15:
-				create_persistent_trail(coords, touch[3], particles16)  # touch[3] is intensity
+				create_persistent_trail(coords, touch[3], touch[2],  particles16)  # touch[3] is intensity
 			elif i == 16:
-				create_persistent_trail(coords, touch[3], particles17)  # touch[3] is intensity
+				create_persistent_trail(coords, touch[3], touch[2],  particles17)  # touch[3] is intensity
 			elif i == 17:
-				create_persistent_trail(coords, touch[3], particles18)  # touch[3] is intensity
+				create_persistent_trail(coords, touch[3], touch[2],  particles18)  # touch[3] is intensity
 			elif i == 18:
-				create_persistent_trail(coords, touch[3], particles19)  # touch[3] is intensity
+				create_persistent_trail(coords, touch[3], touch[2],  particles19)  # touch[3] is intensity
 			elif i == 19:
-				create_persistent_trail(coords, touch[3], particles20)  # touch[3] is intensity
+				create_persistent_trail(coords, touch[3], touch[2],  particles20)  # touch[3] is intensity
 		
+			var pressure = touch[2] if touch.size() > 2 else 1.0
+			var phase = "move"
+			if touch[4] == Vector2(-1, -1):
+				phase = "start"
+			seen_ids[i] = true
+			if brush_ref:
+				brush_ref.paint_at_world_position(coords, i, phase, pressure)
+
+		# Handle ended touches
+		for finger_id in prev_touches.keys():
+			if not seen_ids.has(finger_id) and brush_ref:
+				brush_ref.paint_at_world_position(Vector3.ZERO, finger_id, "end")
+		prev_touches = seen_ids
+
 		# 4. Clear array after processing (prevents backlog but allows trail creation)
 		current_touches.clear()
 		#particles.emitting = true
@@ -222,7 +243,7 @@ func merge_nearby_touches():
 	current_touches = merged_touches
 
 
-func create_persistent_trail(position: Vector3, intensity: float, particleSystem: GPUParticles3D):
+func create_persistent_trail(position: Vector3, size : float, intensity: float, particleSystem: GPUParticles3D):
 	"""Create a persistent trail that fades over time"""
 	# Check if we should create a new trail or continue an existing one
 	var should_create_new = true
@@ -250,6 +271,7 @@ func create_persistent_trail(position: Vector3, intensity: float, particleSystem
 	
 	# Update the main particle system to the latest position
 	particleSystem.global_position = position
+	#particleSystem.process_material.scale.y = sqrt(size)/5.0 # Set particle system size
 	particleSystem.emitting = true
 
 func update_touch_trails(delta: float):

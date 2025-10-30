@@ -17,6 +17,7 @@ var _is_dragging: bool = false
 var _brush_data: Dictionary = {}
 var _original_region_files: Array[String] = []  # Track files that existed at start
 var _data_directory: String = ""
+var _touch_operations := {} # Maps finger_id to active (true)
 
 const DEFAULT_BRUSH_PATH: String = "res://addons/terrain_3d/brushes/circle0.exr"
 const BRUSH_PATH: String = "res://addons/terrain_3d/brushes"
@@ -141,6 +142,26 @@ func _load_brush(path: String) -> void:
 	if editor:
 		editor.set_brush_data(_brush_data)
 
+func paint_at_world_position(world_pos: Vector3, finger_id: int, phase: String, pressure := 1.0) -> void:
+	if not terrain or not editor or not terrain.data:
+		return
+	terrain.set_camera(_camera)
+	_brush_data["mouse_pressure"] = pressure
+	editor.set_brush_data(_brush_data)
+	if phase == "start":
+		editor.start_operation(world_pos)
+		_touch_operations[finger_id] = true
+		editor.operate(world_pos, _camera.rotation.y)
+	elif phase == "move":
+		if _touch_operations.has(finger_id) and editor.is_operating():
+			editor.operate(world_pos, _camera.rotation.y)
+	elif phase == "end":
+		if _touch_operations.has(finger_id) and editor.is_operating():
+			if not editor.get_terrain():
+				editor.set_terrain(terrain)
+			if editor.get_terrain():
+				editor.stop_operation()
+			_touch_operations.erase(finger_id)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not terrain or not _camera or not editor:
@@ -178,14 +199,23 @@ func _unhandled_input(event: InputEvent) -> void:
 					editor.set_brush_data(_brush_data)
 					
 					# Start operation and operate (exactly like editor does)
+					if not editor.get_terrain():
+						editor.set_terrain(terrain)
+						if not editor.get_terrain():
+							return
 					editor.start_operation(hit)
+
 					if editor.is_operating():
 						editor.operate(hit, _camera.rotation.y)
 		else:
 			# Mouse released - stop operation (same as editor)
-			if _is_dragging and editor.is_operating():
-				editor.stop_operation()
-			_is_dragging = false
+			if _is_dragging:
+				if editor.is_operating():
+					if editor.get_terrain():
+						editor.set_terrain(terrain)
+					else:
+						editor.set_operation(Terrain3DEditor.OP_MAX)
+				_is_dragging = false
 		get_viewport().set_input_as_handled()
 		return
 	

@@ -2236,7 +2236,6 @@ show_grid = true
 show_region_grid = true
 top_level = true
 script = ExtResource("4_sqvbp")
-metadata/_edit_lock_ = true
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 visible = false
